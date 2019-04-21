@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+
+
+
+  
+  
+    
+    
+  <script src="../../../../lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="../../../../lib/pace/pace-theme-mac-osx.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=ZCOOL KuaiLe:300,300italic,400,400italic,700,700italic|ZCOOL KuaiLe:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="../../../../css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../../images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../../images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="../../../../images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+
+  <meta name="description" content="前言很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。（参见下文题外话，关于Windows 10上双显卡的“优秀表现”）Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。想用 Linux 怎么办？ 只能装上 Ubuntu 了事。真香Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。后来经过一">
+<meta name="keywords" content="Manjaro,Linux,Optimus,NVIDIA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manjaro 在笔记本上的多显示器配置">
+<meta property="og:url" content="https://amazingrise.github.io/2019/04/20/Manjaro-Optimus-Dual-Monitor/index.html">
+<meta property="og:site_name" content="左手的世界">
+<meta property="og:description" content="前言很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。（参见下文题外话，关于Windows 10上双显卡的“优秀表现”）Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。想用 Linux 怎么办？ 只能装上 Ubuntu 了事。真香Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。后来经过一">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-21T14:39:56.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Manjaro 在笔记本上的多显示器配置">
+<meta name="twitter:description" content="前言很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。（参见下文题外话，关于Windows 10上双显卡的“优秀表现”）Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。想用 Linux 怎么办？ 只能装上 Ubuntu 了事。真香Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。后来经过一">
+
+
+
+
+
+
+  <link rel="canonical" href="https://amazingrise.github.io/2019/04/20/Manjaro-Optimus-Dual-Monitor/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Manjaro 在笔记本上的多显示器配置 | 左手的世界</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">左手的世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">AmazingRise's Blog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="https://amazingrise.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="https://amazingrise.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">2</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+<blockquote class="blockquote-center">
+<link href="https://fonts.googleapis.com/css?family=Lobster|ZCOOL+XiaoWei" rel="stylesheet"> 
+<meta name="theme-color" content="#55007f">
+<style>
+     .sayings {
+                font-family: 'Lobster','ZCOOL XiaoWei';
+					}
+</style>
+
+<div class="sayings">
+	<script type="text/javascript">
+		document.write(
+			"\
+					<style>\
+	@media mq-mobile {\
+	div .live2d-widget\
+	{\
+		bottom: -400px;\
+	}\
+	div .live2dcanvas\
+	{\
+		width: 150px;\
+		height: 300px;\
+	}\
+</style>\
+			");
+
+		function replaceAll(str)  
+		{  
+		    if(str!=null)  
+		    str = str.replace(/\//g,"<br>")  
+		    return str;  
+		}  
+		//指定条目数
+		var tips =[
+			'He just spends his life / living in a rock n roll fantasy -- The Kinks/(A rock n roll Fantasy)',
+			'啊，昔日我曾苍老 / 如今才风华正茂 -- Bob Dylan (My Back Pages)',
+			'不久我们就会发现 / 爱的呼声是我们最乐意听到的 -- Paul McCartney / (Pipes of Peace)',
+			'怀有依恋万千/驻足追忆无足说/但生命之中/我更爱你们 -- John Lennon (In My Life)',
+			'我本痴性人 落人惊叹声 / 欢笑三界外 乐从天外生 -- John Lennon / (Watching the Wheels)',
+			'我想教全世界一首歌/一首完美和声的歌 -- The New Seekers / (I\'d Like to Teach the World to Sing)'
+		]
+		index = Math.floor(Math.random() * tips.length);
+		tips[index] = replaceAll(tips[index]);
+		tips[index] = tips[index].replace('--','<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	--');
+		tips[index] += '</b>';
+		document.write(tips[index]);
+	</script>
+</div>
+
+</blockquote>
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/amazingrise" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://amazingrise.github.io">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AmazingRise">
+      <meta itemprop="description" content="我就是我 是颜色不一样的烟火">
+      <meta itemprop="image" content="../../../../images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="左手的世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Manjaro 在笔记本上的多显示器配置
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-20 16:11:20" itemprop="dateCreated datePublished" datetime="2019-04-20T16:11:20+08:00">2019-04-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-21 22:39:56" itemprop="dateModified" datetime="2019-04-21T22:39:56+08:00">2019-04-21</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。<br>（参见下文<a href="#题外话">题外话，关于Windows 10上双显卡的“优秀表现”</a>）<br>Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。<br>想用 Linux 怎么办？ 只能装上 Ubuntu 了事。<del>真香</del><br>Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。<br><strong>后来经过一阵探索，才在Manjaro上用上了外置显示器。</strong><del>终于摆脱了真香定律</del></p>
+<a id="more"></a>
+<hr>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>还是老规矩，我先介绍一下这个问题的背景。<br>解决方法请翻到<a href="#解决方法">解决方法</a>一节。<br>环境：</p>
+<ul>
+<li>intel 集成显卡+Nvidia 独立显卡</li>
+<li>HDMI 与 Nvidia显卡相连接</li>
+</ul>
+<p>症状：</p>
+<ul>
+<li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li>
+<li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有下文了。</li>
+<li>由于自带bumblebee驱动，故本人曾经尝试过用optirun在独显上运行glxgears，外置显示器会闪一下，然后No Signal Input.<br>（这说明bumblebee是可以启动nvidia显卡的，但无法输出到外置显示器上）</li>
+<li>总之，外置显示器就像一面黑色的镜子，看着让人揪心QAQ。</li>
+</ul>
+<h2 id="失败方案"><a href="#失败方案" class="headerlink" title="失败方案"></a>失败方案</h2><font color="#ff0000">先说一下我的踩坑历程，有助于大家更好地解决这个问题。<br>即使沧海桑田(2333)，失去了时效性，这篇文章也可以为大家提供解决相似问题的参考。<br>解决方法请翻到<a href="#解决方法">解决方法</a>一节。<br></font>
+
+<h3 id="佛系配置"><a href="#佛系配置" class="headerlink" title="佛系配置"></a>佛系配置</h3><p><em>一般情况下，不做一番努力是无法取得成果的，不是么？</em></p>
+<p>佛系配置，我说的意思是光靠系统驱动，不进行任何修改。<br>以下是我的失败历程。</p>
+<ul>
+<li>video-linux是开源驱动，以前的Manjaro版本是可以通过开源驱动打开第二显示器的。<br>（但是花屏，或只能显示鼠标指针）<br>这个方案是我最早放弃的。</li>
+<li>video-nvidia (non-free driver)<br>带nvidia的驱动都是nvidia官方维护的闭源驱动，<br>其中390xx是代表具有fermi技术的显卡（貌似是个老技术）<br>本人的笔记本显卡是GTX10xx系列，故应该选择<strong>不带390xx的版本</strong>。<br>然而安装后，只能用外置显示器。</li>
+</ul>
+<h3 id="修改bumblebee配置"><a href="#修改bumblebee配置" class="headerlink" title="修改bumblebee配置"></a>修改bumblebee配置</h3><p>Manjaro默认安装的是bumblebee驱动。</p>
+<p>维基这么说：<a href="https://wiki.archlinux.org/index.php/Bumblebee" target="_blank" rel="noopener">Bumblebee - ArchWiki</a></p>
+<blockquote>
+<p>Bumblebee is an effort to make NVIDIA Optimus enabled laptops work in GNU/Linux systems. Such feature involves two graphics cards with two different power consumption profiles plugged in a layered way sharing a single framebuffer.</p>
+</blockquote>
+<p>bumblebee驱动是针对Nvidia Optimus的有益尝试，由bumblebee团队维护。<br>它可以实现像Windows下一样的体验，即一般的桌面体验用Intel集成显卡处理，<br>需要高性能的情况下调用NVIDIA显卡，以达到最大的节能效果。</p>
+<p><strong>可惜bumblebee并不能很好的支持双显示器。</strong><br>我尝试过github repo上的解决方法，即修改bumblebee配置以支持双显示器。<br>不过最后失败了。<br>如果有兴趣的话，可以看：<br><a href="https://github.com/Bumblebee-Project/Bumblebee/wiki/Multi-monitor-setup" target="_blank" rel="noopener">Multi Monitor Setup</a></p>
+<h3 id="bumblebee-amp-intel-virtual-output"><a href="#bumblebee-amp-intel-virtual-output" class="headerlink" title="bumblebee &amp; intel-virtual-output"></a>bumblebee &amp; intel-virtual-output</h3><p>这个我<strong>只成功过一次</strong>，不知道为什么无法复现了。<br><strong>并且操作麻烦，不建议采用。</strong><br>但是还是简述一下这个方案，提供参考。</p>
+<p>Manjaro的开发者之一Jonathan在论坛里就说过这样一句话，</p>
+<blockquote>
+<p>有的时候通过强制修改xorg.conf也能强制输出到第二显示器。</p>
+</blockquote>
+<p>我后来还真的想出来了一个这样的方案。<br>首先，需有bumblebee。<br>参照了一个很老的设置双显示器的教程，那个时候还是<del>开心农场</del>Ubuntu 9.04横行的年代。<br>intel-virtual-output是bumblebee里面带的一个工具：</p>
+<blockquote>
+<p>intel-virtual-output is a utility for Intel integrated graphics chipsets on hybrid systems. The tool connects local VirtualHeads to a remote output, allowing the primary display to extend onto the remote outputs.<br>简而言之，是创建一块大的虚拟显示器，然后把所有的显示器都拼接在一起。（是一次抽象，逻辑上连续，物理上分立）</p>
+</blockquote>
+<p>我修改了一下原有方案，以便在bumblebee里面使用：<br>（当时的原有方案大概是2009年提出的，那个时候还没有bumblebee。）<br>打开<code>/etc/bumblebee/xorg.conf.nvidia</code>，按照自己的需求（分辨率，刷新率）修改如下配置：<br><figure class="highlight bash"><figcaption><span>/etc/bumblebee/xorg.conf.nvidia</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Section <span class="string">"Monitor"</span></span><br><span class="line">  Identifier <span class="string">"DVI"</span></span><br><span class="line">  Modeline <span class="string">"1680x1050_60.00"</span>  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync</span><br><span class="line">  Option <span class="string">"PreferredMode"</span> <span class="string">"1680x1050_60.00"</span></span><br><span class="line">  Option <span class="string">"LeftOf"</span> <span class="string">"DP"</span></span><br><span class="line">  Option <span class="string">"DPMS"</span> <span class="string">"true"</span></span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section <span class="string">"Monitor"</span></span><br><span class="line">  Identifier <span class="string">"DP"</span></span><br><span class="line">  Modeline <span class="string">"1920x1080_60.00"</span>  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</span><br><span class="line">  Option <span class="string">"PreferredMode"</span> <span class="string">"1920x1080_60.00"</span></span><br><span class="line">  Option <span class="string">"RightOf"</span> <span class="string">"DVI"</span></span><br><span class="line">  Option <span class="string">"DPMS"</span> <span class="string">"true"</span></span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section <span class="string">"Screen"</span></span><br><span class="line">  Identifier <span class="string">"Screen0"</span></span><br><span class="line">  Device <span class="string">"Radeon"</span> <span class="comment"># e.g. Radeon, Intel, nvidia</span></span><br><span class="line">  Monitor <span class="string">"DP"</span></span><br><span class="line">  DefaultDepth 24</span><br><span class="line">  SubSection <span class="string">"Display"</span></span><br><span class="line">    Depth 24</span><br><span class="line">    Virtual 3600 2130 <span class="comment"># 1920 + 1680 (3600), 1080 + 1050 (2130)</span></span><br><span class="line">    <span class="comment"># 上面的Virtual 就是拼接出来的虚拟显示器的尺寸，可根据自己的需求修改</span></span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">  EndSubSection</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure></p>
+<p>（以上内容摘自<a href="https://wiki.archlinux.org/index.php/Multihead#Configuration_using_xorg.conf" target="_blank" rel="noopener">ArchWiki - Multihead</a>）<br>（原文我已经找不到了，上面的内容是等效的）<br>然后运行<code>intel-virtual-output</code>，外接显示器瞬间亮了。<br>不过我发现我的分辨率有问题，又改了一下配置，发现无法复现。<br>重启bumblebee服务，重启X服务器，重启电脑，重新编译内核都无效。<br><em>希望知道这个是怎么回事的朋友能告诉我一下。我觉得太玄学了。</em></p>
+<h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><p>首先，在Ubuntu中，我并没有找到bumblebee，并且我选择的是NVIDIA驱动。<br>这意味着Ubuntu采用了另一套机制。<br>参照<a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">ArchWiki上面的说法</a>)，让Optimus显卡在linux里面有三种实现方法：</p>
+<ol>
+<li>BIOS里面禁用掉一个显卡。缺点也是显而易见的：难以切换显卡。</li>
+<li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li>
+<li>用Bumblebee。不过Bumblebee很难支持双显示器。</li>
+<li>用专有驱动。</li>
+<li>不知道是什么鬼的方法，叫nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li>
+</ol>
+<hr>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）<br>刚开始没有成功，<strong>后来在朋友的提醒下，发现原来我缺了一些步骤！</strong><br><strong>我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功～</strong><br>以下内容均为本人的中文翻译。<a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225" target="_blank" rel="noopener">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
+<h3 id="原帖前言"><a href="#原帖前言" class="headerlink" title="原帖前言"></a>原帖前言</h3><p>最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。<br>下面我说一下如何在Optimus的笔记本上开启PRIME。<br>方法|优点|缺点<br>——|——-|——-<br>bumblebee|按需使用独立显卡，Manjaro默认配置|有一定的开销，对性能有所影响<br>PRIME|直接使用独立显卡，性能更强|两块显卡都一直供电，需要手动配置<br>optimus-manager|显卡切换更简单|暂不成熟，还在开发中</p>
+<p><em>Note:最简单的方法就是在主板设置里面禁用集成显卡。如果你可以禁用的话，就直接禁用掉算了。</em><br><em>Note2: optimus-manager可以实现两块显卡的半自动切换。但是时至今日还在紧锣密鼓地开发中……</em><br><em>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</em><br><em>译者注: 其实直接禁用在现在的很多笔记本bios设置里都找不到的。</em><br><em>译者注2：反正我是按照这个步骤成功了。</em><br><em>译者注3：没让重启的时候千万不要重启。</em></p>
+<h3 id="第一步，移除Bumblebee"><a href="#第一步，移除Bumblebee" class="headerlink" title="第一步，移除Bumblebee"></a>第一步，移除Bumblebee</h3><p>如果你选择了non-free驱动（其实是伪闭源驱动），mhwd将会自动安装bumblebee。<br>bumblebee很碍事，所以我们得先干掉它。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mhwd -r pci nonfree 0300</span><br></pre></td></tr></table></figure></p>
+<h3 id="第二步，安装NVIDIA驱动"><a href="#第二步，安装NVIDIA驱动" class="headerlink" title="第二步，安装NVIDIA驱动"></a>第二步，安装NVIDIA驱动</h3><p>（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）<br>（一般来说不用改）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mhwd -a pci video-nvidia</span><br></pre></td></tr></table></figure></p>
+<h3 id="第三步，修改MHWD设置"><a href="#第三步，修改MHWD设置" class="headerlink" title="第三步，修改MHWD设置"></a>第三步，修改MHWD设置</h3><p>（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。<br>我们必须得改一下这个配置，这样PRIME才能生效。</p>
+<h4 id="另起炉灶"><a href="#另起炉灶" class="headerlink" title="另起炉灶"></a>另起炉灶</h4><p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code><br>（如果你不放心可以mv嘛～）<br>然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：<br><figure class="highlight"><figcaption><span>/etc/X11/xorg.conf.d/optimus.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Section "Module"</span><br><span class="line">    Load "modesetting"</span><br><span class="line">EndSection</span><br><span class="line"></span><br><span class="line">Section "Device"</span><br><span class="line">    Identifier "nvidia"</span><br><span class="line">    Driver "nvidia"</span><br><span class="line">    BusID "PCI:1:0:0"</span><br><span class="line">    Option "AllowEmptyInitialConfiguration"</span><br><span class="line">EndSection</span><br></pre></td></tr></table></figure></p>
+<p>BusID一栏需要根据自己的电脑配置进行修改。大多数Optimus笔记本都是这个编号。<br><strong>你应该检查一下这个值是否正确：</strong><code>lspci | grep -E &quot;VGA|3D&quot;</code><br><em>（反正我的电脑上确实是这个编号）</em></p>
+<h4 id="禁用模块"><a href="#禁用模块" class="headerlink" title="禁用模块"></a>禁用模块</h4><p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。<br>此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。<br>所以，我们需要对<code>/etc/modprobe.d</code>动动手脚。</p>
+<p>首先，我们得把mhwd自动生成的黑名单删掉。<br>（译者注：不放心的话，就重命名，但是要把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）<br>比如这样：<strong>视情况而定，你的配置可能不同</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/modprobe.d/mhwd*</span><br><span class="line">sudo rm /etc/modprobe.d/mhwd-gpu.conf</span><br><span class="line">sudo rm /etc/modprobe.d/mhwd-nvidia.conf</span><br></pre></td></tr></table></figure></p>
+<p>然后我们要新建一个黑名单，屏蔽一些其他的模块。<br>新建一个文件，什么名字都可以，conf结尾就行<br>写入：<br><figure class="highlight"><figcaption><span>/etc/modprobe.d/nvidia.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blacklist nouveau</span><br><span class="line">blacklist nvidiafb</span><br><span class="line">blacklist rivafb</span><br></pre></td></tr></table></figure></p>
+<h3 id="第四步，开启nvidia-drm-modeset"><a href="#第四步，开启nvidia-drm-modeset" class="headerlink" title="第四步，开启nvidia-drm.modeset"></a>第四步，开启nvidia-drm.modeset</h3><p>创建一个新文件，<br><figure class="highlight"><figcaption><span>/etc/modprobe.d/nvidia-drm.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">options nvidia_drm modeset=1</span><br></pre></td></tr></table></figure></p>
+<h3 id="第五步，设置启动脚本"><a href="#第五步，设置启动脚本" class="headerlink" title="第五步，设置启动脚本"></a>第五步，设置启动脚本</h3><p>我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。<br>如果你现在重启，桌面环境的输出可能会有一些问题。<br>在笔记本上，就会是笔记本屏幕一片黑（但是如果有外置，外置会亮）</p>
+<p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。<br><strong>注意，视你的具体环境执行下列步骤。</strong></p>
+<font color="#ff0000"><strong>你并不需要做下列所有步骤</strong></font>
+
+<p><strong>For LightDM (xfce默认)</strong><br>创建一个文件，<br><figure class="highlight bash"><figcaption><span>/usr/local/bin/optimus.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">xrandr --setprovideroutputsource modesetting NVIDIA-0</span><br><span class="line">xrandr --auto</span><br></pre></td></tr></table></figure></p>
+<p>然后按照国际惯例（hhh），让它可写可执行：<code>chmod a+rx /usr/local/bin/optimus.sh</code><br>现在你还得把它设置为启动脚本。<br>编辑<code>/etc/lightdm/lightdm.conf</code>，然后在<strong>[Seat:* ]</strong>这一节设置<br><code>display-setup-script=/usr/local/bin/optimus.sh</code></p>
+<p><strong>For GDM (Gnome默认)</strong><br>创建一个文件<br><figure class="highlight ini"><figcaption><span>/usr/local/share/optimus.desktop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Desktop Entry]</span></span><br><span class="line"><span class="attr">Type</span>=Application</span><br><span class="line"><span class="attr">Name</span>=Optimus</span><br><span class="line"><span class="attr">Exec</span>=sh -c <span class="string">"xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto"</span></span><br><span class="line"><span class="attr">NoDisplay</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">X-GNOME-Autostart-Phase</span>=DisplayServer</span><br></pre></td></tr></table></figure></p>
+<p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)<br>然后建立连接，让它随着GDM启动。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/<span class="built_in">local</span>/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop</span><br><span class="line">sudo ln -s /usr/<span class="built_in">local</span>/share/optimus.desktop /etc/xdg/autostart/optimus.desktop</span><br></pre></td></tr></table></figure></p>
+<p><strong>For SDDM (KDE 默认)</strong><br>创建一个文件：<br><figure class="highlight bash"><figcaption><span>/usr/share/sddm/scripts/Xsetup</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line">xrandr --setprovideroutputsource modesetting NVIDIA-0</span><br><span class="line">xrandr --auto</span><br></pre></td></tr></table></figure></p>
+<p>然后用chmod让它变为可执行的文件。</p>
+<h3 id="第六步，最后的工作"><a href="#第六步，最后的工作" class="headerlink" title="第六步，最后的工作"></a>第六步，最后的工作</h3><p>译者注：如果以上的工作都已经完成，我建议你再做一步。<br>我当时没有做这一步，之后重启发现内核模块加载错误。<br>所以还是建议，编译一下内核。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkinitcpio -P linux</span><br></pre></td></tr></table></figure></p>
+<p>最后重启，大功告成。</p>
+<h3 id="验证是否成功"><a href="#验证是否成功" class="headerlink" title="验证是否成功"></a>验证是否成功</h3><p>如果以上你都设置正确了，当你重启之后，可以敲<code>glxinfo | grep -i vendor</code><br>然后看看是不是像下面这样的信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ glxinfo | grep -i vendor</span><br><span class="line">server glx vendor string: NVIDIA Corporation</span><br><span class="line">client glx vendor string: NVIDIA Corporation</span><br><span class="line">OpenGL vendor string: NVIDIA Corporation</span><br></pre></td></tr></table></figure></p>
+<p>如果是，说明你已经设置成功，可以欢呼了！<br><em>当然我有双显示器，一看显示器亮了就知道了2333</em></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>虽然bumblebee存在诸多问题（比如双显示器问题），但是我<strong>真的要为开发人员点赞。</strong><br>因为连Windows 10上的驱动，<strong>官方都做不好。</strong><br>（据说在Windows 10 1803里面已经修复了，但1809里面又带回来了，服气。<br>而且nvidia和M$互相踢皮球。）</p>
+<p><a href="https://www.v2ex.com/t/526544" target="_blank" rel="noopener">这个奇怪的问题（点击查看）</a>当时也困扰了我很久<br>打开任务管理器没有任何占用，为啥还是一卡一卡的？<br>后来才知道，噢，原来是双显卡的坑。<br>听说最近19H1来了？反正我不想用Windows了。<br>自从Windows 7 之后我就没用过没bug的系统！</p>
+<h3 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h3><p>显卡真的是一个大坑啊。<br>我折腾这个驱动，前前后后断断续续差不多半年了（摊手）<br>这篇博客我写了两天才写完QAQ</p>
+<p>希望我的这篇博文能帮到各位看官。 :)<br>新开的评论区(Gitment)，有问题可以在下面留言哦～</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225" target="_blank" rel="noopener">How To Set up PRIME with NVIDIA proprietary driver</a><br><a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">Optimus - ArchWiki</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="../../../../tags/Manjaro/" rel="tag"># Manjaro</a>
+          
+            <a href="../../../../tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="../../../../tags/Optimus/" rel="tag"># Optimus</a>
+          
+            <a href="../../../../tags/NVIDIA/" rel="tag"># NVIDIA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../../09/Manjaro-cannot-wake-up/" rel="next" title="Manjaro 挂起后无法唤醒之解决方案">
+                <i class="fa fa-chevron-left"></i> Manjaro 挂起后无法唤醒之解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="../../../../images/avatar.jpg" alt="AmazingRise">
+            
+              <p class="site-author-name" itemprop="name">AmazingRise</p>
+              <div class="site-description motion-element" itemprop="description">我就是我 是颜色不一样的烟火</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="https://amazingrise.github.io/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/amazingrise" title="GitHub &rarr; https://github.com/amazingrise" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#失败方案"><span class="nav-number">3.</span> <span class="nav-text">失败方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#佛系配置"><span class="nav-number">3.1.</span> <span class="nav-text">佛系配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改bumblebee配置"><span class="nav-number">3.2.</span> <span class="nav-text">修改bumblebee配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bumblebee-amp-intel-virtual-output"><span class="nav-number">3.3.</span> <span class="nav-text">bumblebee &amp; intel-virtual-output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析问题"><span class="nav-number">4.</span> <span class="nav-text">分析问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">5.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原帖前言"><span class="nav-number">5.1.</span> <span class="nav-text">原帖前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一步，移除Bumblebee"><span class="nav-number">5.2.</span> <span class="nav-text">第一步，移除Bumblebee</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二步，安装NVIDIA驱动"><span class="nav-number">5.3.</span> <span class="nav-text">第二步，安装NVIDIA驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三步，修改MHWD设置"><span class="nav-number">5.4.</span> <span class="nav-text">第三步，修改MHWD设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另起炉灶"><span class="nav-number">5.4.1.</span> <span class="nav-text">另起炉灶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁用模块"><span class="nav-number">5.4.2.</span> <span class="nav-text">禁用模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四步，开启nvidia-drm-modeset"><span class="nav-number">5.5.</span> <span class="nav-text">第四步，开启nvidia-drm.modeset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五步，设置启动脚本"><span class="nav-number">5.6.</span> <span class="nav-text">第五步，设置启动脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六步，最后的工作"><span class="nav-number">5.7.</span> <span class="nav-text">第六步，最后的工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证是否成功"><span class="nav-number">5.8.</span> <span class="nav-text">验证是否成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题外话"><span class="nav-number">6.1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后的最后"><span class="nav-number">6.2.</span> <span class="nav-text">最后的最后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">6.3.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AmazingRise</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="../../../../lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="../../../../lib/three/three.min.js"></script>
+
+  
+  <script src="../../../../lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="../../../../js/src/utils.js?v=7.0.1"></script>
+
+  <script src="../../../../js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="../../../../js/src/affix.js?v=7.0.1"></script>
+
+  <script src="../../../../js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="../../../../js/src/scrollspy.js?v=7.0.1"></script>
+<script src="../../../../js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="../../../../js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '5fa132accae129694e53',
+    clientSecret: '98074349ab533b01835e17a9b78564c7f969b014',
+    repo: 'amazingrise.github.io',
+    owner: 'amazingrise',
+    admin: ['amazingrise'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
+
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Pio.model.json"},"display":{"position":"left","width":300,"height":600,"hOffset":0,"vOffset":-200},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>

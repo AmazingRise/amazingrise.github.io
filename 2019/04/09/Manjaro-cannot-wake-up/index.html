@@ -149,23 +149,25 @@
 
 
 
-  <meta name="description" content="我就是我 是颜色不一样的烟火">
-<meta property="og:type" content="website">
-<meta property="og:title" content="左手的世界">
-<meta property="og:url" content="https://amazingrise.github.io/index.html">
+  <meta name="description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+<meta name="keywords" content="Manjaro,Suspend,Power Management,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Manjaro 挂起后无法唤醒之解决方案">
+<meta property="og:url" content="https://amazingrise.github.io/2019/04/09/Manjaro-cannot-wake-up/index.html">
 <meta property="og:site_name" content="左手的世界">
-<meta property="og:description" content="我就是我 是颜色不一样的烟火">
+<meta property="og:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-20T07:51:07.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="左手的世界">
-<meta name="twitter:description" content="我就是我 是颜色不一样的烟火">
+<meta name="twitter:title" content="Manjaro 挂起后无法唤醒之解决方案">
+<meta name="twitter:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
 
 
 
 
 
 
-  <link rel="canonical" href="https://amazingrise.github.io/">
+  <link rel="canonical" href="https://amazingrise.github.io/2019/04/09/Manjaro-cannot-wake-up/">
 
 
 
@@ -175,7 +177,7 @@
   };
 </script>
 
-  <title>左手的世界</title>
+  <title>Manjaro 挂起后无法唤醒之解决方案 | 左手的世界</title>
   
 
 
@@ -227,8 +229,7 @@
    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
    <script type="text/javascript" src="/js/src/fireworks.js"></script>
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -394,9 +395,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -411,12 +412,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://amazingrise.github.io2019/04/20/Manjaro-Optimus-Dual-Monitor/">
+    <link itemprop="mainEntityOfPage" href="https://amazingrise.github.io">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="AmazingRise">
       <meta itemprop="description" content="我就是我 是颜色不一样的烟火">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="../../../../images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -428,171 +429,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="2019/04/20/Manjaro-Optimus-Dual-Monitor/" class="post-title-link" itemprop="url">Manjaro 在笔记本上的多显示器配置</a>
-              
-            
-          </h1>
-        
+          <h1 class="post-title" itemprop="name headline">Manjaro 挂起后无法唤醒之解决方案
 
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-20 16:11:20" itemprop="dateCreated datePublished" datetime="2019-04-20T16:11:20+08:00">2019-04-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-21 22:39:56" itemprop="dateModified" datetime="2019-04-21T22:39:56+08:00">2019-04-21</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。<br>（参见下文<a href="#题外话">题外话，关于Windows 10上双显卡的“优秀表现”</a>）<br>Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。<br>想用 Linux 怎么办？ 只能装上 Ubuntu 了事。<del>真香</del><br>Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。<br><strong>后来经过一阵探索，才在Manjaro上用上了外置显示器。</strong><del>终于摆脱了真香定律</del></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="2019/04/20/Manjaro-Optimus-Dual-Monitor/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://amazingrise.github.io2019/04/09/Manjaro-cannot-wake-up/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="AmazingRise">
-      <meta itemprop="description" content="我就是我 是颜色不一样的烟火">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="左手的世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="2019/04/09/Manjaro-cannot-wake-up/" class="post-title-link" itemprop="url">Manjaro 挂起后无法唤醒之解决方案</a>
               
             
           </h1>
@@ -668,20 +506,29 @@
       
 
       
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）<br>然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。<br>两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。<br>我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）<br>于是结合官方维基以及官方论坛上的说法，我成功解决了这个问题。<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="2019/04/09/Manjaro-cannot-wake-up/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）<br>然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。<br>两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。<br>我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）<br>于是结合官方维基以及官方论坛上的说法，我成功解决了这个问题。<br><a id="more"></a></p>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>下面我将对这个问题进行分析。具体解决方案请翻到最后。</p>
+<h3 id="为什么Ubuntu可以正常挂起，而manjaro不行？"><a href="#为什么Ubuntu可以正常挂起，而manjaro不行？" class="headerlink" title="为什么Ubuntu可以正常挂起，而manjaro不行？"></a>为什么Ubuntu可以正常挂起，而manjaro不行？</h3><p>原因在于他们的<strong>电源管理方式</strong>不同。其实之前Ubuntu上也是无法正常挂起的，遇到的问题差不多，也是长时间挂起无法唤醒。<br>后来采用了”laptop mode“才得以正常休眠。<br>而Manjaro默认的电源管理是TLP。<br>详细了解请戳这里：<a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a>。<br><strong>所以如果我们把默认的电源管理换成以前的laptop mode tools也许就能解决问题。</strong><br>不知道为啥TLP问题这么多。</p>
+<h3 id="Laptop-Mode-Tools为何方神圣？"><a href="#Laptop-Mode-Tools为何方神圣？" class="headerlink" title="Laptop Mode Tools为何方神圣？"></a>Laptop Mode Tools为何方神圣？</h3><p>引用自官方维基</p>
+<blockquote>
+<p>Laptop Mode Tools is a laptop power saving package for Linux systems. It is the primary way to enable the Laptop Mode feature of the Linux kernel, which lets your hard drive spin down. In addition, it allows you to tweak a number of other power-related settings using a simple configuration file.</p>
+</blockquote>
+<p><strong>值得注意的是, Laptop Mode Tools与原有的TLP相冲突。两者不能共存</strong><br>所以我们就有思路解决这个问题啦～</p>
+<hr>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>各位看官别急。下面祭出解决方案。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先，关掉原来自带的TLP电源管理。</span></span><br><span class="line">systemctl <span class="built_in">disable</span> tlp</span><br><span class="line">systemctl <span class="built_in">disable</span> tlp-sleep.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后安装Laptop Mode Tools：</span></span><br><span class="line">pacman -S laptop-mode-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#开启服务！</span></span><br><span class="line">systemctl <span class="built_in">enable</span> laptop-mode.service</span><br></pre></td></tr></table></figure></p>
+<p><strong>Update：尴尬的是，发完博文又发现这个问题复出了</strong><br>我刚想起来还有一个配置没有修改（facepalm）<br>最重要的一步，找到这个配置文件：<br><figure class="highlight ini"><figcaption><span>/etc/laptop-mode/laptop-mode.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable laptop mode power savings, even when on AC power.</span></span><br><span class="line"><span class="comment"># This is useful when running as a headless machine, in low power mode</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">ENABLE_LAPTOP_MODE_ON_AC</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>将 <strong>ENABLE_LAPTOP_MODE_ON_AC=0改为=1</strong><br>这样才能让笔记本在接入AC电源的情况下使用laptop mode tools。</p>
+<p>大功告成！</p>
+<p>关于Laptop mode tools的具体配置，请参见ArchWiki.<br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration" target="_blank" rel="noopener">Laptop Mode Tools : Configuration</a></p>
+<hr>
+<h2 id="附言"><a href="#附言" class="headerlink" title="附言"></a>附言</h2><p>多思考，多搜索，探究真理！<br>另外，ArchWiki和Manjaro Wiki的质量确实很高，建议有问题先上wiki和官方论坛看看。<br>甚至有的时候，遇到问题找官方维基直接翻到Troubleshotting就解决了。<br>希望我的这篇博文能帮到各位看官。 :)<br>有问题可以在评论区提出！</p>
+<p>下篇预告，关于Manjaro下Optimus多显示器配置问题。</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wiki.manjaro.org/index.php?title=Power_Savings" target="_blank" rel="noopener">Power Savings - Manjaro Wiki</a><br><a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a><br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools" target="_blank" rel="noopener">Laptop Mode Tools - ArchWiki</a></p>
+
       
-    </p></div>
+    </div>
 
     
 
@@ -700,14 +547,42 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="../../../../tags/Manjaro/" rel="tag"># Manjaro</a>
+          
+            <a href="../../../../tags/Suspend/" rel="tag"># Suspend</a>
+          
+            <a href="../../../../tags/Power-Management/" rel="tag"># Power Management</a>
+          
+            <a href="../../../../tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="../../20/Manjaro-Optimus-Dual-Monitor/" rel="prev" title="Manjaro 在笔记本上的多显示器配置">
+                Manjaro 在笔记本上的多显示器配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -717,14 +592,19 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -744,12 +624,21 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="AmazingRise">
+              <img class="site-author-image" itemprop="image" src="../../../../images/avatar.jpg" alt="AmazingRise">
             
               <p class="site-author-name" itemprop="name">AmazingRise</p>
               <div class="site-description motion-element" itemprop="description">我就是我 是颜色不一样的烟火</div>
@@ -828,6 +717,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么Ubuntu可以正常挂起，而manjaro不行？"><span class="nav-number">2.1.</span> <span class="nav-text">为什么Ubuntu可以正常挂起，而manjaro不行？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laptop-Mode-Tools为何方神圣？"><span class="nav-number">2.2.</span> <span class="nav-text">Laptop Mode Tools为何方神圣？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附言"><span class="nav-number">3.</span> <span class="nav-text">附言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -925,59 +831,94 @@
 
   
   
-  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="../../../../lib/canvas-ribbon/canvas-ribbon.js"></script>
 
 
 
 
 
   
-  <script src="lib/jquery/index.js?v=2.1.3"></script>
+  <script src="../../../../lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script src="lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script src="lib/three/three.min.js"></script>
+  <script src="../../../../lib/three/three.min.js"></script>
 
   
-  <script src="lib/three/three-waves.min.js"></script>
-
-
-  
-
-
-  <script src="js/src/utils.js?v=7.0.1"></script>
-
-  <script src="js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="js/src/affix.js?v=7.0.1"></script>
-
-  <script src="js/src/schemes/pisces.js?v=7.0.1"></script>
-
+  <script src="../../../../lib/three/three-waves.min.js"></script>
 
 
   
 
+
+  <script src="../../../../js/src/utils.js?v=7.0.1"></script>
+
+  <script src="../../../../js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
   
 
 
-  <script src="js/src/next-boot.js?v=7.0.1"></script>
+  <script src="../../../../js/src/affix.js?v=7.0.1"></script>
+
+  <script src="../../../../js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="../../../../js/src/scrollspy.js?v=7.0.1"></script>
+<script src="../../../../js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="../../../../js/src/next-boot.js?v=7.0.1"></script>
 
 
   
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '5fa132accae129694e53',
+    clientSecret: '98074349ab533b01835e17a9b78564c7f969b014',
+    repo: 'amazingrise.github.io',
+    owner: 'amazingrise',
+    admin: ['amazingrise'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   

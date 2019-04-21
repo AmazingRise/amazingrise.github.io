@@ -19,7 +19,6 @@
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#339999">
 
 
 
@@ -29,7 +28,7 @@
     
     
   <script src="../../../../lib/pace/pace.min.js?v=1.0.2"></script>
-  <link rel="stylesheet" href="../../../../lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+  <link rel="stylesheet" href="../../../../lib/pace/pace-theme-mac-osx.min.css?v=1.0.2">
 
 
 
@@ -47,6 +46,50 @@
 
 
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=ZCOOL KuaiLe:300,300italic,400,400italic,700,700italic|ZCOOL KuaiLe:300,300italic,400,400italic,700,700italic|Noto Sans SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
 
 
 
@@ -83,7 +126,7 @@
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
-    back2top_sidebar: false,
+    back2top_sidebar: true,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -105,20 +148,24 @@
 
 
 
-  <meta property="og:type" content="website">
+
+  <meta name="description" content="我就是我 是颜色不一样的烟火">
+<meta property="og:type" content="website">
 <meta property="og:title" content="左手的世界">
-<meta property="og:url" content="http://amazingrise.github.io/tags/Power-Management/index.html">
+<meta property="og:url" content="https://amazingrise.github.io/tags/Power-Management/index.html">
 <meta property="og:site_name" content="左手的世界">
+<meta property="og:description" content="我就是我 是颜色不一样的烟火">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="左手的世界">
+<meta name="twitter:description" content="我就是我 是颜色不一样的烟火">
 
 
 
 
 
 
-  <link rel="canonical" href="http://amazingrise.github.io/tags/Power-Management/">
+  <link rel="canonical" href="https://amazingrise.github.io/tags/Power-Management/">
 
 
 
@@ -176,6 +223,10 @@
     
   
 
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
   <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
@@ -227,8 +278,10 @@
     
 
     
+      
+    
 
-    <a rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="https://amazingrise.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
         
@@ -244,8 +297,10 @@
     
 
     
+      
+    
 
-    <a rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="https://amazingrise.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">2</span></a>
 
   </li>
 
@@ -263,12 +318,70 @@
 
   
 
+<blockquote class="blockquote-center">
+<link href="https://fonts.googleapis.com/css?family=Lobster|ZCOOL+XiaoWei" rel="stylesheet"> 
+<meta name="theme-color" content="#55007f">
+<style>
+     .sayings {
+                font-family: 'Lobster','ZCOOL XiaoWei';
+					}
+</style>
 
+<div class="sayings">
+	<script type="text/javascript">
+		document.write(
+			"\
+					<style>\
+	@media mq-mobile {\
+	div .live2d-widget\
+	{\
+		bottom: -400px;\
+	}\
+	div .live2dcanvas\
+	{\
+		width: 150px;\
+		height: 300px;\
+	}\
+</style>\
+			");
 
+		function replaceAll(str)  
+		{  
+		    if(str!=null)  
+		    str = str.replace(/\//g,"<br>")  
+		    return str;  
+		}  
+		//指定条目数
+		var tips =[
+			'He just spends his life / living in a rock n roll fantasy -- The Kinks/(A rock n roll Fantasy)',
+			'啊，昔日我曾苍老 / 如今才风华正茂 -- Bob Dylan (My Back Pages)',
+			'不久我们就会发现 / 爱的呼声是我们最乐意听到的 -- Paul McCartney / (Pipes of Peace)',
+			'怀有依恋万千/驻足追忆无足说/但生命之中/我更爱你们 -- John Lennon (In My Life)',
+			'我本痴性人 落人惊叹声 / 欢笑三界外 乐从天外生 -- John Lennon / (Watching the Wheels)',
+			'我想教全世界一首歌/一首完美和声的歌 -- The New Seekers / (I\'d Like to Teach the World to Sing)'
+		]
+		index = Math.floor(Math.random() * tips.length);
+		tips[index] = replaceAll(tips[index]);
+		tips[index] = tips[index].replace('--','<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	--');
+		tips[index] += '</b>';
+		document.write(tips[index]);
+	</script>
+</div>
+
+</blockquote>
 </div>
     </header>
 
     
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/amazingrise" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
 
 
     <main id="main" class="main">
@@ -313,7 +426,7 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="../../2019/04/09/Manjaro-挂起后无法唤醒之解决方案/" itemprop="url">
+          <a class="post-title-link" href="../../2019/04/09/Manjaro-cannot-wake-up/" itemprop="url">
             
               <span itemprop="name">Manjaro 挂起后无法唤醒之解决方案</span>
             
@@ -369,8 +482,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="../../images/avatar.jpg" alt="AmazingRise">
+            
               <p class="site-author-name" itemprop="name">AmazingRise</p>
-              <div class="site-description motion-element" itemprop="description"></div>
+              <div class="site-description motion-element" itemprop="description">我就是我 是颜色不一样的烟火</div>
           </div>
 
           
@@ -378,9 +493,9 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="../../archives/">
+                  <a href="https://amazingrise.github.io/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -403,7 +518,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -413,6 +532,21 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/amazingrise" title="GitHub &rarr; https://github.com/amazingrise" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
           
 
           
@@ -424,12 +558,18 @@
             
           
           
-
         </div>
       </div>
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -455,15 +595,9 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
@@ -481,11 +615,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -518,11 +647,18 @@
 
 
 
+  
+  
 
 
 
 
 
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.6" zindex="-1" src="../../lib/canvas-ribbon/canvas-ribbon.js"></script>
 
 
 
@@ -536,6 +672,12 @@
 
   
   <script src="../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="../../lib/three/three.min.js"></script>
+
+  
+  <script src="../../lib/three/three-waves.min.js"></script>
 
 
   
@@ -601,6 +743,79 @@
   
 
   
+<style>
+  .copy-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+    
+    user-select: none;
+    outline: 0;
+  }
 
-</body>
+  .highlight-wrap .copy-btn {
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    padding: 2px 6px;
+    position: absolute;
+    
+      right: 4px;
+      top: 8px;
+    
+  }
+
+  .highlight-wrap:hover .copy-btn,
+  .highlight-wrap .copy-btn:focus {
+    opacity: 1;
+  }
+
+  .highlight-wrap {
+    position: relative;
+  }
+</style>
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Pio.model.json"},"display":{"position":"left","width":300,"height":600,"hOffset":0,"vOffset":-200},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
 </html>
