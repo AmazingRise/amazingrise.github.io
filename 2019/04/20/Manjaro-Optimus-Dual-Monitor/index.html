@@ -331,26 +331,52 @@
 
 <div class="sayings">
 	<script type="text/javascript">
-		function replaceAll(str)  
-		{  
-		    if(str!=null)  
-		    str = str.replace(/\//g,"<br>")  
-		    return str;  
-		}  
-		//指定条目数
-		var tips =[
-			'He just spends his life / living in a rock n roll fantasy -- The Kinks/(A rock n roll Fantasy)',
-			'啊，昔日我曾苍老 / 如今才风华正茂 -- Bob Dylan (My Back Pages)',
-			'不久我们就会发现 / 爱的呼声是我们最乐意听到的 -- Paul McCartney / (Pipes of Peace)',
-			'怀有依恋万千/驻足追忆无足说/但生命之中/我更爱你们 -- John Lennon (In My Life)',
-			'我本痴性人 落人惊叹声 / 欢笑三界外 乐从天外生 -- John Lennon / (Watching the Wheels)',
-			'我想教全世界一首歌/一首完美和声的歌 -- The New Seekers / (I\'d Like to Teach the World to Sing)'
-		]
-		index = Math.floor(Math.random() * tips.length);
-		tips[index] = replaceAll(tips[index]);
-		tips[index] = tips[index].replace('--','<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	--');
-		tips[index] += '</b>';
-		document.write(tips[index]);
+	function isPC () { //是否为PC端
+	    var userAgentInfo = navigator.userAgent;
+	    var Agents = ["Android", "iPhone",
+	                "SymbianOS", "Windows Phone",
+	                "iPad", "iPod"];
+	    var flag = true;
+	    for (var v = 0; v < Agents.length; v++) {
+	        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+	            flag = false;
+	            break;
+	        }
+	    }
+	    return flag;
+	}
+	function replaceAll(str)  
+	{  
+	    if(str!=null)  
+	    str = str.replace(/\//g,"<br>")  
+	    return str;  
+	}  
+	//指定条目数
+	var tips =[
+		'He just spends his life / living in a rock n roll fantasy -- The Kinks/(A rock n roll Fantasy)',
+		'啊，昔日我曾苍老 / 如今才风华正茂 -- Bob Dylan (My Back Pages)',
+		'不久我们就会发现 / 爱的呼声是我们最乐意听到的 -- Paul McCartney / (Pipes of Peace)',
+		'怀有依恋万千/驻足追忆无足说/但生命之中/我更爱你们 -- John Lennon (In My Life)',
+		'我本痴性人 落人惊叹声 / 欢笑三界外 乐从天外生 -- John Lennon / (Watching the Wheels)',
+		'我想教全世界一首歌/一首完美和声的歌 -- The New Seekers / (I\'d Like to Teach the World to Sing)'
+	]
+	index = Math.floor(Math.random() * tips.length);
+	tips[index] = replaceAll(tips[index]);
+	tips[index] = tips[index].replace('--','<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	--');
+	tips[index] += '</b>';
+	document.write(tips[index]);
+
+	document.body.addEventListener('DOMNodeInserted',function(e){
+	if(e.target.id== 'live2dcanvas'){
+		    if (isPC()){
+		    	document.getElementById("live2d-widget").style.left = "200px";
+		    }else{
+				document.getElementById("live2d-widget").style.bottom = "-235px";
+				document.getElementById("live2d-widget").style.left = "-50px";
+		    }
+	     }
+	 });
+	console.log("bind ok");
 	</script>
 </div>
 
@@ -1070,5 +1096,5 @@
 </script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Pio.model.json"},"display":{"position":"left","width":300,"height":600,"hOffset":0,"vOffset":-200},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/Pio.model.json"},"display":{"position":"left","width":300,"height":600,"hOffset":0,"vOffset":-162},"mobile":{"show":true,"scale":0.5},"react":{"opacity":1},"log":false});</script></body>
 </html>
