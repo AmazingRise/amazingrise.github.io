@@ -136,25 +136,25 @@
 <meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
 
 
-  <meta name="description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
-<meta name="keywords" content="Manjaro,Suspend,Power Management,Linux">
+  <meta name="description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
+<meta name="keywords" content="Kotlin,Translation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Manjaro 挂起后无法唤醒之解决方案">
-<meta property="og:url" content="https://amazingrise.github.io/2019/04/09/Manjaro-cannot-wake-up/index.html">
+<meta property="og:title" content="(译)Kotlin中的相等符号，&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
+<meta property="og:url" content="https://amazingrise.github.io/2019/05/18/Equality-In-Kotlin-Translation/index.html">
 <meta property="og:site_name" content="左手的世界">
-<meta property="og:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+<meta property="og:description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-20T07:51:07.777Z">
+<meta property="og:updated_time" content="2019-05-19T04:20:19.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Manjaro 挂起后无法唤醒之解决方案">
-<meta name="twitter:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+<meta name="twitter:title" content="(译)Kotlin中的相等符号，&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
+<meta name="twitter:description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
 
 
 
 
 
 
-  <link rel="canonical" href="https://amazingrise.github.io/2019/04/09/Manjaro-cannot-wake-up/">
+  <link rel="canonical" href="https://amazingrise.github.io/2019/05/18/Equality-In-Kotlin-Translation/">
 
 
 
@@ -164,7 +164,7 @@
   };
 </script>
 
-  <title>Manjaro 挂起后无法唤醒之解决方案 | 左手的世界</title>
+  <title>(译)Kotlin中的相等符号，"=="，"==="和"equals" | 左手的世界</title>
   
 
 
@@ -437,7 +437,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Manjaro 挂起后无法唤醒之解决方案
+          <h1 class="post-title" itemprop="name headline">(译)Kotlin中的相等符号，"=="，"==="和"equals"
 
               
             
@@ -463,7 +463,7 @@
                 
               
 
-              <time title="Created: 2019-04-09 22:45:45" itemprop="dateCreated datePublished" datetime="2019-04-09T22:45:45+08:00">2019-04-09</time>
+              <time title="Created: 2019-05-18 10:47:06" itemprop="dateCreated datePublished" datetime="2019-05-18T10:47:06+08:00">2019-05-18</time>
             
 
             
@@ -480,7 +480,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-20 15:51:07" itemprop="dateModified" datetime="2019-04-20T15:51:07+08:00">2019-04-20</time>
+                <time title="Modified: 2019-05-19 12:20:19" itemprop="dateModified" datetime="2019-05-19T12:20:19+08:00">2019-05-19</time>
               
             
           </span>
@@ -514,26 +514,46 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）<br>然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。<br>两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。<br>我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）<br>于是结合官方维基以及官方论坛上的说法，我成功解决了这个问题。<br><a id="more"></a></p>
+        <p>Translated from : <a href="https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1" target="_blank" rel="noopener">Equality in Kotlin</a><br>Author : Suneet Agrawal<br>Translation : AmazingRise (Authorized by original author)</p>
+<p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。<br>Kotlin语言里，有这么几种判断：<code>==</code>，<code>===</code>与<code>.equals</code>。<br>那么问题来了，我们该如何正确使用这些相等判断呢？<br><a id="more"></a><br>我们来一起看一看Kotlin的几种相等判断：</p>
+<h2 id="结构性相等-“-”"><a href="#结构性相等-“-”" class="headerlink" title="结构性相等 (“==”)"></a>结构性相等 (“==”)</h2><p><code>==</code>操作符用于比较两个变量的值。<br><strong>请不要与Java中的<code>==</code>相混淆。</strong><br>与Java中的<code>==</code>操作符<strong>不同</strong>的是：<code>==</code>操作符在Kotlin中只比较值。<br>而Java或其它语言中，<code>==</code>通常用来比较两个对象的引用。<br>Kotlin中，<code>==</code>的否定形式是<code>!=</code>，当两个变量值不同时返回真。</p>
+<h2 id="引用性相等-“-”"><a href="#引用性相等-“-”" class="headerlink" title="引用性相等(“===”)"></a>引用性相等(“===”)</h2><p><code>===</code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，<code>===</code>的值才为真。<br><code>===</code>的否定形式是<code>!==</code>，当两个对象的引用不同的时候返回真。</p>
+<p>不过对于原始类型（Primitive type）来说（例如 Int），<code>===</code>等价于<code>==</code> 。</p>
+<h2 id="equals-方法"><a href="#equals-方法" class="headerlink" title=".equals 方法"></a>.equals 方法</h2><p><code>equals(other: Any?)</code>方法是在<code>Any</code>类里实现的。<br>并且所有类中<code>.equals</code>都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。</p>
+<p><code>.equals</code>方法将会比较两个变量的值。<br>与<code>==</code>不同体现在比较<code>Float</code>和<code>Double</code>的时候，<code>.equals</code>违背了IEEE 754 浮点数运算标准。</p>
+<p><strong>与IEEE 754浮点数运算标准相违背，意味着什么？</strong></p>
+<p>这意味着：</p>
+<ul>
+<li>NaN 等于它本身</li>
+<li>NaN 比任何其他元素要大，包括正无穷 <code>POSITIVE_INFINITY</code></li>
+<li>编译器会认为<code>-0.0</code> 要比 <code>0.0</code> 小。</li>
+</ul>
+<p><strong>一头雾水？</strong></p>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>我来举几个例子解释一下。</p>
+<p>首先，我们用这几个方法比较两个原始类型的变量（Int）。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> int1 = <span class="number">10</span></span><br><span class="line"><span class="keyword">val</span> int2 = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">println(int1 == int2)			<span class="comment">// true</span></span><br><span class="line">println(int1.equals(int2))		<span class="comment">// true</span></span><br><span class="line">println(int1 === int2)		<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>这三个println最后都会输出<code>true</code>，因为对于原始类型，这三种判断都仅仅检查变量的值。<br>所以在这种情况下，<code>===</code>输出的结果也是一样的。</p>
+<p>现在让我们把原始类型换成包装类，看看三种方法表现出的行为。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> first = Integer(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">val</span> second = Integer(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">println(first == second)		<span class="comment">//true</span></span><br><span class="line">println(first.equals(second))		<span class="comment">//true</span></span><br><span class="line">println(first === second)		<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，<code>==</code>与<code>.equals</code>输出了<code>true</code>，因为他们仅仅比较了两个变量的值。<br>而<code>===</code>比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了<code>false</code>。</p>
+<p>现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>(<span class="keyword">val</span> name: String)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">val</span> emp1 = Employee(“Suneet”)</span><br><span class="line">	<span class="keyword">val</span> emp2 = Employee(“Suneet”)</span><br><span class="line"></span><br><span class="line">	println(emp1 == emp2)				<span class="comment">//false</span></span><br><span class="line">	println(emp1.equals(emp2))			<span class="comment">//false</span></span><br><span class="line">	println(emp1 === emp2)			<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">	println(emp1.name == emp2.name)				<span class="comment">//true</span></span><br><span class="line">	println(emp1.name.equals(emp2.name))			<span class="comment">//true</span></span><br><span class="line">	println(emp1.name === emp2.name)			<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了<code>false</code>。<br>但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了<code>true</code>。</p>
+<p><strong>等等，你说<code>==</code>和<code>.equals</code>只比较两个对象的内容，在我们的这个例子里它们都是一样的呀</strong><br>(译者注：指第一段，三个比较全都返回了false)<br><strong>这没毛病。</strong>但内容比较仅对于<code>data</code>类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于<code>data</code>类，编译器将比较对象的内容，并且在内容相同的情况下返回<code>true</code>。</p>
+<p>让我们把上面的普通类改为<code>data</code>类：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>(<span class="keyword">val</span> name: String)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">val</span> emp1 = Employee(<span class="string">"Suneet"</span>)</span><br><span class="line">	<span class="keyword">val</span> emp2 = Employee(<span class="string">"Suneet"</span>)</span><br><span class="line"></span><br><span class="line">	println(emp1 == emp2)				<span class="comment">//true</span></span><br><span class="line">	println(emp1.equals(emp2))			<span class="comment">//true</span></span><br><span class="line">	println(emp1 === emp2)			<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">	println(emp1.name == emp2.name)				<span class="comment">//true</span></span><br><span class="line">	println(emp1.name.equals(emp2.name))			<span class="comment">//true</span></span><br><span class="line">	println(emp1.name === emp2.name)			<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> negZero = -<span class="number">0.0f</span></span><br><span class="line"><span class="keyword">val</span> posZero = <span class="number">0.0f</span></span><br><span class="line"></span><br><span class="line">println(negZero == posZero)				<span class="comment">//true</span></span><br><span class="line">println(negZero.equals(posZero))			<span class="comment">//false</span></span><br><span class="line">println(negZero === posZero)			<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>对于<code>Float</code>和<code>Double</code>类的比较，<code>.equals</code>方法违背了IEEE 754 浮点数运算标准，当<code>-0.0</code>与<code>0.0</code>比较的时候，它会返回<code>false</code>。<br>而<code>==</code>和<code>===</code>都会返回<code>true</code>。</p>
+<h2 id="最后谨记"><a href="#最后谨记" class="headerlink" title="最后谨记"></a>最后谨记</h2><ul>
+<li>因为Kotlin里没有像<code>String(&quot;&quot;)</code>这样的构造器，当比较字符串的时候，只要内容相等，都会返回<code>true</code>。</li>
+<li>对于<code>null</code>引用的判断，我们不必做任何优化。<code>a == null</code> 会被自动转换为 <code>a === null</code>，因为null本身也是一个引用，它将会引发引用检查（而不是值检查）。</li>
+</ul>
+<p>就酱。<a href="https://agrawalsuneet.github.io/agrawalsuneet/publications/" target="_blank" rel="noopener">点击这里</a>看看我写的其他有趣文章。<br>或者<a href="https://agrawalsuneet.github.io/agrawalsuneet/personalgamesandapps/" target="_blank" rel="noopener">点击这里</a>，瞧一瞧我写的App和游戏。<br>另外，欢迎在你的App里面使用<a href="https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/" target="_blank" rel="noopener">我的Android开源组件</a>。<br>如果你需要帮助的话，可以给我发邮件： agrawalsuneet AT gmail.com。</p>
+<p>引用: <a href="https://kotlinlang.org/docs/reference/equality.html" target="_blank" rel="noopener">Kotlin docs</a></p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>下面我将对这个问题进行分析。具体解决方案请翻到最后。</p>
-<h3 id="为什么Ubuntu可以正常挂起，而manjaro不行？"><a href="#为什么Ubuntu可以正常挂起，而manjaro不行？" class="headerlink" title="为什么Ubuntu可以正常挂起，而manjaro不行？"></a>为什么Ubuntu可以正常挂起，而manjaro不行？</h3><p>原因在于他们的<strong>电源管理方式</strong>不同。其实之前Ubuntu上也是无法正常挂起的，遇到的问题差不多，也是长时间挂起无法唤醒。<br>后来采用了”laptop mode“才得以正常休眠。<br>而Manjaro默认的电源管理是TLP。<br>详细了解请戳这里：<a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a>。<br><strong>所以如果我们把默认的电源管理换成以前的laptop mode tools也许就能解决问题。</strong><br>不知道为啥TLP问题这么多。</p>
-<h3 id="Laptop-Mode-Tools为何方神圣？"><a href="#Laptop-Mode-Tools为何方神圣？" class="headerlink" title="Laptop Mode Tools为何方神圣？"></a>Laptop Mode Tools为何方神圣？</h3><p>引用自官方维基</p>
-<blockquote>
-<p>Laptop Mode Tools is a laptop power saving package for Linux systems. It is the primary way to enable the Laptop Mode feature of the Linux kernel, which lets your hard drive spin down. In addition, it allows you to tweak a number of other power-related settings using a simple configuration file.</p>
-</blockquote>
-<p><strong>值得注意的是, Laptop Mode Tools与原有的TLP相冲突。两者不能共存</strong><br>所以我们就有思路解决这个问题啦～</p>
-<hr>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>各位看官别急。下面祭出解决方案。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先，关掉原来自带的TLP电源管理。</span></span><br><span class="line">systemctl <span class="built_in">disable</span> tlp</span><br><span class="line">systemctl <span class="built_in">disable</span> tlp-sleep.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后安装Laptop Mode Tools：</span></span><br><span class="line">pacman -S laptop-mode-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#开启服务！</span></span><br><span class="line">systemctl <span class="built_in">enable</span> laptop-mode.service</span><br></pre></td></tr></table></figure></p>
-<p><strong>Update：尴尬的是，发完博文又发现这个问题复出了</strong><br>我刚想起来还有一个配置没有修改（facepalm）<br>最重要的一步，找到这个配置文件：<br><figure class="highlight ini"><figcaption><span>/etc/laptop-mode/laptop-mode.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable laptop mode power savings, even when on AC power.</span></span><br><span class="line"><span class="comment"># This is useful when running as a headless machine, in low power mode</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">ENABLE_LAPTOP_MODE_ON_AC</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<p>将 <strong>ENABLE_LAPTOP_MODE_ON_AC=0改为=1</strong><br>这样才能让笔记本在接入AC电源的情况下使用laptop mode tools。</p>
-<p>大功告成！</p>
-<p>关于Laptop mode tools的具体配置，请参见ArchWiki.<br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration" target="_blank" rel="noopener">Laptop Mode Tools : Configuration</a></p>
-<hr>
-<h2 id="附言"><a href="#附言" class="headerlink" title="附言"></a>附言</h2><p>多思考，多搜索，探究真理！<br>另外，ArchWiki和Manjaro Wiki的质量确实很高，建议有问题先上wiki和官方论坛看看。<br>甚至有的时候，遇到问题找官方维基直接翻到Troubleshotting就解决了。<br>希望我的这篇博文能帮到各位看官。 :)<br>有问题可以在评论区提出！</p>
-<p>下篇预告，关于Manjaro下Optimus多显示器配置问题。</p>
-<hr>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wiki.manjaro.org/index.php?title=Power_Savings" target="_blank" rel="noopener">Power Savings - Manjaro Wiki</a><br><a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a><br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools" target="_blank" rel="noopener">Laptop Mode Tools - ArchWiki</a></p>
+<p>翻译完结。</p>
+<p>作者：Suneet Agrawal.<br><a href="https://agrawalsuneet.github.io/agrawalsuneet/" target="_blank" rel="noopener">https://agrawalsuneet.github.io/agrawalsuneet/</a><br>十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。<br>原作者保留所有权利。</p>
 
       
     </div>
@@ -557,13 +577,9 @@
       
         <div class="post-tags">
           
-            <a href="../../../../tags/Manjaro/" rel="tag"># Manjaro</a>
+            <a href="../../../../tags/Kotlin/" rel="tag"># Kotlin</a>
           
-            <a href="../../../../tags/Suspend/" rel="tag"># Suspend</a>
-          
-            <a href="../../../../tags/Power-Management/" rel="tag"># Power Management</a>
-          
-            <a href="../../../../tags/Linux/" rel="tag"># Linux</a>
+            <a href="../../../../tags/Translation/" rel="tag"># Translation</a>
           
         </div>
       
@@ -576,15 +592,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="../../../04/20/Manjaro-Optimus-Dual-Monitor/" rel="next" title="Manjaro 在笔记本上的多显示器配置">
+                <i class="fa fa-chevron-left"></i> Manjaro 在笔记本上的多显示器配置
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="../../20/Manjaro-Optimus-Dual-Monitor/" rel="prev" title="Manjaro 在笔记本上的多显示器配置">
-                Manjaro 在笔记本上的多显示器配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -754,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么Ubuntu可以正常挂起，而manjaro不行？"><span class="nav-number">2.1.</span> <span class="nav-text">为什么Ubuntu可以正常挂起，而manjaro不行？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laptop-Mode-Tools为何方神圣？"><span class="nav-number">2.2.</span> <span class="nav-text">Laptop Mode Tools为何方神圣？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附言"><span class="nav-number">3.</span> <span class="nav-text">附言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构性相等-“-”"><span class="nav-number">1.</span> <span class="nav-text">结构性相等 (“==”)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用性相等-“-”"><span class="nav-number">2.</span> <span class="nav-text">引用性相等(“===”)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#equals-方法"><span class="nav-number">3.</span> <span class="nav-text">.equals 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举个栗子"><span class="nav-number">4.</span> <span class="nav-text">举个栗子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后谨记"><span class="nav-number">5.</span> <span class="nav-text">最后谨记</span></a></li></ol></div>
             
 
           </div>

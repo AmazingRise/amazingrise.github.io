@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
   color: #555;
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'ZCOOL KuaiLe', 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h1,
 h2,
@@ -1190,7 +1190,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1390,7 +1390,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Noto Sans SC', 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .post-body .exturl .fa {
   font-size: 14px;
@@ -1667,7 +1667,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Noto Sans SC', 'ZCOOL KuaiLe', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -2027,7 +2027,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3e90ba;
+  background: #f6ff50;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3124,12 +3124,8 @@ ul.breadcrumb li+li:last-child {
     text-align: justify;
   }
 }
-.content-wrap {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+body {
+  background-color: #eee;
 }
 .post-title {
   color: #55007f;
