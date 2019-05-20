@@ -135,19 +135,18 @@
 
 <meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
 
-
-  <meta name="description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
+  <meta name="description" content="Translated from: Equality in KotlinAuthor: Suneet AgrawalTranslated by : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，“等号”有这么几种：==，===与.equals。那么问题来了，我们该">
 <meta name="keywords" content="Kotlin,Translation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(译)Kotlin中的相等符号，&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
+<meta property="og:title" content="(译)Kotlin中的等号（相等性），&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
 <meta property="og:url" content="https://amazingrise.github.io/2019/05/18/Equality-In-Kotlin-Translation/index.html">
 <meta property="og:site_name" content="左手的世界">
-<meta property="og:description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
+<meta property="og:description" content="Translated from: Equality in KotlinAuthor: Suneet AgrawalTranslated by : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，“等号”有这么几种：==，===与.equals。那么问题来了，我们该">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-19T04:20:19.213Z">
+<meta property="og:updated_time" content="2019-05-20T12:50:14.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(译)Kotlin中的相等符号，&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
-<meta name="twitter:description" content="Translated from : Equality in KotlinAuthor : Suneet AgrawalTranslation : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，有这么几种判断：==，===与.equals。那么问题来了，我们该如何">
+<meta name="twitter:title" content="(译)Kotlin中的等号（相等性），&quot;==&quot;，&quot;===&quot;和&quot;equals&quot;">
+<meta name="twitter:description" content="Translated from: Equality in KotlinAuthor: Suneet AgrawalTranslated by : AmazingRise (Authorized by original author) 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。Kotlin语言里，“等号”有这么几种：==，===与.equals。那么问题来了，我们该">
 
 
 
@@ -164,7 +163,7 @@
   };
 </script>
 
-  <title>(译)Kotlin中的相等符号，"=="，"==="和"equals" | 左手的世界</title>
+  <title>(译)Kotlin中的等号（相等性），"=="，"==="和"equals" | 左手的世界</title>
   
 
 
@@ -437,7 +436,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(译)Kotlin中的相等符号，"=="，"==="和"equals"
+          <h1 class="post-title" itemprop="name headline">(译)Kotlin中的等号（相等性），"=="，"==="和"equals"
 
               
             
@@ -466,22 +465,6 @@
               <time title="Created: 2019-05-18 10:47:06" itemprop="dateCreated datePublished" datetime="2019-05-18T10:47:06+08:00">2019-05-18</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-19 12:20:19" itemprop="dateModified" datetime="2019-05-19T12:20:19+08:00">2019-05-19</time>
-              
             
           </span>
 
@@ -514,8 +497,8 @@
       
 
       
-        <p>Translated from : <a href="https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1" target="_blank" rel="noopener">Equality in Kotlin</a><br>Author : Suneet Agrawal<br>Translation : AmazingRise (Authorized by original author)</p>
-<p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。<br>Kotlin语言里，有这么几种判断：<code>==</code>，<code>===</code>与<code>.equals</code>。<br>那么问题来了，我们该如何正确使用这些相等判断呢？<br><a id="more"></a><br>我们来一起看一看Kotlin的几种相等判断：</p>
+        <p>Translated from: <a href="https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1" target="_blank" rel="noopener">Equality in Kotlin</a><br>Author: Suneet Agrawal<br>Translated by : AmazingRise (Authorized by original author)</p>
+<p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。<br>Kotlin语言里，“等号”有这么几种：<code>==</code>，<code>===</code>与<code>.equals</code>。<br>那么问题来了，我们该如何正确使用这些相等性判断呢？<br><a id="more"></a><br>我们来一起看一看Kotlin的几种相等性判断：</p>
 <h2 id="结构性相等-“-”"><a href="#结构性相等-“-”" class="headerlink" title="结构性相等 (“==”)"></a>结构性相等 (“==”)</h2><p><code>==</code>操作符用于比较两个变量的值。<br><strong>请不要与Java中的<code>==</code>相混淆。</strong><br>与Java中的<code>==</code>操作符<strong>不同</strong>的是：<code>==</code>操作符在Kotlin中只比较值。<br>而Java或其它语言中，<code>==</code>通常用来比较两个对象的引用。<br>Kotlin中，<code>==</code>的否定形式是<code>!=</code>，当两个变量值不同时返回真。</p>
 <h2 id="引用性相等-“-”"><a href="#引用性相等-“-”" class="headerlink" title="引用性相等(“===”)"></a>引用性相等(“===”)</h2><p><code>===</code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，<code>===</code>的值才为真。<br><code>===</code>的否定形式是<code>!==</code>，当两个对象的引用不同的时候返回真。</p>
 <p>不过对于原始类型（Primitive type）来说（例如 Int），<code>===</code>等价于<code>==</code> 。</p>
@@ -553,7 +536,7 @@
 <p>引用: <a href="https://kotlinlang.org/docs/reference/equality.html" target="_blank" rel="noopener">Kotlin docs</a></p>
 <hr>
 <p>翻译完结。</p>
-<p>作者：Suneet Agrawal.<br><a href="https://agrawalsuneet.github.io/agrawalsuneet/" target="_blank" rel="noopener">https://agrawalsuneet.github.io/agrawalsuneet/</a><br>十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。<br>原作者保留所有权利。</p>
+<p>作者：Suneet Agrawal.<br>网站：<a href="https://agrawalsuneet.github.io/agrawalsuneet/" target="_blank" rel="noopener">https://agrawalsuneet.github.io/agrawalsuneet/</a><br>十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。<br>原作者保留所有权利。</p>
 
       
     </div>
