@@ -135,18 +135,18 @@
 
 <meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
 
-  <meta name="description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+  <meta name="description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了……其实根源问题还是在Optimus…啊 万恶的NVIDIA…">
 <meta name="keywords" content="Manjaro,Linux,Power Management,suspend,sleep,wake up,睡眠,唤醒,电源管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Manjaro 挂起后无法唤醒之解决方案">
+<meta property="og:title" content="Manjaro 挂起后无法唤醒之解决方案(Dell G7 or Dell XPS)">
 <meta property="og:url" content="https://amazingrise.github.io/2019/04/09/Manjaro-cannot-wake-up/index.html">
 <meta property="og:site_name" content="左手的世界">
-<meta property="og:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+<meta property="og:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了……其实根源问题还是在Optimus…啊 万恶的NVIDIA…">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T12:40:29.480Z">
+<meta property="og:updated_time" content="2019-07-24T03:26:28.218Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Manjaro 挂起后无法唤醒之解决方案">
-<meta name="twitter:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）于是结合官方维基以及官">
+<meta name="twitter:title" content="Manjaro 挂起后无法唤醒之解决方案(Dell G7 or Dell XPS)">
+<meta name="twitter:description" content="前言前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了……其实根源问题还是在Optimus…啊 万恶的NVIDIA…">
 
 
 
@@ -163,7 +163,7 @@
   };
 </script>
 
-  <title>Manjaro 挂起后无法唤醒之解决方案 | 左手的世界</title>
+  <title>Manjaro 挂起后无法唤醒之解决方案(Dell G7 or Dell XPS) | 左手的世界</title>
   
 
 
@@ -436,7 +436,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Manjaro 挂起后无法唤醒之解决方案
+          <h1 class="post-title" itemprop="name headline">Manjaro 挂起后无法唤醒之解决方案(Dell G7 or Dell XPS)
 
               
             
@@ -465,6 +465,22 @@
               <time title="Created: 2019-04-09 22:45:45" itemprop="dateCreated datePublished" datetime="2019-04-09T22:45:45+08:00">2019-04-09</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-24 11:26:28" itemprop="dateModified" datetime="2019-07-24T11:26:28+08:00">2019-07-24</time>
+              
             
           </span>
 
@@ -497,26 +513,44 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）<br>然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。<br>两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了。<br>我的笔记本上还安装了Ubuntu，而Ubuntu是可以正常挂起的。（对比一下问题一目了然2333）<br>于是结合官方维基以及官方论坛上的说法，我成功解决了这个问题。<br><a id="more"></a></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间解决了Optimus环境下Manjaro的多显示器问题。（下一篇博文要好好谈谈这个问题）<br>然而要想给笔记本用上manjaro并不是一帆风顺。刚刚折腾好，这又遇到了长时间挂起后无法唤醒的问题。<br>两个显示器就在一直闪，迟迟无法进入桌面。tty进不去，REISUB大法也无效了……<br>其实根源问题还是在Optimus…啊 万恶的NVIDIA…<br><a id="more"></a></p>
 <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>下面我将对这个问题进行分析。具体解决方案请翻到最后。</p>
-<h3 id="为什么Ubuntu可以正常挂起，而manjaro不行？"><a href="#为什么Ubuntu可以正常挂起，而manjaro不行？" class="headerlink" title="为什么Ubuntu可以正常挂起，而manjaro不行？"></a>为什么Ubuntu可以正常挂起，而manjaro不行？</h3><p>原因在于他们的<strong>电源管理方式</strong>不同。其实之前Ubuntu上也是无法正常挂起的，遇到的问题差不多，也是长时间挂起无法唤醒。<br>后来采用了”laptop mode“才得以正常休眠。<br>而Manjaro默认的电源管理是TLP。<br>详细了解请戳这里：<a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a>。<br><strong>所以如果我们把默认的电源管理换成以前的laptop mode tools也许就能解决问题。</strong><br>不知道为啥TLP问题这么多。</p>
-<h3 id="Laptop-Mode-Tools为何方神圣？"><a href="#Laptop-Mode-Tools为何方神圣？" class="headerlink" title="Laptop Mode Tools为何方神圣？"></a>Laptop Mode Tools为何方神圣？</h3><p>引用自官方维基</p>
-<blockquote>
-<p>Laptop Mode Tools is a laptop power saving package for Linux systems. It is the primary way to enable the Laptop Mode feature of the Linux kernel, which lets your hard drive spin down. In addition, it allows you to tweak a number of other power-related settings using a simple configuration file.</p>
-</blockquote>
-<p><strong>值得注意的是, Laptop Mode Tools与原有的TLP相冲突。两者不能共存</strong><br>所以我们就有思路解决这个问题啦～</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>为什么Ubuntu可以正常挂起，而manjaro不行？ </p>
+<ol>
+<li><p>原因在于他们的<strong>电源管理方式</strong>不同<br>之前Ubuntu上也是无法正常挂起的，遇到的问题差不多，也是长时间挂起无法唤醒。<br>后来安装了Laptop Mode Tools就没事了~</p>
+</li>
+<li><p>Ubuntu在适配XPS等戴尔笔记本的时候，做了一些手脚。<br>这里有一些bug，但是Ubuntu修复了，而Manjaro这边还需要手动修改才可以。<br>具体请各位看<a href="#解决方案x2">解决方案x2</a><br><strong>Update: 这个问题的罪魁祸首是NVIDIA. 如果前面的解决方案不能解决请翻到最后。</strong></p>
+</li>
+</ol>
 <hr>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>各位看官别急。下面祭出解决方案。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先，关掉原来自带的TLP电源管理。</span></span><br><span class="line">systemctl <span class="built_in">disable</span> tlp</span><br><span class="line">systemctl <span class="built_in">disable</span> tlp-sleep.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后安装Laptop Mode Tools：</span></span><br><span class="line">pacman -S laptop-mode-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#开启服务！</span></span><br><span class="line">systemctl <span class="built_in">enable</span> laptop-mode.service</span><br></pre></td></tr></table></figure></p>
-<p><strong>Update：尴尬的是，发完博文又发现这个问题复出了</strong><br>我刚想起来还有一个配置没有修改（facepalm）<br>最重要的一步，找到这个配置文件：<br><figure class="highlight ini"><figcaption><span>/etc/laptop-mode/laptop-mode.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable laptop mode power savings, even when on AC power.</span></span><br><span class="line"><span class="comment"># This is useful when running as a headless machine, in low power mode</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">ENABLE_LAPTOP_MODE_ON_AC</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="解决方案x1"><a href="#解决方案x1" class="headerlink" title="解决方案x1"></a>解决方案x1</h2><p>如果是TLP导致的电源问题，请看下面祭出解决方案x1。<br>戴尔笔记本请在看完这个之后，再看下面的解决方案x2。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先，关掉原来自带的TLP电源管理。</span></span><br><span class="line">systemctl <span class="built_in">disable</span> tlp</span><br><span class="line">systemctl <span class="built_in">disable</span> tlp-sleep.service</span><br><span class="line"></span><br><span class="line"><span class="comment">#然后安装Laptop Mode Tools：</span></span><br><span class="line">pacman -S laptop-mode-tools</span><br><span class="line"></span><br><span class="line"><span class="comment">#开启服务！</span></span><br><span class="line">systemctl <span class="built_in">enable</span> laptop-mode.service</span><br></pre></td></tr></table></figure></p>
+<p>最重要的一步，找到这个配置文件：<br><figure class="highlight ini"><figcaption><span>/etc/laptop-mode/laptop-mode.conf</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable laptop mode power savings, even when on AC power.</span></span><br><span class="line"><span class="comment"># This is useful when running as a headless machine, in low power mode</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="attr">ENABLE_LAPTOP_MODE_ON_AC</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
 <p>将 <strong>ENABLE_LAPTOP_MODE_ON_AC=0改为=1</strong><br>这样才能让笔记本在接入AC电源的情况下使用laptop mode tools。</p>
-<p>大功告成！</p>
 <p>关于Laptop mode tools的具体配置，请参见ArchWiki.<br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration" target="_blank" rel="noopener">Laptop Mode Tools : Configuration</a></p>
 <hr>
-<h2 id="附言"><a href="#附言" class="headerlink" title="附言"></a>附言</h2><p>多思考，多搜索，探究真理！<br>另外，ArchWiki和Manjaro Wiki的质量确实很高，建议有问题先上wiki和官方论坛看看。<br>甚至有的时候，遇到问题找官方维基直接翻到Troubleshotting就解决了。<br>希望我的这篇博文能帮到各位看官。 :)<br>有问题可以在评论区提出！</p>
+<h2 id="解决方案x2"><a href="#解决方案x2" class="headerlink" title="解决方案x2"></a>解决方案x2</h2><p>Updated on 2019.7.24<br><strong>Update x2：对于戴尔笔记本(G7或者XPS)，如果这个问题仍然会偶尔出现</strong></p>
+<h3 id="如何检查自己的Dell是否中枪"><a href="#如何检查自己的Dell是否中枪" class="headerlink" title="如何检查自己的Dell是否中枪"></a>如何检查自己的Dell是否中枪</h3><p>终端里面输入：<code>cat /sys/power/mem_sleep</code><br>如果内容是：<code>[s2idle] deep</code>，那么恭喜，这个自动生成的设置是错误的。</p>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><ol>
+<li>编辑<code>/etc/default/grub</code>，然后找到<code>GRUB_CMDLINE_LINUX</code>。<br>在<strong>双引号里面</strong>追加这一参数：<code>mem_sleep_default=deep</code><br>举个例子：（省略号代表之前已有的参数）<figure class="highlight ini"><figcaption><span>/etc/default/grub</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">GRUB_CMDLINE_LINUX</span>=<span class="string">"...... mem_sleep_default=deep"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>（注意新的参数要和前面的参数<strong>保持一个空格的距离</strong>）</p>
+<ol start="2">
+<li><p>运行<code>sudo update-grub</code></p>
+</li>
+<li><p>重启后检查一下，如果你的修改是正确的话<br>那么这次<code>cat /sys/power/mem_sleep</code>的结果应该是：<code>s2idle [deep]</code><br>（注意方括号位置的移动。）<br>这样就成功修改了。</p>
+</li>
+</ol>
+<p><em>注：我给出的方案来自<a href="https://forum.manjaro.org/t/dell-xps-15-9570-with-prime-os-freezes-on-wake-up/66700" target="_blank" rel="noopener">Dell XPS 15 9570 with PRIME -&gt; OS Freezes on wake up</a>。理论上来讲添加这一个参数就够。</em></p>
+<p><em>注2：而<a href="https://www.dell.com/community/Linux-General/XPS-15-9570-with-Ubuntu-18-04-1-not-resuming-after-suspend/m-p/7305094#M28897" target="_blank" rel="noopener">Dell Community 里面给出的解决方案</a>中的参数和我给出的略有不同。<br>社区里面给的比我这里多了两个，读者可以参考一下。</em></p>
+<h3 id="罪魁祸首"><a href="#罪魁祸首" class="headerlink" title="罪魁祸首"></a>罪魁祸首</h3><p>为了满足大家的好奇心我还是把这一节补上了~<br>据说 Dell 的主板的某些地方会「误导」linux内核选择正确的睡眠方式。<br>而 Ubuntu 那边已经针对Dell机器针对性地修复了这个bug。<br>（具体原理参见<a href="https://forum.manjaro.org/t/dell-xps-15-9570-with-prime-os-freezes-on-wake-up/66700" target="_blank" rel="noopener">参考文章1</a>）</p>
+<p>这就导致了虽然更换了Laptop mode tools， 问题仍然会时不时地复发。<br>不过不亏，因为Laptop mode tools提供了更多的电源管理方式，个人认为要比TLP强一些</p>
+<hr>
+<h2 id="附言"><a href="#附言" class="headerlink" title="附言"></a>附言</h2><p>多思考，多搜索，探究真理！<br>另外，ArchWiki和Manjaro Wiki的质量确实很高，建议有问题先上wiki和官方论坛看看。<br>甚至有的时候，遇到问题找官方维基直接翻到Troubleshotting就解决了。<br>希望我的这篇博文能帮到各位看官。 :)<br>有问题可以在评论区提出！<br>在评论区发出的消息我会在手机上通过电子邮件（几乎是立刻）接到的~</p>
 <p>下篇预告，关于Manjaro下Optimus多显示器配置问题。</p>
 <hr>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wiki.manjaro.org/index.php?title=Power_Savings" target="_blank" rel="noopener">Power Savings - Manjaro Wiki</a><br><a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a><br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools" target="_blank" rel="noopener">Laptop Mode Tools - ArchWiki</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>解决方案x2的参考：<br><a href="https://forum.manjaro.org/t/dell-xps-15-9570-with-prime-os-freezes-on-wake-up/66700" target="_blank" rel="noopener">Dell XPS 15 9570 with PRIME -&gt; OS Freezes on wake up</a><br><a href="https://www.dell.com/community/Linux-General/XPS-15-9570-with-Ubuntu-18-04-1-not-resuming-after-suspend/m-p/7305094#M28897" target="_blank" rel="noopener">Dell Community 里面的解决方案</a><br><a href="https://wiki.archlinux.org/index.php/Dell_XPS_15_9570#Lock-ups_when_resuming_from_suspend_with_nvidia_module" target="_blank" rel="noopener">Dell_XPS_15_9570 用NVIDIA驱动唤醒时卡死- ArchWiki</a></p>
+<p>第一个问题解决方案的参考：<br><a href="https://wiki.manjaro.org/index.php?title=Power_Savings" target="_blank" rel="noopener">Power Savings - Manjaro Wiki</a><br><a href="https://wiki.archlinux.org/index.php/TLP" target="_blank" rel="noopener">TLP - ArchWiki</a><br><a href="https://wiki.archlinux.org/index.php/Laptop_Mode_Tools" target="_blank" rel="noopener">Laptop Mode Tools - ArchWiki</a></p>
 
       
     </div>
@@ -737,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么Ubuntu可以正常挂起，而manjaro不行？"><span class="nav-number">2.1.</span> <span class="nav-text">为什么Ubuntu可以正常挂起，而manjaro不行？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laptop-Mode-Tools为何方神圣？"><span class="nav-number">2.2.</span> <span class="nav-text">Laptop Mode Tools为何方神圣？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附言"><span class="nav-number">3.</span> <span class="nav-text">附言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案x1"><span class="nav-number">3.</span> <span class="nav-text">解决方案x1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案x2"><span class="nav-number">4.</span> <span class="nav-text">解决方案x2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何检查自己的Dell是否中枪"><span class="nav-number">4.1.</span> <span class="nav-text">如何检查自己的Dell是否中枪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决"><span class="nav-number">4.2.</span> <span class="nav-text">如何解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#罪魁祸首"><span class="nav-number">4.3.</span> <span class="nav-text">罪魁祸首</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附言"><span class="nav-number">5.</span> <span class="nav-text">附言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
