@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://amazingrise.github.io/2019/04/20/Manjaro-Optimus-Dual-Monitor/</loc>
+    
+    <lastmod>2019-08-15T14:57:11.046Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://amazingrise.github.io/2019/08/11/package-kotlin-project-in-jar/</loc>
     
     <lastmod>2019-08-11T06:54:40.660Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://amazingrise.github.io/2019/05/18/Equality-In-Kotlin-Translation/</loc>
     
     <lastmod>2019-05-20T12:50:14.927Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://amazingrise.github.io/2019/04/20/Manjaro-Optimus-Dual-Monitor/</loc>
-    
-    <lastmod>2019-05-20T12:40:35.837Z</lastmod>
     
   </url>
   
