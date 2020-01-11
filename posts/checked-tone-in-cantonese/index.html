@@ -45,6 +45,29 @@ if (!doNotTrack) {
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
 </script>
 
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: 'b67e7e31e7dc175e0778',
+    clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
+    repo: 'amazingrise.github.io',
+    owner: 'amazingrise',
+    admin: ['amazingrise'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
+</script>
+
+
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
@@ -382,26 +405,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
 
 <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script>
-  const gitalk = new Gitalk({
-    clientID: 'b67e7e31e7dc175e0778',
-    clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
-    repo: 'amazingrise.github.io',
-    owner: 'amazingrise',
-    admin: ['amazingrise'],
-    id: location.pathname, 
-    distractionFreeMode: false 
-  });
-  (function() {
-    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
-      return;
-    }
-    gitalk.render('gitalk-container');
-  })();
-</script>
 
         </div>
     </div>
