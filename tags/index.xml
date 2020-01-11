@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 左手的世界</title>
+    <link>https://amazingrise.net/tags/</link>
+    <description>Recent content in Tags on 左手的世界</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 28 Oct 2019 23:28:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://amazingrise.net/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python</title>
+      <link>https://amazingrise.net/tags/python/</link>
+      <pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kotlin</title>
+      <link>https://amazingrise.net/tags/kotlin/</link>
+      <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Translation</title>
+      <link>https://amazingrise.net/tags/translation/</link>
+      <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/tags/translation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

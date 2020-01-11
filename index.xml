@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>左手的世界</title>
+    <link>https://amazingrise.net/</link>
+    <description>Recent content on 左手的世界</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 28 Oct 2019 23:28:09 +0000</lastBuildDate>
+    
+	<atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何优雅地使用 Spyder 的调试器</title>
+      <link>https://amazingrise.net/posts/howto-use-spyder-debugger/</link>
+      <pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/howto-use-spyder-debugger/</guid>
+      <description>&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;这是一个面向初学者的文章.
+很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
+这个时候调试器就要上场了~
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>粤语入声的初探究</title>
+      <link>https://amazingrise.net/posts/checked-tone-in-cantonese/</link>
+      <pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/checked-tone-in-cantonese/</guid>
+      <description>(原创)作者amazingRise,未经许可不得转载. 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别. 另外,本人并非专业研究人员.若有错误欢迎指正!
+何为入声  入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留. 与入声相对的是舒声. 所以普通话里面全都是舒声. 入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程. 入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断. 然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)  五度标记法 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 这一点让许多非汉语母语的人摸不到头脑. 所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)
+考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由赵元任先生发明,他被称爲汉语言学之父)
+下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.
+用五度标记法表示现代汉语的四个声调 在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声. 现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.
+五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低. 对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法. 以现代汉语普通话的四个声调爲例,我放出一张用五度标记法标记的四个声调的图,大家先体会一下.
+图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.
+曲线法很直观,声调越高,曲线中对应的那一点越高. 而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.
+所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51. (一些北方方言与普通话的最大区别便在于调值)
+这麽说可能不是很直观. 大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化. (感谢维基百科提供的好例子) 番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。
+五度标记法表示了音调的相对高低 五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型. (与粤拼类似)
+好的,这就是五度标记法. 大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调. 由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用. (反正我当时觉得,哇,这玩意简直是神器)
+粤语中的九声六调 由于笔者所接触到的粤语大多均爲广州话. 所以本文暂且以粤语广州话爲标准探讨. 下文所指粤语,也均爲广州话爲代表的粤语.</description>
+    </item>
+    
+    <item>
+      <title>關於我</title>
+      <link>https://amazingrise.net/about/</link>
+      <pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/about/</guid>
+      <description>前言 此頁正在建設中^_^
+想了一想,好像從來沒有在互聯網上介紹過自己. 那麼該從哪裏開始呢?
+關於我 Rise 我叫 Rise.
+我喜歡創造. 因爲創造可以給大家帶來歡樂^_^ 不止是寫博客 我認爲寫代碼也算是一種創作,寫出來的軟體可以幫助別人 何樂而不爲呢 😉️
+毫無創作音樂的才能&amp;hellip; 🙈️ 但是我喜歡聽音樂. 尤其是一些老搖滾. 像是甲殼蟲樂隊,綠洲樂隊,槍花.
+我喜歡踩單車,踩到好遠的地方.
+我喜歡&amp;hellip;(未完待續)
+關於此網站 這個網站叫做左手的平行世界. 因爲我的技術博客叫左手的世界.(見左側邊欄) 我希望日常生活中有什麼感想的話,可以在這上面寫一些. 🤔️
+生活應該是始終懷有熱忱的,對吧 這個網站可能會添加一些好玩的功能. 比如實時推送我正在聽的音樂. 至於能不能實現,哈哈哈就不一定得閒了. 😂️
+先寫到這裏咯,未完待續.</description>
+    </item>
+    
+    <item>
+      <title>如何把Kotlin项目打包为可执行的jar</title>
+      <link>https://amazingrise.net/posts/package-kotlin-project-in-jar/</link>
+      <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/package-kotlin-project-in-jar/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
+该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
+于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
+      <link>https://amazingrise.net/posts/equality-in-kotlin-translation/</link>
+      <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/equality-in-kotlin-translation/</guid>
+      <description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
+在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。 Kotlin语言里，“等号”有这么几种：==，===与.equals。 那么问题来了，我们该如何正确使用这些相等性判断呢？
+我们来一起看一看Kotlin的几种相等性判断：
+结构性相等 (&amp;ldquo;==&amp;rdquo;) ==操作符用于比较两个变量的值。 请不要与Java中的==相混淆。 与Java中的==操作符不同的是：==操作符在Kotlin中只比较值。 而Java或其它语言中，==通常用来比较两个对象的引用。 Kotlin中，==的否定形式是!=，当两个变量值不同时返回真。
+引用性相等(&amp;ldquo;===&amp;rdquo;) ===操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，===的值才为真。 ===的否定形式是!==，当两个对象的引用不同的时候返回真。
+不过对于原始类型（Primitive type）来说（例如 Int），=== 等价于 == 。
+.equals 方法 equals(other: Any?)方法是在Any类里实现的。 并且所有类中.equals都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。
+.equals方法将会比较两个变量的值。 与==不同体现在比较Float和Double的时候，.equals违背了IEEE 754 浮点数运算标准。
+与IEEE 754浮点数运算标准相违背，意味着什么？
+这意味着：
+ NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。  一头雾水？
+举个栗子 我来举几个例子解释一下。
+首先，我们用这几个方法比较两个原始类型的变量（Int）。
+val int1 = 10 val int2 = 10 println(int1 == int2)	// true 	println(int1.</description>
+    </item>
+    
+    <item>
+      <title>Manjaro 在笔记本上的多显示器配置</title>
+      <link>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</link>
+      <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
+想用 Linux 怎么办？ 只能装上 Ubuntu 了事。&lt;!-- raw HTML omitted --&gt;真香&lt;!-- raw HTML omitted --&gt;
+Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
+**后来经过一阵探索，才在Manjaro上用上了外置显示器。**&lt;!-- raw HTML omitted --&gt;终于摆脱了真香定律&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 左手的世界</title>
+    <link>https://amazingrise.net/categories/linux/</link>
+    <description>Recent content in Linux on 左手的世界</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 20 Apr 2019 16:11:20 +0000</lastBuildDate>
+    
+	<atom:link href="https://amazingrise.net/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Manjaro 在笔记本上的多显示器配置</title>
+      <link>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</link>
+      <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
+      
+      <guid>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</guid>
+      <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
+想用 Linux 怎么办？ 只能装上 Ubuntu 了事。&lt;!-- raw HTML omitted --&gt;真香&lt;!-- raw HTML omitted --&gt;
+Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
+**后来经过一阵探索，才在Manjaro上用上了外置显示器。**&lt;!-- raw HTML omitted --&gt;终于摆脱了真香定律&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
