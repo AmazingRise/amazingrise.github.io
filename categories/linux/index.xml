@@ -6,10 +6,29 @@
     <description>Recent content in Linux on 左手的世界</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 20 Apr 2019 16:11:20 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jan 2020 11:22:20 +0800</lastBuildDate>
     
 	<atom:link href="https://amazingrise.net/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OBS Studio 显示正在播放的歌曲 in Linux</title>
+      <link>https://amazingrise.net/posts/obs-now-playing/</link>
+      <pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate>
+      
+      <guid>https://amazingrise.net/posts/obs-now-playing/</guid>
+      <description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
+不定期直播搬砖，游戏，或者其他有趣的东西~
+缘由 为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。
+看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。
+另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路  （没错，就是这个主题的原作者。）
+正文 原理 当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。
+由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。
+以我用的 Electron Netease Cloud Music 为例。
+在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
+仔细看该项目的源代码，可以找到这几行：
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description>
+    </item>
     
     <item>
       <title>Manjaro 在笔记本上的多显示器配置</title>
@@ -21,9 +40,9 @@
 &lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
 （参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
-想用 Linux 怎么办？ 只能装上 Ubuntu 了事。&lt;!-- raw HTML omitted --&gt;真香&lt;!-- raw HTML omitted --&gt;
+想用 Linux 怎么办？ 只能装上 Ubuntu 了事。&lt;del&gt;真香&lt;/del&gt;
 Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-**后来经过一阵探索，才在Manjaro上用上了外置显示器。**&lt;!-- raw HTML omitted --&gt;终于摆脱了真香定律&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+**后来经过一阵探索，才在Manjaro上用上了外置显示器。**&lt;del&gt;终于摆脱了真香定律&lt;/del&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
