@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>如何把Kotlin项目打包为可执行的jar</title>
+<title>我的一份自我介绍</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -91,7 +91,9 @@ if (!doNotTrack) {
             
                 
                 
-                <a class="a-block nav-link-item false" href="/about">
+                    
+                
+                <a class="a-block nav-link-item active" href="/about">
                     關於
                 </a>
         
@@ -136,7 +138,9 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
                 
                 
-                <a class="a-block drawer-menu-item false" href="/about">
+                    
+                
+                <a class="a-block drawer-menu-item active" href="/about">
                     關於
                 </a>
         
@@ -180,18 +184,14 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
 
             <div class="post-head-wrapper"
-                 style="background-image: url('/step1.png')">
+                 style="background-image: url('/about.jpg')">
                 <div class="post-title">
-                    如何把Kotlin项目打包为可执行的jar
+                    我的一份自我介绍
                     <div class="post-meta">
                         <time itemprop="datePublished">
-                            2019-08-11 13:52
+                            2019-10-25 23:46
                         </time>
 
-                        
-                            <i class="material-icons" style="">folder</i>
-                                <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
-                                &nbsp;
                         
 
                         
@@ -201,70 +201,32 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <h2 id="heading">前言</h2>
-<p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 <a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot</a>
-该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&hellip;&hellip;
-于是我打算把该项目打包成可执行的jar，这样<code>java -jar xxxxx.jar</code>就可以执行了，这多好呀。
-然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示<code>没有主清单属性</code></p>
-<h2 id="heading-1">正确的食用方式</h2>
-<p>如何正确地将Kotlin项目封装为jar，
-并且避免上述的错误？</p>
-<h3 id="-jar-artifacts">第一步 创建Jar Artifacts</h3>
-<ol>
-<li>首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）</li>
-<li>然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
-<img src="step1.png" alt=""></li>
-<li>在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
-请注意<strong>将Main Class一栏留空，让它自己判断。</strong>（前提是你写的主函数的格式是正确的）
-<img src="step2.png" alt=""></li>
-</ol>
-<h3 id="-manifest">第二步 手动添加MANIFEST</h3>
-<p>为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。</p>
-<ol>
-<li>点击图示中的按钮<code>Create Directory</code>，创建一个新的文件夹，名字叫<code>META-INF</code>
-<img src="step3.png" alt=""></li>
-<li>选中<code>META-INF</code>，点击上图中的<code>+</code>按钮，再点击菜单中的<code>File</code>。</li>
-<li>这时，我们选择工程根目录下的<code>src/main/kotlin/META-INF/MANIFEST.MF</code>，以便将<code>MANIFEST.MF</code>添加到该文件夹下。</li>
-<li>如果成功的话，你会在这个窗口中看到<code>META-INF</code>里面有刚刚添加的<code>MANIFEST.MF</code>。</li>
-</ol>
-<p><strong>Tips:</strong> 核对一下<code>src/main/kotlin/META-INF/MANIFEST.MF</code>的内容，应该为：</p>
-<pre><code>Manifest-Version: 1.0
-Main-Class: main.MainKt
+                    <h1 id="heading">前言</h1>
+<p>此页正在建设中^_^</p>
+<p>（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）</p>
+<h1 id="heading-1">关于我</h1>
+<p>我叫 Rise.</p>
+<h2 id="heading-2">创作</h2>
+<p>创作是一件美好的事情。</p>
+<p>我喜欢创作。</p>
+<p>因为创作可以给大家带来欢乐。</p>
+<p>写代码也是一种创作。</p>
+<p>我的代码可能会帮助到世界上的其他人</p>
+<p>我乐此不疲</p>
+<p>😉️</p>
+<h2 id="heading-3">音乐</h2>
+<p>虽然没有创作音乐的才能&hellip; 🙈️</p>
+<p>但是我很喜欢听音乐。</p>
+<p>尤其是一些老摇滚。</p>
+<p>像是甲壳虫，枪花，绿洲&hellip;</p>
+<h2 id="heading-4">运动</h2>
+<p>我喜欢骑单车，能骑到好远的地方。</p>
+<p>还有什么呢。</p>
+<h1 id="heading-5">未完待续</h1>
+<p>剩下的，留着我有时间补充吧。</p>
 
-
-</code></pre><p>其中，本人的主类文件位于<code>/src/main/kotlin/main/Main.Kt</code>。可供参考。</p>
-<h3 id="-manifest-1">第三步 调整位置，让新添加的MANIFEST后来居上</h3>
-<ol>
-<li>还是刚才的那个地方，<strong>取消</strong>图中所示<code>Sort Elemets by Names and Types</code>，以便自定义排序。
-<img src="step4.png" alt=""></li>
-<li>点击上箭头，让<code>META-INF</code>目录上升到最上面。</li>
-</ol>
-<h3 id="-">第四步 完成</h3>
-<p>如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
-<img src="step5-ok.png" alt=""></p>
-<ol>
-<li>上述步骤确认无误了之后，<code>Apply</code>，<code>OK</code>。</li>
-<li>主界面菜单栏，选择<code>Build</code>菜单栏下的<code>Build Artifacts</code>。</li>
-<li>在新弹出的窗口中选择<code>Build</code>。</li>
-<li>这个时候你就会看到<code>/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar</code>。
-尝试在终端中运行，<code>java -jar xxxxxxx.main.jar</code>。没问题，正常执行！</li>
-</ol>
-<h2 id="heading-2">参考</h2>
-<ol>
-<li>本人刚开始参照的是这个：<a href="https://www.bilibili.com/read/cv456609/">将Kotlin项目打包为可执行JAR - Xabean</a></li>
-</ol>
-<ul>
-<li>但是用方法1，运行jar时，java会提示<code>没有主清单属性</code>的问题。</li>
-<li>用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。</li>
-<li><em>本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。</em></li>
-</ul>
-<ol start="2">
-<li>后来参照类似案例才解决了这个问题。
-类似案例：<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-">[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?</a></li>
-</ol>
-<p>如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。</p>
                     <HR width="100%">
-                    <p style="color:#777;">Last modified on 2019-08-11</p>
+                    <p style="color:#777;">Last modified on 2019-10-25</p>
                 </div>
                 
             </div>
@@ -273,14 +235,14 @@ Main-Class: main.MainKt
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://amazingrise.net/about/">
-                    Next<br>我的一份自我介绍
+                <a class="newer-posts" href="https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/">
+                    Next<br>粤语入声的初探究
                 </a>
                 
                 
                 
-                <a class="older-posts" href="https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/">
-                    Previous<br>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;
+                <a class="older-posts" href="https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/">
+                    Previous<br>如何把Kotlin项目打包为可执行的jar
                 </a>
                 
             </nav>
