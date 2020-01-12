@@ -1,1 +1,308 @@
-<!DOCTYPE html><html><head><title>https://amazingrise.net/posts/package-kotlin-project-in-jar/</title><link rel="canonical" href="https://amazingrise.net/posts/package-kotlin-project-in-jar/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://amazingrise.net/posts/package-kotlin-project-in-jar/" /></head></html>
+<!DOCTYPE html>
+<html><head>
+<title>如何把Kotlin项目打包为可执行的jar</title>
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139087684-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.c9d8d7104e35224d533639f6936f8462be5363606cbb8f2bac9cb129149615fd.css" integrity="sha256-ydjXEE41Ik1TNjn2k2&#43;EYr5TY2Bsu48rrJyxKRSWFf0=" media="screen">
+
+<script src="https://amazingrise.net/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'b67e7e31e7dc175e0778',
+  clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
+  repo: 'amazingrise.github.io',
+  owner: 'amazingrise',
+  admin: ['amazingrise'],
+  id: location.pathname,
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
+</script>
+
+</head><body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://amazingrise.net">
+    
+        <div class="nav-title">
+            左手的世界
+        </div>
+        
+        <div class="nav-subtitle">
+            Rise&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/about">
+                    關於
+                </a>
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+    </div>
+</div><div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+        
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+        
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://amazingrise.net">
+            左手的世界
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://amazingrise.net">
+        <div class="single-column-header-title">左手的世界</div>
+        
+        <div class="single-column-header-subtitle">Rise&#39;s Blog</div>
+        
+
+    </a>
+</div>
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                 style="background-image: url('/step1.png')">
+                <div class="post-title">
+                    如何把Kotlin项目打包为可执行的jar
+                    <div class="post-meta">
+                        <time itemprop="datePublished">
+                            2019-08-11 13:52
+                        </time>
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                                &nbsp;
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <h2 id="heading">前言</h2>
+<p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 <a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot</a>
+该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&hellip;&hellip;
+于是我打算把该项目打包成可执行的jar，这样<code>java -jar xxxxx.jar</code>就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示<code>没有主清单属性</code></p>
+<h2 id="heading-1">正确的食用方式</h2>
+<p>如何正确地将Kotlin项目封装为jar，
+并且避免上述的错误？</p>
+<h3 id="-jar-artifacts">第一步 创建Jar Artifacts</h3>
+<ol>
+<li>首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）</li>
+<li>然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
+<img src="step1.png" alt=""></li>
+<li>在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
+请注意<strong>将Main Class一栏留空，让它自己判断。</strong>（前提是你写的主函数的格式是正确的）
+<img src="step2.png" alt=""></li>
+</ol>
+<h3 id="-manifest">第二步 手动添加MANIFEST</h3>
+<p>为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。</p>
+<ol>
+<li>点击图示中的按钮<code>Create Directory</code>，创建一个新的文件夹，名字叫<code>META-INF</code>
+<img src="step3.png" alt=""></li>
+<li>选中<code>META-INF</code>，点击上图中的<code>+</code>按钮，再点击菜单中的<code>File</code>。</li>
+<li>这时，我们选择工程根目录下的<code>src/main/kotlin/META-INF/MANIFEST.MF</code>，以便将<code>MANIFEST.MF</code>添加到该文件夹下。</li>
+<li>如果成功的话，你会在这个窗口中看到<code>META-INF</code>里面有刚刚添加的<code>MANIFEST.MF</code>。</li>
+</ol>
+<p><strong>Tips:</strong> 核对一下<code>src/main/kotlin/META-INF/MANIFEST.MF</code>的内容，应该为：</p>
+<pre><code>Manifest-Version: 1.0
+Main-Class: main.MainKt
+
+
+</code></pre><p>其中，本人的主类文件位于<code>/src/main/kotlin/main/Main.Kt</code>。可供参考。</p>
+<h3 id="-manifest-1">第三步 调整位置，让新添加的MANIFEST后来居上</h3>
+<ol>
+<li>还是刚才的那个地方，<strong>取消</strong>图中所示<code>Sort Elemets by Names and Types</code>，以便自定义排序。
+<img src="step4.png" alt=""></li>
+<li>点击上箭头，让<code>META-INF</code>目录上升到最上面。</li>
+</ol>
+<h3 id="-">第四步 完成</h3>
+<p>如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
+<img src="step5-ok.png" alt=""></p>
+<ol>
+<li>上述步骤确认无误了之后，<code>Apply</code>，<code>OK</code>。</li>
+<li>主界面菜单栏，选择<code>Build</code>菜单栏下的<code>Build Artifacts</code>。</li>
+<li>在新弹出的窗口中选择<code>Build</code>。</li>
+<li>这个时候你就会看到<code>/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar</code>。
+尝试在终端中运行，<code>java -jar xxxxxxx.main.jar</code>。没问题，正常执行！</li>
+</ol>
+<h2 id="heading-2">参考</h2>
+<ol>
+<li>本人刚开始参照的是这个：<a href="https://www.bilibili.com/read/cv456609/">将Kotlin项目打包为可执行JAR - Xabean</a></li>
+</ol>
+<ul>
+<li>但是用方法1，运行jar时，java会提示<code>没有主清单属性</code>的问题。</li>
+<li>用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。</li>
+<li><em>本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。</em></li>
+</ul>
+<ol start="2">
+<li>后来参照类似案例才解决了这个问题。
+类似案例：<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-">[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?</a></li>
+</ol>
+<p>如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。</p>
+                    <HR width="100%">
+                    <p style="color:#777;">Last modified on 2019-08-11</p>
+                </div>
+                
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/">
+                    Next<br>粤语入声的初探究
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/">
+                    Previous<br>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;
+                </a>
+                
+            </nav>
+
+            
+
+
+<div id="gitalk-container"></div>
+
+
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	</div>
+    	</div>
+    <script src="https://amazingrise.net/js/journal.js"></script>
+    </body>
+</html>

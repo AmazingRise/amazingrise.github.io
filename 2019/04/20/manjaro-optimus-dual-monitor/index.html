@@ -1,1 +1,441 @@
-<!DOCTYPE html><html><head><title>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</title><link rel="canonical" href="https://amazingrise.net/posts/manjaro-optimus-dual-monitor/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://amazingrise.net/posts/manjaro-optimus-dual-monitor/" /></head></html>
+<!DOCTYPE html>
+<html><head>
+<title>Manjaro 在笔记本上的多显示器配置</title>
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139087684-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.c9d8d7104e35224d533639f6936f8462be5363606cbb8f2bac9cb129149615fd.css" integrity="sha256-ydjXEE41Ik1TNjn2k2&#43;EYr5TY2Bsu48rrJyxKRSWFf0=" media="screen">
+
+<script src="https://amazingrise.net/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'b67e7e31e7dc175e0778',
+  clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
+  repo: 'amazingrise.github.io',
+  owner: 'amazingrise',
+  admin: ['amazingrise'],
+  id: location.pathname,
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
+</script>
+
+</head><body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://amazingrise.net">
+    
+        <div class="nav-title">
+            左手的世界
+        </div>
+        
+        <div class="nav-subtitle">
+            Rise&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/about">
+                    關於
+                </a>
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+    </div>
+</div><div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+        
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+        
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://amazingrise.net">
+            左手的世界
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://amazingrise.net">
+        <div class="single-column-header-title">左手的世界</div>
+        
+        <div class="single-column-header-subtitle">Rise&#39;s Blog</div>
+        
+
+    </a>
+</div>
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('/')">
+                <div class="post-title">
+                    Manjaro 在笔记本上的多显示器配置
+                    <div class="post-meta">
+                        <time itemprop="datePublished">
+                            2019-04-20 16:11
+                        </time>
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/linux">Linux</a>
+                                &nbsp;
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <h2 id="heading">前言</h2>
+<p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文<a href="#%E9%A2%98%E5%A4%96%E8%AF%9D">题外话，关于Windows 10上双显卡的“优秀表现”</a>）
+Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
+想用 Linux 怎么办？ 只能装上 Ubuntu 了事。<!-- raw HTML omitted -->真香<!-- raw HTML omitted -->
+Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
+**后来经过一阵探索，才在Manjaro上用上了外置显示器。**<!-- raw HTML omitted -->终于摆脱了真香定律<!-- raw HTML omitted --></p>
+<hr>
+<h2 id="heading-1">背景</h2>
+<p>还是老规矩，我先介绍一下这个问题的背景。
+解决方法请翻到<a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95">解决方法</a>一节。
+环境：</p>
+<ul>
+<li>intel 集成显卡+Nvidia 独立显卡</li>
+<li>HDMI 与 Nvidia显卡相连接</li>
+</ul>
+<p>症状：</p>
+<ul>
+<li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li>
+<li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有下文了。</li>
+<li>由于自带bumblebee驱动，故本人曾经尝试过用optirun在独显上运行glxgears，外置显示器会闪一下，然后No Signal Input.
+（这说明bumblebee是可以启动nvidia显卡的，但无法输出到外置显示器上）</li>
+<li>总之，外置显示器就像一面黑色的镜子，看着让人揪心QAQ。</li>
+</ul>
+<h2 id="heading-2">分析问题</h2>
+<p>首先，在Ubuntu中，我并没有找到bumblebee，并且我选择的是NVIDIA驱动。
+这意味着Ubuntu采用了另一套机制。
+参照<a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">ArchWiki上面的说法</a>，让Optimus显卡在linux里面有三种实现方法：</p>
+<ol>
+<li>BIOS里面禁用掉一个显卡。缺点也是显而易见的：难以切换显卡。</li>
+<li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li>
+<li>用Bumblebee。不过Bumblebee很难支持双显示器。</li>
+<li>用专有驱动。</li>
+<li>不知道是什么鬼的方法，叫nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li>
+</ol>
+<hr>
+<h2 id="heading-3">解决方法</h2>
+<p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
+刚开始没有成功，<strong>后来在朋友的提醒下，发现原来我缺了一些步骤！</strong>
+<strong>我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功～</strong>
+以下内容均为本人的中文翻译。<a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
+<h3 id="heading-4">原帖前言</h3>
+<p>最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
+下面我说一下如何在Optimus的笔记本上开启PRIME。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">优点</th>
+<th align="left">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bumblebee</td>
+<td align="left">按需使用独立显卡，Manjaro默认配置</td>
+<td align="left">有一定的开销，对性能有所影响</td>
+</tr>
+<tr>
+<td align="left">PRIME</td>
+<td align="left">直接使用独立显卡，性能更强</td>
+<td align="left">两块显卡都一直供电，需要手动配置</td>
+</tr>
+<tr>
+<td align="left">optimus-manager</td>
+<td align="left">显卡切换更简单</td>
+<td align="left">暂不成熟，还在开发中</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note:最简单的方法就是在主板设置里面禁用集成显卡。如果你可以禁用的话，就直接禁用掉算了。</em>
+<em>Note2: optimus-manager可以实现两块显卡的半自动切换。但是时至今日还在紧锣密鼓地开发中&hellip;&hellip;</em>
+<em>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</em>
+<em>译者注: 其实直接禁用在现在的很多笔记本bios设置里都找不到的。</em>
+<em>译者注2：反正我是按照这个步骤成功了。</em>
+<em>译者注3：没让重启的时候千万不要重启。</em></p>
+<h3 id="bumblebee">第一步，移除Bumblebee</h3>
+<p>如果你选择了non-free驱动（其实是伪闭源驱动），mhwd将会自动安装bumblebee。
+bumblebee很碍事，所以我们得先干掉它。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -r pci nonfree <span style="color:#ae81ff">0300</span>
+</code></pre></div><h3 id="nvidia">第二步，安装NVIDIA驱动</h3>
+<p>（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）
+（一般来说不用改）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia
+</code></pre></div><p>（之前此处typo，十分感谢评论区朋友的更正～）</p>
+<h3 id="mhwd">第三步，修改MHWD设置</h3>
+<p>（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。
+我们必须得改一下这个配置，这样PRIME才能生效。</p>
+<h4 id="heading-5">另起炉灶</h4>
+<p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
+（如果你不放心可以mv嘛～）
+然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">Section &#34;Module&#34;</span>
+    <span style="color:#a6e22e">Load &#34;modesetting&#34;</span>
+<span style="color:#a6e22e">EndSection</span>
+
+<span style="color:#a6e22e">Section &#34;Device&#34;</span>
+    <span style="color:#a6e22e">Identifier &#34;nvidia&#34;</span>
+    <span style="color:#a6e22e">Driver &#34;nvidia&#34;</span>
+    <span style="color:#a6e22e">BusID &#34;PCI:1:0:0&#34;</span>
+    <span style="color:#a6e22e">Option &#34;AllowEmptyInitialConfiguration&#34;</span>
+<span style="color:#a6e22e">EndSection</span>
+</code></pre></div><p><strong>注意：<strong>BusID一栏需要</strong>根据自己的电脑配置</strong>进行修改。
+虽然大多数Optimus笔记本都是这个编号，但是我仍然<strong>建议你核对一下</strong>自己电脑的BusID的值。
+**BusID的值是这么查询的：**<code>lspci | grep -E &quot;VGA|3D&quot;</code>
+<em>（更新：评论区就有位朋友是不一样的）</em>
+<em>（我的电脑上确实是这个编号）</em></p>
+<h4 id="heading-6">禁用模块</h4>
+<p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
+此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
+所以，我们需要对<code>/etc/modprobe.d</code>动动手脚。</p>
+<p>首先，我们得把mhwd自动生成的黑名单删掉。
+（译者注：不放心的话，就重命名，但是要把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
+比如这样：<strong>视情况而定，你的配置可能不同</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls /etc/modprobe.d/mhwd*
+sudo rm /etc/modprobe.d/mhwd-gpu.conf
+sudo rm /etc/modprobe.d/mhwd-nvidia.conf
+</code></pre></div><p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
+新建一个文件，什么名字都可以，conf结尾就行
+写入：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">blacklist nouveau</span>
+<span style="color:#a6e22e">blacklist nvidiafb</span>
+<span style="color:#a6e22e">blacklist rivafb</span>
+</code></pre></div><h3 id="nvidia-drmmodeset">第四步，开启nvidia-drm.modeset</h3>
+<p>创建一个新文件，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">options nvidia_drm modeset</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
+</code></pre></div><h3 id="heading-7">第五步，设置启动脚本</h3>
+<p>我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。
+在笔记本上，就会是笔记本屏幕一片黑（但是如果有外置，外置会亮）</p>
+<p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。</p>
+<p><strong>注意，视你的具体环境（DM）执行下列的某一个步骤。</strong>
+<!-- raw HTML omitted --><strong>你并不需要做下列所有步骤</strong><!-- raw HTML omitted --></p>
+<p><strong>针对 LightDM (xfce默认)</strong>
+创建一个文件，</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+</code></pre></div><p>然后按照国际惯例（hhh），让它可写可执行：<code>chmod a+rx /usr/local/bin/optimus.sh</code>
+现在你还得把它设置为启动脚本。
+编辑<code>/etc/lightdm/lightdm.conf</code>，然后在**[Seat:* ]**这一节设置
+<code>display-setup-script=/usr/local/bin/optimus.sh</code></p>
+<p><strong>针对 GDM (Gnome默认)</strong>
+创建一个文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#66d9ef">[Desktop Entry]</span>
+<span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">Application</span>
+<span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">Optimus</span>
+<span style="color:#a6e22e">Exec</span><span style="color:#f92672">=</span><span style="color:#e6db74">sh -c &#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&#34;</span>
+<span style="color:#a6e22e">NoDisplay</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+<span style="color:#a6e22e">X-GNOME-Autostart-Phase</span><span style="color:#f92672">=</span><span style="color:#e6db74">DisplayServer</span>
+</code></pre></div><p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)
+然后建立连接，让它随着GDM启动。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
+</code></pre></div><p><strong>针对 SDDM (KDE 默认)</strong>
+创建一个文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#75715e">#!/bin/sh</span>
+
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+</code></pre></div><p>然后用chmod让它变为可执行的文件。</p>
+<h3 id="heading-8">第六步，最后的工作</h3>
+<p>译者注：如果以上的工作都已经完成，我建议你再做一步。
+我当时没有做这一步，之后重启发现内核模块加载错误。
+所以还是建议，编译一下内核。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkinitcpio -P linux
+</code></pre></div><p>最后重启，大功告成。</p>
+<h3 id="heading-9">验证是否成功</h3>
+<p>如果以上你都设置正确了，当你重启之后，可以敲<code>glxinfo | grep -i vendor</code>
+然后看看是不是像下面这样的信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ glxinfo | grep -i vendor
+server glx vendor string: NVIDIA Corporation
+client glx vendor string: NVIDIA Corporation
+OpenGL vendor string: NVIDIA Corporation
+</code></pre></div><p>如果是，说明你已经设置成功，可以欢呼了！
+<em>当然我有双显示器，一看显示器亮了就知道了2333</em></p>
+<h2 id="heading-10">最后</h2>
+<h3 id="heading-11">题外话</h3>
+<p>虽然bumblebee存在诸多问题（比如双显示器问题），但是我<strong>真的要为开发人员点赞。</strong>
+因为连Windows 10上的驱动，<strong>官方都做不好。</strong>
+（据说在Windows 10 1803里面已经修复了，但1809里面又带回来了，服气。
+而且nvidia和M$互相踢皮球。）</p>
+<p><a href="https://www.v2ex.com/t/526544">这个奇怪的问题（点击查看）</a>当时也困扰了我很久
+打开任务管理器没有任何占用，为啥还是一卡一卡的？
+后来才知道，噢，原来是双显卡的坑。
+听说最近19H1来了？反正我不想用Windows了。
+自从Windows 7 之后我就没用过没bug的系统！</p>
+<p>显卡真的是一个大坑啊。
+我折腾这个驱动，前前后后断断续续差不多半年了（摊手）
+这篇博客我写了两天才写完QAQ</p>
+<p>希望我的这篇博文能帮到各位看官。 :)
+新开的评论区(Gitment)，有问题可以在下面留言哦～</p>
+<p>（2019-8 更新：感谢评论区的小伙伴的支持哦）</p>
+<h3 id="heading-12">参考资料</h3>
+<p><a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver</a></p>
+<p><a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus">Optimus - ArchWiki</a></p>
+                    <HR width="100%">
+                    <p style="color:#777;">Last modified on 2019-04-20</p>
+                </div>
+                
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/">
+                    Next<br>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;
+                </a>
+                
+                
+                
+                <a class="older-posts">
+                    Previous<br>No older posts.
+                </a>
+                
+            </nav>
+
+            
+
+
+<div id="gitalk-container"></div>
+
+
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	</div>
+    	</div>
+    <script src="https://amazingrise.net/js/journal.js"></script>
+    </body>
+</html>

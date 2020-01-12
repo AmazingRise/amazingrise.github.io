@@ -13,10 +13,10 @@
     
     <item>
       <title>如何优雅地使用 Spyder 的调试器</title>
-      <link>https://amazingrise.net/posts/howto-use-spyder-debugger/</link>
+      <link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link>
       <pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/howto-use-spyder-debugger/</guid>
+      <guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid>
       <description>&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
@@ -26,10 +26,10 @@
     
     <item>
       <title>粤语入声的初探究</title>
-      <link>https://amazingrise.net/posts/checked-tone-in-cantonese/</link>
+      <link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link>
       <pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/checked-tone-in-cantonese/</guid>
+      <guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid>
       <description>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别. 另外,本人并非专业研究人员.若有错误欢迎指正!
 何为入声  入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留. 与入声相对的是舒声. 所以普通话里面全都是舒声. 入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程. 入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断. 然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)  五度标记法 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 这一点让许多非汉语母语的人摸不到头脑. 所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)
 考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由赵元任先生发明,他被称爲汉语言学之父)
@@ -47,10 +47,10 @@
     
     <item>
       <title>如何把Kotlin项目打包为可执行的jar</title>
-      <link>https://amazingrise.net/posts/package-kotlin-project-in-jar/</link>
+      <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
       <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/package-kotlin-project-in-jar/</guid>
+      <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
       <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
@@ -60,10 +60,10 @@
     
     <item>
       <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
-      <link>https://amazingrise.net/posts/equality-in-kotlin-translation/</link>
+      <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
       <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/equality-in-kotlin-translation/</guid>
+      <guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid>
       <description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。 Kotlin语言里，“等号”有这么几种：==，===与.equals。 那么问题来了，我们该如何正确使用这些相等性判断呢？
 我们来一起看一看Kotlin的几种相等性判断：
@@ -82,10 +82,10 @@ val int1 = 10 val int2 = 10 println(int1 == int2)	// true 	println(int1.</descri
     
     <item>
       <title>Manjaro 在笔记本上的多显示器配置</title>
-      <link>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</link>
+      <link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link>
       <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/manjaro-optimus-dual-monitor/</guid>
+      <guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid>
       <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
 （参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）

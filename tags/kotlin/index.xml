@@ -13,10 +13,10 @@
     
     <item>
       <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
-      <link>https://amazingrise.net/posts/equality-in-kotlin-translation/</link>
+      <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
       <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
       
-      <guid>https://amazingrise.net/posts/equality-in-kotlin-translation/</guid>
+      <guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid>
       <description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。 Kotlin语言里，“等号”有这么几种：==，===与.equals。 那么问题来了，我们该如何正确使用这些相等性判断呢？
 我们来一起看一看Kotlin的几种相等性判断：

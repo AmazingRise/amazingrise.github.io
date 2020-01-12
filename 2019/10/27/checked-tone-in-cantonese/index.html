@@ -1,1 +1,419 @@
-<!DOCTYPE html><html><head><title>https://amazingrise.net/posts/checked-tone-in-cantonese/</title><link rel="canonical" href="https://amazingrise.net/posts/checked-tone-in-cantonese/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://amazingrise.net/posts/checked-tone-in-cantonese/" /></head></html>
+<!DOCTYPE html>
+<html><head>
+<title>粤语入声的初探究</title>
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-139087684-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.c9d8d7104e35224d533639f6936f8462be5363606cbb8f2bac9cb129149615fd.css" integrity="sha256-ydjXEE41Ik1TNjn2k2&#43;EYr5TY2Bsu48rrJyxKRSWFf0=" media="screen">
+
+<script src="https://amazingrise.net/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'b67e7e31e7dc175e0778',
+  clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
+  repo: 'amazingrise.github.io',
+  owner: 'amazingrise',
+  admin: ['amazingrise'],
+  id: location.pathname,
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
+</script>
+
+</head><body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://amazingrise.net">
+    
+        <div class="nav-title">
+            左手的世界
+        </div>
+        
+        <div class="nav-subtitle">
+            Rise&#39;s Blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/about">
+                    關於
+                </a>
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+    </div>
+</div><div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+        
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分類
+                </a>
+        
+            
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    關於
+                </a>
+        
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://amazingrise.net">
+            左手的世界
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://amazingrise.net">
+        <div class="single-column-header-title">左手的世界</div>
+        
+        <div class="single-column-header-subtitle">Rise&#39;s Blog</div>
+        
+
+    </a>
+</div>
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                 style="background-image: url('/cantonese.jpg')">
+                <div class="post-title">
+                    粤语入声的初探究
+                    <div class="post-meta">
+                        <time itemprop="datePublished">
+                            2019-10-27 09:08
+                        </time>
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/%E8%AF%AD%E8%A8%80">语言</a>
+                                &nbsp;
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别.
+另外,本人并非专业研究人员.若有错误欢迎指正!</p>
+<!-- raw HTML omitted -->
+<h1 id="heading">何为入声</h1>
+<ul>
+<li>入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留.</li>
+<li>与入声相对的是舒声. 所以普通话里面全都是舒声.</li>
+<li>入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程.</li>
+<li>入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断.</li>
+<li>然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)</li>
+</ul>
+<h1 id="heading-1">五度标记法</h1>
+<p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名.
+这一点让许多非汉语母语的人摸不到头脑.
+所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)</p>
+<p>考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由<a href="https://zh.wikipedia.org/wiki/%E8%B5%B5%E5%85%83%E4%BB%BB">赵元任先生</a>发明,他被称爲汉语言学之父)</p>
+<p>下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.</p>
+<h2 id="heading-2">用五度标记法表示现代汉语的四个声调</h2>
+<p>在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声.
+现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.</p>
+<p>五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低.
+对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法.
+以现代汉语普通话的四个声调爲例,我放出一张用<em>五度标记法</em>标记的四个声调的图,大家先体会一下.</p>
+<p><img src="pinyin-tone-chart.png" alt=""></p>
+<p>图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.</p>
+<p>曲线法很直观,声调越高,曲线中对应的那一点越高.
+而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.</p>
+<p>所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51.
+(一些北方方言与普通话的最大区别便在于调值)</p>
+<p>这麽说可能不是很直观.
+大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化.
+(感谢维基百科提供的好例子)
+番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。</p>
+<h2 id="heading-3">五度标记法表示了音调的相对高低</h2>
+<p>五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型.
+(与粤拼类似)</p>
+<p>好的,这就是五度标记法.
+大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调.
+由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用.
+(反正我当时觉得,哇,这玩意简直是神器)</p>
+<h1 id="heading-4">粤语中的九声六调</h1>
+<p>由于笔者所接触到的粤语大多均爲广州话.
+所以本文暂且以<em>粤语广州话</em>爲标准探讨.
+下文所指粤语,也均爲广州话爲代表的粤语.</p>
+<p>援引自「<a href="http://input.foruto.com/ccc/jyt/005.htm">中文字元资料页</a>」的内容：</p>
+<blockquote>
+<p>粤音则由四声，发展成九种声调，分别爲：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>音调</th>
+<th>阴平</th>
+<th>阳上</th>
+<th>阴去</th>
+<th>阳平</th>
+<th>阳上</th>
+<th>阳去</th>
+<th>阴入</th>
+<th>中入</th>
+<th>阳入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>五度数字法</td>
+<td>55</td>
+<td>35</td>
+<td>33</td>
+<td>21</td>
+<td>13</td>
+<td>22</td>
+<td>5(5)</td>
+<td>3(3)</td>
+<td>2(2)</td>
+</tr>
+<tr>
+<td>简单的粤拼</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>另一种粤拼</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p><em>爲了简略描述,有的音调对应非唯一调值的我没有标出.大家见谅. 最准确的请参照原网页.</em></p>
+<p>值得注意的是,现代粤拼的数字,<strong>仅仅代表某一个调型</strong>,并不代表本身声调的高低. 与现代汉语拼音方案一样,数字本身是无意义的.
+因此，人们说粤语有「九声六调」（九个声调，六种音高）。至于语音学学者，则大多把「声调」直接定义作音高，不计算其顿错性，就会直接说粤语有「六个声调」。两种说法的分别，只是对「声调」定义不同而已。</p>
+<p>下面附上更加直观的曲线法.
+其中省略了7 8 9三个声调,因爲它们的音高与1 3 6的起点是相同的.
+(图片援引自<a href="http://www.cantonese.asia/portal.php?mod=view&amp;aid=229">粤语协会</a>)
+<img src="tone.jpg" alt=""></p>
+<p>有一个简单的方法,你需要找一个会广州话的人,分别读一下「三 九 四 零 五 二 七 八 六」.
+这九个数字正好分别对应粤拼的1 2 3 4 5 6 7 8 9声.</p>
+<p>如果读者在此对于区分六个音调仍然存疑,可进入这个网站:<a href="http://www.iso10646hk.net/jp/learning/course_03.jsp">香港语言学学会粤语拼音方案</a>进行音频试听.
+仔细听,才能体会出它们的区别.
+毕竟多听才是学习语言的最佳方式.</p>
+<p>个人认爲,对于非粤语母语者,学习粤语最准确的方法是先学习这一拼音方案.
+(这样才能更加准确. 当然,多听多说才是根本.)</p>
+<h1 id="heading-5">粤语(广州话)中的入声</h1>
+<p>粤语(广州话)中很好保留了入声的三个韵尾: -p -t -k.
+在粤语中,入声是无声除阻音. 也就是说,唸到入声的时候,是不需要发出声音的,但是需要有气流的阻断这一过程.</p>
+<p>但是不同韵尾的阻断方式是不一样的.</p>
+<h2 id="heading-6">我是如何发现入声的区别的</h2>
+<p>起初我以爲粤语的入声只是单纯地阻断气流.
+于是忽略掉了入声之间的区别.
+<del>后来被事实狠狠地打脸.</del></p>
+<p>最早是读「入」和「日」字的时候,感觉到这两个字的韵尾略有不同.
+我仔细查阅了一下字典,又听了一下,发现这两个字确实有区别.</p>
+<p>入的粤拼是: jap6
+日的粤拼是: jat6</p>
+<p>同样的区别可以体现在「八」和「百」这两个字上面.
+八: baat3
+百: baak3</p>
+<h2 id="heading-7">入声的区别</h2>
+<p>前面说过,入声听起来就像气流被突然阻断一样.
+而粤语中 -p -t -k三个入声的区别就在于:<strong>气流被阻断的部位不同.</strong></p>
+<p>简单来讲:</p>
+<blockquote>
+<p>-p 要在嘴脣处阻断气流. 如 垃圾 laap6 saap3. 在两个字的结尾,要将嘴脣闭合,以阻断气流.
+-t 要在舌尖处阻断气流. 如 佛山 fat6 saan1. 在佛字的结尾,要用舌尖抵住牙齿阻断气流.
+-k 要在舌根处阻断气流. 如 白话 baak6 wa2. 在白的结尾,要用舌根抵住硬齶软齶交界处阻断气流.</p>
+</blockquote>
+<p>如果我们用更通俗一些的方式阐述,则是:
+<strong>在粤拼中遇到这三个韵尾的时候, 你需要分别做出p t k的口型来阻断气流.</strong>
+这与英语口语中的尾音略有类似.(例如keep,不可能读成 ki pu,最后的p会很轻很轻,并且不发音.)</p>
+<h2 id="heading-8">入声试听</h2>
+<p>关于每个字的具体读音,我强烈推荐粤拼方案的网站.
+<a href="http://www.iso10646hk.net/jp/database/index.jsp">粤拼资料库</a></p>
+<h2 id="heading-9">补充之其他粤语拼音方案</h2>
+<p>目前最广泛的粤语拼音方案是粤拼,也就是香港语言学学会的粤语拼音方案.
+故本文採用粤拼来标注.</p>
+<p>但在我阅读一些其他的粤语教程的时候,发现有的教程的入声韵尾并不是用-p -t -k这三个字母标记的.
+我见过-b -d -g这三个字母标注韵尾.甚至说与-p -t -k相混合标注韵尾的用法.
+其实这些标记方法是相同的.
+因爲前面说过入声在粤语中是无声除阻音,也就是不发声.
+而p-b, t-d, k-g这三组辅音的区别在于前者送气,后者不送气.
+在入声的环境中,由于不发声,只需要摆好口型,所以送气和不送气辅音可以视作等同的
+(这里用IPA来标注更加准确.后来想想还是算了.太複杂了没必要.)</p>
+<p>举个例子,在韵尾爲p的字中,收尾的时候无论你是摆b的口型,还是摆p的口型,是一样的.
+(顺便体会一下入声的发声程度)</p>
+<p>不过我们还是要以最流行的粤拼方案爲准.
+这样可以少走一些弯路.</p>
+<h1 id="heading-10">次回予告</h1>
+<p>今天就写到这里.🤔️
+回顾了一下整个文章,我讲九声六调还费了不少工夫. 哈哈哈
+突然想到我下一篇是不是应该讲一下-a- 与 -aa- 的区别呢?
+<del>算了算了,我自己还没搞明白. 😂️</del></p>
+<p>下一篇我可能写一篇随想,也有可能加一篇对本篇的补充.
+(如果是随想的话,那麽大概是关于「元」（meta）这一概念？)</p>
+<p>如果有什麽不准确的地方,欢迎各位在评论区指出.
+(原创)作者amazingRise
+请尊重作者的劳动成果,未经许可不得转载.
+但欢迎转发本网址,以分享给其他人.</p>
+<p>共同传承中华文化🥳</p>
+
+                    <HR width="100%">
+                    <p style="color:#777;">Last modified on 2019-10-27</p>
+                </div>
+                
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/">
+                    Next<br>如何优雅地使用 Spyder 的调试器
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/">
+                    Previous<br>如何把Kotlin项目打包为可执行的jar
+                </a>
+                
+            </nav>
+
+            
+
+
+<div id="gitalk-container"></div>
+
+
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+	
+	2019 左手的世界
+	</div>
+    	</div>
+    <script src="https://amazingrise.net/js/journal.js"></script>
+    </body>
+</html>
