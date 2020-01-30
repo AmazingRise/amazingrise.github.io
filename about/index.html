@@ -38,9 +38,15 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.c9d8d7104e35224d533639f6936f8462be5363606cbb8f2bac9cb129149615fd.css" integrity="sha256-ydjXEE41Ik1TNjn2k2&#43;EYr5TY2Bsu48rrJyxKRSWFf0=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.cd0d44d59a2dd36ac7a9d73f72788f30f13b80c95e891ef77a06396fbe0a5d64.css" integrity="sha256-zQ1E1Zot02rHqdc/cniPMPE7gMleiR73egY5b74KXWQ=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
+<script src="https://amazingrise.net/js/table.js"></script>
+
+
+<script src="https://amazingrise.net/js/toc.js"></script>
+
+
 <script>
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
 </script>
@@ -121,6 +127,146 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     
 </div><div ref="extraContainer" class="extra-container">
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
+										 前言
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%85%b3%e4%ba%8e%e6%88%91" v-on:click="closeDrawer" id="关于我-nav">
+										 关于我
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%88%9b%e4%bd%9c" v-on:click="closeDrawer" id="创作-nav">
+										 创作
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e9%9f%b3%e4%b9%90" v-on:click="closeDrawer" id="音乐-nav">
+										 音乐
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%bf%90%e5%8a%a8" v-on:click="closeDrawer" id="运动-nav">
+										 运动
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%9c%aa%e5%ae%8c%e5%be%85%e7%bb%ad" v-on:click="closeDrawer" id="未完待续-nav">
+										 未完待续
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
@@ -133,31 +279,172 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">
-        
-        
             
-                
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    分類
-                </a>
-        
             
-                
                 
                     
-                
-                <a class="a-block drawer-menu-item active" href="/about">
-                    關於
-                </a>
-        
+                    
+                    <a class="a-block drawer-menu-item false" href="/categories">
+                        分類
+                    </a>
             
                 
+                    
+                    
+                        
+                    
+                    <a class="a-block drawer-menu-item active" href="/about">
+                        關於
+                    </a>
+            
                 
-                <a class="a-block drawer-menu-item false" href="https://xclwt.github.io/">
-                    小白鸽
-                </a>
-        
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="https://xclwt.github.io/">
+                        小白鸽
+                    </a>
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
+										 前言
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%85%b3%e4%ba%8e%e6%88%91" v-on:click="closeDrawer" id="关于我-nav">
+										 关于我
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%88%9b%e4%bd%9c" v-on:click="closeDrawer" id="创作-nav">
+										 创作
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e9%9f%b3%e4%b9%90" v-on:click="closeDrawer" id="音乐-nav">
+										 音乐
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%bf%90%e5%8a%a8" v-on:click="closeDrawer" id="运动-nav">
+										 运动
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%9c%aa%e5%ae%8c%e5%be%85%e7%bb%ad" v-on:click="closeDrawer" id="未完待续-nav">
+										 未完待续
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+            
         </div>
     </div>
 </div>
@@ -215,12 +502,12 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <h1 id="heading">前言</h1>
+                    <h1 id="前言">前言</h1>
 <p>此页正在建设中^_^</p>
 <p>（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）</p>
-<h1 id="heading-1">关于我</h1>
+<h1 id="关于我">关于我</h1>
 <p>我叫 Rise.</p>
-<h2 id="heading-2">创作</h2>
+<h2 id="创作">创作</h2>
 <p>创作是一件美好的事情。</p>
 <p>我喜欢创作。</p>
 <p>因为创作可以给大家带来欢乐。</p>
@@ -228,18 +515,18 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>我的代码可能会帮助到世界上的其他人</p>
 <p>我乐此不疲</p>
 <p>😉️</p>
-<h2 id="heading-3">音乐</h2>
+<h2 id="音乐">音乐</h2>
 <p>虽然没有创作音乐的才能&hellip; 🙈️</p>
 <p>但是我很喜欢听音乐。</p>
 <p>尤其是一些老摇滚。</p>
 <p>像是甲壳虫，枪花，绿洲&hellip;</p>
-<h2 id="heading-4">运动</h2>
+<h2 id="运动">运动</h2>
 <p>我喜欢骑单车，能骑到好远的地方。</p>
 <p>还有什么呢。</p>
-<h1 id="heading-5">未完待续</h1>
+<h1 id="未完待续">未完待续</h1>
 <p>剩下的，留着我有时间补充吧。</p>
 
-                    <HR width="100%">
+                    <HR width="100%" id="EOF">
                     <p style="color:#777;">Last modified on 2019-10-25</p>
                 </div>
                 

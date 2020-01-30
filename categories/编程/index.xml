@@ -17,7 +17,7 @@
       <pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate>
       
       <guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid>
-      <description>&lt;h1 id=&#34;heading&#34;&gt;前言&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
 这个时候调试器就要上场了~
@@ -30,7 +30,7 @@
       <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
       
       <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
-      <description>&lt;h2 id=&#34;heading&#34;&gt;前言&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
 于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。

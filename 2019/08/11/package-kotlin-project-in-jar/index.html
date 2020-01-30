@@ -38,9 +38,15 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.c9d8d7104e35224d533639f6936f8462be5363606cbb8f2bac9cb129149615fd.css" integrity="sha256-ydjXEE41Ik1TNjn2k2&#43;EYr5TY2Bsu48rrJyxKRSWFf0=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.cd0d44d59a2dd36ac7a9d73f72788f30f13b80c95e891ef77a06396fbe0a5d64.css" integrity="sha256-zQ1E1Zot02rHqdc/cniPMPE7gMleiR73egY5b74KXWQ=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
+<script src="https://amazingrise.net/js/table.js"></script>
+
+
+<script src="https://amazingrise.net/js/toc.js"></script>
+
+
 <script>
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
 </script>
@@ -119,6 +125,197 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     
 </div><div ref="extraContainer" class="extra-container">
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" id="前言--nav">
+										 前言
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" id="正确的食用方式--nav">
+										 正确的食用方式
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" id="第一步-创建jar-artifacts--nav">
+										 第一步 创建Jar Artifacts
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" id="第二步-手动添加manifest--nav">
+										 第二步 手动添加MANIFEST
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" id="第三步-调整位置让新添加的manifest后来居上--nav">
+										 第三步 调整位置，让新添加的MANIFEST后来居上
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" id="第四步-完成--nav">
+										 第四步 完成
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" id="参考--nav">
+										 参考
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
@@ -131,29 +328,221 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
      v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
     <div class="drawer-content">
         <div class="drawer-menu">
-        
-        
+            
             
                 
-                
-                <a class="a-block drawer-menu-item false" href="/categories">
-                    分類
-                </a>
-        
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="/categories">
+                        分類
+                    </a>
             
                 
-                
-                <a class="a-block drawer-menu-item false" href="/about">
-                    關於
-                </a>
-        
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="/about">
+                        關於
+                    </a>
             
                 
-                
-                <a class="a-block drawer-menu-item false" href="https://xclwt.github.io/">
-                    小白鸽
-                </a>
-        
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="https://xclwt.github.io/">
+                        小白鸽
+                    </a>
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" id="前言--nav">
+										 前言
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" id="正确的食用方式--nav">
+										 正确的食用方式
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" id="第一步-创建jar-artifacts--nav">
+										 第一步 创建Jar Artifacts
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" id="第二步-手动添加manifest--nav">
+										 第二步 手动添加MANIFEST
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" id="第三步-调整位置让新添加的manifest后来居上--nav">
+										 第三步 调整位置，让新添加的MANIFEST后来居上
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" id="第四步-完成--nav">
+										 第四步 完成
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" id="参考--nav">
+										 参考
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+            
         </div>
     </div>
 </div>
@@ -215,15 +604,15 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <h2 id="heading">前言</h2>
+                    <h2 id="前言-">前言</h2>
 <p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 <a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot</a>
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&hellip;&hellip;
 于是我打算把该项目打包成可执行的jar，这样<code>java -jar xxxxx.jar</code>就可以执行了，这多好呀。
 然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示<code>没有主清单属性</code></p>
-<h2 id="heading-1">正确的食用方式</h2>
+<h2 id="正确的食用方式-">正确的食用方式</h2>
 <p>如何正确地将Kotlin项目封装为jar，
 并且避免上述的错误？</p>
-<h3 id="-jar-artifacts">第一步 创建Jar Artifacts</h3>
+<h3 id="第一步-创建jar-artifacts-">第一步 创建Jar Artifacts</h3>
 <ol>
 <li>首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）</li>
 <li>然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
@@ -232,7 +621,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 请注意<strong>将Main Class一栏留空，让它自己判断。</strong>（前提是你写的主函数的格式是正确的）
 <img src="step2.png" alt=""></li>
 </ol>
-<h3 id="-manifest">第二步 手动添加MANIFEST</h3>
+<h3 id="第二步-手动添加manifest-">第二步 手动添加MANIFEST</h3>
 <p>为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。</p>
 <ol>
 <li>点击图示中的按钮<code>Create Directory</code>，创建一个新的文件夹，名字叫<code>META-INF</code>
@@ -247,13 +636,13 @@ Main-Class: main.MainKt
 
 
 </code></pre><p>其中，本人的主类文件位于<code>/src/main/kotlin/main/Main.Kt</code>。可供参考。</p>
-<h3 id="-manifest-1">第三步 调整位置，让新添加的MANIFEST后来居上</h3>
+<h3 id="第三步-调整位置让新添加的manifest后来居上-">第三步 调整位置，让新添加的MANIFEST后来居上</h3>
 <ol>
 <li>还是刚才的那个地方，<strong>取消</strong>图中所示<code>Sort Elemets by Names and Types</code>，以便自定义排序。
 <img src="step4.png" alt=""></li>
 <li>点击上箭头，让<code>META-INF</code>目录上升到最上面。</li>
 </ol>
-<h3 id="-">第四步 完成</h3>
+<h3 id="第四步-完成-">第四步 完成</h3>
 <p>如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
 <img src="step5-ok.png" alt=""></p>
 <ol>
@@ -263,7 +652,7 @@ Main-Class: main.MainKt
 <li>这个时候你就会看到<code>/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar</code>。
 尝试在终端中运行，<code>java -jar xxxxxxx.main.jar</code>。没问题，正常执行！</li>
 </ol>
-<h2 id="heading-2">参考</h2>
+<h2 id="参考-">参考</h2>
 <ol>
 <li>本人刚开始参照的是这个：<a href="https://www.bilibili.com/read/cv456609/">将Kotlin项目打包为可执行JAR - Xabean</a></li>
 </ol>
@@ -277,7 +666,7 @@ Main-Class: main.MainKt
 类似案例：<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-">[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?</a></li>
 </ol>
 <p>如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。</p>
-                    <HR width="100%">
+                    <HR width="100%" id="EOF">
                     <p style="color:#777;">Last modified on 2019-08-11</p>
                 </div>
                 
