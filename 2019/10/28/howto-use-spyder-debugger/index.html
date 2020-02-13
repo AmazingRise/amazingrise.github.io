@@ -38,7 +38,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.cd0d44d59a2dd36ac7a9d73f72788f30f13b80c95e891ef77a06396fbe0a5d64.css" integrity="sha256-zQ1E1Zot02rHqdc/cniPMPE7gMleiR73egY5b74KXWQ=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.75e350a979186b10ecf739a405199a5eaf37fd6bd3463a78ae5c70c634963fde.css" integrity="sha256-deNQqXkYaxDs9zmkBRmaXq83/WvTRjp4rlxwxjSWP94=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
 <script src="https://amazingrise.net/js/table.js"></script>
@@ -51,22 +51,20 @@ if (!doNotTrack) {
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
 </script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/vendor/js/md5.min.js"></script>
-<script>
-  var gitalk = new Gitalk({
-  clientID: 'b67e7e31e7dc175e0778',
-  clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
-  repo: 'amazingrise.github.io',
-  owner: 'amazingrise',
-  admin: ['amazingrise'],
-  id: md5(location.pathname),
-  distractionFreeMode: 'false'
-  });
-  window.onload = function () {
-        gitalk.render('gitalk-container')
-  }
+
+<script type="text/javascript">
+$(
+  (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+  })(document, 'script'));
 </script>
 
 </head><body>
@@ -1261,11 +1259,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>首先,这是一个面向Python初学者的文章.
 考虑到本篇文章的读者可能都是从Anaconda开始的,所以我在此以Spyder为例讲解调试器的使用.
 其他IDE的调试功能其实大同小异.</p>
-<hr>
+<hr />
 <h1 id="spyder初体验">Spyder初体验</h1>
 <h2 id="熟悉spyder的界面">熟悉Spyder的界面</h2>
 <p>我们先来熟悉一下Spyder的界面.
-<img src="spyder-main.png" alt=""></p>
+<img src="spyder-main.png" alt="" /></p>
 <ul>
 <li>最上面有一排按钮,我们俗称工具栏.</li>
 <li>在左侧,我们可以写代码. 按一下工具栏上<strong>绿色</strong>的开始按钮,即可开始运行程序.</li>
@@ -1324,33 +1322,33 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <ol>
 <li>
 <p>想要开始调试,我们需要按下图中所示的<strong>1号按钮</strong>(Debug File).
-<img src="spyder-debug.png" alt=""></p>
+<img src="spyder-debug.png" alt="" /></p>
 </li>
 <li>
 <p>然后我们再<strong>点击一下</strong>下图中红色箭头所指的<code>Variable explorer</code>.</p>
 <ul>
 <li>红色箭头: 一定要记住,我们一定要<strong>切换</strong>到下图中红色箭头所指的<code>Variable explorer</code>,这样我们才可以看到变量此时的值. (不过因为我们还没有执行第一行代码,所以这里是空的.)
-<img src="start-debug-1.png" alt=""></li>
+<img src="start-debug-1.png" alt="" /></li>
 <li>蓝色箭头: 它所指的地方,上面有个<code>----&gt;</code>的符号,并且后面有<strong>行号</strong>1.这代表当前调试器<strong>将要</strong>(还未)运行第一行代码. <em>(划重点,不要搞错,「将要」)</em></li>
 </ul>
 </li>
 </ol>
-<hr>
+<hr />
 <h3 id="开始逐行调试">开始逐行调试</h3>
 <p>现在,按下图中所示的2号按钮**(以下称为Run Current Line)**,开始在调试器里面运行下一行代码.
-<img src="spyder-debug.png" alt=""></p>
+<img src="spyder-debug.png" alt="" /></p>
 <p>我们可以看到,<code>Variable explorer</code>里面多出了变量<code>a</code>.
 其中<code>Name</code>代表这个变量的<strong>名称</strong>,第二栏<code>Type</code>是这个变量的<strong>类型</strong>.而最后一栏<code>Value</code>是该变量的<strong>值</strong>.(Size不用管,暂时用不上.)
 并且控制台中的<code>----&gt;</code>符号指向了第二行. 说明第一行执行完毕,再次点击将执行第二行.
-<img src="start-debug-2.png" alt=""></p>
+<img src="start-debug-2.png" alt="" /></p>
 <p>举个例子:
 以图中的变量<code>a</code>为例,这个变量的名称是<code>a</code>,它的类型是<code>int</code>,值为<code>0</code>.
 (正好也和我们预期的情况相同&ndash;我们执行了一句<code>a=0</code>)</p>
-<hr>
+<hr />
 <p>我们接着点刚才的<strong>Run Current Line</strong>.可以看到,<code>Variable explorer</code>中又多出了第二行变量<code>i</code>.并且此时控制台中的<code>----&gt;</code>指向了第三行.
-<img src="start-debug-3.png" alt="">
+<img src="start-debug-3.png" alt="" />
 这说明此时,<code>i</code>的值为<code>0</code>,<code>a</code>的值也为<code>0</code>.</p>
-<hr>
+<hr />
 <p>我们点击<strong>Run Current Line</strong>(这是第三次).发现<code>i</code>的值由<code>0</code>变为<code>1</code>.
 再点击一次<strong>Run Current Line</strong>(这是第四次),<code>a</code>的值也变成了<code>1</code>.
 注意一下,经过四次逐行执行,控制台输出如下:</p>
@@ -1363,12 +1361,12 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
       5 print(a)
 </code></pre><p>我们可以看到,<code>----&gt;</code>符号指向第二行(for所在的那行).
 这说明此时第一次for循环执行完毕.由于还有<strong>后面的循环</strong>,所以这里程序要<strong>跳回for循环的起始位置</strong>,继续进行剩下几次循环.</p>
-<hr>
+<hr />
 <p>我们通过逐行调试,可以很直观清楚地跟踪程序的运行过程.
 如果我们想中途停止此次调试,只需要点击一下<strong>6号按钮</strong>,即<code>Stop Debugging</code>.
-<img src="spyder-debug.png" alt=""></p>
+<img src="spyder-debug.png" alt="" /></p>
 <p>这就是逐行调试了.</p>
-<hr>
+<hr />
 <h3 id="小总结">小总结</h3>
 <p>来总结一下:</p>
 <ol>
@@ -1383,7 +1381,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <li><code>Variable explorer</code>中将显示当前存在的所有变量. <code>Type</code>表示该变量的类型<code>Value</code>一栏将显示变量的值.(不要看走眼,不是<code>Size</code>一栏)</li>
 <li>在控制台中,我们可以通过<code>----&gt;</code>这个符号所指向的行数,看到即将被执行的代码是哪一行.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="第二招式---断点调试">第二招式 - 断点调试</h2>
 <p>断点调试顾名思义,是可以在某一行(或多行)设置断点,对该行进行调试.
 而逐行调试是对每一行进行调试.
@@ -1391,7 +1389,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>如果你能搞清楚逐行调试,那么断点调试也不难.</p>
 <h3 id="设置断点">设置断点</h3>
 <p>如图. 双击某一行行号前面的空白处,之后在这个地方会出现如图所示的小红点.
-<img src="set-breakpoint.png" alt="">
+<img src="set-breakpoint.png" alt="" />
 这个小红点就是我们所说的断点.</p>
 <h3 id="开始调试">开始调试</h3>
 <p>如图所示,我们现在在<strong>第3行,第4行</strong>设置<strong>两个</strong>断点.</p>
@@ -1407,7 +1405,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 所以此时即将运行<strong>第一个断点处,即第三行.</strong></p>
 <h3 id="继续调试">继续调试</h3>
 <p>程序的执行此时暂停.我们要让它继续运行,需要按一下第五个按钮,即<code>Continue executation until next breakpoint</code>:
-<img src="spyder-debug.png" alt="">
+<img src="spyder-debug.png" alt="" />
 这个按钮的意思就是,继续执行直到下一个断点.
 因为我们第二个断点设置在第四行,所以代码将继续执行,在<strong>将要执行</strong>第四行的时候会暂停.</p>
 <h3 id="断点调试小总结">断点调试小总结</h3>
@@ -1419,16 +1417,16 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <li>点击<code>Continue executation until next breakpoint</code>执行到下一个断点处.</li>
 <li>通过点击<code>Stop Debugging</code>,我们可以停止调试.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="调试器总结">调试器总结</h2>
 <p>几点需要注意的地方:</p>
 <ul>
 <li>每次打开Spyder的时候,右上方区域默认显示的是<code>Help</code>. 所以我们需要手动切换到<code>Variable explorer</code>.</li>
 <li>在调试的时候,<code>----&gt;</code>指向的是即将执行的代码,而<strong>不是已经执行的代码</strong>.</li>
 <li>当一次调试完毕后,开始第二次调试的时候,<code>Variable explorer</code><strong>不会</strong>自己清空. 这点一定要注意,上一次调试残留的变量的值仍然会留在<code>Variable explorer</code>里面. 所以我们可以按一下下图所示的按钮清空.
-<img src="clear-explorer.png" alt=""></li>
+<img src="clear-explorer.png" alt="" /></li>
 </ul>
-<hr>
+<hr />
 <h1 id="写在最后">写在最后</h1>
 <p>调试是IDE中很重要的一个功能.
 这篇文章虽然字很多,但实际上用起来是很简单的,它并不复杂,而且很适合新手.
@@ -1461,8 +1459,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
 
 
-<div id="gitalk-container"></div>
 
+
+<div id="lv-container" data-id="city" data-uid=MTAyMC80NzI0MC8yMzc0MA&#61;&#61;>
+    <noscript>Please activate JavaScript to use Livere Comment.</noscript>
+</div>
 
             </div>
         </div>

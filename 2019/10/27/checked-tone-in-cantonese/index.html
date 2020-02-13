@@ -38,7 +38,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.cd0d44d59a2dd36ac7a9d73f72788f30f13b80c95e891ef77a06396fbe0a5d64.css" integrity="sha256-zQ1E1Zot02rHqdc/cniPMPE7gMleiR73egY5b74KXWQ=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.75e350a979186b10ecf739a405199a5eaf37fd6bd3463a78ae5c70c634963fde.css" integrity="sha256-deNQqXkYaxDs9zmkBRmaXq83/WvTRjp4rlxwxjSWP94=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
 <script src="https://amazingrise.net/js/table.js"></script>
@@ -51,22 +51,20 @@ if (!doNotTrack) {
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
 </script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/vendor/js/md5.min.js"></script>
-<script>
-  var gitalk = new Gitalk({
-  clientID: 'b67e7e31e7dc175e0778',
-  clientSecret: '8376f30c8ee30edb8b5b1e28683ec3cfee8c1231',
-  repo: 'amazingrise.github.io',
-  owner: 'amazingrise',
-  admin: ['amazingrise'],
-  id: md5(location.pathname),
-  distractionFreeMode: 'false'
-  });
-  window.onload = function () {
-        gitalk.render('gitalk-container')
-  }
+
+<script type="text/javascript">
+$(
+  (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') { return; }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+  })(document, 'script'));
 </script>
 
 </head><body>
@@ -739,7 +737,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低.
 对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法.
 以现代汉语普通话的四个声调爲例,我放出一张用<em>五度标记法</em>标记的四个声调的图,大家先体会一下.</p>
-<p><img src="pinyin-tone-chart.png" alt=""></p>
+<p><img src="pinyin-tone-chart.png" alt="" /></p>
 <p>图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.</p>
 <p>曲线法很直观,声调越高,曲线中对应的那一点越高.
 而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.</p>
@@ -824,7 +822,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>下面附上更加直观的曲线法.
 其中省略了7 8 9三个声调,因爲它们的音高与1 3 6的起点是相同的.
 (图片援引自<a href="http://www.cantonese.asia/portal.php?mod=view&amp;aid=229">粤语协会</a>)
-<img src="tone.jpg" alt=""></p>
+<img src="tone.jpg" alt="" /></p>
 <p>有一个简单的方法,你需要找一个会广州话的人,分别读一下「三 九 四 零 五 二 七 八 六」.
 这九个数字正好分别对应粤拼的1 2 3 4 5 6 7 8 9声.</p>
 <p>如果读者在此对于区分六个音调仍然存疑,可进入这个网站:<a href="http://www.iso10646hk.net/jp/learning/course_03.jsp">香港语言学学会粤语拼音方案</a>进行音频试听.
@@ -914,8 +912,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
 
 
-<div id="gitalk-container"></div>
 
+
+<div id="lv-container" data-id="city" data-uid=MTAyMC80NzI0MC8yMzc0MA&#61;&#61;>
+    <noscript>Please activate JavaScript to use Livere Comment.</noscript>
+</div>
 
             </div>
         </div>
