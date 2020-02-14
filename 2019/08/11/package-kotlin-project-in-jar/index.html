@@ -52,20 +52,21 @@ if (!doNotTrack) {
 </script>
 
 
-<script type="text/javascript">
-$(
-  (function(d, s) {
-      var j, e = d.getElementsByTagName(s)[0];
 
-      if (typeof LivereTower === 'function') { return; }
 
-      j = d.createElement(s);
-      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-      j.async = true;
 
-      e.parentNode.insertBefore(j, e);
-  })(document, 'script'));
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+  $(new Valine({
+      
+      avator: 'identicon',
+      
+      el: '#vcomments',
+      appId: 'BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz',
+      appKey: 'xuYy5CEXceKSggBBKRQr7Ysf'
+  }));
 </script>
+
 
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
@@ -95,7 +96,7 @@ $(
             
                 
                 
-                <a class="a-block nav-link-item false" href="/about">
+                <a class="a-block nav-link-item false" href="/about/index.html">
                     關於
                 </a>
         
@@ -338,7 +339,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                     
                     
-                    <a class="a-block drawer-menu-item false" href="/about">
+                    <a class="a-block drawer-menu-item false" href="/about/index.html">
                         關於
                     </a>
             
@@ -691,9 +692,9 @@ Main-Class: main.MainKt
 
 
 
-<div id="lv-container" data-id="city" data-uid=MTAyMC80NzI0MC8yMzc0MA&#61;&#61;>
-    <noscript>Please activate JavaScript to use Livere Comment.</noscript>
-</div>
+<div id="vcomments"></div>
+
+
 
             </div>
         </div>
