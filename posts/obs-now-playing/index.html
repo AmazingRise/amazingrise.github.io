@@ -38,7 +38,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.75e350a979186b10ecf739a405199a5eaf37fd6bd3463a78ae5c70c634963fde.css" integrity="sha256-deNQqXkYaxDs9zmkBRmaXq83/WvTRjp4rlxwxjSWP94=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.f9aa2ef90b19ac8d29363dbd51d4350621537cb3340dd7c6bacf18e3c426f4d5.css" integrity="sha256-&#43;aou&#43;QsZrI0pNj29UdQ1BiFTfLM0DdfGus8Y48Qm9NU=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
 <script src="https://amazingrise.net/js/table.js"></script>
@@ -85,6 +85,15 @@ if (!doNotTrack) {
 
     <div class="nav-link-list">
         
+        
+            
+                
+                
+                    
+                
+                <a class="a-block nav-link-item active" href="/posts">
+                    歸檔
+                </a>
         
             
                 
@@ -300,6 +309,15 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     <div class="drawer-content">
         <div class="drawer-menu">
             
+            
+                
+                    
+                    
+                        
+                    
+                    <a class="a-block drawer-menu-item active" href="/posts">
+                        歸檔
+                    </a>
             
                 
                     
@@ -569,11 +587,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>仔细看该项目的源代码，可以找到<a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14">这几行</a>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> {
     <span style="color:#a6e22e">name</span>(<span style="color:#a6e22e">suffix</span>) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">suffix</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">org.mpris.MediaPlayer2.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">suffix</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">suffix</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`org.mpris.MediaPlayer2.</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">suffix</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;org.mpris.MediaPlayer2&#39;</span>;
     },
     <span style="color:#a6e22e">path</span>(<span style="color:#a6e22e">suffix</span>) {
-        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">suffix</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">/org/mpris/MediaPlayer2/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">suffix</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">suffix</span>) <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`/org/mpris/MediaPlayer2/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">suffix</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
         <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;/org/mpris/MediaPlayer2&#39;</span>;
     }
 };
@@ -641,13 +659,13 @@ echo <span style="color:#e6db74">&#34;</span>$NOSONG<span style="color:#e6db74">
 
 	<span style="color:#75715e"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。</span>
 
-	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$NAME<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>
+	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$NAME<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">]</span>
 	<span style="color:#66d9ef">then</span>
 		CONTENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$NOSONG<span style="color:#e6db74">&#34;</span>
 	<span style="color:#66d9ef">else</span>
 		CONTENT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$PREFIX<span style="color:#e6db74"> </span>$NAME<span style="color:#e6db74"> - </span>$ARTIST<span style="color:#e6db74">&#34;</span>
 	<span style="color:#66d9ef">fi</span>
-	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$CONTENT<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>cat $FILENAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
+	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$CONTENT<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>cat $FILENAME<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>
 	<span style="color:#66d9ef">then</span>
 		sleep 1;
 	<span style="color:#66d9ef">else</span>
