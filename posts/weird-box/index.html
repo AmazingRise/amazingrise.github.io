@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Posts</title>
+<title>一个奇怪的提问箱</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,8 @@ if (!doNotTrack) {
 <script src="https://amazingrise.net/js/table.js"></script>
 
 
+<script src="https://amazingrise.net/js/toc.js"></script>
+
 
 <script>
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
@@ -52,6 +54,21 @@ if (!doNotTrack) {
 
 
 
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+  $(new Valine({
+      
+      avator: 'identicon',
+      
+      el: '#vcomments',
+      appId: 'BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz',
+      appKey: 'xuYy5CEXceKSggBBKRQr7Ysf',
+      visitor: true,
+      recordIP: true,
+      verify: true
+  }));
+</script>
 
 
 </head><body>
@@ -126,30 +143,95 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     
 </div><div ref="extraContainer" class="extra-container">
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#welcome" v-on:click="closeDrawer" id="welcome-nav">
+										 Welcome
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#rules" v-on:click="closeDrawer" id="rules-nav">
+										 Rules
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#about" v-on:click="closeDrawer" id="about-nav">
+										 About
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
         </a>
-        
-        
-            <div class="pagination-indicator">
-                <span style="text-align: center">
-                    2<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
-                </span>
-            </div>
-            
-            
-            <a class="pagination-action" href="/posts/">
-                <i class="material-icons pagination-action-icon">
-                    chevron_left
-                </i>
-            </a>
-            
-
-            
-        
         
     </div>
 </div><div class="single-column-drawer-container" ref="drawer"
@@ -196,6 +278,89 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                     </a>
             
             
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#welcome" v-on:click="closeDrawer" id="welcome-nav">
+										 Welcome
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#rules" v-on:click="closeDrawer" id="rules-nav">
+										 Rules
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#about" v-on:click="closeDrawer" id="about-nav">
+										 About
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+            
         </div>
     </div>
 </div>
@@ -228,97 +393,78 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <div id="content">
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
-        
-            <a class="a-block">
-                <div class="post-item-wrapper post-item-wrapper-no-hover">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title post-item-title-small year">
-                                2019
-                            </div>
-                        </div>
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('/')">
+                
+                <img src="https://amazingrise.net" style="display: none;"></img>
+                <div class="post-title">
+                    一个奇怪的提问箱
+                    <div class="post-meta">
+                        
+
+                        
+
+                        
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="/2019/04/20/manjaro-optimus-dual-monitor/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                Manjaro 在笔记本上的多显示器配置
-                            </div>
-                            <div class="post-item-meta">
-                                Apr 20, 2019
-    
-                                
-                            </div>
-                        </div>
-                    </div>
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <h2 id="welcome">Welcome</h2>
+<p>Hello~ 这里是 Rise 的匿名提问箱.</p>
+<p>(留一个<code>Name</code>就可以了,邮箱和网站是可选选项.)</p>
+<h2 id="rules">Rules</h2>
+<blockquote>
+<p>请尽情提问,但不能问涉及个人信息的问题.</p>
+</blockquote>
+<h2 id="about">About</h2>
+<p>这个箱子是博客上的一个特殊的隐藏页面.(自己搭建博客可比现成平台好玩多了)</p>
+<p>这个箱子的来历:</p>
+<blockquote>
+<p>当然就是朋友圈跟风啦.<del>这绝对是朋友圈里最拉风的提问箱.</del>(不是</p>
+</blockquote>
+
+                    
                 </div>
-            </a>
+            </div>
             
-        
-            <a class="a-block">
-                <div class="post-item-wrapper post-item-wrapper-no-hover">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title post-item-title-small year">
-                                0001
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
             
-            <a href="/posts/weird-box/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                一个奇怪的提问箱
-                            </div>
-                            <div class="post-item-meta">
-                                Jan 1, 0001
-    
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
-        
-    </div>
-</div>
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://amazingrise.net/friends/">
+                    Next<br>Rise 的朋友们
+                </a>
+                
+                
+                
+                <a class="older-posts">
+                    Previous<br>No older posts.
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+<div id="vcomments"></div>
+
 
 
             </div>
-
-<div class="pagination">
-    
-    <a class="pagination-action" href="/posts/" style="opacity:1">
-    
-        <i class="material-icons pagination-action-icon">
-            chevron_left
-        </i>
-    </a>
-
-        <div class="pagination-indicator">
-            <span>2/2</span>
         </div>
-
-        
-            <a class="pagination-action" style="opacity:0">
-        
-                <i class="material-icons pagination-action-icon">
-                    chevron_right
-                </i>
-            </a>
+    </div>
 </div>
 
-
-<div id="single-column-footer">Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
+            </div><div id="single-column-footer">Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
 <br>
 Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
 <br>
