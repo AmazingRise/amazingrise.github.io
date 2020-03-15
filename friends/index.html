@@ -146,6 +146,46 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
 
 
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%3ch4%20class%3d%22card-title%22%3e%3cslot%3e%3c%2fslot%3e%3c%2fh4%3e" v-on:click="closeDrawer" id="&lt;h4 class=&#34;card-title&#34;&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h4&gt;-nav">
+										 
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
 </div>
     
     <div class="pagination">
@@ -202,6 +242,46 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
             <div class="toc">
 
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%3ch4%20class%3d%22card-title%22%3e%3cslot%3e%3c%2fslot%3e%3c%2fh4%3e" v-on:click="closeDrawer" id="&lt;h4 class=&#34;card-title&#34;&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h4&gt;-nav">
+										 
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
 
 </div>
             
@@ -260,28 +340,53 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <table>
-<thead>
-<tr>
-<th>网站的名字</th>
-<th>作者</th>
-<th>链接</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>小白鸽</td>
-<td>Fish Blanca</td>
-<td><a href="https://blanca.world">https://blanca.world</a></td>
-</tr>
-<tr>
-<td>存在感消失的地方</td>
-<td>Akarin</td>
-<td><a href="https://akarin.dev">https://akarin.dev</a></td>
-</tr>
-</tbody>
-</table>
+                    <div class="container">
+    <div id="friend-list" class="row">
+        <friend
+            description="小白鸽"
+            url="https://blanca.world"
+            avator="https://avatars2.githubusercontent.com/u/29428546?s=460&v=4"
+            github="xclwt">
+            Fish Blanca
+        </friend>
+        <br>
+        <friend
+            description="存在感消失的地方"
+            url="https://akarin.dev/"
+            avator="https://avatars1.githubusercontent.com/u/47057319?s=460&v=4"
+            github="TransparentLC">
+            Akarin
+        </friend>
+    </div>
+</div>
 
+<script type="text/javascript">
+    Vue.component('friend',{
+        props:['avator','github','url','description'],
+        template: `
+        <div class="card-container col-xs-6" style="margin:1rem;width:20rem;">
+            <div class="card">
+                <div class="row no-gutters" >
+                    <div class="col-auto">
+                        <img v-bind:src="avator"  style="width: 6rem;" class="img-fluid">
+                    </div>
+                    <div class="col">
+                        <div class="card-block px-2" style="margin: 0.5rem;">
+                            <h4 class="card-title"><slot></slot></h4>
+                            <p class="card-text small"> {{description}} <br> <a v-bind:href="url">{{url}}</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer w-100 text-muted">
+                    <p class="card-text small"><a v-bind:href="'https://github.com/' + github" class="card-subtitle mb-2 text-muted">{{github}}@GitHub</a></p>
+                    
+                </div>
+            </div>
+        </div>
+        `
+    });
+ 
+</script>
                     
                 </div>
             </div>
