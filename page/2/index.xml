@@ -13,6 +13,78 @@
     
     
         <item>
+        <title>如何把Kotlin项目打包为可执行的jar</title>
+        <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
+        <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
+        
+        <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
+        <description>左手的世界 https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ -&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
+该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
+于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;正确的食用方式-&#34;&gt;正确的食用方式&lt;/h2&gt;
+&lt;p&gt;如何正确地将Kotlin项目封装为jar，
+并且避免上述的错误？&lt;/p&gt;
+&lt;h3 id=&#34;第一步-创建jar-artifacts-&#34;&gt;第一步 创建Jar Artifacts&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）&lt;/li&gt;
+&lt;li&gt;然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
+&lt;img src=&#34;step1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
+请注意&lt;strong&gt;将Main Class一栏留空，让它自己判断。&lt;/strong&gt;（前提是你写的主函数的格式是正确的）
+&lt;img src=&#34;step2.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第二步-手动添加manifest-&#34;&gt;第二步 手动添加MANIFEST&lt;/h3&gt;
+&lt;p&gt;为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;点击图示中的按钮&lt;code&gt;Create Directory&lt;/code&gt;，创建一个新的文件夹，名字叫&lt;code&gt;META-INF&lt;/code&gt;
+&lt;img src=&#34;step3.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;选中&lt;code&gt;META-INF&lt;/code&gt;，点击上图中的&lt;code&gt;+&lt;/code&gt;按钮，再点击菜单中的&lt;code&gt;File&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;这时，我们选择工程根目录下的&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;，以便将&lt;code&gt;MANIFEST.MF&lt;/code&gt;添加到该文件夹下。&lt;/li&gt;
+&lt;li&gt;如果成功的话，你会在这个窗口中看到&lt;code&gt;META-INF&lt;/code&gt;里面有刚刚添加的&lt;code&gt;MANIFEST.MF&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt; 核对一下&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;的内容，应该为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Manifest-Version: 1.0
+Main-Class: main.MainKt
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，本人的主类文件位于&lt;code&gt;/src/main/kotlin/main/Main.Kt&lt;/code&gt;。可供参考。&lt;/p&gt;
+&lt;h3 id=&#34;第三步-调整位置让新添加的manifest后来居上-&#34;&gt;第三步 调整位置，让新添加的MANIFEST后来居上&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;还是刚才的那个地方，&lt;strong&gt;取消&lt;/strong&gt;图中所示&lt;code&gt;Sort Elemets by Names and Types&lt;/code&gt;，以便自定义排序。
+&lt;img src=&#34;step4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;点击上箭头，让&lt;code&gt;META-INF&lt;/code&gt;目录上升到最上面。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;第四步-完成-&#34;&gt;第四步 完成&lt;/h3&gt;
+&lt;p&gt;如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
+&lt;img src=&#34;step5-ok.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上述步骤确认无误了之后，&lt;code&gt;Apply&lt;/code&gt;，&lt;code&gt;OK&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;主界面菜单栏，选择&lt;code&gt;Build&lt;/code&gt;菜单栏下的&lt;code&gt;Build Artifacts&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在新弹出的窗口中选择&lt;code&gt;Build&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;这个时候你就会看到&lt;code&gt;/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar&lt;/code&gt;。
+尝试在终端中运行，&lt;code&gt;java -jar xxxxxxx.main.jar&lt;/code&gt;。没问题，正常执行！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考-&#34;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;本人刚开始参照的是这个：&lt;a href=&#34;https://www.bilibili.com/read/cv456609/&#34;&gt;将Kotlin项目打包为可执行JAR - Xabean&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;但是用方法1，运行jar时，java会提示&lt;code&gt;没有主清单属性&lt;/code&gt;的问题。&lt;/li&gt;
+&lt;li&gt;用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;后来参照类似案例才解决了这个问题。
+类似案例：&lt;a href=&#34;https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-&#34;&gt;[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。&lt;/p&gt;- https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
         <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
         <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
         <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>

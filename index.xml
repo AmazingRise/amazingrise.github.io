@@ -13,6 +13,182 @@
     
     
         <item>
+        <title>初识 Vue 之 - 用 Vue 组件减少代码量</title>
+        <link>https://amazingrise.net/posts/getting-to-know-vue-components/</link>
+        <pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate>
+        
+        <guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid>
+        <description>左手的世界 https://amazingrise.net/posts/getting-to-know-vue-components/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;这又是一篇很基础很基础的文章。&lt;del&gt;（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;本篇文章主要讲述如何用 Vue Components 减少重复代码量。&lt;/p&gt;
+&lt;h2 id=&#34;需求&#34;&gt;需求&lt;/h2&gt;
+&lt;p&gt;博客的友链页是由一个表格构成的：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;url&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;张三&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://zhangsan.com&#34;&gt;https://zhangsan.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;张三的挖坑日记&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;李四&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://lisi.com&#34;&gt;https://lisi.com&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;李四的网络日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;不行，这太简陋了。如何编写一个更好的友链页呢？&lt;/p&gt;
+&lt;h1 id=&#34;实现&#34;&gt;实现&lt;/h1&gt;
+&lt;p&gt;那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。&lt;/p&gt;
+&lt;h2 id=&#34;实现1-不用-vue&#34;&gt;实现1 不用 Vue&lt;/h2&gt;
+&lt;p&gt;下面我们用 Bootstrap 的卡片实现一个友链卡片。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;张三的挖坑日记&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 链接 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;https://zhangsan.com&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实现效果如下：&lt;/p&gt;
+&lt;div class=&#34;card&#34; style=&#34;width:20rem;margin:1rem;&#34;&gt;
+    &lt;div class=&#34;card-body&#34;&gt;
+        &lt;p class=&#34;h4&#34;&gt;张三&lt;/p&gt;
+        &lt;p&gt;张三的挖坑日记&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;card-footer&#34;&gt;
+        &lt;a href=&#34;https://zhangsan.com&#34;&gt;https://zhangsan.com&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这个做法有两个缺点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果我们来了一位新的朋友，需要再次复制粘贴，这很不合理。&lt;/li&gt;
+&lt;li&gt;如果我们需要修改卡片的样式，我们需要手动修改 n 次（n=朋友的个数）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实现2-vue-app&#34;&gt;实现2 Vue App&lt;/h2&gt;
+&lt;p&gt;引入 Vue，利用&lt;code&gt;v-for&lt;/code&gt;我们可以提高代码的复用性。&lt;/p&gt;
+&lt;p&gt;先定义一个 Vue App，然后把朋友们以数组的形式录入 &lt;code&gt;data&lt;/code&gt; 中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;({
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;el&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;#app&amp;#39;&lt;/span&gt;,
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;friends&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; [
+        {
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;张三&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://zhangsan.com/&amp;#34;&lt;/span&gt;
+        },
+        {
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;李四&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://lisi.com/&amp;#34;&lt;/span&gt;
+        }
+    ]
+  }
+})&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们用&lt;code&gt;v-for&lt;/code&gt;遍历一下&lt;code&gt;friends&lt;/code&gt;这个元素。&lt;/p&gt;
+&lt;div v-pre&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&amp;gt;&lt;/span&gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-for&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;friend in friends&amp;#34;&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;{{friend.name}}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;{{friend.description}}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 链接，注意 这个地方要用v-bind:href --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;v-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;bind:href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;friend.url&amp;#34;&lt;/span&gt;&amp;gt;{{friend.url}}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- v-bind 也可以缩写为 `:url=&amp;#34;friend.url&amp;#34;` 。 --&amp;gt;&lt;/span&gt;
+        &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样可以复用卡片代码，并且修改样式也很方便了。&lt;/p&gt;
+&lt;p&gt;但这个代码还是不完美：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首先，如果你有个新的朋友，却需要修改 Vue App 的 &lt;code&gt;data&lt;/code&gt; 属性。为了 HTML 内容而修改 Javascript 是很不合理的。我们需要给 Javascript 和 HTML 解藕。&lt;/li&gt;
+&lt;li&gt;不过为这一个页面开一个 Vue App 是不是有点小题大作呢？ 而且更重要的一点是，一山不容二虎，嵌套 Vue App 会导致奇怪的 Bug。&lt;del&gt;（禁止套娃&lt;/del&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;实现3-vue-组件&#34;&gt;实现3 Vue 组件&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How can we do better?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div v-pre&gt;
+&lt;p&gt;如果有这么一种写法，就比较完美了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://lisi.com&amp;#34;&lt;/span&gt;&amp;gt;李四&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很幸运的是，Vue.js 提供这种功能。&lt;/p&gt;
+&lt;p&gt;我们可以定义一个 Vue Component。这里要引入两样东西：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-slots.html&#34;&gt;slot&lt;/a&gt; 写在模板中，用来插入标签中间的数据，即&lt;code&gt;&amp;lt;friend&amp;gt;&amp;lt;/friend&amp;gt;&lt;/code&gt;中间的内容。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-props.html&#34;&gt;props&lt;/a&gt; 用于提取标签属性中的数据，如&lt;code&gt;&amp;lt;friend url=&amp;quot;xxx&amp;quot;...&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Vue&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;component&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;friend&amp;#39;&lt;/span&gt;,{
+        &lt;span style=&#34;color:#75715e&#34;&gt;// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;props&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;url&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;],
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;`
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;!-- 标题，这里用了slot，目的是在这里插入“&amp;lt;friend&amp;gt;这里&amp;lt;/friend&amp;gt;”的内容。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;!-- 描述，这里就是对“&amp;lt;friend description=&amp;#34;这里&amp;#34;...”内容的提取。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;p&amp;gt;{{ description }}&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;a v-bind:href=&amp;#34;url&amp;#34;&amp;gt;{{url}}&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;lt;!-- v-bind 也可以缩写为 :url=&amp;#34;friend.url&amp;#34; 。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        `&lt;/span&gt;
+    });
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样我们就实现了一个可复用的 Vue 组件了，而且上面的问题我们已经完美解决了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果我们新增了一个朋友，就只需要在页面相应地方里面写一句：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;描述&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;网址&amp;#34;&lt;/span&gt;&amp;gt;朋友的名字&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Vice versa，如果我们需要修改卡片的样式，我们只需要修改组件的 &lt;code&gt;template&lt;/code&gt; 里面的代码（当然你可以进一步将 CSS 分离出来）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本方法用的是 Vue 组件，它不会与原有的 Vue App 冲突（不过组件必须要写在 Vue App 里面。）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;如果你对上文所说内容仍有疑惑，可以翻看下面的链接。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.runoob.com/bootstrap4/bootstrap4-cards.html&#34;&gt;Bootstrap 4 卡片 菜鸟教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/syntax.html#Attribute&#34;&gt;Vue - 模板语法 和 Attribute&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-slots.html&#34;&gt;Vue - 组件模板中插槽的使用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-props.html&#34;&gt;Vue - 组件的 props 属性&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;后记&#34;&gt;后记&lt;/h1&gt;
+&lt;p&gt;复制粘贴永远都是愚蠢的做法，而反人类的设计早有一日会被崭新的设计替代。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How can we do better?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这句话是 Robert Sedgewick 老先生在算法公开课里面经常提到的。只有不断思考&lt;code&gt;How can we do better&lt;/code&gt;，认知才会不断提高。否则对着一个愚蠢的做法沾沾自喜，永远不会有进步。&lt;/p&gt;
+&lt;p&gt;另外有问题的话，欢迎在评论区交流。&lt;/p&gt;
+- https://amazingrise.net/posts/getting-to-know-vue-components/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
         <title>今天你是锦鲤吗</title>
         <link>https://amazingrise.net/posts/koi-carp-scam/</link>
         <pubDate>Sun, 16 Feb 2020 12:29:40 +0800</pubDate>
@@ -664,78 +840,6 @@ echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$NOSONG&lt;
 &lt;h1 id=&#34;未完待续&#34;&gt;未完待续&lt;/h1&gt;
 &lt;p&gt;剩下的，留着我有时间补充吧。&lt;/p&gt;
 - https://amazingrise.net/about/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>如何把Kotlin项目打包为可执行的jar</title>
-        <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
-        <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ -&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
-该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
-于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
-然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;正确的食用方式-&#34;&gt;正确的食用方式&lt;/h2&gt;
-&lt;p&gt;如何正确地将Kotlin项目封装为jar，
-并且避免上述的错误？&lt;/p&gt;
-&lt;h3 id=&#34;第一步-创建jar-artifacts-&#34;&gt;第一步 创建Jar Artifacts&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）&lt;/li&gt;
-&lt;li&gt;然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
-&lt;img src=&#34;step1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
-请注意&lt;strong&gt;将Main Class一栏留空，让它自己判断。&lt;/strong&gt;（前提是你写的主函数的格式是正确的）
-&lt;img src=&#34;step2.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;第二步-手动添加manifest-&#34;&gt;第二步 手动添加MANIFEST&lt;/h3&gt;
-&lt;p&gt;为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;点击图示中的按钮&lt;code&gt;Create Directory&lt;/code&gt;，创建一个新的文件夹，名字叫&lt;code&gt;META-INF&lt;/code&gt;
-&lt;img src=&#34;step3.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;选中&lt;code&gt;META-INF&lt;/code&gt;，点击上图中的&lt;code&gt;+&lt;/code&gt;按钮，再点击菜单中的&lt;code&gt;File&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这时，我们选择工程根目录下的&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;，以便将&lt;code&gt;MANIFEST.MF&lt;/code&gt;添加到该文件夹下。&lt;/li&gt;
-&lt;li&gt;如果成功的话，你会在这个窗口中看到&lt;code&gt;META-INF&lt;/code&gt;里面有刚刚添加的&lt;code&gt;MANIFEST.MF&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt; 核对一下&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;的内容，应该为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Manifest-Version: 1.0
-Main-Class: main.MainKt
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，本人的主类文件位于&lt;code&gt;/src/main/kotlin/main/Main.Kt&lt;/code&gt;。可供参考。&lt;/p&gt;
-&lt;h3 id=&#34;第三步-调整位置让新添加的manifest后来居上-&#34;&gt;第三步 调整位置，让新添加的MANIFEST后来居上&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;还是刚才的那个地方，&lt;strong&gt;取消&lt;/strong&gt;图中所示&lt;code&gt;Sort Elemets by Names and Types&lt;/code&gt;，以便自定义排序。
-&lt;img src=&#34;step4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;点击上箭头，让&lt;code&gt;META-INF&lt;/code&gt;目录上升到最上面。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;第四步-完成-&#34;&gt;第四步 完成&lt;/h3&gt;
-&lt;p&gt;如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
-&lt;img src=&#34;step5-ok.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;上述步骤确认无误了之后，&lt;code&gt;Apply&lt;/code&gt;，&lt;code&gt;OK&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;主界面菜单栏，选择&lt;code&gt;Build&lt;/code&gt;菜单栏下的&lt;code&gt;Build Artifacts&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;在新弹出的窗口中选择&lt;code&gt;Build&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这个时候你就会看到&lt;code&gt;/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar&lt;/code&gt;。
-尝试在终端中运行，&lt;code&gt;java -jar xxxxxxx.main.jar&lt;/code&gt;。没问题，正常执行！&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;参考-&#34;&gt;参考&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;本人刚开始参照的是这个：&lt;a href=&#34;https://www.bilibili.com/read/cv456609/&#34;&gt;将Kotlin项目打包为可执行JAR - Xabean&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;但是用方法1，运行jar时，java会提示&lt;code&gt;没有主清单属性&lt;/code&gt;的问题。&lt;/li&gt;
-&lt;li&gt;用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;后来参照类似案例才解决了这个问题。
-类似案例：&lt;a href=&#34;https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-&#34;&gt;[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。&lt;/p&gt;- https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
