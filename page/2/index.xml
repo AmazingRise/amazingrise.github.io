@@ -247,7 +247,7 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;h2 id=&#34;解决方法-&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
 刚开始没有成功，&lt;strong&gt;后来在朋友的提醒下，发现原来我缺了一些步骤！&lt;/strong&gt;
-&lt;strong&gt;我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功～&lt;/strong&gt;
+&lt;strong&gt;我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。&lt;/strong&gt;
 以下内容均为本人的中文翻译。&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;原帖前言-&#34;&gt;原帖前言&lt;/h3&gt;
 &lt;p&gt;最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
@@ -292,13 +292,13 @@ bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
 &lt;p&gt;（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）
 （一般来说不用改）&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;（之前此处typo，十分感谢评论区朋友的更正～）&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;（之前此处typo，十分感谢评论区朋友的更正。）&lt;/p&gt;
 &lt;h3 id=&#34;第三步修改mhwd设置-&#34;&gt;第三步，修改MHWD设置&lt;/h3&gt;
 &lt;p&gt;（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。
 我们必须得改一下这个配置，这样PRIME才能生效。&lt;/p&gt;
 &lt;h4 id=&#34;另起炉灶-&#34;&gt;另起炉灶&lt;/h4&gt;
 &lt;p&gt;首先要删掉&lt;code&gt;/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code&gt;
-（如果你不放心可以mv嘛～）
+（如果你不放心可以mv嘛。）
 然后新建一个文件&lt;code&gt;/etc/X11/xorg.conf.d/optimus.conf&lt;/code&gt;：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;Section &amp;#34;Module&amp;#34;&lt;/span&gt;
     &lt;span style=&#34;color:#a6e22e&#34;&gt;Load &amp;#34;modesetting&amp;#34;&lt;/span&gt;
@@ -400,13 +400,13 @@ OpenGL vendor string: NVIDIA Corporation
 我折腾这个驱动，前前后后断断续续差不多半年了（摊手）
 这篇博客我写了两天才写完QAQ&lt;/p&gt;
 &lt;p&gt;希望我的这篇博文能帮到各位看官。 :)
-新开的评论区(Gitment)，有问题可以在下面留言哦～&lt;/p&gt;
+新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p&gt;
 &lt;p&gt;（2019-8 更新：感谢评论区的小伙伴的支持哦）&lt;/p&gt;
 &lt;h3 id=&#34;参考资料-&#34;&gt;参考资料&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/NVIDIA_Optimus&#34;&gt;Optimus - ArchWiki&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;github-评论区-&#34;&gt;GitHub 评论区&lt;/h3&gt;
-&lt;p&gt;本站评论区改为 Livere, 原评论区请&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/1&#34;&gt;移步至此&lt;/a&gt;.&lt;/p&gt;- https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
+&lt;p&gt;本站评论区改为 Valine, 原评论区请&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/1&#34;&gt;移步至此&lt;/a&gt;.&lt;/p&gt;- https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     

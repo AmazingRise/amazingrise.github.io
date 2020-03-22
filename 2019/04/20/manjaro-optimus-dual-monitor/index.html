@@ -38,7 +38,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.f9aa2ef90b19ac8d29363dbd51d4350621537cb3340dd7c6bacf18e3c426f4d5.css" integrity="sha256-&#43;aou&#43;QsZrI0pNj29UdQ1BiFTfLM0DdfGus8Y48Qm9NU=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.fe9699cfb63b93e90450f84ea789d33d60fabdb1564f5b9d69ceaeba1c07ec13.css" integrity="sha256-/paZz7Y7k&#43;kEUPhOp4nTPWD6vbFWT1udac6uuhwH7BM=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
 <script src="https://amazingrise.net/js/table.js"></script>
@@ -1208,8 +1208,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 
             <div class="post-head-wrapper-text-only"
                  style="background-image: url('/')">
-                
-                <img src="https://amazingrise.net" style="display: none;"></img>
                 <div class="post-title">
                     Manjaro 在笔记本上的多显示器配置
                     <div class="post-meta">
@@ -1271,7 +1269,7 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 <h2 id="解决方法-">解决方法</h2>
 <p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
 刚开始没有成功，<strong>后来在朋友的提醒下，发现原来我缺了一些步骤！</strong>
-<strong>我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功～</strong>
+<strong>我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。</strong>
 以下内容均为本人的中文翻译。<a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
 <h3 id="原帖前言-">原帖前言</h3>
 <p>最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
@@ -1316,13 +1314,13 @@ bumblebee很碍事，所以我们得先干掉它。</p>
 <p>（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）
 （一般来说不用改）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia
-</code></pre></div><p>（之前此处typo，十分感谢评论区朋友的更正～）</p>
+</code></pre></div><p>（之前此处typo，十分感谢评论区朋友的更正。）</p>
 <h3 id="第三步修改mhwd设置-">第三步，修改MHWD设置</h3>
 <p>（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。
 我们必须得改一下这个配置，这样PRIME才能生效。</p>
 <h4 id="另起炉灶-">另起炉灶</h4>
 <p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
-（如果你不放心可以mv嘛～）
+（如果你不放心可以mv嘛。）
 然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">Section &#34;Module&#34;</span>
     <span style="color:#a6e22e">Load &#34;modesetting&#34;</span>
@@ -1424,16 +1422,16 @@ OpenGL vendor string: NVIDIA Corporation
 我折腾这个驱动，前前后后断断续续差不多半年了（摊手）
 这篇博客我写了两天才写完QAQ</p>
 <p>希望我的这篇博文能帮到各位看官。 :)
-新开的评论区(Gitment)，有问题可以在下面留言哦～</p>
+新开的评论区(Gitment)，有问题可以在下面留言哦。</p>
 <p>（2019-8 更新：感谢评论区的小伙伴的支持哦）</p>
 <h3 id="参考资料-">参考资料</h3>
 <p><a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver</a></p>
 <p><a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus">Optimus - ArchWiki</a></p>
 <h3 id="github-评论区-">GitHub 评论区</h3>
-<p>本站评论区改为 Livere, 原评论区请<a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此</a>.</p>
+<p>本站评论区改为 Valine, 原评论区请<a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此</a>.</p>
                     
                     <HR width="100%" id="EOF">
-                    <p style="color:#777;">Last modified on 2019-04-20</p>
+                    <p style="color:#777;">Last modified on 2020-03-22</p>
                     
                 </div>
             </div>
