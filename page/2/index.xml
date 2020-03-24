@@ -208,17 +208,23 @@ println(negZero == posZero)				&lt;span style=&#34;color:#75715e&#34;&gt;//true
         <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
         
         <guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ -&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
+        <description>左手的世界 https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ -&lt;p&gt;2020.3.25 更新&lt;/p&gt;
+&lt;p&gt;原文提到:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;至于新的驱动能否适应多显示器的情况,有待讨论.(现在因为疫情&amp;hellip;哪都去不了,没法验证 233)&lt;/p&gt;
+&lt;p&gt;所以如果有读者朋友用的是&lt;code&gt;440xx&lt;/code&gt;的驱动,并且不需要下列设置就可以成功显示,请告知我,本人将不胜感激.评论区请&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/1&#34;&gt;移步至此&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
-（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D-&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
-想用 Linux 怎么办？ 只能装上 Ubuntu 了事。&lt;del&gt;真香&lt;/del&gt;
 Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-**后来经过一阵探索，才在Manjaro上用上了外置显示器。**&lt;del&gt;终于摆脱了真香定律&lt;/del&gt;&lt;/p&gt;
+后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2 id=&#34;背景-&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;还是老规矩，我先介绍一下这个问题的背景。
-解决方法请翻到&lt;a href=&#34;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95&#34;&gt;解决方法&lt;/a&gt;一节。
+解决方法请翻到&lt;a href=&#34;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-&#34;&gt;解决方法&lt;/a&gt;一节。
 环境：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;intel 集成显卡+Nvidia 独立显卡&lt;/li&gt;
@@ -247,7 +253,7 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;h2 id=&#34;解决方法-&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
 刚开始没有成功，&lt;strong&gt;后来在朋友的提醒下，发现原来我缺了一些步骤！&lt;/strong&gt;
-&lt;strong&gt;我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。&lt;/strong&gt;
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。
 以下内容均为本人的中文翻译。&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;原帖前言-&#34;&gt;原帖前言&lt;/h3&gt;
 &lt;p&gt;最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
@@ -262,7 +268,7 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;bumblebee&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bumblebee(Render offload)&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;按需使用独立显卡，Manjaro默认配置&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;有一定的开销，对性能有所影响&lt;/td&gt;
 &lt;/tr&gt;
@@ -278,6 +284,8 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;!--|video-hybrid-intel-nvidia-440xx-prime | NVIDIA 官方支持的 render offload.效果不错. | 只支持新硬件(440xx) |--&gt;
+&lt;p&gt;&lt;em&gt;Render offload is the ability to have an X screen rendered by one GPU, but choose certain applications within that X screen to be rendered on a different GPU.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note:最简单的方法就是在主板设置里面禁用集成显卡。如果你可以禁用的话，就直接禁用掉算了。&lt;/em&gt;
 &lt;em&gt;Note2: optimus-manager可以实现两块显卡的半自动切换。但是时至今日还在紧锣密鼓地开发中&amp;hellip;&amp;hellip;&lt;/em&gt;
 &lt;em&gt;免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/em&gt;
@@ -340,7 +348,7 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 在笔记本上，就会是笔记本屏幕一片黑（但是如果有外置，外置会亮）&lt;/p&gt;
 &lt;p&gt;我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意，视你的具体环境（DM）执行下列的某一个步骤。&lt;/strong&gt;
-&lt;font color=#ff0000 &gt;&lt;strong&gt;你并不需要做下列所有步骤&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;strong&gt;你并不需要做下列所有步骤&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
 创建一个文件，&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
@@ -386,19 +394,11 @@ OpenGL vendor string: NVIDIA Corporation
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果是，说明你已经设置成功，可以欢呼了！
 &lt;em&gt;当然我有双显示器，一看显示器亮了就知道了2333&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;最后-&#34;&gt;最后&lt;/h2&gt;
-&lt;h3 id=&#34;题外话-&#34;&gt;题外话&lt;/h3&gt;
-&lt;p&gt;虽然bumblebee存在诸多问题（比如双显示器问题），但是我&lt;strong&gt;真的要为开发人员点赞。&lt;/strong&gt;
-因为连Windows 10上的驱动，&lt;strong&gt;官方都做不好。&lt;/strong&gt;
-（据说在Windows 10 1803里面已经修复了，但1809里面又带回来了，服气。
-而且nvidia和M$互相踢皮球。）&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.v2ex.com/t/526544&#34;&gt;这个奇怪的问题（点击查看）&lt;/a&gt;当时也困扰了我很久
 打开任务管理器没有任何占用，为啥还是一卡一卡的？
 后来才知道，噢，原来是双显卡的坑。
 听说最近19H1来了？反正我不想用Windows了。
 自从Windows 7 之后我就没用过没bug的系统！&lt;/p&gt;
-&lt;p&gt;显卡真的是一个大坑啊。
-我折腾这个驱动，前前后后断断续续差不多半年了（摊手）
-这篇博客我写了两天才写完QAQ&lt;/p&gt;
 &lt;p&gt;希望我的这篇博文能帮到各位看官。 :)
 新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p&gt;
 &lt;p&gt;（2019-8 更新：感谢评论区的小伙伴的支持哦）&lt;/p&gt;
