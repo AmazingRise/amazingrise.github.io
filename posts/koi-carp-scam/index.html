@@ -39,7 +39,10 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.5c667e74038e21ddbb9024b67930f8544e02af62491281cf73fdb817eec2947e.css" integrity="sha256-XGZ&#43;dAOOId27kCS2eTD4VE4Cr2JJEoHPc/24F&#43;7ClH4=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.1e35efc03f2207dae01a6594546243071b55099fc113eebf868505aadd0b3b1b.css" integrity="sha256-HjXvwD8iB9rgGmWUVGJDBxtVCZ/BE&#43;6/hoUFqt0LOxs=" media="screen">
+
+
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.e9ba3b925ffd549f62ca3b40f68d3d6fedb99cb4f9f0c6176cae30336637f3ed.css" integrity="sha256-6bo7kl/9VJ9iyjtA9o09b&#43;25nLT58MYXbK4wM2Y38&#43;0=" media="screen">
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
 <script src="https://amazingrise.net/js/table.js"></script>
@@ -426,6 +429,14 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 keyboard_arrow_up
             </i>
         </a>
+        <a class="pagination-action" v-on:click="toggleDarkMode">
+            <i class="material-icons pagination-action-icon" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons pagination-action-icon" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </a>
         
     </div>
 </div><div class="single-column-drawer-container" ref="drawer"
@@ -763,6 +774,14 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
         <a ref="navTitle" class="navbar-brand" href="https://amazingrise.net">
             左手的世界
         </a>
+        <button type="button" class="nav-darkmode-toggle" v-on:click="toggleDarkMode">
+            <i class="material-icons" v-if="isDarkMode">
+                brightness_4
+            </i>
+            <i class="material-icons" v-else="isDarkMode">
+                brightness_7
+            </i>
+        </button>
     </div>
 </nav>
 <div class="single-column-header-container" ref="pageHead"
@@ -846,7 +865,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>首先，学校肯定是不会接这样的赞助恰烂钱，学校<strong>不缺这点钱</strong>，尤其是985/211工程院校。并且据老同学(曾经担任过社团社长)透露，学校也是禁止社团拉这样的赞助的。所以，学校不可能跟商家联合推出这样的活动，这只是商家为了增加可信度所加上的谎言。</p>
 <p>第二，这种<code>套近乎</code>的手段其实屡见不鲜。要戳破这个谎言也很简单：我们打开其中的某一篇推文。查看一下阅读量。以今天早上我看到的这篇推文为例，阅读量只有<strong>9800</strong>。然后我们关注一下公众号，按照他们说的办法，我们找到了&quot;抽奖助手&quot;小程序二维码。扫码进入，发现参与抽奖人数是<strong>2w</strong>。这说明什么?(doge</p>
 <p>其实我们也可以直接利用微信的搜一搜功能，以关键词<code>寻找 大学 不出门 锦鲤</code>查找，便会找到 n 多一模一样，只是大学名字换了的推文:</p>
-<p><img src="/koi-carp-scam/search_result.jpg" alt="" /></p>
+<p><img src="/images/koi-carp-scam/search_result.jpg" alt="" /></p>
 <p>所以，推文推给的，并不是&quot;被独宠的那个ta&rdquo;。我们只是商家 <strong>&ldquo;广撒网&quot;的猎物</strong>。</p>
 <p>更何况，这些活动往年就有几乎一模一样的东西。第二年出来换个外衣，说个校庆，或者是蹭疫情热度，来个换汤不换药的推文。</p>
 <h2 id="分母的秘密">分母的秘密</h2>
@@ -914,7 +933,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>感谢能耐心看到最后的读者们。这篇文章花费了我一天的时间写成，只为让大家远离这些骗局，实是为大家着想。</p>
 <p>如有冒犯，请各位原谅。我知道我这样的行为也很不讨好。我觉得只要能让大家远离骗局，这篇文章就不白写。哪怕是你把我拉黑了，换你今后的不上当，我也值了。</p>
 <p>营销套路千千万，希望大家永不上当。（“永不上当”梗来自春晚，见下图）</p>
-<p><img src="/koi-carp-scam/never_cheated.gif" alt="" /></p>
+<p><img src="/images/koi-carp-scam/never_cheated.gif" alt="" /></p>
 <p>本篇文章不欢迎不署名转载，但欢迎转发。</p>
 
                     
