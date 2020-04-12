@@ -386,6 +386,7 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;p&gt;我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意，视你的具体环境（DM）执行下列的某一个步骤。&lt;/strong&gt;
 &lt;strong&gt;你并不需要做下列所有步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
 创建一个文件，&lt;code&gt;/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
@@ -396,20 +397,22 @@ xrandr --auto
 现在你还得把它设置为启动脚本。
 编辑&lt;code&gt;/etc/lightdm/lightdm.conf&lt;/code&gt;，然后在**[Seat:* ]**这一节设置
 &lt;code&gt;display-setup-script=/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;针对 GDM (Gnome默认)&lt;/strong&gt;
-创建一个文件&lt;code&gt;/usr/local/share/optimus.desktop&lt;/code&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;针对 GDM (Gnome默认)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建一个文件&lt;code&gt;/usr/local/share/optimus.desktop&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;[Desktop Entry]&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;Type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Application&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;Name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Optimus&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;Exec&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;NoDisplay&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;true&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;X-GNOME-Autostart-Phase&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;DisplayServer&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)&lt;br /&gt;
 然后建立连接，让它随着GDM启动。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;针对 SDDM (KDE 默认)&lt;/strong&gt;
-创建一个文件：&lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;针对 SDDM (KDE 默认)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建一个文件：&lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
 xrandr --setprovideroutputsource modesetting NVIDIA-0
