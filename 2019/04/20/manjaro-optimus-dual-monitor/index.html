@@ -1368,12 +1368,12 @@ sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 </code></pre></div><p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
-写入：</p>
+写入：<code>/etc/modprobe.d/nvidia.conf</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">blacklist nouveau</span>
 <span style="color:#a6e22e">blacklist nvidiafb</span>
 <span style="color:#a6e22e">blacklist rivafb</span>
 </code></pre></div><h3 id="4-开启nvidia-drmmodeset-">4 开启nvidia-drm.modeset</h3>
-<p>创建一个新文件，</p>
+<p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">options nvidia_drm modeset</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
 </code></pre></div><h3 id="5-设置启动脚本-">5 设置启动脚本</h3>
 <p>我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。
@@ -1383,7 +1383,7 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 <p><strong>注意，视你的具体环境（DM）执行下列的某一个步骤。</strong>
 <strong>你并不需要做下列所有步骤</strong></p>
 <p><strong>针对 LightDM (xfce默认)</strong>
-创建一个文件，</p>
+创建一个文件，<code>/usr/local/bin/optimus.sh</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
 </span><span style="color:#75715e"></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
@@ -1393,7 +1393,7 @@ xrandr --auto
 编辑<code>/etc/lightdm/lightdm.conf</code>，然后在**[Seat:* ]**这一节设置
 <code>display-setup-script=/usr/local/bin/optimus.sh</code></p>
 <p><strong>针对 GDM (Gnome默认)</strong>
-创建一个文件</p>
+创建一个文件<code>/usr/local/share/optimus.desktop</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#66d9ef">[Desktop Entry]</span>
 <span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">Application</span>
 <span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">Optimus</span>
@@ -1405,9 +1405,9 @@ xrandr --auto
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
 </code></pre></div><p><strong>针对 SDDM (KDE 默认)</strong>
-创建一个文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> <span style="color:#75715e">#!/bin/sh</span>
-
+创建一个文件：<code>/usr/share/sddm/scripts/Xsetup</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 </code></pre></div><p>然后用chmod让它变为可执行的文件。</p>
@@ -1442,7 +1442,7 @@ OpenGL vendor string: NVIDIA Corporation
 <p>本站评论区改为 Valine, 原评论区请<a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此</a>.</p>
                     
                     <HR width="100%" id="EOF">
-                    <p style="color:#777;">Last modified on 2020-03-25</p>
+                    <p style="color:#777;">Last modified on 2020-04-12</p>
                     
                 </div>
             </div>

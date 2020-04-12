@@ -372,12 +372,12 @@ sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
-写入：&lt;/p&gt;
+写入：&lt;code&gt;/etc/modprobe.d/nvidia.conf&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist nouveau&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist nvidiafb&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist rivafb&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-开启nvidia-drmmodeset-&#34;&gt;4 开启nvidia-drm.modeset&lt;/h3&gt;
-&lt;p&gt;创建一个新文件，&lt;/p&gt;
+&lt;p&gt;创建一个新文件，&lt;code&gt;/etc/modprobe.d/nvidia-drm.conf&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;options nvidia_drm modeset&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-设置启动脚本-&#34;&gt;5 设置启动脚本&lt;/h3&gt;
 &lt;p&gt;我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。
@@ -387,7 +387,7 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;p&gt;&lt;strong&gt;注意，视你的具体环境（DM）执行下列的某一个步骤。&lt;/strong&gt;
 &lt;strong&gt;你并不需要做下列所有步骤&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
-创建一个文件，&lt;/p&gt;
+创建一个文件，&lt;code&gt;/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
 &lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
 xrandr --setprovideroutputsource modesetting NVIDIA-0
@@ -397,7 +397,7 @@ xrandr --auto
 编辑&lt;code&gt;/etc/lightdm/lightdm.conf&lt;/code&gt;，然后在**[Seat:* ]**这一节设置
 &lt;code&gt;display-setup-script=/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;针对 GDM (Gnome默认)&lt;/strong&gt;
-创建一个文件&lt;/p&gt;
+创建一个文件&lt;code&gt;/usr/local/share/optimus.desktop&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;[Desktop Entry]&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;Type&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Application&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;Name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Optimus&lt;/span&gt;
@@ -409,9 +409,9 @@ xrandr --auto
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;针对 SDDM (KDE 默认)&lt;/strong&gt;
-创建一个文件：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; &lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh&lt;/span&gt;
-
+创建一个文件：&lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后用chmod让它变为可执行的文件。&lt;/p&gt;
