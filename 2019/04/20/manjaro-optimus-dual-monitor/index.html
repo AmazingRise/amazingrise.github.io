@@ -451,8 +451,8 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 						
 						
 								<li>
-				 					<a href="#4-%e5%bc%80%e5%90%afnvidia-drmmodeset-" v-on:click="closeDrawer" id="4-开启nvidia-drmmodeset--nav">
-										 4 开启nvidia-drm.modeset
+				 					<a href="#4-%e5%bc%80%e5%90%af-modeset-" v-on:click="closeDrawer" id="4-开启-modeset--nav">
+										 4 开启 modeset
 									</a>
 								</li>
 						
@@ -987,8 +987,8 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 						
 						
 								<li>
-				 					<a href="#4-%e5%bc%80%e5%90%afnvidia-drmmodeset-" v-on:click="closeDrawer" id="4-开启nvidia-drmmodeset--nav">
-										 4 开启nvidia-drm.modeset
+				 					<a href="#4-%e5%bc%80%e5%90%af-modeset-" v-on:click="closeDrawer" id="4-开启-modeset--nav">
+										 4 开启 modeset
 									</a>
 								</li>
 						
@@ -1247,7 +1247,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.</p>
 </blockquote>
 <p>据本人今日的评测，这个<code>video-hybrid-intel-nvidia-440xx-prime</code>(注意不是<code>video-nvidia-440xx</code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的<code>prime</code>驱动。出现了一些问题，首先<code>prime-run</code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。</p>
-<p>所以这个新的驱动，至少是默认配置，还是不太好用的。所以<strong>这篇教程仍然有效</strong>，大家可以仍然用<code>video-nvidia-440xx</code>，而不是混合驱动。</p>
+<p>新的驱动还是不太好用的。所以<strong>这篇教程仍然有效</strong>，各位仍然可以用<code>video-nvidia-440xx</code>，而不是混合驱动。</p>
 <p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。</p>
 <h2 id="前言-">前言</h2>
 <p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
@@ -1264,29 +1264,26 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 <p>症状：</p>
 <ul>
 <li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li>
-<li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有下文了。</li>
-<li>由于自带bumblebee驱动，故本人曾经尝试过用optirun在独显上运行glxgears，外置显示器会闪一下，然后No Signal Input.
-（这说明bumblebee是可以启动nvidia显卡的，但无法输出到外置显示器上）</li>
-<li>总之，外置显示器就像一面黑色的镜子，看着让人揪心QAQ。</li>
+<li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。</li>
 </ul>
+<p>如果你的是<strong>外接显卡坞+显示器，这篇教程不适合你</strong>。不过有网友（感谢<code>@sunlitforest</code>）用另一种方法操作成功了，详情请看<a href="https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749">这里</a>。</p>
 <h2 id="分析问题-">分析问题</h2>
 <p>参照<a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">ArchWiki上面的说法</a>，让Optimus显卡在linux里面有三种实现方法：</p>
 <ol>
-<li>BIOS里面禁用掉一个显卡。缺点也是显而易见的：难以切换显卡。</li>
+<li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。</li>
 <li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li>
 <li>用Bumblebee。不过Bumblebee很难支持双显示器。</li>
 <li>用专有驱动。</li>
-<li>不知道是什么鬼的方法，叫nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li>
+<li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li>
 </ol>
 <hr />
 <h2 id="解决方法-">解决方法</h2>
-<p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
-刚开始没有成功，<strong>后来在朋友的提醒下，发现原来我缺了一些步骤！</strong>
-我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。
-以下内容均为本人的中文翻译。<a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
+<p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）</p>
+<p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。</p>
+<p>以下内容均为本人的中文翻译。<a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
 <h3 id="原帖前言-">原帖前言</h3>
-<p>最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
-下面我说一下如何在Optimus的笔记本上开启PRIME。</p>
+<p>如何在Optimus的笔记本上开启PRIME：</p>
 <table>
 <thead>
 <tr>
@@ -1318,25 +1315,22 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 </tr>
 </tbody>
 </table>
-<p><em>Render offload is the ability to have an X screen rendered by one GPU, but choose certain applications within that X screen to be rendered on a different GPU.</em></p>
-<p><em>Note:最简单的方法就是在主板设置里面禁用集成显卡。如果你可以禁用的话，就直接禁用掉算了。</em></p>
-<p><em>Note2: optimus-manager可以实现两块显卡的半自动切换。但是时至今日还在紧锣密鼓地开发中&hellip;&hellip;</em></p>
-<p><em>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</em></p>
+<blockquote>
+<p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。<br />
+optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。</p>
+</blockquote>
+<blockquote>
+<p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</p>
+</blockquote>
 <h3 id="1-移除bumblebee-">1 移除Bumblebee</h3>
 <p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
 bumblebee很碍事，所以我们得先干掉它。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -r pci nonfree <span style="color:#ae81ff">0300</span>
 </code></pre></div><h3 id="2-安装nvidia驱动-">2 安装NVIDIA驱动</h3>
-<p>（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）
-（一般来说不用改）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia
-</code></pre></div><p>2020年3月25日注：</p>
-<p><strong>经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程</strong></p>
-<p>2019年某日注：</p>
-<p>（之前此处typo，十分感谢评论区朋友的更正。）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia-440xx
+</code></pre></div><p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程</p>
 <h3 id="3-修改mhwd设置-">3 修改MHWD设置</h3>
-<p>（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。
-我们必须得改一下这个配置，这样PRIME才能生效。</p>
+<p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。</p>
 <h4 id="另起炉灶-">另起炉灶</h4>
 <p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
 （如果你不放心可以mv嘛。）
@@ -1351,11 +1345,9 @@ bumblebee很碍事，所以我们得先干掉它。</p>
     <span style="color:#a6e22e">BusID &#34;PCI:1:0:0&#34;</span>
     <span style="color:#a6e22e">Option &#34;AllowEmptyInitialConfiguration&#34;</span>
 <span style="color:#a6e22e">EndSection</span>
-</code></pre></div><p><strong>注意：<strong>BusID一栏需要</strong>根据自己的电脑配置</strong>进行修改。
-虽然大多数Optimus笔记本都是这个编号，但是我仍然<strong>建议你核对一下</strong>自己电脑的BusID的值。
-**BusID的值是这么查询的：**<code>lspci | grep -E &quot;VGA|3D&quot;</code>
-<em>（更新：评论区就有位朋友是不一样的）</em>
-<em>（我的电脑上确实是这个编号）</em></p>
+</code></pre></div><blockquote>
+<p>注意：BusID一栏需要<strong>根据自己的电脑配置</strong>进行修改。BusID的值是这么查询的：<code>lspci | grep -E &quot;VGA|3D&quot;</code></p>
+</blockquote>
 <h4 id="禁用模块-">禁用模块</h4>
 <p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
 此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
@@ -1372,16 +1364,16 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">blacklist nouveau</span>
 <span style="color:#a6e22e">blacklist nvidiafb</span>
 <span style="color:#a6e22e">blacklist rivafb</span>
-</code></pre></div><h3 id="4-开启nvidia-drmmodeset-">4 开启nvidia-drm.modeset</h3>
+</code></pre></div><h3 id="4-开启-modeset-">4 开启 modeset</h3>
 <p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Ini" data-lang="Ini"><span style="color:#a6e22e">options nvidia_drm modeset</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
 </code></pre></div><h3 id="5-设置启动脚本-">5 设置启动脚本</h3>
-<p>我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。
-如果你现在重启，桌面环境的输出可能会有一些问题。
-在笔记本上，就会是笔记本屏幕一片黑（但是如果有外置，外置会亮）</p>
+<p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。</p>
 <p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。</p>
-<p><strong>注意，视你的具体环境（DM）执行下列的某一个步骤。</strong>
-<strong>你并不需要做下列所有步骤</strong></p>
+<blockquote>
+<p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。</p>
+</blockquote>
 <hr />
 <p><strong>针对 LightDM (xfce默认)</strong>
 创建一个文件，<code>/usr/local/bin/optimus.sh</code></p>
@@ -1445,7 +1437,7 @@ OpenGL vendor string: NVIDIA Corporation
 <p>本站评论区改为 Valine, 原评论区请<a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此</a>.</p>
                     
                     <HR width="100%" id="EOF">
-                    <p style="color:#777;">Last modified on 2020-04-12</p>
+                    <p style="color:#777;">Last modified on 2020-04-15</p>
                     
                 </div>
             </div>
@@ -1467,10 +1459,14 @@ OpenGL vendor string: NVIDIA Corporation
             </nav>
             <div class="post-comment-wrapper">
                 
-                <p style="opacity: 0.6" align="center">
-                    <small>Comments Disabled.</small>
-                </p>
-                
+
+
+
+
+<div id="vcomments"></div>
+
+
+
             </div>
         </div>
     </div>

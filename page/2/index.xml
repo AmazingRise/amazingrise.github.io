@@ -251,7 +251,7 @@ println(negZero == posZero)				&lt;span style=&#34;color:#75715e&#34;&gt;//true
 &lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;据本人今日的评测，这个&lt;code&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/code&gt;(注意不是&lt;code&gt;video-nvidia-440xx&lt;/code&gt;)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code&gt;prime&lt;/code&gt;驱动。出现了一些问题，首先&lt;code&gt;prime-run&lt;/code&gt;并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p&gt;
-&lt;p&gt;所以这个新的驱动，至少是默认配置，还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，大家可以仍然用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
+&lt;p&gt;新的驱动还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，各位仍然可以用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
 &lt;p&gt;本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p&gt;
 &lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
@@ -268,29 +268,26 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;p&gt;症状：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;无法接外接显示器，接上后无论是系统设置还是&lt;code&gt;inxi -Fx&lt;/code&gt;都无法识别外置显示器。&lt;/li&gt;
-&lt;li&gt;检查启动日志，发现虽然开机时检测到了显示器，但后面就没有下文了。&lt;/li&gt;
-&lt;li&gt;由于自带bumblebee驱动，故本人曾经尝试过用optirun在独显上运行glxgears，外置显示器会闪一下，然后No Signal Input.
-（这说明bumblebee是可以启动nvidia显卡的，但无法输出到外置显示器上）&lt;/li&gt;
-&lt;li&gt;总之，外置显示器就像一面黑色的镜子，看着让人揪心QAQ。&lt;/li&gt;
+&lt;li&gt;检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;如果你的是&lt;strong&gt;外接显卡坞+显示器，这篇教程不适合你&lt;/strong&gt;。不过有网友（感谢&lt;code&gt;@sunlitforest&lt;/code&gt;）用另一种方法操作成功了，详情请看&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;分析问题-&#34;&gt;分析问题&lt;/h2&gt;
 &lt;p&gt;参照&lt;a href=&#34;https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&#34;&gt;ArchWiki上面的说法&lt;/a&gt;，让Optimus显卡在linux里面有三种实现方法：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;BIOS里面禁用掉一个显卡。缺点也是显而易见的：难以切换显卡。&lt;/li&gt;
+&lt;li&gt;BIOS里面禁用掉一个显卡。缺点：难以切换显卡。&lt;/li&gt;
 &lt;li&gt;用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。&lt;/li&gt;
 &lt;li&gt;用Bumblebee。不过Bumblebee很难支持双显示器。&lt;/li&gt;
 &lt;li&gt;用专有驱动。&lt;/li&gt;
-&lt;li&gt;不知道是什么鬼的方法，叫nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li&gt;
+&lt;li&gt;用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
 &lt;h2 id=&#34;解决方法-&#34;&gt;解决方法&lt;/h2&gt;
-&lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
-刚开始没有成功，&lt;strong&gt;后来在朋友的提醒下，发现原来我缺了一些步骤！&lt;/strong&gt;
-我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作才能成功。
-以下内容均为本人的中文翻译。&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p&gt;
+&lt;p&gt;刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p&gt;
+&lt;p&gt;以下内容均为本人的中文翻译。&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;原帖前言-&#34;&gt;原帖前言&lt;/h3&gt;
-&lt;p&gt;最新版的Xorg，内核，还有显卡驱动，都支持PRIME输出。不过设置有点麻烦。
-下面我说一下如何在Optimus的笔记本上开启PRIME。&lt;/p&gt;
+&lt;p&gt;如何在Optimus的笔记本上开启PRIME：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -322,25 +319,22 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;em&gt;Render offload is the ability to have an X screen rendered by one GPU, but choose certain applications within that X screen to be rendered on a different GPU.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note:最简单的方法就是在主板设置里面禁用集成显卡。如果你可以禁用的话，就直接禁用掉算了。&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note2: optimus-manager可以实现两块显卡的半自动切换。但是时至今日还在紧锣密鼓地开发中&amp;hellip;&amp;hellip;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。&lt;br /&gt;
+optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;1-移除bumblebee-&#34;&gt;1 移除Bumblebee&lt;/h3&gt;
 &lt;p&gt;如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
 bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -r pci nonfree &lt;span style=&#34;color:#ae81ff&#34;&gt;0300&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-安装nvidia驱动-&#34;&gt;2 安装NVIDIA驱动&lt;/h3&gt;
-&lt;p&gt;（如果你的是fermi显卡，下列步骤的video-nvidia需要改为video-nvidia-390xx）
-（一般来说不用改）&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2020年3月25日注：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;2019年某日注：&lt;/p&gt;
-&lt;p&gt;（之前此处typo，十分感谢评论区朋友的更正。）&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia-440xx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/p&gt;
 &lt;h3 id=&#34;3-修改mhwd设置-&#34;&gt;3 修改MHWD设置&lt;/h3&gt;
-&lt;p&gt;（如果你安装了NVIDIA驱动，而不是bumblebee驱动，）mhwd会自动生成设置，只让NVIDIA显卡工作。
-我们必须得改一下这个配置，这样PRIME才能生效。&lt;/p&gt;
+&lt;p&gt;mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。&lt;/p&gt;
 &lt;h4 id=&#34;另起炉灶-&#34;&gt;另起炉灶&lt;/h4&gt;
 &lt;p&gt;首先要删掉&lt;code&gt;/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code&gt;
 （如果你不放心可以mv嘛。）
@@ -355,11 +349,9 @@ bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
     &lt;span style=&#34;color:#a6e22e&#34;&gt;BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span&gt;
     &lt;span style=&#34;color:#a6e22e&#34;&gt;Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;EndSection&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;strong&gt;BusID一栏需要&lt;/strong&gt;根据自己的电脑配置&lt;/strong&gt;进行修改。
-虽然大多数Optimus笔记本都是这个编号，但是我仍然&lt;strong&gt;建议你核对一下&lt;/strong&gt;自己电脑的BusID的值。
-**BusID的值是这么查询的：**&lt;code&gt;lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code&gt;
-&lt;em&gt;（更新：评论区就有位朋友是不一样的）&lt;/em&gt;
-&lt;em&gt;（我的电脑上确实是这个编号）&lt;/em&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意：BusID一栏需要&lt;strong&gt;根据自己的电脑配置&lt;/strong&gt;进行修改。BusID的值是这么查询的：&lt;code&gt;lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;禁用模块-&#34;&gt;禁用模块&lt;/h4&gt;
 &lt;p&gt;PRIME依赖于&lt;code&gt;nvidia-drm&lt;/code&gt;，但mhwd在默认情况下会禁用它，我们需要手动启用。
 此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
@@ -376,16 +368,16 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist nouveau&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist nvidiafb&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;blacklist rivafb&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-开启nvidia-drmmodeset-&#34;&gt;4 开启nvidia-drm.modeset&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-开启-modeset-&#34;&gt;4 开启 modeset&lt;/h3&gt;
 &lt;p&gt;创建一个新文件，&lt;code&gt;/etc/modprobe.d/nvidia-drm.conf&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;options nvidia_drm modeset&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-设置启动脚本-&#34;&gt;5 设置启动脚本&lt;/h3&gt;
-&lt;p&gt;我们要设置一下桌面环境的输出源。这是最难搞的部分，可能会花掉很长时间。
-如果你现在重启，桌面环境的输出可能会有一些问题。
-在笔记本上，就会是笔记本屏幕一片黑（但是如果有外置，外置会亮）&lt;/p&gt;
+&lt;p&gt;我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。&lt;/p&gt;
 &lt;p&gt;我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;注意，视你的具体环境（DM）执行下列的某一个步骤。&lt;/strong&gt;
-&lt;strong&gt;你并不需要做下列所有步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
 创建一个文件，&lt;code&gt;/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;

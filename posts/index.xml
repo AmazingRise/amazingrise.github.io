@@ -201,7 +201,7 @@ val int1 = 10 val int2 = 10 println(int1 == int2)	// true 	println(int1.</descri
 &lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;据本人今日的评测，这个&lt;code&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/code&gt;(注意不是&lt;code&gt;video-nvidia-440xx&lt;/code&gt;)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code&gt;prime&lt;/code&gt;驱动。出现了一些问题，首先&lt;code&gt;prime-run&lt;/code&gt;并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p&gt;
-&lt;p&gt;所以这个新的驱动，至少是默认配置，还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，大家可以仍然用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
+&lt;p&gt;新的驱动还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，各位仍然可以用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
 &lt;p&gt;本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p&gt;
 &lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
