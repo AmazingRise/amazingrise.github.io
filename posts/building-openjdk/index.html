@@ -438,6 +438,60 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 						
 							<ul>
 						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="仅编译-nav">
+										 仅编译
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" id="编译二进制-nav">
+										 编译二进制
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
 						
 								<li>
 				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
@@ -882,6 +936,60 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 						
 							<ul>
 						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="仅编译-nav">
+										 仅编译
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" id="编译二进制-nav">
+										 编译二进制
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
 						
 								<li>
 				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
@@ -1130,10 +1238,12 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>因为 OpenJDK 8 的编译不支持 <code>--disable-warnings-as-errors</code> 参数，所以我们需要<strong>手动修改</strong>一下：</p>
 <p>打开<code>./hotspot/make/linux/makefiles/gcc.make</code>，然后找到 <code>WARNINGS_ARE_ERRORS =</code>，前面加<code>#</code>，把这行<strong>注释掉</strong>。</p>
 <h2 id="make">make</h2>
-<p>最后，输入<code>make</code>命令，开始编译。</p>
+<p>最后，可以正式编译了，分情况讨论。</p>
 <blockquote>
 <p>注：不需要指定 CPU 核心数。默认编译就是多核。</p>
 </blockquote>
+<h3 id="仅编译">仅编译</h3>
+<p>如果只编译，不想要二进制：输入<code>make</code>命令，开始编译。</p>
 <p>当你看到以下信息时，你就成功了：</p>
 <pre><code>## Finished jdk (build time 00:01:43)
 
@@ -1148,7 +1258,33 @@ End   2020-05-05 13:20:26
 00:00:06 langtools
 00:05:44 TOTAL
 -------------------------
-</code></pre><h1 id="最后">最后</h1>
+</code></pre><h3 id="编译二进制">编译二进制</h3>
+<p>如果你想编译出 JDK JRE 的那套二进制的话，请运行<code>make images</code>。</p>
+<p>此时结果应该是这样的：</p>
+<pre><code>## Finished images (build time 00:01:28)
+
+----- Build times -------
+Start 2020-05-05 19:36:50
+End   2020-05-05 19:38:49
+00:00:00 corba
+00:00:16 demos
+00:00:00 hotspot
+00:01:28 images
+00:00:01 jaxp
+00:00:00 jaxws
+00:00:05 jdk
+00:00:01 langtools
+00:00:08 nashorn
+00:01:59 TOTAL
+-------------------------
+</code></pre><p>这种情况下，你可以在<code>./build/linux-x86_64-normal-server-release/images/j2sdk-image/bin/</code>目录下找到<code>java</code>和<code>javac</code>。</p>
+<p>你可以运行一下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./java -version
+openjdk version <span style="color:#e6db74">&#34;1.8.0-internal&#34;</span>
+OpenJDK Runtime Environment <span style="color:#f92672">(</span>build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00<span style="color:#f92672">)</span>
+OpenJDK 64-Bit Server VM <span style="color:#f92672">(</span>build 25.71-b00, mixed mode<span style="color:#f92672">)</span>
+</code></pre></div><p>没错，它的版本号里写着你的机器名。 很有成就感。</p>
+<h1 id="最后">最后</h1>
 <h2 id="结语">结语</h2>
 <p>真的就这些了吗？是的，就这些。在 Linux 上，书上那一长串的<code>export</code>统统不需要。</p>
 <p>而且可以看出，在我的普普通通的笔记本上，<strong>不设置任何参数</strong>也可以很快完成编译。网上和书上的各种优化大可不必，<code>configure</code>已经帮我们做好大部分了。</p>

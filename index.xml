@@ -103,10 +103,12 @@
 &lt;p&gt;因为 OpenJDK 8 的编译不支持 &lt;code&gt;--disable-warnings-as-errors&lt;/code&gt; 参数，所以我们需要&lt;strong&gt;手动修改&lt;/strong&gt;一下：&lt;/p&gt;
 &lt;p&gt;打开&lt;code&gt;./hotspot/make/linux/makefiles/gcc.make&lt;/code&gt;，然后找到 &lt;code&gt;WARNINGS_ARE_ERRORS =&lt;/code&gt;，前面加&lt;code&gt;#&lt;/code&gt;，把这行&lt;strong&gt;注释掉&lt;/strong&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;make&#34;&gt;make&lt;/h2&gt;
-&lt;p&gt;最后，输入&lt;code&gt;make&lt;/code&gt;命令，开始编译。&lt;/p&gt;
+&lt;p&gt;最后，可以正式编译了，分情况讨论。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;注：不需要指定 CPU 核心数。默认编译就是多核。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h3 id=&#34;仅编译&#34;&gt;仅编译&lt;/h3&gt;
+&lt;p&gt;如果只编译，不想要二进制：输入&lt;code&gt;make&lt;/code&gt;命令，开始编译。&lt;/p&gt;
 &lt;p&gt;当你看到以下信息时，你就成功了：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## Finished jdk (build time 00:01:43)
 
@@ -121,7 +123,33 @@ End   2020-05-05 13:20:26
 00:00:06 langtools
 00:05:44 TOTAL
 -------------------------
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;最后&#34;&gt;最后&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;编译二进制&#34;&gt;编译二进制&lt;/h3&gt;
+&lt;p&gt;如果你想编译出 JDK JRE 的那套二进制的话，请运行&lt;code&gt;make images&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;此时结果应该是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Finished images (build time 00:01:28)
+
+----- Build times -------
+Start 2020-05-05 19:36:50
+End   2020-05-05 19:38:49
+00:00:00 corba
+00:00:16 demos
+00:00:00 hotspot
+00:01:28 images
+00:00:01 jaxp
+00:00:00 jaxws
+00:00:05 jdk
+00:00:01 langtools
+00:00:08 nashorn
+00:01:59 TOTAL
+-------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种情况下，你可以在&lt;code&gt;./build/linux-x86_64-normal-server-release/images/j2sdk-image/bin/&lt;/code&gt;目录下找到&lt;code&gt;java&lt;/code&gt;和&lt;code&gt;javac&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;你可以运行一下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ./java -version
+openjdk version &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;1.8.0-internal&amp;#34;&lt;/span&gt;
+OpenJDK Runtime Environment &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;build 25.71-b00, mixed mode&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;没错，它的版本号里写着你的机器名。 很有成就感。&lt;/p&gt;
+&lt;h1 id=&#34;最后&#34;&gt;最后&lt;/h1&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
 &lt;p&gt;真的就这些了吗？是的，就这些。在 Linux 上，书上那一长串的&lt;code&gt;export&lt;/code&gt;统统不需要。&lt;/p&gt;
 &lt;p&gt;而且可以看出，在我的普普通通的笔记本上，&lt;strong&gt;不设置任何参数&lt;/strong&gt;也可以很快完成编译。网上和书上的各种优化大可不必，&lt;code&gt;configure&lt;/code&gt;已经帮我们做好大部分了。&lt;/p&gt;
