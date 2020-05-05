@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Rise 的朋友们</title>
+<title>Categories</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -56,15 +56,17 @@ if (!doNotTrack) {
 
 
 
-<script src="https://amazingrise.net/js/toc.js"></script>
+<style>
+  .toc{
+    display: none !important;
+  }
+</style>
 
 
 
 
 
 
-
-<script src='https://unpkg.com/valine@1.4.5/dist/Valine.min.js'></script>
 
 
 </head><body>
@@ -98,9 +100,11 @@ if (!doNotTrack) {
             
             
             
+                
             
             
-            <a class="a-block nav-link-item false" href="/categories">
+            
+            <a class="a-block nav-link-item active" href="/categories">
                 分類
             </a>
             
@@ -118,11 +122,9 @@ if (!doNotTrack) {
             
             
             
-                
             
             
-            
-            <a class="a-block nav-link-item active" href="/friends">
+            <a class="a-block nav-link-item false" href="/friends">
                 朋友們
             </a>
             
@@ -157,11 +159,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </div><div ref="extraContainer" class="extra-container">
     
     
-    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
-
-
-</div>
-    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
@@ -177,6 +174,24 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 brightness_7
             </i>
         </a>
+        
+        
+        
+            <div class="pagination-indicator">
+                <span style="text-align: center">
+                    2<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
+                </span>
+            </div>
+            
+            
+            <a class="pagination-action" href="/categories/">
+                <i class="material-icons pagination-action-icon">
+                    chevron_left
+                </i>
+            </a>
+            
+
+            
         
         
     </div>
@@ -200,9 +215,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 
                 
+                    
                 
                 
-                <a class="a-block drawer-menu-item false" href="/categories">
+                
+                <a class="a-block drawer-menu-item active" href="/categories">
                     分類
                 </a>
                 
@@ -220,11 +237,9 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 
                 
-                    
                 
                 
-                
-                <a class="a-block drawer-menu-item active" href="/friends">
+                <a class="a-block drawer-menu-item false" href="/friends">
                     朋友們
                 </a>
                 
@@ -239,11 +254,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 </a>
                 
             
-            
-            <div class="toc">
-
-
-</div>
             
         </div>
     </div>
@@ -287,125 +297,73 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <div id="content">
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            
-            
-            
-
-            <div class="post-head-wrapper-text-only"
-                 style="background-image: url('https://amazingrise.net')">
-                <div class="post-title">
-                    Rise 的朋友们
-                    
-                    <div class="post-meta">
-                        
-
-                        
-
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="post-body-wrapper">
-                <div class="post-body">
-                    <div class="container">
-    <div id="friend-list" class="row">
-        <friend
-            description="小白鸽"
-            url="https://blanca.world"
-            avator="https://avatars2.githubusercontent.com/u/29428546?s=460&v=4"
-            github="xclwt">
-            Fish Blanca
-        </friend>
-        <br>
-        <friend
-            description="存在感消失的地方"
-            url="https://akarin.dev/"
-            avator="https://avatars1.githubusercontent.com/u/47057319?s=460&v=4"
-            github="TransparentLC">
-            Akarin
-        </friend>
-        <friend
-            description="CHUNGZH的小窝"
-            url="https://chungzh.cn/"
-            avator="https://avatars3.githubusercontent.com/u/42088872?s=460&v=4"
-            github="ChungZh">
-            Haoshen Zhong
-        </friend>
-    </div>
-</div>
-
-<script type="text/javascript">
-    Vue.component('friend',{
-        props:['avator','github','url','description'],
-        template: `
-        <div class="card-container col-xs-6" style="margin:1rem;width:20rem;">
-            <div class="card" style="background:none !important;">
-                <div class="row no-gutters" >
-                    <div class="col-auto">
-                        <img v-bind:src="avator"  style="width: 6rem;" class="img-fluid">
-                    </div>
-                    <div class="col">
-                        <div class="card-block px-2" style="margin: 0.5rem;">
-                            <p class="card-title"><slot></slot></p>
-                            <p class="card-text small"> {{description}} <br> <a v-bind:href="url">{{url}}</a></p>
+        <a class="a-block">
+            <div class="post-item-wrapper post-item-wrapper-no-hover">
+                <div class="post-item post-item-no-gaps">
+                    <div class="post-item-info-wrapper">
+                        <div class="post-item-title post-item-title-small">
+                            Categories
                         </div>
                     </div>
                 </div>
-                <div class="card-footer w-100 text-muted">
-                    <p class="card-text small"><a v-bind:href="'https://github.com/' + github" class="card-subtitle mb-2 text-muted">{{github}}@GitHub</a></p>
-                    
-                </div>
             </div>
-        </div>
-        `
-    });
- 
-</script>
-                    
-                </div>
-            </div>
-            
-            
-            <nav class="post-pagination">
-
-                
-                <a class="newer-posts" href="https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/">
-                    Next<br>Manjaro 在笔记本上的多显示器配置
+        </a>
+        
+        
+                <a href="https://amazingrise.net/categories/%E8%AF%AD%E8%A8%80/" class="a-block">
+                    <div class="post-item-wrapper">
+                        <div class="post-item post-item-no-gaps">
+                            <div class="post-item-info-wrapper"> 
+                                <div class="post-item-title">
+                                    语言
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </a>
-                
-                
-                
-                <a class="older-posts">
-                    Previous<br>No older posts.
+        
+                <a href="https://amazingrise.net/categories/kotlin/" class="a-block">
+                    <div class="post-item-wrapper">
+                        <div class="post-item post-item-no-gaps">
+                            <div class="post-item-info-wrapper"> 
+                                <div class="post-item-title">
+                                    Kotlin
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </a>
-                
-            </nav>
-            <div class="post-comment-wrapper">
-                
-
-
-
-
-<div id="vcomments"></div>
-<script>
-    $(new Valine({
-        el: '#vcomments',
-        appId: 'BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz',
-        appKey: 'xuYy5CEXceKSggBBKRQr7Ysf',
-        recordIP: true
-    }))
-</script>
-
-
-
-            </div>
-        </div>
+        
     </div>
 </div>
 
-            </div><div id="single-column-footer">
+
+            </div>
+
+<div class="pagination">
+    
+    <a class="pagination-action" href="/categories/" style="opacity:1">
+    
+        <i class="material-icons pagination-action-icon">
+            chevron_left
+        </i>
+    </a>
+
+        <div class="pagination-indicator">
+            <span>2/2</span>
+        </div>
+
+        
+            <a class="pagination-action" style="opacity:0">
+        
+                <i class="material-icons pagination-action-icon">
+                    chevron_right
+                </i>
+            </a>
+</div>
+
+
+<div id="single-column-footer">
 Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
 <br>
 Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>

@@ -7,10 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 31 Mar 2020 23:08:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate>
     
 	<atom:link href="https://amazingrise.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2020年，在 Linux 下动手编译 OpenJDK 8</title>
+      <link>https://amazingrise.net/posts/building-openjdk/</link>
+      <pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate>
+      
+      <guid>https://amazingrise.net/posts/building-openjdk/</guid>
+      <description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
+网上的各种攻略琳琅满目，五花八门。
+终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。
+&amp;ndash; 即使是 2020 年，在更新策略激进的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。
+ 注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。
+ 准备 环境    名称 版本     OS Manjaro 20.0 Lysia   Kernel x86_64 Linux 4.19.118-1-MANJARO   make GNU Make 4.3 x86_64-pc-linux-gnu   GCC gcc (Arch Linux 9.3.0-1) 9.3.0     注：我并没有切换到低版本的 gcc。</description>
+    </item>
     
     <item>
       <title>博客建立一周年纪念</title>

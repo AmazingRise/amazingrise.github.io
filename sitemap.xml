@@ -3,18 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://amazingrise.net/posts/building-openjdk/</loc>
+    <lastmod>2020-05-05T12:52:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://amazingrise.net/categories/</loc>
-    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-05T12:52:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://amazingrise.net/categories/jvm/</loc>
+    <lastmod>2020-05-05T12:52:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://amazingrise.net/posts/</loc>
+    <lastmod>2020-05-05T12:52:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://amazingrise.net/categories/meta/</loc>
     <lastmod>2020-03-31T23:08:27+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://amazingrise.net/posts/</loc>
-    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -53,22 +63,12 @@
   </url>
   
   <url>
-    <loc>https://amazingrise.net/tags/python/</loc>
-    <lastmod>2019-10-28T23:28:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://amazingrise.net/tags/</loc>
+    <loc>https://amazingrise.net/categories/python/</loc>
     <lastmod>2019-10-28T23:28:09+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</loc>
-    <lastmod>2019-10-28T23:28:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://amazingrise.net/categories/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2019-10-28T23:28:09+00:00</lastmod>
   </url>
   
@@ -93,6 +93,11 @@
   </url>
   
   <url>
+    <loc>https://amazingrise.net/categories/kotlin/</loc>
+    <lastmod>2019-08-11T13:52:16+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</loc>
     <lastmod>2019-08-11T13:52:16+00:00</lastmod>
   </url>
@@ -104,6 +109,11 @@
   
   <url>
     <loc>https://amazingrise.net/tags/kotlin/</loc>
+    <lastmod>2019-05-18T10:47:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://amazingrise.net/tags/</loc>
     <lastmod>2019-05-18T10:47:06+00:00</lastmod>
   </url>
   
