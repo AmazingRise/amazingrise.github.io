@@ -43,7 +43,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.811be6e61c7a0ffc34acaff3d23751a6cdddb8c623e70fa66cace9308ab25272.css" integrity="sha256-gRvm5hx6D/w0rK/z0jdRps3duMYj5w&#43;mbKzpMIqyUnI=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.47a896f9ce8ae8431111a7119e32ace23cb55fd694b293868e98dd6207cbd6ce.css" integrity="sha256-R6iW&#43;c6K6EMREacRnjKs4jy1X9aUspOGjpjdYgfL1s4=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -673,93 +673,93 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>以我用的 <a href="https://github.com/Rocket1184/electron-netease-cloud-music">Electron Netease Cloud Music</a> 为例。</p>
 <p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。</p>
 <p>仔细看该项目的源代码，可以找到<a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14">这几行</a>：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ff79c6">const</span> i <span style="color:#ff79c6">=</span> {
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8b008b;font-weight:bold">const</span> i = {
     name(suffix) {
-        <span style="color:#ff79c6">if</span> (suffix) <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">`org.mpris.MediaPlayer2.</span><span style="color:#f1fa8c">${</span>suffix<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span>;
-        <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#39;org.mpris.MediaPlayer2&#39;</span>;
+        <span style="color:#8b008b;font-weight:bold">if</span> (suffix) <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#cd5555">`org.mpris.MediaPlayer2.</span><span style="color:#cd5555">${</span>suffix<span style="color:#cd5555">}</span><span style="color:#cd5555">`</span>;
+        <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#cd5555">&#39;org.mpris.MediaPlayer2&#39;</span>;
     },
     path(suffix) {
-        <span style="color:#ff79c6">if</span> (suffix) <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">`/org/mpris/MediaPlayer2/</span><span style="color:#f1fa8c">${</span>suffix<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">`</span>;
-        <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#39;/org/mpris/MediaPlayer2&#39;</span>;
+        <span style="color:#8b008b;font-weight:bold">if</span> (suffix) <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#cd5555">`/org/mpris/MediaPlayer2/</span><span style="color:#cd5555">${</span>suffix<span style="color:#cd5555">}</span><span style="color:#cd5555">`</span>;
+        <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#cd5555">&#39;/org/mpris/MediaPlayer2&#39;</span>;
     }
 };
 </code></pre></div><p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。</p>
 <p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？</p>
 <p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dbus-send --print-reply --dest<span style="color:#ff79c6">=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
 </code></pre></div><p>然后我们会得到这样一段结果：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">method <span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">time</span><span style="color:#ff79c6">=</span>1578801147.817851 <span style="color:#8be9fd;font-style:italic">sender</span><span style="color:#ff79c6">=</span>:1.89 -&gt; <span style="color:#8be9fd;font-style:italic">destination</span><span style="color:#ff79c6">=</span>:1.303 <span style="color:#8be9fd;font-style:italic">serial</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">100</span> <span style="color:#8be9fd;font-style:italic">reply_serial</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span>
-   variant       array <span style="color:#ff79c6">[</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;mpris:trackid&#34;</span>
-            variant                object path <span style="color:#f1fa8c">&#34;/org/mpris/MediaPlayer2/1475050&#34;</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;mpris:length&#34;</span>
-            variant                int64 <span style="color:#bd93f9">164000000</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;mpris:artUrl&#34;</span>
-            variant                string <span style="color:#f1fa8c">&#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&#34;</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;xesam:album&#34;</span>
-            variant                string <span style="color:#f1fa8c">&#34;Working Class Hero: The Definitive Lennon&#34;</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;xesam:artist&#34;</span>
-            variant                array <span style="color:#ff79c6">[</span>
-                  string <span style="color:#f1fa8c">&#34;John Lennon&#34;</span>
-               <span style="color:#ff79c6">]</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;xesam:discNumber&#34;</span>
-            variant                int16 <span style="color:#bd93f9">0</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;xesam:title&#34;</span>
-            variant                string <span style="color:#f1fa8c">&#34;Oh My Love&#34;</span>
-         <span style="color:#ff79c6">)</span>
-         dict entry<span style="color:#ff79c6">(</span>
-            string <span style="color:#f1fa8c">&#34;xesam:trackNumber&#34;</span>
-            variant                int16 <span style="color:#bd93f9">9</span>
-         <span style="color:#ff79c6">)</span>
-      <span style="color:#ff79c6">]</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">method <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#00688b">time</span>=1578801147.817851 <span style="color:#00688b">sender</span>=:1.89 -&gt; <span style="color:#00688b">destination</span>=:1.303 <span style="color:#00688b">serial</span>=<span style="color:#b452cd">100</span> <span style="color:#00688b">reply_serial</span>=<span style="color:#b452cd">2</span>
+   variant       array [
+         dict entry(
+            string <span style="color:#cd5555">&#34;mpris:trackid&#34;</span>
+            variant                object path <span style="color:#cd5555">&#34;/org/mpris/MediaPlayer2/1475050&#34;</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;mpris:length&#34;</span>
+            variant                int64 <span style="color:#b452cd">164000000</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;mpris:artUrl&#34;</span>
+            variant                string <span style="color:#cd5555">&#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&#34;</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;xesam:album&#34;</span>
+            variant                string <span style="color:#cd5555">&#34;Working Class Hero: The Definitive Lennon&#34;</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;xesam:artist&#34;</span>
+            variant                array [
+                  string <span style="color:#cd5555">&#34;John Lennon&#34;</span>
+               ]
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;xesam:discNumber&#34;</span>
+            variant                int16 <span style="color:#b452cd">0</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;xesam:title&#34;</span>
+            variant                string <span style="color:#cd5555">&#34;Oh My Love&#34;</span>
+         )
+         dict entry(
+            string <span style="color:#cd5555">&#34;xesam:trackNumber&#34;</span>
+            variant                int16 <span style="color:#b452cd">9</span>
+         )
+      ]
 </code></pre></div><p>从结果中我们可以找到我们想要的信息：歌手，标题等等。</p>
 <p>最后，我们只需要用正则表达式提取一下就🉑️️了。</p>
 <h2 id="实现">实现</h2>
 <p>正则表达式 <del>当时鼓捣了好久，</del> 能用就行。</p>
 <p>下面是具体的 Shell 脚本实现。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4">#/bin/sh!</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#/bin/sh!</span>
 
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;Song Daemon is running......&#34;</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;Song Daemon is running......&#34;</span>
 
-<span style="color:#8be9fd;font-style:italic">PREFIX</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;Rise 正在播放:&#34;</span>
-<span style="color:#8be9fd;font-style:italic">FILENAME</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/tmp/songdaemon&#34;</span>
-<span style="color:#8be9fd;font-style:italic">NOSONG</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;当前没有播放歌曲&#34;</span>
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$NOSONG</span><span style="color:#f1fa8c">&#34;</span> &gt; <span style="color:#8be9fd;font-style:italic">$FILENAME</span>
+<span style="color:#00688b">PREFIX</span>=<span style="color:#cd5555">&#34;Rise 正在播放:&#34;</span>
+<span style="color:#00688b">FILENAME</span>=<span style="color:#cd5555">&#34;/tmp/songdaemon&#34;</span>
+<span style="color:#00688b">NOSONG</span>=<span style="color:#cd5555">&#34;当前没有播放歌曲&#34;</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$NOSONG</span><span style="color:#cd5555">&#34;</span> &gt; <span style="color:#00688b">$FILENAME</span>
 
-<span style="color:#ff79c6">while</span> <span style="color:#ff79c6">[</span> : <span style="color:#ff79c6">]</span>
-<span style="color:#ff79c6">do</span>
-	<span style="color:#8be9fd;font-style:italic">ARTIST</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>dbus-send --print-reply --dest<span style="color:#ff79c6">=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n <span style="color:#f1fa8c">&#39;/artist/{n;n;p}&#39;</span> | cut -d <span style="color:#f1fa8c">&#39;&#34;&#39;</span> -f 2<span style="color:#ff79c6">)</span> 2&gt;/dev/null
+<span style="color:#8b008b;font-weight:bold">while</span> [ : ]
+<span style="color:#8b008b;font-weight:bold">do</span>
+	<span style="color:#00688b">ARTIST</span>=<span style="color:#8b008b;font-weight:bold">$(</span>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n <span style="color:#cd5555">&#39;/artist/{n;n;p}&#39;</span> | cut -d <span style="color:#cd5555">&#39;&#34;&#39;</span> -f 2<span style="color:#8b008b;font-weight:bold">)</span> 2&gt;/dev/null
 
-	<span style="color:#8be9fd;font-style:italic">NAME</span><span style="color:#ff79c6">=</span><span style="color:#ff79c6">$(</span>dbus-send --print-reply --dest<span style="color:#ff79c6">=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n <span style="color:#f1fa8c">&#39;/title/{n;p}&#39;</span> | cut -d <span style="color:#f1fa8c">&#39;&#34;&#39;</span> -f 2<span style="color:#ff79c6">)</span> 2&gt;/dev/null
+	<span style="color:#00688b">NAME</span>=<span style="color:#8b008b;font-weight:bold">$(</span>dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n <span style="color:#cd5555">&#39;/title/{n;p}&#39;</span> | cut -d <span style="color:#cd5555">&#39;&#34;&#39;</span> -f 2<span style="color:#8b008b;font-weight:bold">)</span> 2&gt;/dev/null
 
-	<span style="color:#6272a4"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。</span>
+	<span style="color:#228b22"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。</span>
 
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$NAME</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;&#34;</span> <span style="color:#ff79c6">]</span>
-	<span style="color:#ff79c6">then</span>
-		<span style="color:#8be9fd;font-style:italic">CONTENT</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$NOSONG</span><span style="color:#f1fa8c">&#34;</span>
-	<span style="color:#ff79c6">else</span>
-		<span style="color:#8be9fd;font-style:italic">CONTENT</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$PREFIX</span><span style="color:#f1fa8c"> </span><span style="color:#8be9fd;font-style:italic">$NAME</span><span style="color:#f1fa8c"> - </span><span style="color:#8be9fd;font-style:italic">$ARTIST</span><span style="color:#f1fa8c">&#34;</span>
-	<span style="color:#ff79c6">fi</span>
-	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$CONTENT</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>cat <span style="color:#8be9fd;font-style:italic">$FILENAME</span><span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span> <span style="color:#ff79c6">]</span>
-	<span style="color:#ff79c6">then</span>
+	<span style="color:#8b008b;font-weight:bold">if</span> [ <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$NAME</span><span style="color:#cd5555">&#34;</span> == <span style="color:#cd5555">&#34;&#34;</span> ]
+	<span style="color:#8b008b;font-weight:bold">then</span>
+		<span style="color:#00688b">CONTENT</span>=<span style="color:#cd5555">&#34;</span><span style="color:#00688b">$NOSONG</span><span style="color:#cd5555">&#34;</span>
+	<span style="color:#8b008b;font-weight:bold">else</span>
+		<span style="color:#00688b">CONTENT</span>=<span style="color:#cd5555">&#34;</span><span style="color:#00688b">$PREFIX</span><span style="color:#cd5555"> </span><span style="color:#00688b">$NAME</span><span style="color:#cd5555"> - </span><span style="color:#00688b">$ARTIST</span><span style="color:#cd5555">&#34;</span>
+	<span style="color:#8b008b;font-weight:bold">fi</span>
+	<span style="color:#8b008b;font-weight:bold">if</span> [ <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$CONTENT</span><span style="color:#cd5555">&#34;</span> == <span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">$(</span>cat <span style="color:#00688b">$FILENAME</span><span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555">&#34;</span> ]
+	<span style="color:#8b008b;font-weight:bold">then</span>
 		sleep 1;
-	<span style="color:#ff79c6">else</span>
-		<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$CONTENT</span><span style="color:#f1fa8c">&#34;</span> &gt; <span style="color:#8be9fd;font-style:italic">$FILENAME</span>
-	<span style="color:#ff79c6">fi</span>
-<span style="color:#ff79c6">done</span>
+	<span style="color:#8b008b;font-weight:bold">else</span>
+		<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$CONTENT</span><span style="color:#cd5555">&#34;</span> &gt; <span style="color:#00688b">$FILENAME</span>
+	<span style="color:#8b008b;font-weight:bold">fi</span>
+<span style="color:#8b008b;font-weight:bold">done</span>
 </code></pre></div><p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。</p>
 <h1 id="后记">后记</h1>
 <p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。</p>

@@ -63,7 +63,7 @@
 &lt;p&gt;注： OpenJDK 7 理论上可以，但编译时会出问题。还是建议用 OpenJDK 8。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在 Arch Linux/Manjaro Linux 下，可以通过&lt;code&gt;archlinux-java status&lt;/code&gt;查看是否有 OpenJDK 8。输入以下命令：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ archlinux-java status | grep &lt;span style=&#34;color:#bd93f9&#34;&gt;8&lt;/span&gt; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ archlinux-java status | grep &lt;span style=&#34;color:#b452cd&#34;&gt;8&lt;/span&gt; 
   java-8-openjdk
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果没有的话（即上面命令没有结果），赶紧去搞一个！（&lt;code&gt;sudo pacman -S jdk8-openjdk&lt;/code&gt;）&lt;/p&gt;
 &lt;h2 id=&#34;mercurial&#34;&gt;Mercurial&lt;/h2&gt;
@@ -80,15 +80,15 @@
 &lt;p&gt;以上的工具准备好了，就可以开始编译了。&lt;/p&gt;
 &lt;h2 id=&#34;clone&#34;&gt;clone&lt;/h2&gt;
 &lt;p&gt;正常下载是&lt;code&gt;hg clone 目标网址&lt;/code&gt;。如果你的网络环境不好，可以出动 HTTP 代理。下例是让 mercurial 经过 http://127.0.0.1:8000/ 处的代理：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;hg --config http_proxy.host&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;127.0.0.1:8000 clone http://hg.openjdk.java.net/jdk8u/jdk8u/ 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;hg --config http_proxy.host=127.0.0.1:8000 clone http://hg.openjdk.java.net/jdk8u/jdk8u/ 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get_source&#34;&gt;get_source&lt;/h2&gt;
 &lt;p&gt;如果你的网络环境不好，我们要预先定义一下代理：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;HGFOREST_GLOBALOPTS&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34; --config http_proxy.host=127.0.0.1:8000&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;HGFOREST_GLOBALOPTS&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34; --config http_proxy.host=127.0.0.1:8000&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：在&lt;code&gt;--config&lt;/code&gt;前有&lt;strong&gt;一个空格&lt;/strong&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;开始吧：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;chmod +x ./get_source.sh
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;chmod +x ./get_source.sh
 ./get_source.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果中间失败，可以重复运行&lt;code&gt;get_source.sh&lt;/code&gt;，脚本会从失败的地方继续下载。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -96,7 +96,7 @@
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;configure&#34;&gt;configure&lt;/h2&gt;
 &lt;p&gt;输入以下命令开始配置工作。这里需要手动指定 Bootstrap JDK 的路径。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./configure --with-boot-jdk&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;/usr/lib/jvm/java-8-openjdk 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./configure --with-boot-jdk=/usr/lib/jvm/java-8-openjdk 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果没有报错，那么说明你的环境配置正常。&lt;/p&gt;
 &lt;h2 id=&#34;dirty-hack&#34;&gt;dirty hack&lt;/h2&gt;
 &lt;p&gt;我们还需要更改一下编译参数。OpenJDK 默认编译的时候会将所有 &lt;code&gt;warning&lt;/code&gt; 视为 &lt;code&gt;error&lt;/code&gt;，会导致以下错误：&lt;code&gt;cc1plus: all warnings being treated as errors&lt;/code&gt;&lt;/p&gt;
@@ -144,10 +144,10 @@ End   2020-05-05 19:38:49
 -------------------------
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这种情况下，你可以在&lt;code&gt;./build/linux-x86_64-normal-server-release/images/j2sdk-image/bin/&lt;/code&gt;目录下找到&lt;code&gt;java&lt;/code&gt;和&lt;code&gt;javac&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;你可以运行一下：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ./java -version
-openjdk version &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;1.8.0-internal&amp;#34;&lt;/span&gt;
-OpenJDK Runtime Environment &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;build 25.71-b00, mixed mode&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ./java -version
+openjdk version &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;1.8.0-internal&amp;#34;&lt;/span&gt;
+OpenJDK Runtime Environment (build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00)
+OpenJDK 64-Bit Server VM (build 25.71-b00, mixed mode)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;没错，它的版本号里写着你的机器名。 很有成就感。&lt;/p&gt;
 &lt;h1 id=&#34;最后&#34;&gt;最后&lt;/h1&gt;
 &lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
@@ -258,19 +258,19 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 &lt;p&gt;那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。&lt;/p&gt;
 &lt;h2 id=&#34;实现1-不用-vue&#34;&gt;实现1 不用 Vue&lt;/h2&gt;
 &lt;p&gt;下面我们用 Bootstrap 的卡片实现一个友链卡片。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt;&lt;/span&gt;
-&amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
-        &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
-        &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;
-        &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
-        &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;张三的挖坑日记&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;
-    &amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
-        &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 链接 --&amp;gt;&lt;/span&gt;
-        &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;https://zhangsan.com&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;a&lt;/span&gt;&amp;gt;
-    &amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt;&lt;/span&gt;
+&amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;style&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;张三的挖坑日记&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
+        &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 链接 --&amp;gt;&lt;/span&gt;
+        &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;href&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;https://zhangsan.com&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;a&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实现效果如下：&lt;/p&gt;
 &lt;div class=&#34;card&#34; style=&#34;width:20rem;margin:1rem;&#34;&gt;
     &lt;div class=&#34;card-body&#34;&gt;
@@ -289,42 +289,42 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 &lt;h2 id=&#34;实现2-vue-app&#34;&gt;实现2 Vue App&lt;/h2&gt;
 &lt;p&gt;引入 Vue，利用&lt;code&gt;v-for&lt;/code&gt;我们可以提高代码的复用性。&lt;/p&gt;
 &lt;p&gt;先定义一个 Vue App，然后把朋友们以数组的形式录入 &lt;code&gt;data&lt;/code&gt; 中。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; app &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;new&lt;/span&gt; Vue({
-  el&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;#app&amp;#39;&lt;/span&gt;,
-  data&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; {
-    friends&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; [
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;var&lt;/span&gt; app = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; Vue({
+  el: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;#app&amp;#39;&lt;/span&gt;,
+  data: {
+    friends: [
         {
-            name&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;张三&amp;#34;&lt;/span&gt;,
-            description&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt;,
-            url&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://zhangsan.com/&amp;#34;&lt;/span&gt;
+            name: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;张三&amp;#34;&lt;/span&gt;,
+            description: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt;,
+            url: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://zhangsan.com/&amp;#34;&lt;/span&gt;
         },
         {
-            name&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;李四&amp;#34;&lt;/span&gt;,
-            description&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt;,
-            url&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://lisi.com/&amp;#34;&lt;/span&gt;
+            name: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;李四&amp;#34;&lt;/span&gt;,
+            description: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt;,
+            url: &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://lisi.com/&amp;#34;&lt;/span&gt;
         }
     ]
   }
-})&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+})&amp;lt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们用&lt;code&gt;v-for&lt;/code&gt;遍历一下&lt;code&gt;friends&lt;/code&gt;这个元素。&lt;/p&gt;
 &lt;div v-pre&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
-    &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&amp;gt;&lt;/span&gt;
-    &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;v-for&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;friend in friends&amp;#34;&lt;/span&gt;&amp;gt;
-        &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
-            &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
-            &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;{{friend.name}}&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;
-            &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
-            &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;{{friend.description}}&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;p&lt;/span&gt;&amp;gt;
-        &amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
-        &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
-            &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 链接，注意 这个地方要用v-bind:href --&amp;gt;&lt;/span&gt;
-            &amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;v-&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;bind:href&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;friend.url&amp;#34;&lt;/span&gt;&amp;gt;{{friend.url}}&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;a&lt;/span&gt;&amp;gt;
-            &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;lt;!-- v-bind 也可以缩写为 `:url=&amp;#34;friend.url&amp;#34;` 。 --&amp;gt;&lt;/span&gt;
-        &amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
-    &amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;div&lt;/span&gt;&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;id&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;app&amp;#34;&lt;/span&gt;&amp;gt;
+    &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&amp;gt;&lt;/span&gt;
+    &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;style&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;width:20rem;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;v-for&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;friend in friends&amp;#34;&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card-body&amp;#34;&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 标题 --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;h4&amp;#34;&lt;/span&gt;&amp;gt;{{friend.name}}&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 描述 --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;{{friend.description}}&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;p&lt;/span&gt;&amp;gt;
+        &amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;class&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;card-footer&amp;#34;&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 链接，注意 这个地方要用v-bind:href --&amp;gt;&lt;/span&gt;
+            &amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;v-&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;bind:href&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;friend.url&amp;#34;&lt;/span&gt;&amp;gt;{{friend.url}}&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;a&lt;/span&gt;&amp;gt;
+            &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#228b22&#34;&gt;&amp;lt;!-- v-bind 也可以缩写为 `:url=&amp;#34;friend.url&amp;#34;` 。 --&amp;gt;&lt;/span&gt;
+        &amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+    &amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;div&lt;/span&gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样可以复用卡片代码，并且修改样式也很方便了。&lt;/p&gt;
 &lt;p&gt;但这个代码还是不完美：&lt;/p&gt;
 &lt;ol&gt;
@@ -338,38 +338,38 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 &lt;/blockquote&gt;
 &lt;div v-pre&gt;
 &lt;p&gt;如果有这么一种写法，就比较完美了：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt;&amp;gt;
-&amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://lisi.com&amp;#34;&lt;/span&gt;&amp;gt;李四&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;description&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;张三的挖坑日记&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;url&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://zhangsan.com&amp;#34;&lt;/span&gt;&amp;gt;张三&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;description&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;李四的网络日志&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;url&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://lisi.com&amp;#34;&lt;/span&gt;&amp;gt;李四&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;很幸运的是，Vue.js 提供这种功能。&lt;/p&gt;
 &lt;p&gt;我们可以定义一个 Vue Component。这里要引入两样东西：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-slots.html&#34;&gt;slot&lt;/a&gt; 写在模板中，用来插入标签中间的数据，即&lt;code&gt;&amp;lt;friend&amp;gt;&amp;lt;/friend&amp;gt;&lt;/code&gt;中间的内容。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cn.vuejs.org/v2/guide/components-props.html&#34;&gt;props&lt;/a&gt; 用于提取标签属性中的数据，如&lt;code&gt;&amp;lt;friend url=&amp;quot;xxx&amp;quot;...&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;Vue.component(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;friend&amp;#39;&lt;/span&gt;,{
-        &lt;span style=&#34;color:#6272a4&#34;&gt;// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;        props&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt;[&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;url&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;],
-        template&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;`
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;        &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;            &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;!-- 标题，这里用了slot，目的是在这里插入“&amp;lt;friend&amp;gt;这里&amp;lt;/friend&amp;gt;”的内容。 --&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;&amp;lt;/p&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;!-- 描述，这里就是对“&amp;lt;friend description=&amp;#34;这里&amp;#34;...”内容的提取。 --&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;p&amp;gt;{{ description }}&amp;lt;/p&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;            &amp;lt;/div&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;            &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;a v-bind:href=&amp;#34;url&amp;#34;&amp;gt;{{url}}&amp;lt;/a&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;                &amp;lt;!-- v-bind 也可以缩写为 :url=&amp;#34;friend.url&amp;#34; 。 --&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;            &amp;lt;/div&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;        &amp;lt;/div&amp;gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;        `&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;Vue.component(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;friend&amp;#39;&lt;/span&gt;,{
+        &lt;span style=&#34;color:#228b22&#34;&gt;// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        props:[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;url&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;],
+        template: &lt;span style=&#34;color:#cd5555&#34;&gt;`
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;        &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;            &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;!-- 标题，这里用了slot，目的是在这里插入“&amp;lt;friend&amp;gt;这里&amp;lt;/friend&amp;gt;”的内容。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;!-- 描述，这里就是对“&amp;lt;friend description=&amp;#34;这里&amp;#34;...”内容的提取。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;p&amp;gt;{{ description }}&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;            &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;            &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;a v-bind:href=&amp;#34;url&amp;#34;&amp;gt;{{url}}&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;                &amp;lt;!-- v-bind 也可以缩写为 :url=&amp;#34;friend.url&amp;#34; 。 --&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;            &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;        &amp;lt;/div&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;        `&lt;/span&gt;
     });
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这样我们就实现了一个可复用的 Vue 组件了，而且上面的问题我们已经完美解决了：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;如果我们新增了一个朋友，就只需要在页面相应地方里面写一句：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;description&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;描述&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;url&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;网址&amp;#34;&lt;/span&gt;&amp;gt;朋友的名字&amp;lt;/&lt;span style=&#34;color:#ff79c6&#34;&gt;friend&lt;/span&gt;&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;description&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;描述&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;url&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;网址&amp;#34;&lt;/span&gt;&amp;gt;朋友的名字&amp;lt;/&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;friend&lt;/span&gt;&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Vice versa，如果我们需要修改卡片的样式，我们只需要修改组件的 &lt;code&gt;template&lt;/code&gt; 里面的代码（当然你可以进一步将 CSS 分离出来）。&lt;/p&gt;
@@ -536,93 +536,93 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 &lt;p&gt;以我用的 &lt;a href=&#34;https://github.com/Rocket1184/electron-netease-cloud-music&#34;&gt;Electron Netease Cloud Music&lt;/a&gt; 为例。&lt;/p&gt;
 &lt;p&gt;在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。&lt;/p&gt;
 &lt;p&gt;仔细看该项目的源代码，可以找到&lt;a href=&#34;https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14&#34;&gt;这几行&lt;/a&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;const&lt;/span&gt; i &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;const&lt;/span&gt; i = {
     name(suffix) {
-        &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; (suffix) &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;`org.mpris.MediaPlayer2.&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;suffix&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;`&lt;/span&gt;;
-        &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span&gt;;
+        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (suffix) &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;`org.mpris.MediaPlayer2.&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;${&lt;/span&gt;suffix&lt;span style=&#34;color:#cd5555&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;`&lt;/span&gt;;
+        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span&gt;;
     },
     path(suffix) {
-        &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; (suffix) &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;`/org/mpris/MediaPlayer2/&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;suffix&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;`&lt;/span&gt;;
-        &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span&gt;;
+        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; (suffix) &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;`/org/mpris/MediaPlayer2/&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;${&lt;/span&gt;suffix&lt;span style=&#34;color:#cd5555&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;`&lt;/span&gt;;
+        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span&gt;;
     }
 };
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。&lt;/p&gt;
 &lt;p&gt;那么当前媒体的元数据(metadata)的形式是怎么样的呢？&lt;/p&gt;
 &lt;p&gt;于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;dbus-send --print-reply --dest&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们会得到这样一段结果：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;method &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;1578801147.817851 &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;sender&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;:1.89 -&amp;gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;destination&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;:1.303 &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;serial&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bd93f9&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;reply_serial&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt;
-   variant       array &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;mpris:trackid&amp;#34;&lt;/span&gt;
-            variant                object path &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/org/mpris/MediaPlayer2/1475050&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;mpris:length&amp;#34;&lt;/span&gt;
-            variant                int64 &lt;span style=&#34;color:#bd93f9&#34;&gt;164000000&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;mpris:artUrl&amp;#34;&lt;/span&gt;
-            variant                string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;xesam:album&amp;#34;&lt;/span&gt;
-            variant                string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Working Class Hero: The Definitive Lennon&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;xesam:artist&amp;#34;&lt;/span&gt;
-            variant                array &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt;
-                  string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;John Lennon&amp;#34;&lt;/span&gt;
-               &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;xesam:discNumber&amp;#34;&lt;/span&gt;
-            variant                int16 &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;xesam:title&amp;#34;&lt;/span&gt;
-            variant                string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Oh My Love&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-         dict entry&lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt;
-            string &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;xesam:trackNumber&amp;#34;&lt;/span&gt;
-            variant                int16 &lt;span style=&#34;color:#bd93f9&#34;&gt;9&lt;/span&gt;
-         &lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;
-      &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;method &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;time&lt;/span&gt;=1578801147.817851 &lt;span style=&#34;color:#00688b&#34;&gt;sender&lt;/span&gt;=:1.89 -&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;destination&lt;/span&gt;=:1.303 &lt;span style=&#34;color:#00688b&#34;&gt;serial&lt;/span&gt;=&lt;span style=&#34;color:#b452cd&#34;&gt;100&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;reply_serial&lt;/span&gt;=&lt;span style=&#34;color:#b452cd&#34;&gt;2&lt;/span&gt;
+   variant       array [
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;mpris:trackid&amp;#34;&lt;/span&gt;
+            variant                object path &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/org/mpris/MediaPlayer2/1475050&amp;#34;&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;mpris:length&amp;#34;&lt;/span&gt;
+            variant                int64 &lt;span style=&#34;color:#b452cd&#34;&gt;164000000&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;mpris:artUrl&amp;#34;&lt;/span&gt;
+            variant                string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&amp;#34;&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xesam:album&amp;#34;&lt;/span&gt;
+            variant                string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Working Class Hero: The Definitive Lennon&amp;#34;&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xesam:artist&amp;#34;&lt;/span&gt;
+            variant                array [
+                  string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;John Lennon&amp;#34;&lt;/span&gt;
+               ]
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xesam:discNumber&amp;#34;&lt;/span&gt;
+            variant                int16 &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xesam:title&amp;#34;&lt;/span&gt;
+            variant                string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Oh My Love&amp;#34;&lt;/span&gt;
+         )
+         dict entry(
+            string &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;xesam:trackNumber&amp;#34;&lt;/span&gt;
+            variant                int16 &lt;span style=&#34;color:#b452cd&#34;&gt;9&lt;/span&gt;
+         )
+      ]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;从结果中我们可以找到我们想要的信息：歌手，标题等等。&lt;/p&gt;
 &lt;p&gt;最后，我们只需要用正则表达式提取一下就🉑️️了。&lt;/p&gt;
 &lt;h2 id=&#34;实现&#34;&gt;实现&lt;/h2&gt;
 &lt;p&gt;正则表达式 &lt;del&gt;当时鼓捣了好久，&lt;/del&gt; 能用就行。&lt;/p&gt;
 &lt;p&gt;下面是具体的 Shell 脚本实现。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;#/bin/sh!&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#228b22&#34;&gt;#/bin/sh!&lt;/span&gt;
 
-&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Song Daemon is running......&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Song Daemon is running......&amp;#34;&lt;/span&gt;
 
-&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PREFIX&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Rise 正在播放:&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;FILENAME&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/tmp/songdaemon&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;NOSONG&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;当前没有播放歌曲&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$NOSONG&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt;
+&lt;span style=&#34;color:#00688b&#34;&gt;PREFIX&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Rise 正在播放:&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#00688b&#34;&gt;FILENAME&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;/tmp/songdaemon&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#00688b&#34;&gt;NOSONG&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;当前没有播放歌曲&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$NOSONG&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$FILENAME&lt;/span&gt;
 
-&lt;span style=&#34;color:#ff79c6&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt; : &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;do&lt;/span&gt;
-	&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;ARTIST&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;dbus-send --print-reply --dest&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/artist/{n;n;p}&amp;#39;&lt;/span&gt; | cut -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt; -f 2&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt; 2&amp;gt;/dev/null
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;while&lt;/span&gt; [ : ]
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;do&lt;/span&gt;
+	&lt;span style=&#34;color:#00688b&#34;&gt;ARTIST&lt;/span&gt;=&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;$(&lt;/span&gt;dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/artist/{n;n;p}&amp;#39;&lt;/span&gt; | cut -d &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt; -f 2&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;)&lt;/span&gt; 2&amp;gt;/dev/null
 
-	&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;NAME&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;dbus-send --print-reply --dest&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/title/{n;p}&amp;#39;&lt;/span&gt; | cut -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt; -f 2&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt; 2&amp;gt;/dev/null
+	&lt;span style=&#34;color:#00688b&#34;&gt;NAME&lt;/span&gt;=&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;$(&lt;/span&gt;dbus-send --print-reply --dest=org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/title/{n;p}&amp;#39;&lt;/span&gt; | cut -d &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt; -f 2&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;)&lt;/span&gt; 2&amp;gt;/dev/null
 
-	&lt;span style=&#34;color:#6272a4&#34;&gt;# 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。&lt;/span&gt;
+	&lt;span style=&#34;color:#228b22&#34;&gt;# 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。&lt;/span&gt;
 
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$NAME&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;then&lt;/span&gt;
-		&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;CONTENT&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$NOSONG&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;else&lt;/span&gt;
-		&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;CONTENT&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PREFIX&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$NAME&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt; - &lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$ARTIST&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;fi&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$CONTENT&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;cat &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;then&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; [ &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$NAME&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; ]
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;then&lt;/span&gt;
+		&lt;span style=&#34;color:#00688b&#34;&gt;CONTENT&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$NOSONG&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt;
+		&lt;span style=&#34;color:#00688b&#34;&gt;CONTENT&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$PREFIX&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$NAME&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt; - &lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$ARTIST&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;fi&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt; [ &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$CONTENT&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; == &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;$(&lt;/span&gt;cat &lt;span style=&#34;color:#00688b&#34;&gt;$FILENAME&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; ]
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;then&lt;/span&gt;
 		sleep 1;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;else&lt;/span&gt;
-		&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$CONTENT&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;fi&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;done&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt;
+		&lt;span style=&#34;color:#658b00&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$CONTENT&lt;/span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$FILENAME&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;OBS Studio 怎么设置显示文件内容，我就不在此赘述了。&lt;/p&gt;
 &lt;h1 id=&#34;后记&#34;&gt;后记&lt;/h1&gt;
 &lt;p&gt;不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。&lt;/p&gt;
@@ -671,11 +671,11 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 &lt;/ul&gt;
 &lt;h2 id=&#34;用spyder运行示例代码&#34;&gt;用Spyder运行示例代码&lt;/h2&gt;
 &lt;p&gt;现在我们在左侧代码区域,粘贴下面的代码.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#ff79c6&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;):
-	i &lt;span style=&#34;color:#ff79c6&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
-	a &lt;span style=&#34;color:#ff79c6&#34;&gt;+=&lt;/span&gt; i
-&lt;span style=&#34;color:#ff79c6&#34;&gt;print&lt;/span&gt;(a)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a = &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#8b008b&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;):
+	i += &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;
+	a += i
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按一下绿色的开始按钮,我们可以在&lt;strong&gt;控制台&lt;/strong&gt;中看到输出.
 输出:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;55
@@ -687,13 +687,13 @@ OpenJDK 64-Bit Server VM &lt;span style=&#34;color:#ff79c6&#34;&gt;(&lt;/span&gt
 在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.&lt;/p&gt;
 &lt;p&gt;既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
 所以我们把代码修改成:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#ff79c6&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;):
-	i &lt;span style=&#34;color:#ff79c6&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;此时i的值为:&amp;#34;&lt;/span&gt;,i) &lt;span style=&#34;color:#6272a4&#34;&gt;# 在i变化后立马print,看看它的值是多少&lt;/span&gt;
-	a &lt;span style=&#34;color:#ff79c6&#34;&gt;+=&lt;/span&gt; i
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;此时a的值为:&amp;#34;&lt;/span&gt;,a) &lt;span style=&#34;color:#6272a4&#34;&gt;# 在a变化后立马print,看看它的值是多少&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;print&lt;/span&gt;(a)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;a = &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#8b008b&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#658b00&#34;&gt;range&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;):
+	i += &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;此时i的值为:&amp;#34;&lt;/span&gt;,i) &lt;span style=&#34;color:#228b22&#34;&gt;# 在i变化后立马print,看看它的值是多少&lt;/span&gt;
+	a += i
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;此时a的值为:&amp;#34;&lt;/span&gt;,a) &lt;span style=&#34;color:#228b22&#34;&gt;# 在a变化后立马print,看看它的值是多少&lt;/span&gt;
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;print&lt;/span&gt;(a)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行结果是这样的:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;此时i的值为: 1
 此时a的值为: 1

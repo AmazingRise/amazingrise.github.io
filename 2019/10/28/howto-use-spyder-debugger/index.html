@@ -43,7 +43,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.811be6e61c7a0ffc34acaff3d23751a6cdddb8c623e70fa66cace9308ab25272.css" integrity="sha256-gRvm5hx6D/w0rK/z0jdRps3duMYj5w&#43;mbKzpMIqyUnI=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.47a896f9ce8ae8431111a7119e32ace23cb55fd694b293868e98dd6207cbd6ce.css" integrity="sha256-R6iW&#43;c6K6EMREacRnjKs4jy1X9aUspOGjpjdYgfL1s4=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -1383,11 +1383,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </ul>
 <h2 id="用spyder运行示例代码">用Spyder运行示例代码</h2>
 <p>现在我们在左侧代码区域,粘贴下面的代码.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">10</span>):
-	i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
-	a <span style="color:#ff79c6">+=</span> i
-<span style="color:#ff79c6">print</span>(a)
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a = <span style="color:#b452cd">0</span>
+<span style="color:#8b008b;font-weight:bold">for</span> i <span style="color:#8b008b">in</span> <span style="color:#658b00">range</span>(<span style="color:#b452cd">10</span>):
+	i += <span style="color:#b452cd">1</span>
+	a += i
+<span style="color:#8b008b;font-weight:bold">print</span>(a)
 </code></pre></div><p>然后按一下绿色的开始按钮,我们可以在<strong>控制台</strong>中看到输出.
 输出:</p>
 <pre><code>55
@@ -1399,13 +1399,13 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.</p>
 <p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
 所以我们把代码修改成:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
-<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">10</span>):
-	i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
-	<span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;此时i的值为:&#34;</span>,i) <span style="color:#6272a4"># 在i变化后立马print,看看它的值是多少</span>
-	a <span style="color:#ff79c6">+=</span> i
-	<span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;此时a的值为:&#34;</span>,a) <span style="color:#6272a4"># 在a变化后立马print,看看它的值是多少</span>
-<span style="color:#ff79c6">print</span>(a)
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a = <span style="color:#b452cd">0</span>
+<span style="color:#8b008b;font-weight:bold">for</span> i <span style="color:#8b008b">in</span> <span style="color:#658b00">range</span>(<span style="color:#b452cd">10</span>):
+	i += <span style="color:#b452cd">1</span>
+	<span style="color:#8b008b;font-weight:bold">print</span>(<span style="color:#cd5555">&#34;此时i的值为:&#34;</span>,i) <span style="color:#228b22"># 在i变化后立马print,看看它的值是多少</span>
+	a += i
+	<span style="color:#8b008b;font-weight:bold">print</span>(<span style="color:#cd5555">&#34;此时a的值为:&#34;</span>,a) <span style="color:#228b22"># 在a变化后立马print,看看它的值是多少</span>
+<span style="color:#8b008b;font-weight:bold">print</span>(a)
 </code></pre></div><p>运行结果是这样的:</p>
 <pre><code>此时i的值为: 1
 此时a的值为: 1

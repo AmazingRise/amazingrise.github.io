@@ -43,7 +43,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.811be6e61c7a0ffc34acaff3d23751a6cdddb8c623e70fa66cace9308ab25272.css" integrity="sha256-gRvm5hx6D/w0rK/z0jdRps3duMYj5w&#43;mbKzpMIqyUnI=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.47a896f9ce8ae8431111a7119e32ace23cb55fd694b293868e98dd6207cbd6ce.css" integrity="sha256-R6iW&#43;c6K6EMREacRnjKs4jy1X9aUspOGjpjdYgfL1s4=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -726,19 +726,19 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。</p>
 <h2 id="实现1-不用-vue">实现1 不用 Vue</h2>
 <p>下面我们用 Bootstrap 的卡片实现一个友链卡片。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#6272a4">&lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&gt;</span>
-&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card&#34;</span> <span style="color:#50fa7b">style</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;width:20rem;&#34;</span>&gt;
-    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card-body&#34;</span>&gt;
-        <span style="color:#6272a4">&lt;!-- 标题 --&gt;</span>
-        &lt;<span style="color:#ff79c6">p</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;h4&#34;</span>&gt;张三&lt;/<span style="color:#ff79c6">p</span>&gt;
-        <span style="color:#6272a4">&lt;!-- 描述 --&gt;</span>
-        &lt;<span style="color:#ff79c6">p</span>&gt;张三的挖坑日记&lt;/<span style="color:#ff79c6">p</span>&gt;
-    &lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card-footer&#34;</span>&gt;
-        <span style="color:#6272a4">&lt;!-- 链接 --&gt;</span>
-        &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://zhangsan.com&#34;</span>&gt;https://zhangsan.com&lt;/<span style="color:#ff79c6">a</span>&gt;
-    &lt;/<span style="color:#ff79c6">div</span>&gt;
-&lt;/<span style="color:#ff79c6">div</span>&gt;
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#228b22">&lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&gt;</span>
+&lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card&#34;</span> <span style="color:#658b00">style</span>=<span style="color:#cd5555">&#34;width:20rem;&#34;</span>&gt;
+    &lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card-body&#34;</span>&gt;
+        <span style="color:#228b22">&lt;!-- 标题 --&gt;</span>
+        &lt;<span style="color:#8b008b;font-weight:bold">p</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;h4&#34;</span>&gt;张三&lt;/<span style="color:#8b008b;font-weight:bold">p</span>&gt;
+        <span style="color:#228b22">&lt;!-- 描述 --&gt;</span>
+        &lt;<span style="color:#8b008b;font-weight:bold">p</span>&gt;张三的挖坑日记&lt;/<span style="color:#8b008b;font-weight:bold">p</span>&gt;
+    &lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
+    &lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card-footer&#34;</span>&gt;
+        <span style="color:#228b22">&lt;!-- 链接 --&gt;</span>
+        &lt;<span style="color:#8b008b;font-weight:bold">a</span> <span style="color:#658b00">href</span>=<span style="color:#cd5555">&#34;https://zhangsan.com&#34;</span>&gt;https://zhangsan.com&lt;/<span style="color:#8b008b;font-weight:bold">a</span>&gt;
+    &lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
+&lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
 </code></pre></div><p>实现效果如下：</p>
 <div class="card" style="width:20rem;margin:1rem;">
     <div class="card-body">
@@ -757,42 +757,42 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <h2 id="实现2-vue-app">实现2 Vue App</h2>
 <p>引入 Vue，利用<code>v-for</code>我们可以提高代码的复用性。</p>
 <p>先定义一个 Vue App，然后把朋友们以数组的形式录入 <code>data</code> 中。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8be9fd;font-style:italic">var</span> app <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Vue({
-  el<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;#app&#39;</span>,
-  data<span style="color:#ff79c6">:</span> {
-    friends<span style="color:#ff79c6">:</span> [
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#8b008b;font-weight:bold">var</span> app = <span style="color:#8b008b;font-weight:bold">new</span> Vue({
+  el: <span style="color:#cd5555">&#39;#app&#39;</span>,
+  data: {
+    friends: [
         {
-            name<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;张三&#34;</span>,
-            description<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;张三的挖坑日记&#34;</span>,
-            url<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;https://zhangsan.com/&#34;</span>
+            name: <span style="color:#cd5555">&#34;张三&#34;</span>,
+            description: <span style="color:#cd5555">&#34;张三的挖坑日记&#34;</span>,
+            url: <span style="color:#cd5555">&#34;https://zhangsan.com/&#34;</span>
         },
         {
-            name<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;李四&#34;</span>,
-            description<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;李四的网络日志&#34;</span>,
-            url<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;https://lisi.com/&#34;</span>
+            name: <span style="color:#cd5555">&#34;李四&#34;</span>,
+            description: <span style="color:#cd5555">&#34;李四的网络日志&#34;</span>,
+            url: <span style="color:#cd5555">&#34;https://lisi.com/&#34;</span>
         }
     ]
   }
-})<span style="color:#ff79c6">&lt;&gt;</span>
+})&lt;&gt;
 </code></pre></div><p>然后我们用<code>v-for</code>遍历一下<code>friends</code>这个元素。</p>
 <div v-pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">id</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;app&#34;</span>&gt;
-    <span style="color:#6272a4">&lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&gt;</span>
-    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card&#34;</span> <span style="color:#50fa7b">style</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;width:20rem;&#34;</span> <span style="color:#50fa7b">v-for</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friend in friends&#34;</span>&gt;
-        &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card-body&#34;</span>&gt;
-            <span style="color:#6272a4">&lt;!-- 标题 --&gt;</span>
-            &lt;<span style="color:#ff79c6">p</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;h4&#34;</span>&gt;{{friend.name}}&lt;/<span style="color:#ff79c6">p</span>&gt;
-            <span style="color:#6272a4">&lt;!-- 描述 --&gt;</span>
-            &lt;<span style="color:#ff79c6">p</span>&gt;{{friend.description}}&lt;/<span style="color:#ff79c6">p</span>&gt;
-        &lt;/<span style="color:#ff79c6">div</span>&gt;
-        &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">class</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;card-footer&#34;</span>&gt;
-            <span style="color:#6272a4">&lt;!-- 链接，注意 这个地方要用v-bind:href --&gt;</span>
-            &lt;<span style="color:#ff79c6">a</span> <span style="color:#50fa7b">v-</span> <span style="color:#50fa7b">bind:href</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;friend.url&#34;</span>&gt;{{friend.url}}&lt;/<span style="color:#ff79c6">a</span>&gt;
-            <span style="color:#6272a4">&lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&gt;</span>
-            <span style="color:#6272a4">&lt;!-- v-bind 也可以缩写为 `:url=&#34;friend.url&#34;` 。 --&gt;</span>
-        &lt;/<span style="color:#ff79c6">div</span>&gt;
-    &lt;/<span style="color:#ff79c6">div</span>&gt;
-&lt;/<span style="color:#ff79c6">div</span>&gt;
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">id</span>=<span style="color:#cd5555">&#34;app&#34;</span>&gt;
+    <span style="color:#228b22">&lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&gt;</span>
+    &lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card&#34;</span> <span style="color:#658b00">style</span>=<span style="color:#cd5555">&#34;width:20rem;&#34;</span> <span style="color:#658b00">v-for</span>=<span style="color:#cd5555">&#34;friend in friends&#34;</span>&gt;
+        &lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card-body&#34;</span>&gt;
+            <span style="color:#228b22">&lt;!-- 标题 --&gt;</span>
+            &lt;<span style="color:#8b008b;font-weight:bold">p</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;h4&#34;</span>&gt;{{friend.name}}&lt;/<span style="color:#8b008b;font-weight:bold">p</span>&gt;
+            <span style="color:#228b22">&lt;!-- 描述 --&gt;</span>
+            &lt;<span style="color:#8b008b;font-weight:bold">p</span>&gt;{{friend.description}}&lt;/<span style="color:#8b008b;font-weight:bold">p</span>&gt;
+        &lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
+        &lt;<span style="color:#8b008b;font-weight:bold">div</span> <span style="color:#658b00">class</span>=<span style="color:#cd5555">&#34;card-footer&#34;</span>&gt;
+            <span style="color:#228b22">&lt;!-- 链接，注意 这个地方要用v-bind:href --&gt;</span>
+            &lt;<span style="color:#8b008b;font-weight:bold">a</span> <span style="color:#658b00">v-</span> <span style="color:#658b00">bind:href</span>=<span style="color:#cd5555">&#34;friend.url&#34;</span>&gt;{{friend.url}}&lt;/<span style="color:#8b008b;font-weight:bold">a</span>&gt;
+            <span style="color:#228b22">&lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&gt;</span>
+            <span style="color:#228b22">&lt;!-- v-bind 也可以缩写为 `:url=&#34;friend.url&#34;` 。 --&gt;</span>
+        &lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
+    &lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
+&lt;/<span style="color:#8b008b;font-weight:bold">div</span>&gt;
 </code></pre></div><p>这样可以复用卡片代码，并且修改样式也很方便了。</p>
 <p>但这个代码还是不完美：</p>
 <ol>
@@ -806,38 +806,38 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </blockquote>
 <div v-pre>
 <p>如果有这么一种写法，就比较完美了：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#ff79c6">friend</span> <span style="color:#50fa7b">description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;张三的挖坑日记&#34;</span> <span style="color:#50fa7b">url</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://zhangsan.com&#34;</span>&gt;张三&lt;/<span style="color:#ff79c6">friend</span>&gt;
-&lt;<span style="color:#ff79c6">friend</span> <span style="color:#50fa7b">description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;李四的网络日志&#34;</span> <span style="color:#50fa7b">url</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;https://lisi.com&#34;</span>&gt;李四&lt;/<span style="color:#ff79c6">friend</span>&gt;
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#8b008b;font-weight:bold">friend</span> <span style="color:#658b00">description</span>=<span style="color:#cd5555">&#34;张三的挖坑日记&#34;</span> <span style="color:#658b00">url</span>=<span style="color:#cd5555">&#34;https://zhangsan.com&#34;</span>&gt;张三&lt;/<span style="color:#8b008b;font-weight:bold">friend</span>&gt;
+&lt;<span style="color:#8b008b;font-weight:bold">friend</span> <span style="color:#658b00">description</span>=<span style="color:#cd5555">&#34;李四的网络日志&#34;</span> <span style="color:#658b00">url</span>=<span style="color:#cd5555">&#34;https://lisi.com&#34;</span>&gt;李四&lt;/<span style="color:#8b008b;font-weight:bold">friend</span>&gt;
 </code></pre></div><p>很幸运的是，Vue.js 提供这种功能。</p>
 <p>我们可以定义一个 Vue Component。这里要引入两样东西：</p>
 <ol>
 <li><a href="https://cn.vuejs.org/v2/guide/components-slots.html">slot</a> 写在模板中，用来插入标签中间的数据，即<code>&lt;friend&gt;&lt;/friend&gt;</code>中间的内容。</li>
 <li><a href="https://cn.vuejs.org/v2/guide/components-props.html">props</a> 用于提取标签属性中的数据，如<code>&lt;friend url=&quot;xxx&quot;...</code>。</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Vue.component(<span style="color:#f1fa8c">&#39;friend&#39;</span>,{
-        <span style="color:#6272a4">// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
-</span><span style="color:#6272a4"></span>        props<span style="color:#ff79c6">:</span>[<span style="color:#f1fa8c">&#39;url&#39;</span>,<span style="color:#f1fa8c">&#39;description&#39;</span>],
-        template<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">`
-</span><span style="color:#f1fa8c">        &lt;div class=&#34;card&#34; style=&#34;width:20rem;&#34;&gt;
-</span><span style="color:#f1fa8c">            &lt;div class=&#34;card-body&#34;&gt;
-</span><span style="color:#f1fa8c">                &lt;!-- 标题，这里用了slot，目的是在这里插入“&lt;friend&gt;这里&lt;/friend&gt;”的内容。 --&gt;
-</span><span style="color:#f1fa8c">                &lt;p class=&#34;h4&#34;&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/p&gt;
-</span><span style="color:#f1fa8c">                &lt;!-- 描述，这里就是对“&lt;friend description=&#34;这里&#34;...”内容的提取。 --&gt;
-</span><span style="color:#f1fa8c">                &lt;p&gt;{{ description }}&lt;/p&gt;
-</span><span style="color:#f1fa8c">            &lt;/div&gt;
-</span><span style="color:#f1fa8c">            &lt;div class=&#34;card-footer&#34;&gt;
-</span><span style="color:#f1fa8c">                &lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&gt;
-</span><span style="color:#f1fa8c">                &lt;a v-bind:href=&#34;url&#34;&gt;{{url}}&lt;/a&gt;
-</span><span style="color:#f1fa8c">                &lt;!-- v-bind 也可以缩写为 :url=&#34;friend.url&#34; 。 --&gt;
-</span><span style="color:#f1fa8c">            &lt;/div&gt;
-</span><span style="color:#f1fa8c">        &lt;/div&gt;
-</span><span style="color:#f1fa8c">        `</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Vue.component(<span style="color:#cd5555">&#39;friend&#39;</span>,{
+        <span style="color:#228b22">// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
+</span><span style="color:#228b22"></span>        props:[<span style="color:#cd5555">&#39;url&#39;</span>,<span style="color:#cd5555">&#39;description&#39;</span>],
+        template: <span style="color:#cd5555">`
+</span><span style="color:#cd5555">        &lt;div class=&#34;card&#34; style=&#34;width:20rem;&#34;&gt;
+</span><span style="color:#cd5555">            &lt;div class=&#34;card-body&#34;&gt;
+</span><span style="color:#cd5555">                &lt;!-- 标题，这里用了slot，目的是在这里插入“&lt;friend&gt;这里&lt;/friend&gt;”的内容。 --&gt;
+</span><span style="color:#cd5555">                &lt;p class=&#34;h4&#34;&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/p&gt;
+</span><span style="color:#cd5555">                &lt;!-- 描述，这里就是对“&lt;friend description=&#34;这里&#34;...”内容的提取。 --&gt;
+</span><span style="color:#cd5555">                &lt;p&gt;{{ description }}&lt;/p&gt;
+</span><span style="color:#cd5555">            &lt;/div&gt;
+</span><span style="color:#cd5555">            &lt;div class=&#34;card-footer&#34;&gt;
+</span><span style="color:#cd5555">                &lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&gt;
+</span><span style="color:#cd5555">                &lt;a v-bind:href=&#34;url&#34;&gt;{{url}}&lt;/a&gt;
+</span><span style="color:#cd5555">                &lt;!-- v-bind 也可以缩写为 :url=&#34;friend.url&#34; 。 --&gt;
+</span><span style="color:#cd5555">            &lt;/div&gt;
+</span><span style="color:#cd5555">        &lt;/div&gt;
+</span><span style="color:#cd5555">        `</span>
     });
 </code></pre></div><p>这样我们就实现了一个可复用的 Vue 组件了，而且上面的问题我们已经完美解决了：</p>
 <ol>
 <li>如果我们新增了一个朋友，就只需要在页面相应地方里面写一句：</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#ff79c6">friend</span> <span style="color:#50fa7b">description</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;描述&#34;</span> <span style="color:#50fa7b">url</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;网址&#34;</span>&gt;朋友的名字&lt;/<span style="color:#ff79c6">friend</span>&gt;
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#8b008b;font-weight:bold">friend</span> <span style="color:#658b00">description</span>=<span style="color:#cd5555">&#34;描述&#34;</span> <span style="color:#658b00">url</span>=<span style="color:#cd5555">&#34;网址&#34;</span>&gt;朋友的名字&lt;/<span style="color:#8b008b;font-weight:bold">friend</span>&gt;
 </code></pre></div><ol>
 <li>
 <p>Vice versa，如果我们需要修改卡片的样式，我们只需要修改组件的 <code>template</code> 里面的代码（当然你可以进一步将 CSS 分离出来）。</p>

@@ -344,61 +344,61 @@ Kotlin中，&lt;code&gt;==&lt;/code&gt;的否定形式是&lt;code&gt;!=&lt;/code
 &lt;h2 id=&#34;举个栗子-&#34;&gt;举个栗子&lt;/h2&gt;
 &lt;p&gt;我来举几个例子解释一下。&lt;/p&gt;
 &lt;p&gt;首先，我们用这几个方法比较两个原始类型的变量（Int）。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; int1 = &lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; int2 = &lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; int1 = &lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; int2 = &lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;
 
-	println(int1 == int2)			&lt;span style=&#34;color:#6272a4&#34;&gt;// true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(int1.equals(int2))		&lt;span style=&#34;color:#6272a4&#34;&gt;// true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(int1 === int2)		&lt;span style=&#34;color:#6272a4&#34;&gt;// true
+	println(int1 == int2)			&lt;span style=&#34;color:#228b22&#34;&gt;// true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(int1.equals(int2))		&lt;span style=&#34;color:#228b22&#34;&gt;// true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(int1 === int2)		&lt;span style=&#34;color:#228b22&#34;&gt;// true
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这三个println最后都会输出&lt;code&gt;true&lt;/code&gt;，因为对于原始类型，这三种判断都仅仅检查变量的值。
 所以在这种情况下，&lt;code&gt;===&lt;/code&gt;输出的结果也是一样的。&lt;/p&gt;
 &lt;p&gt;现在让我们把原始类型换成包装类，看看三种方法表现出的行为。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; first = Integer(&lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;)
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; second = Integer(&lt;span style=&#34;color:#bd93f9&#34;&gt;10&lt;/span&gt;)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; first = Integer(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;)
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; second = Integer(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;)
 
-	println(first == second)		&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(first.equals(second))		&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(first === second)		&lt;span style=&#34;color:#6272a4&#34;&gt;//false
+	println(first == second)		&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(first.equals(second))		&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(first === second)		&lt;span style=&#34;color:#228b22&#34;&gt;//false
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在上面的例子中，&lt;code&gt;==&lt;/code&gt;与&lt;code&gt;.equals&lt;/code&gt;输出了&lt;code&gt;true&lt;/code&gt;，因为他们仅仅比较了两个变量的值。
 而&lt;code&gt;===&lt;/code&gt;比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; name: String)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; name: String)
 
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; emp1 = Employee(“Suneet”)
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; emp2 = Employee(“Suneet”)
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp1 = Employee(&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;“&lt;/span&gt;Suneet&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;”&lt;/span&gt;)
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp2 = Employee(&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;“&lt;/span&gt;Suneet&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;”&lt;/span&gt;)
 
-	println(emp1 == emp2)				&lt;span style=&#34;color:#6272a4&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#6272a4&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#6272a4&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
-	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
+	println(emp1 == emp2)				&lt;span style=&#34;color:#228b22&#34;&gt;//false
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#228b22&#34;&gt;//false
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#228b22&#34;&gt;//false
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
+	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了&lt;code&gt;false&lt;/code&gt;。
 但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;等等，你说&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;.equals&lt;/code&gt;只比较两个对象的内容，在我们的这个例子里它们都是一样的呀&lt;/strong&gt;
 (译者注：指第一段，三个比较全都返回了false)
 **这没毛病。**但内容比较仅对于&lt;code&gt;data&lt;/code&gt;类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于&lt;code&gt;data&lt;/code&gt;类，编译器将比较对象的内容，并且在内容相同的情况下返回&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;让我们把上面的普通类改为&lt;code&gt;data&lt;/code&gt;类：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; name: String)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; name: String)
 
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; emp1 = Employee(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
-	&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; emp2 = Employee(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp1 = Employee(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp2 = Employee(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
 
-	println(emp1 == emp2)				&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#6272a4&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;
-	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
+	println(emp1 == emp2)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#228b22&#34;&gt;//false
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
+	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; negZero = -&lt;span style=&#34;color:#bd93f9&#34;&gt;0.0f&lt;/span&gt;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; posZero = &lt;span style=&#34;color:#bd93f9&#34;&gt;0.0f&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; negZero = -&lt;span style=&#34;color:#b452cd&#34;&gt;0.0f&lt;/span&gt;
+&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; posZero = &lt;span style=&#34;color:#b452cd&#34;&gt;0.0f&lt;/span&gt;
 
-println(negZero == posZero)				&lt;span style=&#34;color:#6272a4&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;println(negZero.equals(posZero))			&lt;span style=&#34;color:#6272a4&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;println(negZero === posZero)			&lt;span style=&#34;color:#6272a4&#34;&gt;//true
+println(negZero == posZero)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;println(negZero.equals(posZero))			&lt;span style=&#34;color:#228b22&#34;&gt;//false
+&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;println(negZero === posZero)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对于&lt;code&gt;Float&lt;/code&gt;和&lt;code&gt;Double&lt;/code&gt;类的比较，&lt;code&gt;.equals&lt;/code&gt;方法违背了IEEE 754 浮点数运算标准，当&lt;code&gt;-0.0&lt;/code&gt;与&lt;code&gt;0.0&lt;/code&gt;比较的时候，它会返回&lt;code&gt;false&lt;/code&gt;。
 而&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;===&lt;/code&gt;都会返回&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;最后谨记-&#34;&gt;最后谨记&lt;/h2&gt;
@@ -512,9 +512,9 @@ optimus-manager可以实现两块显卡的半自动切换，但是目前仍然�
 &lt;h3 id=&#34;1-移除bumblebee-&#34;&gt;1 移除Bumblebee&lt;/h3&gt;
 &lt;p&gt;如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
 bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -r pci nonfree &lt;span style=&#34;color:#bd93f9&#34;&gt;0300&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -r pci nonfree &lt;span style=&#34;color:#b452cd&#34;&gt;0300&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-安装nvidia驱动-&#34;&gt;2 安装NVIDIA驱动&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia-440xx
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia-440xx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/p&gt;
 &lt;h3 id=&#34;3-修改mhwd设置-&#34;&gt;3 修改MHWD设置&lt;/h3&gt;
 &lt;p&gt;mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。&lt;/p&gt;
@@ -522,16 +522,16 @@ bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
 &lt;p&gt;首先要删掉&lt;code&gt;/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code&gt;
 （如果你不放心可以mv嘛。）
 然后新建一个文件&lt;code&gt;/etc/X11/xorg.conf.d/optimus.conf&lt;/code&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#50fa7b&#34;&gt;Section &amp;#34;Module&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;Load &amp;#34;modesetting&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;EndSection&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;Section &amp;#34;Module&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#658b00&#34;&gt;Load &amp;#34;modesetting&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;EndSection&lt;/span&gt;
 
-&lt;span style=&#34;color:#50fa7b&#34;&gt;Section &amp;#34;Device&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;Identifier &amp;#34;nvidia&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;Driver &amp;#34;nvidia&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;EndSection&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;Section &amp;#34;Device&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#658b00&#34;&gt;Identifier &amp;#34;nvidia&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#658b00&#34;&gt;Driver &amp;#34;nvidia&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#658b00&#34;&gt;BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#658b00&#34;&gt;Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;EndSection&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：BusID一栏需要&lt;strong&gt;根据自己的电脑配置&lt;/strong&gt;进行修改。BusID的值是这么查询的：&lt;code&gt;lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -542,18 +542,18 @@ bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
 &lt;p&gt;首先，我们得把mhwd自动生成的黑名单删掉。
 （译者注：不放心的话，就把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
 比如这样：&lt;strong&gt;视情况而定，你的配置可能不同&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls /etc/modprobe.d/mhwd*
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls /etc/modprobe.d/mhwd*
 sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
 写入：&lt;code&gt;/etc/modprobe.d/nvidia.conf&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#50fa7b&#34;&gt;blacklist nouveau&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;blacklist nvidiafb&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;blacklist rivafb&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;blacklist nouveau&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;blacklist nvidiafb&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;blacklist rivafb&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-开启-modeset-&#34;&gt;4 开启 modeset&lt;/h3&gt;
 &lt;p&gt;创建一个新文件，&lt;code&gt;/etc/modprobe.d/nvidia-drm.conf&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#50fa7b&#34;&gt;options nvidia_drm modeset&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;1&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;options nvidia_drm modeset&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-设置启动脚本-&#34;&gt;5 设置启动脚本&lt;/h3&gt;
 &lt;p&gt;我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
 如果你现在重启，桌面环境的输出可能会有一些问题。&lt;/p&gt;
@@ -564,8 +564,8 @@ sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
 创建一个文件，&lt;code&gt;/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;#!/bin/sh
-&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;&lt;/span&gt;
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照国际惯例（hhh），让它可写可执行：&lt;code&gt;chmod a+rx /usr/local/bin/optimus.sh&lt;/code&gt;
@@ -575,21 +575,21 @@ xrandr --auto
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;针对 GDM (Gnome默认)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;创建一个文件&lt;code&gt;/usr/local/share/optimus.desktop&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;[Desktop Entry]&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;Type&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;Application&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;Name&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;Optimus&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;Exec&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;NoDisplay&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;true&lt;/span&gt;
-&lt;span style=&#34;color:#50fa7b&#34;&gt;X-GNOME-Autostart-Phase&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;DisplayServer&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;[Desktop Entry]&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;Type&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;Application&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;Name&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;Optimus&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;Exec&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;NoDisplay&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;true&lt;/span&gt;
+&lt;span style=&#34;color:#658b00&#34;&gt;X-GNOME-Autostart-Phase&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;DisplayServer&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)&lt;br /&gt;
 然后建立连接，让它随着GDM启动。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;针对 SDDM (KDE 默认)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;创建一个文件：&lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;#!/bin/sh
-&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;&lt;/span&gt;
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后用chmod让它变为可执行的文件。&lt;/p&gt;
@@ -597,12 +597,12 @@ xrandr --auto
 &lt;p&gt;译者注：如果以上的工作都已经完成，我建议你再做一步。
 我当时没有做这一步，之后重启发现内核模块加载错误。
 所以还是建议，编译一下内核。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mkinitcpio -P linux
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mkinitcpio -P linux
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后重启，大功告成。&lt;/p&gt;
 &lt;h3 id=&#34;验证是否成功-&#34;&gt;验证是否成功&lt;/h3&gt;
 &lt;p&gt;如果以上你都设置正确了，当你重启之后，可以敲&lt;code&gt;glxinfo | grep -i vendor&lt;/code&gt;
 然后看看是不是像下面这样的信息。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ glxinfo | grep -i vendor
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ glxinfo | grep -i vendor
 server glx vendor string: NVIDIA Corporation
 client glx vendor string: NVIDIA Corporation
 OpenGL vendor string: NVIDIA Corporation

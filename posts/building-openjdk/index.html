@@ -43,7 +43,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.811be6e61c7a0ffc34acaff3d23751a6cdddb8c623e70fa66cace9308ab25272.css" integrity="sha256-gRvm5hx6D/w0rK/z0jdRps3duMYj5w&#43;mbKzpMIqyUnI=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.47a896f9ce8ae8431111a7119e32ace23cb55fd694b293868e98dd6207cbd6ce.css" integrity="sha256-R6iW&#43;c6K6EMREacRnjKs4jy1X9aUspOGjpjdYgfL1s4=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -1216,7 +1216,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>注： OpenJDK 7 理论上可以，但编译时会出问题。还是建议用 OpenJDK 8。</p>
 </blockquote>
 <p>在 Arch Linux/Manjaro Linux 下，可以通过<code>archlinux-java status</code>查看是否有 OpenJDK 8。输入以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ archlinux-java status | grep <span style="color:#bd93f9">8</span> 
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ archlinux-java status | grep <span style="color:#b452cd">8</span> 
   java-8-openjdk
 </code></pre></div><p>如果没有的话（即上面命令没有结果），赶紧去搞一个！（<code>sudo pacman -S jdk8-openjdk</code>）</p>
 <h2 id="mercurial">Mercurial</h2>
@@ -1233,15 +1233,15 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 <p>以上的工具准备好了，就可以开始编译了。</p>
 <h2 id="clone">clone</h2>
 <p>正常下载是<code>hg clone 目标网址</code>。如果你的网络环境不好，可以出动 HTTP 代理。下例是让 mercurial 经过 http://127.0.0.1:8000/ 处的代理：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hg --config http_proxy.host<span style="color:#ff79c6">=</span>127.0.0.1:8000 clone http://hg.openjdk.java.net/jdk8u/jdk8u/ 
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hg --config http_proxy.host=127.0.0.1:8000 clone http://hg.openjdk.java.net/jdk8u/jdk8u/ 
 </code></pre></div><h2 id="get_source">get_source</h2>
 <p>如果你的网络环境不好，我们要预先定义一下代理：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8be9fd;font-style:italic">export</span> <span style="color:#8be9fd;font-style:italic">HGFOREST_GLOBALOPTS</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34; --config http_proxy.host=127.0.0.1:8000&#34;</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#658b00">export</span> <span style="color:#00688b">HGFOREST_GLOBALOPTS</span>=<span style="color:#cd5555">&#34; --config http_proxy.host=127.0.0.1:8000&#34;</span>
 </code></pre></div><blockquote>
 <p>注意：在<code>--config</code>前有<strong>一个空格</strong>。</p>
 </blockquote>
 <p>开始吧：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x ./get_source.sh
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod +x ./get_source.sh
 ./get_source.sh
 </code></pre></div><p>如果中间失败，可以重复运行<code>get_source.sh</code>，脚本会从失败的地方继续下载。</p>
 <blockquote>
@@ -1249,7 +1249,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </blockquote>
 <h2 id="configure">configure</h2>
 <p>输入以下命令开始配置工作。这里需要手动指定 Bootstrap JDK 的路径。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --with-boot-jdk<span style="color:#ff79c6">=</span>/usr/lib/jvm/java-8-openjdk 
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --with-boot-jdk=/usr/lib/jvm/java-8-openjdk 
 </code></pre></div><p>如果没有报错，那么说明你的环境配置正常。</p>
 <h2 id="dirty-hack">dirty hack</h2>
 <p>我们还需要更改一下编译参数。OpenJDK 默认编译的时候会将所有 <code>warning</code> 视为 <code>error</code>，会导致以下错误：<code>cc1plus: all warnings being treated as errors</code></p>
@@ -1297,10 +1297,10 @@ End   2020-05-05 19:38:49
 -------------------------
 </code></pre><p>这种情况下，你可以在<code>./build/linux-x86_64-normal-server-release/images/j2sdk-image/bin/</code>目录下找到<code>java</code>和<code>javac</code>。</p>
 <p>你可以运行一下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./java -version
-openjdk version <span style="color:#f1fa8c">&#34;1.8.0-internal&#34;</span>
-OpenJDK Runtime Environment <span style="color:#ff79c6">(</span>build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00<span style="color:#ff79c6">)</span>
-OpenJDK 64-Bit Server VM <span style="color:#ff79c6">(</span>build 25.71-b00, mixed mode<span style="color:#ff79c6">)</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./java -version
+openjdk version <span style="color:#cd5555">&#34;1.8.0-internal&#34;</span>
+OpenJDK Runtime Environment (build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00)
+OpenJDK 64-Bit Server VM (build 25.71-b00, mixed mode)
 </code></pre></div><p>没错，它的版本号里写着你的机器名。 很有成就感。</p>
 <h1 id="最后">最后</h1>
 <h2 id="结语">结语</h2>
