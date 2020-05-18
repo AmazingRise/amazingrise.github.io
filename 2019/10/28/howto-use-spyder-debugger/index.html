@@ -39,11 +39,11 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.56b67b8b01d7cd1015ed14414fd2fc33ebfb2e8413dcbc47c5cd734544c92cd7.css" integrity="sha256-VrZ7iwHXzRAV7RRBT9L8M&#43;v7LoQT3LxHxc1zRUTJLNc=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/journal.min.77877d67deaff6558693e1769ab138ddd09c945d8185aa5dcd50d5f243f1a0be.css" integrity="sha256-d4d9Z96v9lWGk&#43;F2mrE43dCclF2BhapdzVDV8kPxoL4=" media="screen">
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.5a2bbd1758c83affd639a91fbfd5cc681b1a5574df99442825c444dd40504b13.css" integrity="sha256-Wiu9F1jIOv/WOakfv9XMaBsaVXTfmUQoJcRE3UBQSxM=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.811be6e61c7a0ffc34acaff3d23751a6cdddb8c623e70fa66cace9308ab25272.css" integrity="sha256-gRvm5hx6D/w0rK/z0jdRps3duMYj5w&#43;mbKzpMIqyUnI=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -1307,7 +1307,13 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             
 
             <div class="post-head-wrapper"
-                 style="background-image: url('https://amazingrise.net/covers/spyder-main.png')">
+                
+                    
+                    
+                    style="background-image: url('https://amazingrise.net/covers/spyder-main.png')"
+                    
+                
+            >
                 <div class="post-title">
                     如何优雅地使用 Spyder 的调试器
                     
@@ -1336,7 +1342,9 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                             
                             
 
+                            
                             14 min
+                            
                             31 s.
                         
                     </div>
@@ -1375,11 +1383,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </ul>
 <h2 id="用spyder运行示例代码">用Spyder运行示例代码</h2>
 <p>现在我们在左侧代码区域,粘贴下面的代码.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
-	i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-	a <span style="color:#f92672">+=</span> i
-<span style="color:#66d9ef">print</span>(a)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">10</span>):
+	i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+	a <span style="color:#ff79c6">+=</span> i
+<span style="color:#ff79c6">print</span>(a)
 </code></pre></div><p>然后按一下绿色的开始按钮,我们可以在<strong>控制台</strong>中看到输出.
 输出:</p>
 <pre><code>55
@@ -1391,13 +1399,13 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.</p>
 <p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
 所以我们把代码修改成:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
-	i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-	<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;此时i的值为:&#34;</span>,i) <span style="color:#75715e"># 在i变化后立马print,看看它的值是多少</span>
-	a <span style="color:#f92672">+=</span> i
-	<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;此时a的值为:&#34;</span>,a) <span style="color:#75715e"># 在a变化后立马print,看看它的值是多少</span>
-<span style="color:#66d9ef">print</span>(a)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>
+<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">in</span> <span style="color:#8be9fd;font-style:italic">range</span>(<span style="color:#bd93f9">10</span>):
+	i <span style="color:#ff79c6">+=</span> <span style="color:#bd93f9">1</span>
+	<span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;此时i的值为:&#34;</span>,i) <span style="color:#6272a4"># 在i变化后立马print,看看它的值是多少</span>
+	a <span style="color:#ff79c6">+=</span> i
+	<span style="color:#ff79c6">print</span>(<span style="color:#f1fa8c">&#34;此时a的值为:&#34;</span>,a) <span style="color:#6272a4"># 在a变化后立马print,看看它的值是多少</span>
+<span style="color:#ff79c6">print</span>(a)
 </code></pre></div><p>运行结果是这样的:</p>
 <pre><code>此时i的值为: 1
 此时a的值为: 1
