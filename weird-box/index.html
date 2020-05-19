@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>JVM</title>
+<title>520到了，觉得无聊可以进来聊天。</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -56,17 +56,15 @@ if (!doNotTrack) {
 
 
 
-<style>
-  .toc{
-    display: none !important;
-  }
-</style>
+<script src="https://amazingrise.net/js/toc.js"></script>
 
 
 
 
 
 
+
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
 <style>
@@ -107,11 +105,9 @@ display:none !important;
             
             
             
-                
             
             
-            
-            <a class="a-block nav-link-item active" href="/categories">
+            <a class="a-block nav-link-item false" href="/categories">
                 分類
             </a>
             
@@ -166,6 +162,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
 </div><div ref="extraContainer" class="extra-container">
     
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
@@ -181,8 +182,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 brightness_7
             </i>
         </a>
-        
-        
         
         
     </div>
@@ -206,11 +205,9 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 
                 
                 
-                    
                 
                 
-                
-                <a class="a-block drawer-menu-item active" href="/categories">
+                <a class="a-block drawer-menu-item false" href="/categories">
                     分類
                 </a>
                 
@@ -245,6 +242,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
                 </a>
                 
             
+            
+            <div class="toc">
+
+
+</div>
             
         </div>
     </div>
@@ -288,51 +290,82 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             <div id="content">
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
-        <div class="post-item-wrapper post-item-wrapper-no-hover">
-            <div class="post-item post-item-no-gaps">
-                <div class="post-item-info-wrapper">
-                    <div class="post-item-title  post-item-title-small">
-                        <a href="https://amazingrise.net/">左手的世界</a> / JVM
+        <div class="post">
+            
+            
+            
+                
+            
+
+            <div class="post-head-wrapper"
+                
+                    
+                    
+                    style="background-image: url('https://amazingrise.net/covers/the-invaluable-home.jpg')"
+                    
+                
+            >
+                <div class="post-title">
+                    520到了，觉得无聊可以进来聊天。
+                    
+                    <div class="post-meta">
+                    <p>Hello。这里是 Rise-2153 的个人网站中的一个隐藏页面。</p>
+                        
                     </div>
                 </div>
             </div>
-        </div><a href="/posts/building-openjdk/" class="a-block">
-            <div class="post-item-wrapper">
-                <div class="post-item post-item-no-gaps">
-                    <div class="post-item-info-wrapper">
-                        <div class="post-item-title">
-                            2020年，在 Linux 下动手编译 OpenJDK 8
-                        </div>
-                        <div class="post-item-meta">
-    2020-05-05
-    &emsp;
-    
-    
-    <i class="material-icons" style="font-size:10px">schedule</i>
-    
+            
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    
+ <p>如果想要匿名，请随意填一个名字就好。</p>
+ <p>欢迎大家来提问或者留言。当然，欢迎大家<b>互相回复</b>。</p>
+ （没错，我懒了，这就是提问箱改的）
+ 
+ <p>如果评论未加载出来，请耐心等待。</p>
 
-    
-    
+<script>
+$(document).ready(function(){
+    $(".post-pagination").remove();
+})
+</script>
 
-    
-    7 min
-    
-    55 s
-    
-    
-    &emsp;
-    
-</div>
-                    </div>
+                    
                 </div>
             </div>
-        </a></div>
-</div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/">
+                    Next<br>Manjaro 在笔记本上的多显示器配置
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://amazingrise.net/friends/">
+                    Previous<br>Rise 的朋友们
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+<div id="vcomments"></div>
+
+
+
 
             </div>
+        </div>
+    </div>
+</div>
 
-
-<div id="single-column-footer">
+            </div><div id="single-column-footer">
 Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://amazingrise.net">Rise</a>
 <br>
 Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
