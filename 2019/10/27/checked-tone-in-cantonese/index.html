@@ -67,6 +67,8 @@ if (!doNotTrack) {
 <script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
+
+
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
@@ -165,41 +167,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%bd%95%e4%b8%ba%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" id="何为入声--nav">
-										 何为入声
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%bd%95%e4%b8%ba%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" onclick="collapseOthers(`#何为入声--nav`)" id="何为入声--nav">
+									何为入声
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95-" v-on:click="closeDrawer" id="五度标记法--nav">
-										 五度标记法
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -209,20 +194,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%94%a8%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e7%8e%b0%e4%bb%a3%e6%b1%89%e8%af%ad%e7%9a%84%e5%9b%9b%e4%b8%aa%e5%a3%b0%e8%b0%83-" v-on:click="closeDrawer" id="用五度标记法表示现代汉语的四个声调--nav">
-										 用五度标记法表示现代汉语的四个声调
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95-" v-on:click="closeDrawer" onclick="collapseOthers(`#五度标记法--nav`)" id="五度标记法--nav">
+									五度标记法
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -232,20 +212,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e4%ba%86%e9%9f%b3%e8%b0%83%e7%9a%84%e7%9b%b8%e5%af%b9%e9%ab%98%e4%bd%8e-" v-on:click="closeDrawer" id="五度标记法表示了音调的相对高低--nav">
-										 五度标记法表示了音调的相对高低
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%94%a8%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e7%8e%b0%e4%bb%a3%e6%b1%89%e8%af%ad%e7%9a%84%e5%9b%9b%e4%b8%aa%e5%a3%b0%e8%b0%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#用五度标记法表示现代汉语的四个声调--nav`)" id="用五度标记法表示现代汉语的四个声调--nav">
+									用五度标记法表示现代汉语的四个声调
+								</a>
+							</li>
+						
 						
 					
 				
@@ -255,16 +234,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%b2%a4%e8%af%ad%e4%b8%ad%e7%9a%84%e4%b9%9d%e5%a3%b0%e5%85%ad%e8%b0%83-" v-on:click="closeDrawer" id="粤语中的九声六调--nav">
-										 粤语中的九声六调
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e4%ba%86%e9%9f%b3%e8%b0%83%e7%9a%84%e7%9b%b8%e5%af%b9%e9%ab%98%e4%bd%8e-" v-on:click="closeDrawer" onclick="collapseOthers(`#五度标记法表示了音调的相对高低--nav`)" id="五度标记法表示了音调的相对高低--nav">
+									五度标记法表示了音调的相对高低
+								</a>
+							</li>
+						
 						
 					
 				
@@ -274,16 +252,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e7%b2%a4%e8%af%ad%e5%b9%bf%e5%b7%9e%e8%af%9d%e4%b8%ad%e7%9a%84%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" id="粤语广州话中的入声--nav">
-										 粤语(广州话)中的入声
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%b2%a4%e8%af%ad%e4%b8%ad%e7%9a%84%e4%b9%9d%e5%a3%b0%e5%85%ad%e8%b0%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#粤语中的九声六调--nav`)" id="粤语中的九声六调--nav">
+									粤语中的九声六调
+								</a>
+							</li>
+						
 						
 					
 				
@@ -293,20 +274,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%88%91%e6%98%af%e5%a6%82%e4%bd%95%e5%8f%91%e7%8e%b0%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab%e7%9a%84-" v-on:click="closeDrawer" id="我是如何发现入声的区别的--nav">
-										 我是如何发现入声的区别的
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%b2%a4%e8%af%ad%e5%b9%bf%e5%b7%9e%e8%af%9d%e4%b8%ad%e7%9a%84%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" onclick="collapseOthers(`#粤语广州话中的入声--nav`)" id="粤语广州话中的入声--nav">
+									粤语(广州话)中的入声
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -316,20 +292,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab-" v-on:click="closeDrawer" id="入声的区别--nav">
-										 入声的区别
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%88%91%e6%98%af%e5%a6%82%e4%bd%95%e5%8f%91%e7%8e%b0%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab%e7%9a%84-" v-on:click="closeDrawer" onclick="collapseOthers(`#我是如何发现入声的区别的--nav`)" id="我是如何发现入声的区别的--nav">
+									我是如何发现入声的区别的
+								</a>
+							</li>
+						
 						
 					
 				
@@ -339,20 +314,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%a5%e5%a3%b0%e8%af%95%e5%90%ac-" v-on:click="closeDrawer" id="入声试听--nav">
-										 入声试听
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab-" v-on:click="closeDrawer" onclick="collapseOthers(`#入声的区别--nav`)" id="入声的区别--nav">
+									入声的区别
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -362,20 +332,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e8%a1%a5%e5%85%85%e4%b9%8b%e5%85%b6%e4%bb%96%e7%b2%a4%e8%af%ad%e6%8b%bc%e9%9f%b3%e6%96%b9%e6%a1%88-" v-on:click="closeDrawer" id="补充之其他粤语拼音方案--nav">
-										 补充之其他粤语拼音方案
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%a5%e5%a3%b0%e8%af%95%e5%90%ac-" v-on:click="closeDrawer" onclick="collapseOthers(`#入声试听--nav`)" id="入声试听--nav">
+									入声试听
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -385,20 +350,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a-" v-on:click="closeDrawer" id="次回予告--nav">
-										 次回予告
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e8%a1%a5%e5%85%85%e4%b9%8b%e5%85%b6%e4%bb%96%e7%b2%a4%e8%af%ad%e6%8b%bc%e9%9f%b3%e6%96%b9%e6%a1%88-" v-on:click="closeDrawer" onclick="collapseOthers(`#补充之其他粤语拼音方案--nav`)" id="补充之其他粤语拼音方案--nav">
+									补充之其他粤语拼音方案
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a-" v-on:click="closeDrawer" onclick="collapseOthers(`#次回予告--nav`)" id="次回予告--nav">
+									次回予告
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -488,41 +475,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%bd%95%e4%b8%ba%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" id="何为入声--nav">
-										 何为入声
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%bd%95%e4%b8%ba%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" onclick="collapseOthers(`#何为入声--nav`)" id="何为入声--nav">
+									何为入声
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95-" v-on:click="closeDrawer" id="五度标记法--nav">
-										 五度标记法
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -532,20 +502,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%94%a8%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e7%8e%b0%e4%bb%a3%e6%b1%89%e8%af%ad%e7%9a%84%e5%9b%9b%e4%b8%aa%e5%a3%b0%e8%b0%83-" v-on:click="closeDrawer" id="用五度标记法表示现代汉语的四个声调--nav">
-										 用五度标记法表示现代汉语的四个声调
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95-" v-on:click="closeDrawer" onclick="collapseOthers(`#五度标记法--nav`)" id="五度标记法--nav">
+									五度标记法
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -555,20 +520,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e4%ba%86%e9%9f%b3%e8%b0%83%e7%9a%84%e7%9b%b8%e5%af%b9%e9%ab%98%e4%bd%8e-" v-on:click="closeDrawer" id="五度标记法表示了音调的相对高低--nav">
-										 五度标记法表示了音调的相对高低
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%94%a8%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e7%8e%b0%e4%bb%a3%e6%b1%89%e8%af%ad%e7%9a%84%e5%9b%9b%e4%b8%aa%e5%a3%b0%e8%b0%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#用五度标记法表示现代汉语的四个声调--nav`)" id="用五度标记法表示现代汉语的四个声调--nav">
+									用五度标记法表示现代汉语的四个声调
+								</a>
+							</li>
+						
 						
 					
 				
@@ -578,16 +542,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%b2%a4%e8%af%ad%e4%b8%ad%e7%9a%84%e4%b9%9d%e5%a3%b0%e5%85%ad%e8%b0%83-" v-on:click="closeDrawer" id="粤语中的九声六调--nav">
-										 粤语中的九声六调
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%ba%94%e5%ba%a6%e6%a0%87%e8%ae%b0%e6%b3%95%e8%a1%a8%e7%a4%ba%e4%ba%86%e9%9f%b3%e8%b0%83%e7%9a%84%e7%9b%b8%e5%af%b9%e9%ab%98%e4%bd%8e-" v-on:click="closeDrawer" onclick="collapseOthers(`#五度标记法表示了音调的相对高低--nav`)" id="五度标记法表示了音调的相对高低--nav">
+									五度标记法表示了音调的相对高低
+								</a>
+							</li>
+						
 						
 					
 				
@@ -597,16 +560,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e7%b2%a4%e8%af%ad%e5%b9%bf%e5%b7%9e%e8%af%9d%e4%b8%ad%e7%9a%84%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" id="粤语广州话中的入声--nav">
-										 粤语(广州话)中的入声
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%b2%a4%e8%af%ad%e4%b8%ad%e7%9a%84%e4%b9%9d%e5%a3%b0%e5%85%ad%e8%b0%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#粤语中的九声六调--nav`)" id="粤语中的九声六调--nav">
+									粤语中的九声六调
+								</a>
+							</li>
+						
 						
 					
 				
@@ -616,20 +582,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%88%91%e6%98%af%e5%a6%82%e4%bd%95%e5%8f%91%e7%8e%b0%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab%e7%9a%84-" v-on:click="closeDrawer" id="我是如何发现入声的区别的--nav">
-										 我是如何发现入声的区别的
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%b2%a4%e8%af%ad%e5%b9%bf%e5%b7%9e%e8%af%9d%e4%b8%ad%e7%9a%84%e5%85%a5%e5%a3%b0-" v-on:click="closeDrawer" onclick="collapseOthers(`#粤语广州话中的入声--nav`)" id="粤语广州话中的入声--nav">
+									粤语(广州话)中的入声
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -639,20 +600,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab-" v-on:click="closeDrawer" id="入声的区别--nav">
-										 入声的区别
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%88%91%e6%98%af%e5%a6%82%e4%bd%95%e5%8f%91%e7%8e%b0%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab%e7%9a%84-" v-on:click="closeDrawer" onclick="collapseOthers(`#我是如何发现入声的区别的--nav`)" id="我是如何发现入声的区别的--nav">
+									我是如何发现入声的区别的
+								</a>
+							</li>
+						
 						
 					
 				
@@ -662,20 +622,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%a5%e5%a3%b0%e8%af%95%e5%90%ac-" v-on:click="closeDrawer" id="入声试听--nav">
-										 入声试听
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%a5%e5%a3%b0%e7%9a%84%e5%8c%ba%e5%88%ab-" v-on:click="closeDrawer" onclick="collapseOthers(`#入声的区别--nav`)" id="入声的区别--nav">
+									入声的区别
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -685,20 +640,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e8%a1%a5%e5%85%85%e4%b9%8b%e5%85%b6%e4%bb%96%e7%b2%a4%e8%af%ad%e6%8b%bc%e9%9f%b3%e6%96%b9%e6%a1%88-" v-on:click="closeDrawer" id="补充之其他粤语拼音方案--nav">
-										 补充之其他粤语拼音方案
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%a5%e5%a3%b0%e8%af%95%e5%90%ac-" v-on:click="closeDrawer" onclick="collapseOthers(`#入声试听--nav`)" id="入声试听--nav">
+									入声试听
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -708,20 +658,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a-" v-on:click="closeDrawer" id="次回予告--nav">
-										 次回予告
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e8%a1%a5%e5%85%85%e4%b9%8b%e5%85%b6%e4%bb%96%e7%b2%a4%e8%af%ad%e6%8b%bc%e9%9f%b3%e6%96%b9%e6%a1%88-" v-on:click="closeDrawer" onclick="collapseOthers(`#补充之其他粤语拼音方案--nav`)" id="补充之其他粤语拼音方案--nav">
+									补充之其他粤语拼音方案
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a-" v-on:click="closeDrawer" onclick="collapseOthers(`#次回予告--nav`)" id="次回予告--nav">
+									次回予告
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -1136,6 +1108,7 @@ app = new Vue({
         this.handleScroll();
         this.handleResize();
         this.mounted = true;
+
         
             new Valine({
                 el: '#vcomments',

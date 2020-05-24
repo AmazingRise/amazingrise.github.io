@@ -67,6 +67,8 @@ if (!doNotTrack) {
 <script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
+
+
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
@@ -167,41 +169,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e7%bb%93%e8%ae%ba" v-on:click="closeDrawer" id="结论-nav">
-										 结论
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -211,16 +196,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ad%a3%e6%96%87" v-on:click="closeDrawer" id="正文-nav">
-										 正文
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bb%93%e8%ae%ba" v-on:click="closeDrawer" onclick="collapseOthers(`#结论-nav`)" id="结论-nav">
+									结论
+								</a>
+							</li>
+						
 						
 					
 				
@@ -230,20 +214,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%b8%a3%e7%94%b7%e8%a1%8c%e4%b8%ba" v-on:click="closeDrawer" id="渣男行为-nav">
-										 渣男行为
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e6%96%87" v-on:click="closeDrawer" onclick="collapseOthers(`#正文-nav`)" id="正文-nav">
+									正文
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -253,20 +232,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%88%86%e6%af%8d%e7%9a%84%e7%a7%98%e5%af%86" v-on:click="closeDrawer" id="分母的秘密-nav">
-										 分母的秘密
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%b8%a3%e7%94%b7%e8%a1%8c%e4%b8%ba" v-on:click="closeDrawer" onclick="collapseOthers(`#渣男行为-nav`)" id="渣男行为-nav">
+									渣男行为
+								</a>
+							</li>
+						
 						
 					
 				
@@ -276,20 +254,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%8d%e8%b4%b9%e7%9a%84%e4%bb%a3%e4%bb%b7" v-on:click="closeDrawer" id="免费的代价-nav">
-										 免费的代价
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%88%86%e6%af%8d%e7%9a%84%e7%a7%98%e5%af%86" v-on:click="closeDrawer" onclick="collapseOthers(`#分母的秘密-nav`)" id="分母的秘密-nav">
+									分母的秘密
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -299,20 +272,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%b8%ad%e5%a5%96%e4%b9%8b%e5%90%8e" v-on:click="closeDrawer" id="中奖之后-nav">
-										 中奖之后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%8d%e8%b4%b9%e7%9a%84%e4%bb%a3%e4%bb%b7" v-on:click="closeDrawer" onclick="collapseOthers(`#免费的代价-nav`)" id="免费的代价-nav">
+									免费的代价
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -322,24 +290,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ad%a3%e8%a7%84%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" id="正规商家-nav">
-										 正规商家
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%b8%ad%e5%a5%96%e4%b9%8b%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#中奖之后-nav`)" id="中奖之后-nav">
+									中奖之后
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -349,24 +308,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e9%bb%91%e5%bf%83%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" id="黑心商家-nav">
-										 黑心商家
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e8%a7%84%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#正规商家-nav`)" id="正规商家-nav">
+									正规商家
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -376,20 +330,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%91%e5%a5%96%e8%bf%87%e7%a8%8b%e4%b8%ad" v-on:click="closeDrawer" id="发奖过程中-nav">
-										 发奖过程中
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e9%bb%91%e5%bf%83%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#黑心商家-nav`)" id="黑心商家-nav">
+									黑心商家
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -399,20 +348,46 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
-										 最后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%91%e5%a5%96%e8%bf%87%e7%a8%8b%e4%b8%ad" v-on:click="closeDrawer" onclick="collapseOthers(`#发奖过程中-nav`)" id="发奖过程中-nav">
+									发奖过程中
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#最后-nav`)" id="最后-nav">
+									最后
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -504,41 +479,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e7%bb%93%e8%ae%ba" v-on:click="closeDrawer" id="结论-nav">
-										 结论
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -548,16 +506,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ad%a3%e6%96%87" v-on:click="closeDrawer" id="正文-nav">
-										 正文
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bb%93%e8%ae%ba" v-on:click="closeDrawer" onclick="collapseOthers(`#结论-nav`)" id="结论-nav">
+									结论
+								</a>
+							</li>
+						
 						
 					
 				
@@ -567,20 +524,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%b8%a3%e7%94%b7%e8%a1%8c%e4%b8%ba" v-on:click="closeDrawer" id="渣男行为-nav">
-										 渣男行为
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e6%96%87" v-on:click="closeDrawer" onclick="collapseOthers(`#正文-nav`)" id="正文-nav">
+									正文
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -590,20 +542,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%88%86%e6%af%8d%e7%9a%84%e7%a7%98%e5%af%86" v-on:click="closeDrawer" id="分母的秘密-nav">
-										 分母的秘密
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%b8%a3%e7%94%b7%e8%a1%8c%e4%b8%ba" v-on:click="closeDrawer" onclick="collapseOthers(`#渣男行为-nav`)" id="渣男行为-nav">
+									渣男行为
+								</a>
+							</li>
+						
 						
 					
 				
@@ -613,20 +564,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%85%8d%e8%b4%b9%e7%9a%84%e4%bb%a3%e4%bb%b7" v-on:click="closeDrawer" id="免费的代价-nav">
-										 免费的代价
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%88%86%e6%af%8d%e7%9a%84%e7%a7%98%e5%af%86" v-on:click="closeDrawer" onclick="collapseOthers(`#分母的秘密-nav`)" id="分母的秘密-nav">
+									分母的秘密
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -636,20 +582,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%b8%ad%e5%a5%96%e4%b9%8b%e5%90%8e" v-on:click="closeDrawer" id="中奖之后-nav">
-										 中奖之后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%85%8d%e8%b4%b9%e7%9a%84%e4%bb%a3%e4%bb%b7" v-on:click="closeDrawer" onclick="collapseOthers(`#免费的代价-nav`)" id="免费的代价-nav">
+									免费的代价
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -659,24 +600,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ad%a3%e8%a7%84%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" id="正规商家-nav">
-										 正规商家
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e4%b8%ad%e5%a5%96%e4%b9%8b%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#中奖之后-nav`)" id="中奖之后-nav">
+									中奖之后
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -686,24 +618,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e9%bb%91%e5%bf%83%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" id="黑心商家-nav">
-										 黑心商家
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e8%a7%84%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#正规商家-nav`)" id="正规商家-nav">
+									正规商家
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -713,20 +640,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%91%e5%a5%96%e8%bf%87%e7%a8%8b%e4%b8%ad" v-on:click="closeDrawer" id="发奖过程中-nav">
-										 发奖过程中
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e9%bb%91%e5%bf%83%e5%95%86%e5%ae%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#黑心商家-nav`)" id="黑心商家-nav">
+									黑心商家
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -736,20 +658,46 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
-										 最后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%91%e5%a5%96%e8%bf%87%e7%a8%8b%e4%b8%ad" v-on:click="closeDrawer" onclick="collapseOthers(`#发奖过程中-nav`)" id="发奖过程中-nav">
+									发奖过程中
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#最后-nav`)" id="最后-nav">
+									最后
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -1094,6 +1042,7 @@ app = new Vue({
         this.handleScroll();
         this.handleResize();
         this.mounted = true;
+
         
             new Valine({
                 el: '#vcomments',

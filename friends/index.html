@@ -67,6 +67,8 @@ if (!doNotTrack) {
 <script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
+
+
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
@@ -513,6 +515,7 @@ app = new Vue({
         this.handleScroll();
         this.handleResize();
         this.mounted = true;
+
         
             new Valine({
                 el: '#vcomments',
