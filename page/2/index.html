@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-	<meta name="generator" content="Hugo 0.69.2" />
+	<meta name="generator" content="Hugo 0.70.0" />
 <title>左手的世界</title>
 
 <meta charset="utf-8">
@@ -44,7 +44,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.b8ced257adf01d727091488aba5d273c60910773635166b513b27c1c28b9c866.css" integrity="sha256-uM7SV63wHXJwkUiKul0nPGCRB3NjUWa1E7J8HCi5yGY=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.b13808e7c98cd5aa981a3822fd3421e26f1015876bb15a3fbf8ed5991c382367.css" integrity="sha256-sTgI58mM1aqYGjgi/TQh4m8QFYdrsVo/v47VmRw4I2c=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -70,14 +70,7 @@ if (!doNotTrack) {
 
 
 
-<style>
-.vsys{
-display:none !important;
-}
-</style>
-
-</head>
-<body>
+</head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
     <a class="a-block nav-head active" href="https://amazingrise.net">
@@ -185,7 +178,7 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
         
             <div class="pagination-indicator">
                 <span style="text-align: center">
-                    2<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>3
+                    2<br><div style="display: inline-block; transform: rotate(-28deg)">-</div><br>2
                 </span>
             </div>
             
@@ -197,12 +190,6 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
             </a>
             
 
-            
-            <a class="pagination-action" href="/page/3/">
-                <i class="material-icons pagination-action-icon">
-                    chevron_right
-                </i>
-            </a>
             
         
         
@@ -553,12 +540,11 @@ Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopene
     </a>
 
         <div class="pagination-indicator">
-            <span>2/3</span>
+            <span>2/2</span>
         </div>
 
         
-        <a class="pagination-action" href="/page/3/"
-           style="opacity:1">
+            <a class="pagination-action" style="opacity:0">
         
                 <i class="material-icons pagination-action-icon">
                     chevron_right
@@ -652,7 +638,6 @@ app = new Vue({
             return check;
         };
         
-        
         var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         if (night==""){
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -664,30 +649,11 @@ app = new Vue({
                 this.toggleDarkMode();
             }
         }
-        
     },
     mounted() {
         this.handleScroll();
         this.handleResize();
         this.mounted = true;
-        
-            new Valine({
-                el: '#vcomments',
-                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
-                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
-                requiredFields: ['nick'],
-                enableQQ: true,
-                recordIP: true,
-                
-                appid:"BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
-                
-                appkey:"xuYy5CEXceKSggBBKRQr7Ysf",
-                
-                avator:"identicon",
-                
-                record: true ,
-                
-            })
         
     },
     destroyed() {
@@ -698,6 +664,5 @@ app = new Vue({
 </script>
 
 <script src="https://amazingrise.net/js/journal.js"></script>
-
     </body>
 </html>

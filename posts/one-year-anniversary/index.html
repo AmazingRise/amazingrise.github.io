@@ -43,7 +43,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.b8ced257adf01d727091488aba5d273c60910773635166b513b27c1c28b9c866.css" integrity="sha256-uM7SV63wHXJwkUiKul0nPGCRB3NjUWa1E7J8HCi5yGY=" media="screen">
+<link rel="stylesheet" href="https://amazingrise.net/scss/dark-mode.min.b13808e7c98cd5aa981a3822fd3421e26f1015876bb15a3fbf8ed5991c382367.css" integrity="sha256-sTgI58mM1aqYGjgi/TQh4m8QFYdrsVo/v47VmRw4I2c=" media="screen">
 
 
 <script src="https://amazingrise.net/js/loadCSS.js"></script>
@@ -67,14 +67,7 @@ if (!doNotTrack) {
 <script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
-<style>
-.vsys{
-display:none !important;
-}
-</style>
-
-</head>
-<body>
+</head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
     <a class="a-block nav-head false" href="https://amazingrise.net">
@@ -771,7 +764,6 @@ app = new Vue({
             return check;
         };
         
-        
         var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         if (night==""){
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -783,7 +775,6 @@ app = new Vue({
                 this.toggleDarkMode();
             }
         }
-        
     },
     mounted() {
         this.handleScroll();
@@ -794,18 +785,9 @@ app = new Vue({
                 el: '#vcomments',
                 appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
                 appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
-                requiredFields: ['nick'],
+                requiredFields: ['nick','mail'],
                 enableQQ: true,
                 recordIP: true,
-                
-                appid:"BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
-                
-                appkey:"xuYy5CEXceKSggBBKRQr7Ysf",
-                
-                avator:"identicon",
-                
-                record: true ,
-                
             })
         
     },
@@ -817,6 +799,5 @@ app = new Vue({
 </script>
 
 <script src="https://amazingrise.net/js/journal.js"></script>
-
     </body>
 </html>
