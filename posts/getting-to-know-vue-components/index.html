@@ -64,9 +64,9 @@ if (!doNotTrack) {
 
 
 
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 
 
 </head><body>
@@ -169,45 +169,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e9%9c%80%e6%b1%82" v-on:click="closeDrawer" id="需求-nav">
-										 需求
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -217,16 +196,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b0" v-on:click="closeDrawer" id="实现-nav">
-										 实现
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
+						
+							<li>
+								<a href="#%e9%9c%80%e6%b1%82" v-on:click="closeDrawer" onclick="collapseOthers(`#需求-nav`)" id="需求-nav">
+									需求
+								</a>
+							</li>
+						
 						
 					
 				
@@ -236,20 +218,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b01-%e4%b8%8d%e7%94%a8-vue" v-on:click="closeDrawer" id="实现1-不用-vue-nav">
-										 实现1 不用 Vue
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0" v-on:click="closeDrawer" onclick="collapseOthers(`#实现-nav`)" id="实现-nav">
+									实现
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -259,20 +240,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b02-vue-app" v-on:click="closeDrawer" id="实现2-vue-app-nav">
-										 实现2 Vue App
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b01-%e4%b8%8d%e7%94%a8-vue" v-on:click="closeDrawer" onclick="collapseOthers(`#实现1-不用-vue-nav`)" id="实现1-不用-vue-nav">
+									实现1 不用 Vue
+								</a>
+							</li>
+						
 						
 					
 				
@@ -282,20 +262,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b03-vue-%e7%bb%84%e4%bb%b6" v-on:click="closeDrawer" id="实现3-vue-组件-nav">
-										 实现3 Vue 组件
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b02-vue-app" v-on:click="closeDrawer" onclick="collapseOthers(`#实现2-vue-app-nav`)" id="实现2-vue-app-nav">
+									实现2 Vue App
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -305,16 +280,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" id="参考-nav">
-										 参考
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b03-vue-%e7%bb%84%e4%bb%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#实现3-vue-组件-nav`)" id="实现3-vue-组件-nav">
+									实现3 Vue 组件
+								</a>
+							</li>
+						
 						
 					
 				
@@ -324,20 +298,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e5%90%8e%e8%ae%b0" v-on:click="closeDrawer" id="后记-nav">
-										 后记
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" onclick="collapseOthers(`#参考-nav`)" id="参考-nav">
+									参考
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%8e%e8%ae%b0" v-on:click="closeDrawer" onclick="collapseOthers(`#后记-nav`)" id="后记-nav">
+									后记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -429,45 +425,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e9%9c%80%e6%b1%82" v-on:click="closeDrawer" id="需求-nav">
-										 需求
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -477,16 +452,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b0" v-on:click="closeDrawer" id="实现-nav">
-										 实现
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
+						
+							<li>
+								<a href="#%e9%9c%80%e6%b1%82" v-on:click="closeDrawer" onclick="collapseOthers(`#需求-nav`)" id="需求-nav">
+									需求
+								</a>
+							</li>
+						
 						
 					
 				
@@ -496,20 +474,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b01-%e4%b8%8d%e7%94%a8-vue" v-on:click="closeDrawer" id="实现1-不用-vue-nav">
-										 实现1 不用 Vue
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b0" v-on:click="closeDrawer" onclick="collapseOthers(`#实现-nav`)" id="实现-nav">
+									实现
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -519,20 +496,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b02-vue-app" v-on:click="closeDrawer" id="实现2-vue-app-nav">
-										 实现2 Vue App
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b01-%e4%b8%8d%e7%94%a8-vue" v-on:click="closeDrawer" onclick="collapseOthers(`#实现1-不用-vue-nav`)" id="实现1-不用-vue-nav">
+									实现1 不用 Vue
+								</a>
+							</li>
+						
 						
 					
 				
@@ -542,20 +518,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%ae%9e%e7%8e%b03-vue-%e7%bb%84%e4%bb%b6" v-on:click="closeDrawer" id="实现3-vue-组件-nav">
-										 实现3 Vue 组件
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b02-vue-app" v-on:click="closeDrawer" onclick="collapseOthers(`#实现2-vue-app-nav`)" id="实现2-vue-app-nav">
+									实现2 Vue App
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -565,16 +536,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" id="参考-nav">
-										 参考
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%ae%9e%e7%8e%b03-vue-%e7%bb%84%e4%bb%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#实现3-vue-组件-nav`)" id="实现3-vue-组件-nav">
+									实现3 Vue 组件
+								</a>
+							</li>
+						
 						
 					
 				
@@ -584,20 +554,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
+						
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e5%90%8e%e8%ae%b0" v-on:click="closeDrawer" id="后记-nav">
-										 后记
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" onclick="collapseOthers(`#参考-nav`)" id="参考-nav">
+									参考
+								</a>
+							</li>
+						
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%90%8e%e8%ae%b0" v-on:click="closeDrawer" onclick="collapseOthers(`#后记-nav`)" id="后记-nav">
+									后记
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -888,15 +880,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             </nav>
             <div class="post-comment-wrapper">
                 
-评论区为测试，请勿留言，谢谢！
-<div class="comments">
-    <vue-disqus shortname="jenlky"></vue-disqus>
-</div>
-<noscript><noscript>請開啓 JavaScript 以便使用評論服務。</noscript></noscript>
-<a href="https://disqus.com/" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
+
+<div id="vcomments"></div>
 
 
 
@@ -1010,6 +998,15 @@ app = new Vue({
         this.handleResize();
         this.mounted = true;
 
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
+                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
         
     },
     destroyed() {

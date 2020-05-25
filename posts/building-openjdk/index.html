@@ -64,9 +64,9 @@ if (!doNotTrack) {
 
 
 
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 
 
 </head><body>
@@ -169,41 +169,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e5%87%86%e5%a4%87" v-on:click="closeDrawer" id="准备-nav">
-										 准备
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -213,20 +196,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%8e%af%e5%a2%83" v-on:click="closeDrawer" id="环境-nav">
-										 环境
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%87%86%e5%a4%87" v-on:click="closeDrawer" onclick="collapseOthers(`#准备-nav`)" id="准备-nav">
+									准备
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -236,20 +214,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#openjdk-8" v-on:click="closeDrawer" id="openjdk-8-nav">
-										 OpenJDK 8
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%8e%af%e5%a2%83" v-on:click="closeDrawer" onclick="collapseOthers(`#环境-nav`)" id="环境-nav">
+									环境
+								</a>
+							</li>
+						
 						
 					
 				
@@ -259,20 +236,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#mercurial" v-on:click="closeDrawer" id="mercurial-nav">
-										 Mercurial
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#openjdk-8" v-on:click="closeDrawer" onclick="collapseOthers(`#openjdk-8-nav`)" id="openjdk-8-nav">
+									OpenJDK 8
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -282,20 +254,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#gcc-%e5%92%8c-make" v-on:click="closeDrawer" id="gcc-和-make-nav">
-										 GCC 和 make
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#mercurial" v-on:click="closeDrawer" onclick="collapseOthers(`#mercurial-nav`)" id="mercurial-nav">
+									Mercurial
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -305,16 +272,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="编译-nav">
-										 编译
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#gcc-%e5%92%8c-make" v-on:click="closeDrawer" onclick="collapseOthers(`#gcc-和-make-nav`)" id="gcc-和-make-nav">
+									GCC 和 make
+								</a>
+							</li>
+						
 						
 					
 				
@@ -324,20 +290,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#clone" v-on:click="closeDrawer" id="clone-nav">
-										 clone
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bc%96%e8%af%91" v-on:click="closeDrawer" onclick="collapseOthers(`#编译-nav`)" id="编译-nav">
+									编译
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -347,20 +312,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#get_source" v-on:click="closeDrawer" id="get_source-nav">
-										 get_source
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#clone" v-on:click="closeDrawer" onclick="collapseOthers(`#clone-nav`)" id="clone-nav">
+									clone
+								</a>
+							</li>
+						
 						
 					
 				
@@ -370,20 +334,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#configure" v-on:click="closeDrawer" id="configure-nav">
-										 configure
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#get_source" v-on:click="closeDrawer" onclick="collapseOthers(`#get_source-nav`)" id="get_source-nav">
+									get_source
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -393,20 +352,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#dirty-hack" v-on:click="closeDrawer" id="dirty-hack-nav">
-										 dirty hack
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#configure" v-on:click="closeDrawer" onclick="collapseOthers(`#configure-nav`)" id="configure-nav">
+									configure
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -416,20 +370,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#make" v-on:click="closeDrawer" id="make-nav">
-										 make
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#dirty-hack" v-on:click="closeDrawer" onclick="collapseOthers(`#dirty-hack-nav`)" id="dirty-hack-nav">
+									dirty hack
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -439,24 +388,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="仅编译-nav">
-										 仅编译
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#make" v-on:click="closeDrawer" onclick="collapseOthers(`#make-nav`)" id="make-nav">
+									make
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -466,24 +406,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" id="编译二进制-nav">
-										 编译二进制
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" onclick="collapseOthers(`#仅编译-nav`)" id="仅编译-nav">
+									仅编译
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -493,16 +428,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
-										 最后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#编译二进制-nav`)" id="编译二进制-nav">
+									编译二进制
+								</a>
+							</li>
+						
 						
 					
 				
@@ -512,20 +446,21 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e7%bb%93%e8%af%ad" v-on:click="closeDrawer" id="结语-nav">
-										 结语
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#最后-nav`)" id="最后-nav">
+									最后
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -535,20 +470,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" id="参考-nav">
-										 参考
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bb%93%e8%af%ad" v-on:click="closeDrawer" onclick="collapseOthers(`#结语-nav`)" id="结语-nav">
+									结语
+								</a>
+							</li>
+						
 						
 					
 				
@@ -558,24 +492,38 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a" v-on:click="closeDrawer" id="次回予告-nav">
-										 次回予告
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" onclick="collapseOthers(`#参考-nav`)" id="参考-nav">
+									参考
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a" v-on:click="closeDrawer" onclick="collapseOthers(`#次回予告-nav`)" id="次回予告-nav">
+									次回予告
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -667,41 +615,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
-										 前言
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
+									前言
+								</a>
+							</li>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e5%87%86%e5%a4%87" v-on:click="closeDrawer" id="准备-nav">
-										 准备
-									</a>
-								</li>
-						
-							</ul>
 						
 					
 				
@@ -711,20 +642,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%8e%af%e5%a2%83" v-on:click="closeDrawer" id="环境-nav">
-										 环境
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%87%86%e5%a4%87" v-on:click="closeDrawer" onclick="collapseOthers(`#准备-nav`)" id="准备-nav">
+									准备
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -734,20 +660,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#openjdk-8" v-on:click="closeDrawer" id="openjdk-8-nav">
-										 OpenJDK 8
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%8e%af%e5%a2%83" v-on:click="closeDrawer" onclick="collapseOthers(`#环境-nav`)" id="环境-nav">
+									环境
+								</a>
+							</li>
+						
 						
 					
 				
@@ -757,20 +682,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#mercurial" v-on:click="closeDrawer" id="mercurial-nav">
-										 Mercurial
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#openjdk-8" v-on:click="closeDrawer" onclick="collapseOthers(`#openjdk-8-nav`)" id="openjdk-8-nav">
+									OpenJDK 8
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -780,20 +700,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#gcc-%e5%92%8c-make" v-on:click="closeDrawer" id="gcc-和-make-nav">
-										 GCC 和 make
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#mercurial" v-on:click="closeDrawer" onclick="collapseOthers(`#mercurial-nav`)" id="mercurial-nav">
+									Mercurial
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -803,16 +718,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="编译-nav">
-										 编译
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#gcc-%e5%92%8c-make" v-on:click="closeDrawer" onclick="collapseOthers(`#gcc-和-make-nav`)" id="gcc-和-make-nav">
+									GCC 和 make
+								</a>
+							</li>
+						
 						
 					
 				
@@ -822,20 +736,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#clone" v-on:click="closeDrawer" id="clone-nav">
-										 clone
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bc%96%e8%af%91" v-on:click="closeDrawer" onclick="collapseOthers(`#编译-nav`)" id="编译-nav">
+									编译
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -845,20 +758,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#get_source" v-on:click="closeDrawer" id="get_source-nav">
-										 get_source
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#clone" v-on:click="closeDrawer" onclick="collapseOthers(`#clone-nav`)" id="clone-nav">
+									clone
+								</a>
+							</li>
+						
 						
 					
 				
@@ -868,20 +780,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#configure" v-on:click="closeDrawer" id="configure-nav">
-										 configure
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#get_source" v-on:click="closeDrawer" onclick="collapseOthers(`#get_source-nav`)" id="get_source-nav">
+									get_source
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -891,20 +798,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#dirty-hack" v-on:click="closeDrawer" id="dirty-hack-nav">
-										 dirty hack
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#configure" v-on:click="closeDrawer" onclick="collapseOthers(`#configure-nav`)" id="configure-nav">
+									configure
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -914,20 +816,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#make" v-on:click="closeDrawer" id="make-nav">
-										 make
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#dirty-hack" v-on:click="closeDrawer" onclick="collapseOthers(`#dirty-hack-nav`)" id="dirty-hack-nav">
+									dirty hack
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -937,24 +834,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" id="仅编译-nav">
-										 仅编译
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#make" v-on:click="closeDrawer" onclick="collapseOthers(`#make-nav`)" id="make-nav">
+									make
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -964,24 +852,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" id="编译二进制-nav">
-										 编译二进制
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e4%bb%85%e7%bc%96%e8%af%91" v-on:click="closeDrawer" onclick="collapseOthers(`#仅编译-nav`)" id="仅编译-nav">
+									仅编译
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -991,16 +874,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="最后-nav">
-										 最后
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6" v-on:click="closeDrawer" onclick="collapseOthers(`#编译二进制-nav`)" id="编译二进制-nav">
+									编译二进制
+								</a>
+							</li>
+						
 						
 					
 				
@@ -1010,20 +892,21 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
 						
-							<ul>
+							
+								</ul>
+							
+								</ul>
+							
 						
 						
-								<li>
-				 					<a href="#%e7%bb%93%e8%af%ad" v-on:click="closeDrawer" id="结语-nav">
-										 结语
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#最后-nav`)" id="最后-nav">
+									最后
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -1033,20 +916,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" id="参考-nav">
-										 参考
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%bb%93%e8%af%ad" v-on:click="closeDrawer" onclick="collapseOthers(`#结语-nav`)" id="结语-nav">
+									结语
+								</a>
+							</li>
+						
 						
 					
 				
@@ -1056,24 +938,38 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a" v-on:click="closeDrawer" id="次回予告-nav">
-										 次回予告
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e5%8f%82%e8%80%83" v-on:click="closeDrawer" onclick="collapseOthers(`#参考-nav`)" id="参考-nav">
+									参考
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a" v-on:click="closeDrawer" onclick="collapseOthers(`#次回予告-nav`)" id="次回予告-nav">
+									次回予告
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -1349,15 +1245,11 @@ OpenJDK 64-Bit Server VM (build 25.71-b00, mixed mode)
             </nav>
             <div class="post-comment-wrapper">
                 
-评论区为测试，请勿留言，谢谢！
-<div class="comments">
-    <vue-disqus shortname="jenlky"></vue-disqus>
-</div>
-<noscript><noscript>請開啓 JavaScript 以便使用評論服務。</noscript></noscript>
-<a href="https://disqus.com/" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
+
+<div id="vcomments"></div>
 
 
 
@@ -1471,6 +1363,15 @@ app = new Vue({
         this.handleResize();
         this.mounted = true;
 
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
+                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
         
     },
     destroyed() {

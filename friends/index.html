@@ -64,9 +64,9 @@ if (!doNotTrack) {
 
 
 
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 
 
 </head><body>
@@ -398,15 +398,11 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             </nav>
             <div class="post-comment-wrapper">
                 
-评论区为测试，请勿留言，谢谢！
-<div class="comments">
-    <vue-disqus shortname="jenlky"></vue-disqus>
-</div>
-<noscript><noscript>請開啓 JavaScript 以便使用評論服務。</noscript></noscript>
-<a href="https://disqus.com/" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
+
+<div id="vcomments"></div>
 
 
 
@@ -520,6 +516,15 @@ app = new Vue({
         this.handleResize();
         this.mounted = true;
 
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
+                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
         
     },
     destroyed() {

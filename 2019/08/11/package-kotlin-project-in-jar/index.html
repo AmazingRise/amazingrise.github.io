@@ -64,9 +64,9 @@ if (!doNotTrack) {
 
 
 
+<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 
 
 </head><body>
@@ -167,49 +167,28 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" id="前言--nav">
-										 前言
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
-						
-					
-				
-			
-				
-				
-					
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
 						
-							<ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" onclick="collapseOthers(`#前言--nav`)" id="前言--nav">
+									前言
+								</a>
+							</li>
 						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" id="正确的食用方式--nav">
-										 正确的食用方式
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -219,24 +198,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" id="第一步-创建jar-artifacts--nav">
-										 第一步 创建Jar Artifacts
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" onclick="collapseOthers(`#正确的食用方式--nav`)" id="正确的食用方式--nav">
+									正确的食用方式
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -246,24 +216,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" id="第二步-手动添加manifest--nav">
-										 第二步 手动添加MANIFEST
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" onclick="collapseOthers(`#第一步-创建jar-artifacts--nav`)" id="第一步-创建jar-artifacts--nav">
+									第一步 创建Jar Artifacts
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -273,24 +238,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" id="第三步-调整位置让新添加的manifest后来居上--nav">
-										 第三步 调整位置，让新添加的MANIFEST后来居上
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" onclick="collapseOthers(`#第二步-手动添加manifest--nav`)" id="第二步-手动添加manifest--nav">
+									第二步 手动添加MANIFEST
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -300,24 +256,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" id="第四步-完成--nav">
-										 第四步 完成
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" onclick="collapseOthers(`#第三步-调整位置让新添加的manifest后来居上--nav`)" id="第三步-调整位置让新添加的manifest后来居上--nav">
+									第三步 调整位置，让新添加的MANIFEST后来居上
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -327,24 +274,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" id="参考--nav">
-										 参考
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" onclick="collapseOthers(`#第四步-完成--nav`)" id="第四步-完成--nav">
+									第四步 完成
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#参考--nav`)" id="参考--nav">
+									参考
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -434,49 +399,28 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
+		
+		
+		<ul>
 			
 				
 				
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" id="前言--nav">
-										 前言
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
-						
-					
-				
-			
-				
-				
-					
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
 						
-							<ul>
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80-" v-on:click="closeDrawer" onclick="collapseOthers(`#前言--nav`)" id="前言--nav">
+									前言
+								</a>
+							</li>
 						
-							<ul>
-						
-						
-								<li>
-				 					<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" id="正确的食用方式--nav">
-										 正确的食用方式
-									</a>
-								</li>
-						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -486,24 +430,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" id="第一步-创建jar-artifacts--nav">
-										 第一步 创建Jar Artifacts
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e6%ad%a3%e7%a1%ae%e7%9a%84%e9%a3%9f%e7%94%a8%e6%96%b9%e5%bc%8f-" v-on:click="closeDrawer" onclick="collapseOthers(`#正确的食用方式--nav`)" id="正确的食用方式--nav">
+									正确的食用方式
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -513,24 +448,19 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" id="第二步-手动添加manifest--nav">
-										 第二步 手动添加MANIFEST
-									</a>
-								</li>
+							
+								<ul class="collapse" data-toggle="collapse">
+							
 						
-							</ul>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5-%e5%88%9b%e5%bb%bajar-artifacts-" v-on:click="closeDrawer" onclick="collapseOthers(`#第一步-创建jar-artifacts--nav`)" id="第一步-创建jar-artifacts--nav">
+									第一步 创建Jar Artifacts
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
@@ -540,24 +470,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" id="第三步-调整位置让新添加的manifest后来居上--nav">
-										 第三步 调整位置，让新添加的MANIFEST后来居上
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5-%e6%89%8b%e5%8a%a8%e6%b7%bb%e5%8a%a0manifest-" v-on:click="closeDrawer" onclick="collapseOthers(`#第二步-手动添加manifest--nav`)" id="第二步-手动添加manifest--nav">
+									第二步 手动添加MANIFEST
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -567,24 +488,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" id="第四步-完成--nav">
-										 第四步 完成
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5-%e8%b0%83%e6%95%b4%e4%bd%8d%e7%bd%ae%e8%ae%a9%e6%96%b0%e6%b7%bb%e5%8a%a0%e7%9a%84manifest%e5%90%8e%e6%9d%a5%e5%b1%85%e4%b8%8a-" v-on:click="closeDrawer" onclick="collapseOthers(`#第三步-调整位置让新添加的manifest后来居上--nav`)" id="第三步-调整位置让新添加的manifest后来居上--nav">
+									第三步 调整位置，让新添加的MANIFEST后来居上
+								</a>
+							</li>
 						
-							</ul>
-						
-							</ul>
 						
 					
 				
@@ -594,24 +506,42 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-							<ul>
-						
-							<ul>
 						
 						
-								<li>
-				 					<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" id="参考--nav">
-										 参考
-									</a>
-								</li>
 						
-							</ul>
+							<li>
+								<a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5-%e5%ae%8c%e6%88%90-" v-on:click="closeDrawer" onclick="collapseOthers(`#第四步-完成--nav`)" id="第四步-完成--nav">
+									第四步 完成
+								</a>
+							</li>
 						
-							</ul>
 						
 					
 				
 			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83-" v-on:click="closeDrawer" onclick="collapseOthers(`#参考--nav`)" id="参考--nav">
+									参考
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
 	</div>
 
 </div>
@@ -798,15 +728,11 @@ Main-Class: main.MainKt
             </nav>
             <div class="post-comment-wrapper">
                 
-评论区为测试，请勿留言，谢谢！
-<div class="comments">
-    <vue-disqus shortname="jenlky"></vue-disqus>
-</div>
-<noscript><noscript>請開啓 JavaScript 以便使用評論服務。</noscript></noscript>
-<a href="https://disqus.com/" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
+
+<div id="vcomments"></div>
 
 
 
@@ -920,6 +846,15 @@ app = new Vue({
         this.handleResize();
         this.mounted = true;
 
+        
+            new Valine({
+                el: '#vcomments',
+                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
+                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
+                requiredFields: ['nick','mail'],
+                enableQQ: true,
+                recordIP: true,
+            })
         
     },
     destroyed() {
