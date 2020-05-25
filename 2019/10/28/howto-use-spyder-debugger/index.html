@@ -64,9 +64,9 @@ if (!doNotTrack) {
 
 
 
-<script src='https://unpkg.com/valine@1.4.14/dist/Valine.min.js'></script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue-disqus@3/dist/vue-disqus.js"></script>
 
 
 </head><body>
@@ -167,46 +167,22 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
-		
-		
-		<ul>
 			
 				
 				
 					
 						
 						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
+										 前言
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e4%b8%ba%e4%bb%80%e4%b9%88" v-on:click="closeDrawer" onclick="collapseOthers(`#为什么-nav`)" id="为什么-nav">
-									为什么
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -216,37 +192,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e4%b8%ba%e4%bb%80%e4%b9%88" v-on:click="closeDrawer" id="为什么-nav">
+										 为什么
+									</a>
+								</li>
 						
+							</ul>
 						
-							<li>
-								<a href="#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#我们为什么要学会调试-nav`)" id="我们为什么要学会调试-nav">
-									我们为什么要学会调试
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder" v-on:click="closeDrawer" onclick="collapseOthers(`#为嘛要用spyder-nav`)" id="为嘛要用spyder-nav">
-									为嘛要用Spyder
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -256,43 +215,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
-							
-								</ul>
-							
-								</ul>
-							
+							<ul>
 						
+							<ul>
 						
 						
-							<li>
-								<a href="#spyder%e5%88%9d%e4%bd%93%e9%aa%8c" v-on:click="closeDrawer" onclick="collapseOthers(`#spyder初体验-nav`)" id="spyder初体验-nav">
-									Spyder初体验
-								</a>
-							</li>
+								<li>
+				 					<a href="#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="我们为什么要学会调试-nav">
+										 我们为什么要学会调试
+									</a>
+								</li>
 						
+							</ul>
 						
-					
-				
-			
-				
-				
-					
+							</ul>
 						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2" v-on:click="closeDrawer" onclick="collapseOthers(`#熟悉spyder的界面-nav`)" id="熟悉spyder的界面-nav">
-									熟悉Spyder的界面
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -302,33 +242,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder" v-on:click="closeDrawer" id="为嘛要用spyder-nav">
+										 为嘛要用Spyder
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" v-on:click="closeDrawer" onclick="collapseOthers(`#用spyder运行示例代码-nav`)" id="用spyder运行示例代码-nav">
-									用Spyder运行示例代码
-								</a>
-							</li>
+							</ul>
 						
+							</ul>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87" v-on:click="closeDrawer" onclick="collapseOthers(`#调试目标-nav`)" id="调试目标-nav">
-									调试目标
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -338,19 +269,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-						
-							
-								</ul>
-							
+							<ul>
 						
 						
+								<li>
+				 					<a href="#spyder%e5%88%9d%e4%bd%93%e9%aa%8c" v-on:click="closeDrawer" id="spyder初体验-nav">
+										 Spyder初体验
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95" v-on:click="closeDrawer" onclick="collapseOthers(`#朴素的-print-调试法-nav`)" id="朴素的-print-调试法-nav">
-									朴素的 print 调试法
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -360,37 +288,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2" v-on:click="closeDrawer" id="熟悉spyder的界面-nav">
+										 熟悉Spyder的界面
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95" v-on:click="closeDrawer" onclick="collapseOthers(`#隆重登场的调试器法-nav`)" id="隆重登场的调试器法-nav">
-									隆重登场的调试器法
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#第一招式---逐行调试-nav`)" id="第一招式---逐行调试-nav">
-									第一招式 - 逐行调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -400,37 +311,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" v-on:click="closeDrawer" id="用spyder运行示例代码-nav">
+										 用Spyder运行示例代码
+									</a>
+								</li>
 						
+							</ul>
 						
-							<li>
-								<a href="#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f" v-on:click="closeDrawer" onclick="collapseOthers(`#进入调试模式-nav`)" id="进入调试模式-nav">
-									进入调试模式
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#开始逐行调试-nav`)" id="开始逐行调试-nav">
-									开始逐行调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -440,37 +334,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87" v-on:click="closeDrawer" id="调试目标-nav">
+										 调试目标
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#小总结-nav`)" id="小总结-nav">
-									小总结
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#第二招式---断点调试-nav`)" id="第二招式---断点调试-nav">
-									第二招式 - 断点调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -480,19 +357,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95" v-on:click="closeDrawer" id="朴素的-print-调试法-nav">
+										 朴素的 print 调试法
+									</a>
+								</li>
 						
-						
-							<li>
-								<a href="#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9" v-on:click="closeDrawer" onclick="collapseOthers(`#设置断点-nav`)" id="设置断点-nav">
-									设置断点
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -502,33 +376,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95" v-on:click="closeDrawer" id="隆重登场的调试器法-nav">
+										 隆重登场的调试器法
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#开始调试-nav`)" id="开始调试-nav">
-									开始调试
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#继续调试-nav`)" id="继续调试-nav">
-									继续调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -538,37 +395,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="第一招式---逐行调试-nav">
+										 第一招式 - 逐行调试
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#断点调试小总结-nav`)" id="断点调试小总结-nav">
-									断点调试小总结
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#调试器总结-nav`)" id="调试器总结-nav">
-									调试器总结
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -578,24 +418,255 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
-							
-								</ul>
-							
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f" v-on:click="closeDrawer" id="进入调试模式-nav">
+										 进入调试模式
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#写在最后-nav`)" id="写在最后-nav">
-									写在最后
-								</a>
-							</li>
+							</ul>
 						
+							</ul>
+						
+							</ul>
 						
 					
 				
 			
-		</ul>
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="开始逐行调试-nav">
+										 开始逐行调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="小总结-nav">
+										 小总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="第二招式---断点调试-nav">
+										 第二招式 - 断点调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9" v-on:click="closeDrawer" id="设置断点-nav">
+										 设置断点
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="开始调试-nav">
+										 开始调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="继续调试-nav">
+										 继续调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="断点调试小总结-nav">
+										 断点调试小总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="调试器总结-nav">
+										 调试器总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="写在最后-nav">
+										 写在最后
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
 	</div>
 
 </div>
@@ -685,46 +756,22 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 		
 		
 		<center>- 目錄 -</center>
-		
-		
-		<ul>
 			
 				
 				
 					
 						
 						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" id="前言-nav">
+										 前言
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%89%8d%e8%a8%80" v-on:click="closeDrawer" onclick="collapseOthers(`#前言-nav`)" id="前言-nav">
-									前言
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e4%b8%ba%e4%bb%80%e4%b9%88" v-on:click="closeDrawer" onclick="collapseOthers(`#为什么-nav`)" id="为什么-nav">
-									为什么
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -734,37 +781,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e4%b8%ba%e4%bb%80%e4%b9%88" v-on:click="closeDrawer" id="为什么-nav">
+										 为什么
+									</a>
+								</li>
 						
+							</ul>
 						
-							<li>
-								<a href="#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#我们为什么要学会调试-nav`)" id="我们为什么要学会调试-nav">
-									我们为什么要学会调试
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder" v-on:click="closeDrawer" onclick="collapseOthers(`#为嘛要用spyder-nav`)" id="为嘛要用spyder-nav">
-									为嘛要用Spyder
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -774,43 +804,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
-							
-								</ul>
-							
-								</ul>
-							
+							<ul>
 						
+							<ul>
 						
 						
-							<li>
-								<a href="#spyder%e5%88%9d%e4%bd%93%e9%aa%8c" v-on:click="closeDrawer" onclick="collapseOthers(`#spyder初体验-nav`)" id="spyder初体验-nav">
-									Spyder初体验
-								</a>
-							</li>
+								<li>
+				 					<a href="#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="我们为什么要学会调试-nav">
+										 我们为什么要学会调试
+									</a>
+								</li>
 						
+							</ul>
 						
-					
-				
-			
-				
-				
-					
+							</ul>
 						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2" v-on:click="closeDrawer" onclick="collapseOthers(`#熟悉spyder的界面-nav`)" id="熟悉spyder的界面-nav">
-									熟悉Spyder的界面
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -820,33 +831,24 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder" v-on:click="closeDrawer" id="为嘛要用spyder-nav">
+										 为嘛要用Spyder
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" v-on:click="closeDrawer" onclick="collapseOthers(`#用spyder运行示例代码-nav`)" id="用spyder运行示例代码-nav">
-									用Spyder运行示例代码
-								</a>
-							</li>
+							</ul>
 						
+							</ul>
 						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87" v-on:click="closeDrawer" onclick="collapseOthers(`#调试目标-nav`)" id="调试目标-nav">
-									调试目标
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -856,19 +858,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
-						
-							
-								</ul>
-							
+							<ul>
 						
 						
+								<li>
+				 					<a href="#spyder%e5%88%9d%e4%bd%93%e9%aa%8c" v-on:click="closeDrawer" id="spyder初体验-nav">
+										 Spyder初体验
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95" v-on:click="closeDrawer" onclick="collapseOthers(`#朴素的-print-调试法-nav`)" id="朴素的-print-调试法-nav">
-									朴素的 print 调试法
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -878,37 +877,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2" v-on:click="closeDrawer" id="熟悉spyder的界面-nav">
+										 熟悉Spyder的界面
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95" v-on:click="closeDrawer" onclick="collapseOthers(`#隆重登场的调试器法-nav`)" id="隆重登场的调试器法-nav">
-									隆重登场的调试器法
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
-						
-						
-							<li>
-								<a href="#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#第一招式---逐行调试-nav`)" id="第一招式---逐行调试-nav">
-									第一招式 - 逐行调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -918,37 +900,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81" v-on:click="closeDrawer" id="用spyder运行示例代码-nav">
+										 用Spyder运行示例代码
+									</a>
+								</li>
 						
+							</ul>
 						
-							<li>
-								<a href="#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f" v-on:click="closeDrawer" onclick="collapseOthers(`#进入调试模式-nav`)" id="进入调试模式-nav">
-									进入调试模式
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#开始逐行调试-nav`)" id="开始逐行调试-nav">
-									开始逐行调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -958,37 +923,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87" v-on:click="closeDrawer" id="调试目标-nav">
+										 调试目标
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#小总结-nav`)" id="小总结-nav">
-									小总结
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#第二招式---断点调试-nav`)" id="第二招式---断点调试-nav">
-									第二招式 - 断点调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -998,19 +946,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
 						
-							
-								<ul class="collapse" data-toggle="collapse">
-							
+								<li>
+				 					<a href="#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95" v-on:click="closeDrawer" id="朴素的-print-调试法-nav">
+										 朴素的 print 调试法
+									</a>
+								</li>
 						
-						
-							<li>
-								<a href="#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9" v-on:click="closeDrawer" onclick="collapseOthers(`#设置断点-nav`)" id="设置断点-nav">
-									设置断点
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -1020,33 +965,16 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95" v-on:click="closeDrawer" id="隆重登场的调试器法-nav">
+										 隆重登场的调试器法
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#开始调试-nav`)" id="开始调试-nav">
-									开始调试
-								</a>
-							</li>
-						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-						
-						
-							<li>
-								<a href="#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95" v-on:click="closeDrawer" onclick="collapseOthers(`#继续调试-nav`)" id="继续调试-nav">
-									继续调试
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -1056,37 +984,20 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="第一招式---逐行调试-nav">
+										 第一招式 - 逐行调试
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#断点调试小总结-nav`)" id="断点调试小总结-nav">
-									断点调试小总结
-								</a>
-							</li>
+							</ul>
 						
-						
-					
-				
-			
-				
-				
-					
-						
-						
-						
-							
-								</ul>
-							
-						
-						
-						
-							<li>
-								<a href="#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" onclick="collapseOthers(`#调试器总结-nav`)" id="调试器总结-nav">
-									调试器总结
-								</a>
-							</li>
-						
+							</ul>
 						
 					
 				
@@ -1096,24 +1007,255 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 					
 						
 						
+							<ul>
 						
-							
-								</ul>
-							
+							<ul>
+						
+							<ul>
 						
 						
+								<li>
+				 					<a href="#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f" v-on:click="closeDrawer" id="进入调试模式-nav">
+										 进入调试模式
+									</a>
+								</li>
 						
-							<li>
-								<a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" onclick="collapseOthers(`#写在最后-nav`)" id="写在最后-nav">
-									写在最后
-								</a>
-							</li>
+							</ul>
 						
+							</ul>
+						
+							</ul>
 						
 					
 				
 			
-		</ul>
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="开始逐行调试-nav">
+										 开始逐行调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="小总结-nav">
+										 小总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="第二招式---断点调试-nav">
+										 第二招式 - 断点调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9" v-on:click="closeDrawer" id="设置断点-nav">
+										 设置断点
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="开始调试-nav">
+										 开始调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95" v-on:click="closeDrawer" id="继续调试-nav">
+										 继续调试
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="断点调试小总结-nav">
+										 断点调试小总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93" v-on:click="closeDrawer" id="调试器总结-nav">
+										 调试器总结
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e" v-on:click="closeDrawer" id="写在最后-nav">
+										 写在最后
+									</a>
+								</li>
+						
+							</ul>
+						
+					
+				
+			
 	</div>
 
 </div>
@@ -1426,11 +1568,15 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             </nav>
             <div class="post-comment-wrapper">
                 
+评论区为测试，请勿留言，谢谢！
+<div class="comments">
+    <vue-disqus shortname="jenlky"></vue-disqus>
+</div>
+<noscript><noscript>請開啓 JavaScript 以便使用評論服務。</noscript></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
-
-<div id="vcomments"></div>
 
 
 
@@ -1544,15 +1690,6 @@ app = new Vue({
         this.handleResize();
         this.mounted = true;
 
-        
-            new Valine({
-                el: '#vcomments',
-                appId: "BC6ibdPc8tpQ8FcEEUbeLJkx-gzGzoHsz",
-                appKey: "xuYy5CEXceKSggBBKRQr7Ysf",
-                requiredFields: ['nick','mail'],
-                enableQQ: true,
-                recordIP: true,
-            })
         
     },
     destroyed() {
