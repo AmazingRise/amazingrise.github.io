@@ -43,5 +43,6 @@ var collapseOthers = function (currentId) {
 }
 $().ready(function(){
   spy();
-  $(window).bind('scroll', spy);
+  //$(window).bind('scroll', spy);
+  spyInterval = setInterval(spy, 500);
 });
