@@ -1,37 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kotlin on 左手的世界</title>
-    <link>https://amazingrise.net/categories/kotlin/</link>
-    <description>Recent content in Kotlin on 左手的世界</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Sun, 11 Aug 2019 13:52:16 +0000</lastBuildDate>
-    
-	<atom:link href="https://amazingrise.net/categories/kotlin/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>如何把Kotlin项目打包为可执行的jar</title>
-      <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
-      <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
-      <description>&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on 左手的世界</title><link>https://amazingrise.net/categories/kotlin/</link><description>Recent content in Kotlin on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sun, 11 Aug 2019 13:52:16 +0000</lastBuildDate><atom:link href="https://amazingrise.net/categories/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>如何把Kotlin项目打包为可执行的jar</title><link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link><pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate><guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid><description>&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot&lt;/a>
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
-于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
-然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
-      <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
-      <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid>
-      <description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
+于是我打算把该项目打包成可执行的jar，这样&lt;code>java -jar xxxxx.jar&lt;/code>就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code>没有主清单属性&lt;/code>&lt;/p></description></item><item><title>(译)Kotlin中的等号，"=="，"==="和"equals"</title><link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link><pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate><guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid><description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。 Kotlin语言里，“等号”有这么几种：==，===与.equals。 那么问题来了，我们该如何正确使用这些相等性判断呢？
 我们来一起看一看Kotlin的几种相等性判断：
 结构性相等 (&amp;ldquo;==&amp;rdquo;) ==操作符用于比较两个变量的值。 请不要与Java中的==相混淆。 与Java中的==操作符不同的是：==操作符在Kotlin中只比较值。 而Java或其它语言中，==通常用来比较两个对象的引用。 Kotlin中，==的否定形式是!=，当两个变量值不同时返回真。
@@ -41,11 +12,7 @@
 .equals方法将会比较两个变量的值。 与==不同体现在比较Float和Double的时候，.equals违背了IEEE 754 浮点数运算标准。
 与IEEE 754浮点数运算标准相违背，意味着什么？
 这意味着：
- NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。  一头雾水？
+NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。 一头雾水？
 举个栗子 我来举几个例子解释一下。
 首先，我们用这几个方法比较两个原始类型的变量（Int）。
-val int1 = 10 val int2 = 10 println(int1 == int2)	// true 	println(int1.</description>
-    </item>
-    
-  </channel>
-</rss>
+val int1 = 10 val int2 = 10 println(int1 == int2) // true println(int1.</description></item></channel></rss>

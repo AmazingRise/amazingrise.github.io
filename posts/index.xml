@@ -1,38 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on 左手的世界</title>
-    <link>https://amazingrise.net/posts/</link>
-    <description>Recent content in Posts on 左手的世界</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate>
-    
-	<atom:link href="https://amazingrise.net/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>2020年，在 Linux 下动手编译 OpenJDK 8</title>
-      <link>https://amazingrise.net/posts/building-openjdk/</link>
-      <pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/building-openjdk/</guid>
-      <description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 左手的世界</title><link>https://amazingrise.net/posts/</link><description>Recent content in Posts on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate><atom:link href="https://amazingrise.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://amazingrise.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://amazingrise.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
 网上的各种攻略琳琅满目，五花八门。
 终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。
 &amp;ndash; 即使是 2020 年，在更新策略激进的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。
- 注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。
- 准备 环境    名称 版本     OS Manjaro 20.0 Lysia   Kernel x86_64 Linux 4.19.118-1-MANJARO   make GNU Make 4.3 x86_64-pc-linux-gnu   GCC gcc (Arch Linux 9.3.0-1) 9.3.0     注：我并没有切换到低版本的 gcc。</description>
-    </item>
-    
-    <item>
-      <title>博客建立一周年纪念</title>
-      <link>https://amazingrise.net/posts/one-year-anniversary/</link>
-      <pubDate>Tue, 31 Mar 2020 23:08:27 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/one-year-anniversary/</guid>
-      <description>今天，不是一周年整。无论是第一次发博文，还是网站开始运行，都不是完整的一周年。 但我已经迫不及待地想发博文，纪念我人生中第二个正儿八经的网站。
+注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。
+准备 环境 名称 版本 OS Manjaro 20.0 Lysia Kernel x86_64 Linux 4.19.118-1-MANJARO make GNU Make 4.3 x86_64-pc-linux-gnu GCC gcc (Arch Linux 9.3.0-1) 9.3.0 注：我并没有切换到低版本的 gcc。</description></item><item><title>博客建立一周年纪念</title><link>https://amazingrise.net/posts/one-year-anniversary/</link><pubDate>Tue, 31 Mar 2020 23:08:27 +0800</pubDate><guid>https://amazingrise.net/posts/one-year-anniversary/</guid><description>今天，不是一周年整。无论是第一次发博文，还是网站开始运行，都不是完整的一周年。 但我已经迫不及待地想发博文，纪念我人生中第二个正儿八经的网站。
 同时，今天也是博客深色模式上线的第一天，目前处于测试阶段，欢迎大家玩玩那个奇怪的按钮！
 还有，评论时留邮箱，会在有回复的时候自动发邮件提醒，欢迎大家留言。（来自no-reply At amazingrise.net）
 （如何进入深色模式？手机版用户请看右上角的奇怪按钮，电脑版用户请看右下角的奇怪按钮）
@@ -47,11 +18,11 @@
 不过当时有一首歌给我的鼓舞很大，我可以把这首歌的链接贴出来。（禁止外链播放，我也是很无奈）
 A Rock &amp;lsquo;n&amp;rsquo; Roll Fantasy - The Kinks
 这首歌讲的是：
- 摇滚乐队面临解散，猫王已逝，时代终结，打算各奔东西。
+摇滚乐队面临解散，猫王已逝，时代终结，打算各奔东西。
 街区的一位伙伴，情绪低落之时沉浸于录制唱片。当他觉得世界对他关上大门，他就把音量调到最大，于是每日生活逃避现实，生活于摇滚狂想中。
 不过我不会像他一样就此罢休。我们也有过铁杆粉丝，见证我们成长，陪我们度过摇滚生涯中的巅峰与低潮。
 但我们总是胡思乱想，认为这个世界已经不需要我们了。我们不能生活在摇滚狂想中，我们不能活在现实的边缘。
- 在我最低落的时候，我反复听着这首歌。虽然对结果早有预料，但是还是感觉自己就像做梦一样。
+在我最低落的时候，我反复听着这首歌。虽然对结果早有预料，但是还是感觉自己就像做梦一样。
 后来大概是时间抚平了一切。我找到了自己的定位，并且尝试积极面对生活。
 新技术与新发现 这一年，我没少折腾新技术。在各种各样的机会，和给自己挖的各种坑里，我学会了很多东西。
 每次我自己造出来的东西，开始正常工作，都有一种说不出的奇怪的自豪感（奇怪大概是因为：哇这玩意居然能跑起来）。而面对一些牛逼的新技术，我不禁惊叹，原来代码还可以写得这么优美！
@@ -59,38 +30,20 @@ A Rock &amp;lsquo;n&amp;rsquo; Roll Fantasy - The Kinks
 同时，我还有做自媒体的想法。可惜现在时间不是很充裕，大概很难做大。
 最后 总结一下，过去的一年，有不满意的地方，也有让自己惊喜的地方。
 嗯。大概就是这么多话吧。如果有什么话想跟我说，欢迎评论区留言。
-（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）</description>
-    </item>
-    
-    <item>
-      <title>初识 Vue 之 - 用 Vue 组件减少代码量</title>
-      <link>https://amazingrise.net/posts/getting-to-know-vue-components/</link>
-      <pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid>
-      <description>前言 这又是一篇很基础很基础的文章。（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。
+（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://amazingrise.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid><description>前言 这又是一篇很基础很基础的文章。（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。
 本篇文章主要讲述如何用 Vue Components 减少重复代码量。
 需求 博客的友链页是由一个表格构成的：
-   name url description     张三 https://zhangsan.com 张三的挖坑日记   李四 https://lisi.com 李四的网络日志    不行，这太简陋了。如何编写一个更好的友链页呢？
+name url description 张三 https://zhangsan.com 张三的挖坑日记 李四 https://lisi.com 李四的网络日志 不行，这太简陋了。如何编写一个更好的友链页呢？
 实现 那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。
 实现1 不用 Vue 下面我们用 Bootstrap 的卡片实现一个友链卡片。
 &amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt; &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt; &amp;lt;!-- 标题 --&amp;gt; &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;张三&amp;lt;/p&amp;gt; &amp;lt;!-- 描述 --&amp;gt; &amp;lt;p&amp;gt;张三的挖坑日记&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt; &amp;lt;!-- 链接 --&amp;gt; &amp;lt;a href=&amp;#34;https://zhangsan.com&amp;#34;&amp;gt;https://zhangsan.com&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 实现效果如下：
 张三
-张三的挖坑日记</description>
-    </item>
-    
-    <item>
-      <title>今天你是锦鲤吗</title>
-      <link>https://amazingrise.net/posts/koi-carp-scam/</link>
-      <pubDate>Sun, 16 Feb 2020 12:29:40 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/koi-carp-scam/</guid>
-      <description>前言 本人多年前毕业于某 985 高校的信息安全专业。另外，本站受 Cloudflare CDN 的防护。
+张三的挖坑日记</description></item><item><title>今天你是锦鲤吗</title><link>https://amazingrise.net/posts/koi-carp-scam/</link><pubDate>Sun, 16 Feb 2020 12:29:40 +0800</pubDate><guid>https://amazingrise.net/posts/koi-carp-scam/</guid><description>前言 本人多年前毕业于某 985 高校的信息安全专业。另外，本站受 Cloudflare CDN 的防护。
 引用一句烂大街名人名言(不过确实有道理)
- 命运赠予的礼物，早已在暗中标好了价格。
- 今天你是锦鲤吗? 不是。以后也不会是。
+命运赠予的礼物，早已在暗中标好了价格。
+今天你是锦鲤吗? 不是。以后也不会是。
 结论 考虑到一些读者可能对长篇大论产生恐惧，在此我先亮出结论:
- 每一次锦鲤转发都为商家做了免费推广。 中了奖，不但为商家做了免费的宣传，而且个人信息将会无偿奉献给商家。  如果是正规商家，活生生的人将会变成商家的&amp;quot;优质推广机器&amp;rdquo;，以后没准有&amp;quot;好事&amp;quot;还会找上门。 如果是搞辣鸡营销的，手机号将会在黑市上标好价格被批发，并且反复倒卖。    可见，无论是哪条路，说到底，锦鲤活动还是商家赚钱的手段。
+每一次锦鲤转发都为商家做了免费推广。 中了奖，不但为商家做了免费的宣传，而且个人信息将会无偿奉献给商家。 如果是正规商家，活生生的人将会变成商家的&amp;quot;优质推广机器&amp;rdquo;，以后没准有&amp;quot;好事&amp;quot;还会找上门。 如果是搞辣鸡营销的，手机号将会在黑市上标好价格被批发，并且反复倒卖。 可见，无论是哪条路，说到底，锦鲤活动还是商家赚钱的手段。
 我们还是要擦亮自己的眼睛，吃一堑长一智。 毕竟我也是这么走过来的。
 各位息怒啊，不要打我。消消气往下看。
 正文 今天早上一醒来，就又被微信朋友圈的某一爆款锦鲤文章刷屏了:寻找某某高校不出门锦鲤，10000元奖品独宠你!。
@@ -99,62 +52,36 @@ A Rock &amp;lsquo;n&amp;rsquo; Roll Fantasy - The Kinks
 下面我将分解一下它的千层套路。
 渣男行为 这种抽奖其实是渣男行为。我们看一下标题，寻找某某高校不出门锦鲤。
 这个标题可能会产生以下误导:
- 该活动是商家跟学校联合推出的活动。 商家只独宠我们高校嘻嘻嘻为母校自豪。  首先，学校肯定是不会接这样的赞助恰烂钱，学校不缺这点钱，尤其是985/211工程院校。并且据老同学(曾经担任过社团社长)透露，学校也是禁止社团拉这样的赞助的。所以，学校不可能跟商家联合推出这样的活动，这只是商家为了增加可信度所加上的谎言。
+该活动是商家跟学校联合推出的活动。 商家只独宠我们高校嘻嘻嘻为母校自豪。 首先，学校肯定是不会接这样的赞助恰烂钱，学校不缺这点钱，尤其是985/211工程院校。并且据老同学(曾经担任过社团社长)透露，学校也是禁止社团拉这样的赞助的。所以，学校不可能跟商家联合推出这样的活动，这只是商家为了增加可信度所加上的谎言。
 第二，这种套近乎的手段其实屡见不鲜。要戳破这个谎言也很简单：我们打开其中的某一篇推文。查看一下阅读量。以今天早上我看到的这篇推文为例，阅读量只有9800。然后我们关注一下公众号，按照他们说的办法，我们找到了&amp;quot;抽奖助手&amp;quot;小程序二维码。扫码进入，发现参与抽奖人数是2w。这说明什么?(doge
 其实我们也可以直接利用微信的搜一搜功能，以关键词寻找 大学 不出门 锦鲤查找，便会找到 n 多一模一样，只是大学名字换了的推文:
 所以，推文推给的，并不是&amp;quot;被独宠的那个ta&amp;rdquo;。我们只是商家 &amp;ldquo;广撒网&amp;quot;的猎物。
 更何况，这些活动往年就有几乎一模一样的东西。第二年出来换个外衣，说个校庆，或者是蹭疫情热度，来个换汤不换药的推文。
 分母的秘密 当商家广撒网，撒到了自己的朋友圈里。很多人看到了会调侃一下，说当个分母吧！（请勿对号入座）于是点开了推文，抱着“当个分母反正也不花钱”的心理，虔诚转发。（对于免费背后的危机，将会在下文展开分析。）
 这种抽奖行为一般具有以下几种要素：
- 奖品金额很大。 关注公众号，点点转发就可以参与抽奖。 中奖率很低。  我们来分析一下这几点。
+奖品金额很大。 关注公众号，点点转发就可以参与抽奖。 中奖率很低。 我们来分析一下这几点。
 对于第一点，奖品金额很大，对于人们有很大的诱惑力。而第二点，基本是不花费什么明显的成本，只需要轻松关注+转发，便可以坐等巨型锦鲤砸到头上。怎么算都是一笔很划算的账。
 面对推文，一部分人看到这里的时候，心理可能还留存着一些顾虑：万一没有中奖，转发岂不是很丢人？而第三点成功打消了他们最后的顾虑：本来这就是中奖率很低的抽奖，我转发仅仅是出于“玩一下”的目的，所以没中也没关系啦。
 这便是分母的秘密，中奖率很低，但奖品金额很大，参与成本很低。即使没中奖，也不会丢面子，分母们也乐在其中。
 免费的代价 有人可能会说：
- 他渣不渣男，我当不当分母，我都不管。万一我中了呢，岂不是血赚。 &amp;ldquo;噫，我中了。&amp;quot;(范进中举.jpg)
- 但是，无奸不商。任何看似血赚的活动，除非是商家脑子抽了，绝不会让你血赚。转发推文的行为实际上免费帮他们做了以下的宣传推广：</description>
-    </item>
-    
-    <item>
-      <title>OBS Studio 显示正在播放的歌曲 in Linux</title>
-      <link>https://amazingrise.net/posts/obs-now-playing/</link>
-      <pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/obs-now-playing/</guid>
-      <description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
+他渣不渣男，我当不当分母，我都不管。万一我中了呢，岂不是血赚。 &amp;ldquo;噫，我中了。&amp;quot;(范进中举.jpg)
+但是，无奸不商。任何看似血赚的活动，除非是商家脑子抽了，绝不会让你血赚。转发推文的行为实际上免费帮他们做了以下的宣传推广：</description></item><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://amazingrise.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/obs-now-playing/</guid><description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
 不定期直播搬砖，游戏，或者其他有趣的东西~
 缘由 为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。
 看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。
-另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路  （没错，就是这个主题的原作者。）
+另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 （没错，就是这个主题的原作者。）
 正文 原理 当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。
 由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。
 以我用的 Electron Netease Cloud Music 为例。
 在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
 仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description>
-    </item>
-    
-    <item>
-      <title>如何优雅地使用 Spyder 的调试器</title>
-      <link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link>
-      <pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid>
-      <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;这是一个面向初学者的文章.
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>test</title><link>https://amazingrise.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/2ng/</guid><description>前言 elasticsearch_1 | {&amp;#34;type&amp;#34;: &amp;#34;server&amp;#34;, &amp;#34;timestamp&amp;#34;: &amp;#34;2020-05-26T02:27:46,322Z&amp;#34;, &amp;#34;level&amp;#34;: &amp;#34;INFO&amp;#34;, &amp;#34;component&amp;#34;: &amp;#34;o.e.c.s.ClusterApplierService&amp;#34;, &amp;#34;cluster.name&amp;#34;: &amp;#34;docker-cluster&amp;#34;, &amp;#34;node.name&amp;#34;: &amp;#34;es02.host.fqdn&amp;#34;, &amp;#34;message&amp;#34;: &amp;#34;master node changed {previous [], current [{es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}]}, added {{es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}}, term: 4, version: 80, reason: ApplyCommitRequest{term=4, version=80, sourceNode={es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}}&amp;#34; } When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ $$ \frac{1}{2} $$</description></item><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
 这个时候调试器就要上场了~
-所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>粤语入声的初探究</title>
-      <link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link>
-      <pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid>
-      <description>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别. 另外,本人并非专业研究人员.若有错误欢迎指正!
-何为入声  入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留. 与入声相对的是舒声. 所以普通话里面全都是舒声. 入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程. 入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断. 然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)  五度标记法 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 这一点让许多非汉语母语的人摸不到头脑. 所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p></description></item><item><title>粤语入声的初探究</title><link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate><guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid><description>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别. 另外,本人并非专业研究人员.若有错误欢迎指正!
+何为入声 入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留. 与入声相对的是舒声. 所以普通话里面全都是舒声. 入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程. 入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断. 然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.) 五度标记法 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 这一点让许多非汉语母语的人摸不到头脑. 所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)
 考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由赵元任先生发明,他被称爲汉语言学之父)
 下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.
 用五度标记法表示现代汉语的四个声调 在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声. 现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.
@@ -165,29 +92,11 @@ const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`
 这麽说可能不是很直观. 大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化. (感谢维基百科提供的好例子) 番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。
 五度标记法表示了音调的相对高低 五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型. (与粤拼类似)
 好的,这就是五度标记法. 大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调. 由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用. (反正我当时觉得,哇,这玩意简直是神器)
-粤语中的九声六调 由于笔者所接触到的粤语大多均爲广州话. 所以本文暂且以粤语广州话爲标准探讨. 下文所指粤语,也均爲广州话爲代表的粤语.</description>
-    </item>
-    
-    <item>
-      <title>如何把Kotlin项目打包为可执行的jar</title>
-      <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
-      <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
-      <description>&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
+粤语中的九声六调 由于笔者所接触到的粤语大多均爲广州话. 所以本文暂且以粤语广州话爲标准探讨. 下文所指粤语,也均爲广州话爲代表的粤语.</description></item><item><title>如何把Kotlin项目打包为可执行的jar</title><link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link><pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate><guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid><description>&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot&lt;/a>
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
-于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
-然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
-      <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
-      <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid>
-      <description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
+于是我打算把该项目打包成可执行的jar，这样&lt;code>java -jar xxxxx.jar&lt;/code>就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code>没有主清单属性&lt;/code>&lt;/p></description></item><item><title>(译)Kotlin中的等号，"=="，"==="和"equals"</title><link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link><pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate><guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid><description>Translated from: Equality in Kotlin Author: Suneet Agrawal Translated by : AmazingRise (Authorized by original author)
 在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。 Kotlin语言里，“等号”有这么几种：==，===与.equals。 那么问题来了，我们该如何正确使用这些相等性判断呢？
 我们来一起看一看Kotlin的几种相等性判断：
 结构性相等 (&amp;ldquo;==&amp;rdquo;) ==操作符用于比较两个变量的值。 请不要与Java中的==相混淆。 与Java中的==操作符不同的是：==操作符在Kotlin中只比较值。 而Java或其它语言中，==通常用来比较两个对象的引用。 Kotlin中，==的否定形式是!=，当两个变量值不同时返回真。
@@ -197,33 +106,20 @@ const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`
 .equals方法将会比较两个变量的值。 与==不同体现在比较Float和Double的时候，.equals违背了IEEE 754 浮点数运算标准。
 与IEEE 754浮点数运算标准相违背，意味着什么？
 这意味着：
- NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。  一头雾水？
+NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。 一头雾水？
 举个栗子 我来举几个例子解释一下。
 首先，我们用这几个方法比较两个原始类型的变量（Int）。
-val int1 = 10 val int2 = 10 println(int1 == int2)	// true 	println(int1.</description>
-    </item>
-    
-    <item>
-      <title>Manjaro 在笔记本上的多显示器配置</title>
-      <link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link>
-      <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid>
-      <description>&lt;p&gt;2020.3.25 更新&lt;/p&gt;
-&lt;p&gt;原文提到:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;据本人今日的评测，这个&lt;code&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/code&gt;(注意不是&lt;code&gt;video-nvidia-440xx&lt;/code&gt;)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code&gt;prime&lt;/code&gt;驱动。出现了一些问题，首先&lt;code&gt;prime-run&lt;/code&gt;并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p&gt;
-&lt;p&gt;新的驱动还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，各位仍然可以用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
-&lt;p&gt;本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p&gt;
-&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
-（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D-&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+val int1 = 10 val int2 = 10 println(int1 == int2) // true println(int1.</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>&lt;p>2020.3.25 更新&lt;/p>
+&lt;p>原文提到:&lt;/p>
+&lt;blockquote>
+&lt;p>440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p>
+&lt;/blockquote>
+&lt;p>据本人今日的评测，这个&lt;code>video-hybrid-intel-nvidia-440xx-prime&lt;/code>(注意不是&lt;code>video-nvidia-440xx&lt;/code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code>prime&lt;/code>驱动。出现了一些问题，首先&lt;code>prime-run&lt;/code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p>
+&lt;p>新的驱动还是不太好用的。所以&lt;strong>这篇教程仍然有效&lt;/strong>，各位仍然可以用&lt;code>video-nvidia-440xx&lt;/code>，而不是混合驱动。&lt;/p>
+&lt;p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p>
+&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文&lt;a href="#%E9%A2%98%E5%A4%96%E8%AF%9D-">题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a>）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
 Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p></description></item></channel></rss>

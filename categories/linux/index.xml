@@ -1,57 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on 左手的世界</title>
-    <link>https://amazingrise.net/categories/linux/</link>
-    <description>Recent content in Linux on 左手的世界</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Sun, 12 Jan 2020 11:22:20 +0800</lastBuildDate>
-    
-	<atom:link href="https://amazingrise.net/categories/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>OBS Studio 显示正在播放的歌曲 in Linux</title>
-      <link>https://amazingrise.net/posts/obs-now-playing/</link>
-      <pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate>
-      
-      <guid>https://amazingrise.net/posts/obs-now-playing/</guid>
-      <description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on 左手的世界</title><link>https://amazingrise.net/categories/linux/</link><description>Recent content in Linux on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sun, 12 Jan 2020 11:22:20 +0800</lastBuildDate><atom:link href="https://amazingrise.net/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://amazingrise.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/obs-now-playing/</guid><description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
 不定期直播搬砖，游戏，或者其他有趣的东西~
 缘由 为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。
 看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。
-另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路  （没错，就是这个主题的原作者。）
+另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 （没错，就是这个主题的原作者。）
 正文 原理 当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。
 由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。
 以我用的 Electron Netease Cloud Music 为例。
 在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
 仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description>
-    </item>
-    
-    <item>
-      <title>Manjaro 在笔记本上的多显示器配置</title>
-      <link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link>
-      <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
-      
-      <guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid>
-      <description>&lt;p&gt;2020.3.25 更新&lt;/p&gt;
-&lt;p&gt;原文提到:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;据本人今日的评测，这个&lt;code&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/code&gt;(注意不是&lt;code&gt;video-nvidia-440xx&lt;/code&gt;)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code&gt;prime&lt;/code&gt;驱动。出现了一些问题，首先&lt;code&gt;prime-run&lt;/code&gt;并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p&gt;
-&lt;p&gt;新的驱动还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，各位仍然可以用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
-&lt;p&gt;本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p&gt;
-&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
-（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D-&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>test</title><link>https://amazingrise.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/2ng/</guid><description>前言 elasticsearch_1 | {&amp;#34;type&amp;#34;: &amp;#34;server&amp;#34;, &amp;#34;timestamp&amp;#34;: &amp;#34;2020-05-26T02:27:46,322Z&amp;#34;, &amp;#34;level&amp;#34;: &amp;#34;INFO&amp;#34;, &amp;#34;component&amp;#34;: &amp;#34;o.e.c.s.ClusterApplierService&amp;#34;, &amp;#34;cluster.name&amp;#34;: &amp;#34;docker-cluster&amp;#34;, &amp;#34;node.name&amp;#34;: &amp;#34;es02.host.fqdn&amp;#34;, &amp;#34;message&amp;#34;: &amp;#34;master node changed {previous [], current [{es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}]}, added {{es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}}, term: 4, version: 80, reason: ApplyCommitRequest{term=4, version=80, sourceNode={es01.host.fqdn}{ofLOlsGZT_OgBfJVyr1I0Q}{2vdYT2RGT92uqH4v8S3duQ}{ip.ad.dr.es}{ip.ad.dr.es:9320}{dilm}{ml.machine_memory=201400594432, ml.max_open_jobs=20, xpack.installed=true}}&amp;#34; } When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ $$ \frac{1}{2} $$</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>&lt;p>2020.3.25 更新&lt;/p>
+&lt;p>原文提到:&lt;/p>
+&lt;blockquote>
+&lt;p>440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p>
+&lt;/blockquote>
+&lt;p>据本人今日的评测，这个&lt;code>video-hybrid-intel-nvidia-440xx-prime&lt;/code>(注意不是&lt;code>video-nvidia-440xx&lt;/code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code>prime&lt;/code>驱动。出现了一些问题，首先&lt;code>prime-run&lt;/code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p>
+&lt;p>新的驱动还是不太好用的。所以&lt;strong>这篇教程仍然有效&lt;/strong>，各位仍然可以用&lt;code>video-nvidia-440xx&lt;/code>，而不是混合驱动。&lt;/p>
+&lt;p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p>
+&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文&lt;a href="#%E9%A2%98%E5%A4%96%E8%AF%9D-">题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a>）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
 Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p></description></item></channel></rss>

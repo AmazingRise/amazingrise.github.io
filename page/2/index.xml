@@ -1,631 +1,735 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>左手的世界</title>
-    <link>https://amazingrise.net/</link>
-    <description>Recent content on 左手的世界</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-TW</language>
-    <copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate>
-    
-        <atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    
-        <item>
-        <title>粤语入声的初探究</title>
-        <link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link>
-        <pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ -&lt;p&gt;汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别.
-另外,本人并非专业研究人员.若有错误欢迎指正!&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;h1 id=&#34;何为入声-&#34;&gt;何为入声&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留.&lt;/li&gt;
-&lt;li&gt;与入声相对的是舒声. 所以普通话里面全都是舒声.&lt;/li&gt;
-&lt;li&gt;入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程.&lt;/li&gt;
-&lt;li&gt;入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断.&lt;/li&gt;
-&lt;li&gt;然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;五度标记法-&#34;&gt;五度标记法&lt;/h1&gt;
-&lt;p&gt;汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://amazingrise.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate><atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml"/><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid><description>左手的世界 https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>这是一个面向初学者的文章.
+很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
+这个时候调试器就要上场了~
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p>
+&lt;h2 id="为什么">为什么&lt;/h2>
+&lt;h3 id="我们为什么要学会调试">我们为什么要学会调试&lt;/h3>
+&lt;p>学会调试,对于我们理解程序的运行流程,以及找bug很有帮助.
+想一下,如果我们能够在程序运行的时候,实时查看变量是怎么变化,岂不美哉?&lt;/p>
+&lt;h3 id="为嘛要用spyder">为嘛要用Spyder&lt;/h3>
+&lt;p>首先,这是一个面向Python初学者的文章.
+考虑到本篇文章的读者可能都是从Anaconda开始的,所以我在此以Spyder为例讲解调试器的使用.
+其他IDE的调试功能其实大同小异.&lt;/p>
+&lt;hr />
+&lt;h1 id="spyder初体验">Spyder初体验&lt;/h1>
+&lt;h2 id="熟悉spyder的界面">熟悉Spyder的界面&lt;/h2>
+&lt;p>我们先来熟悉一下Spyder的界面.
+&lt;img src="spyder-main.png" alt="" />&lt;/p>
+&lt;ul>
+&lt;li>最上面有一排按钮,我们俗称工具栏.&lt;/li>
+&lt;li>在左侧,我们可以写代码. 按一下工具栏上&lt;strong>绿色&lt;/strong>的开始按钮,即可开始运行程序.&lt;/li>
+&lt;li>右侧分为上下两栏.
+&lt;ul>
+&lt;li>上栏中,有三个&lt;code>选项卡&lt;/code>.分别是&lt;code>Variable explorer&lt;/code>(这个很重要),&lt;code>File explorer&lt;/code>,还有&lt;code>Help&lt;/code>(后面两个基本没啥鸟用)&lt;/li>
+&lt;li>下栏叫做&lt;code>IPython console&lt;/code>,我们俗称为&lt;strong>控制台&lt;/strong>. 一般来说,运行代码时候的输出,会在控制台里面看到. 当然,我们可以在没有运行代码的时候,在&lt;code>In [n]: &lt;/code>(n是几不用关心)后面打入命令与控制台交互.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="用spyder运行示例代码">用Spyder运行示例代码&lt;/h2>
+&lt;p>现在我们在左侧代码区域,粘贴下面的代码.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a = &lt;span style="color:#b452cd">0&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">for&lt;/span> i &lt;span style="color:#8b008b">in&lt;/span> &lt;span style="color:#658b00">range&lt;/span>(&lt;span style="color:#b452cd">10&lt;/span>):
+i += &lt;span style="color:#b452cd">1&lt;/span>
+a += i
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后按一下绿色的开始按钮,我们可以在&lt;strong>控制台&lt;/strong>中看到输出.
+输出:&lt;/p>
+&lt;pre>&lt;code>55
+&lt;/code>&lt;/pre>&lt;p>&lt;em>给初学者的注释: i += 1 等同于 i = i + 1.&lt;/em>&lt;/p>
+&lt;h2 id="调试目标">调试目标&lt;/h2>
+&lt;p>我们想知道每一次for循环进行的时候,a和 i的值是怎么变化的.&lt;/p>
+&lt;h1 id="朴素的-print-调试法">朴素的 print 调试法&lt;/h1>
+&lt;p>这个方法自古以来就有了. &lt;del>(胡说,古代哪有Python)&lt;/del>
+在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.&lt;/p>
+&lt;p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
+所以我们把代码修改成:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a = &lt;span style="color:#b452cd">0&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">for&lt;/span> i &lt;span style="color:#8b008b">in&lt;/span> &lt;span style="color:#658b00">range&lt;/span>(&lt;span style="color:#b452cd">10&lt;/span>):
+i += &lt;span style="color:#b452cd">1&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(&lt;span style="color:#cd5555">&amp;#34;此时i的值为:&amp;#34;&lt;/span>,i) &lt;span style="color:#228b22"># 在i变化后立马print,看看它的值是多少&lt;/span>
+a += i
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(&lt;span style="color:#cd5555">&amp;#34;此时a的值为:&amp;#34;&lt;/span>,a) &lt;span style="color:#228b22"># 在a变化后立马print,看看它的值是多少&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果是这样的:&lt;/p>
+&lt;pre>&lt;code>此时i的值为: 1
+此时a的值为: 1
+中间省略无数个此时
+此时i的值为: 10
+此时a的值为: 55
+55
+&lt;/code>&lt;/pre>&lt;p>这样我们就能看出来每次for循环的i和a的变化情况了.&lt;/p>
+&lt;p>但是这样太麻烦了,而且满屏幕的i的值,a的值,看得人眼晕.
+而且当变量很多的时候,我们要加很多print.
+最后到了提交之前,还要记得把自己打的这些print给删除掉.&lt;/p>
+&lt;p>那么,有没有更直观,更优雅的方法呢?&lt;/p>
+&lt;h1 id="隆重登场的调试器法">隆重登场的调试器法&lt;/h1>
+&lt;p>我们如果要运行程序,只需要点击工具栏中那个绿色的开始按钮就可以了.&lt;/p>
+&lt;p>但是这只是&lt;strong>单纯的运行&lt;/strong>.
+它会像IDLE一样,正常运行程序,没有调试没有逗留.&lt;/p>
+&lt;h2 id="第一招式---逐行调试">第一招式 - 逐行调试&lt;/h2>
+&lt;h3 id="进入调试模式">进入调试模式&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>想要开始调试,我们需要按下图中所示的&lt;strong>1号按钮&lt;/strong>(Debug File).
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>然后我们再&lt;strong>点击一下&lt;/strong>下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>红色箭头: 一定要记住,我们一定要&lt;strong>切换&lt;/strong>到下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>,这样我们才可以看到变量此时的值. (不过因为我们还没有执行第一行代码,所以这里是空的.)
+&lt;img src="start-debug-1.png" alt="" />&lt;/li>
+&lt;li>蓝色箭头: 它所指的地方,上面有个&lt;code>----&amp;gt;&lt;/code>的符号,并且后面有&lt;strong>行号&lt;/strong>1.这代表当前调试器&lt;strong>将要&lt;/strong>(还未)运行第一行代码. &lt;em>(划重点,不要搞错,「将要」)&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h3 id="开始逐行调试">开始逐行调试&lt;/h3>
+&lt;p>现在,按下图中所示的2号按钮**(以下称为Run Current Line)**,开始在调试器里面运行下一行代码.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>我们可以看到,&lt;code>Variable explorer&lt;/code>里面多出了变量&lt;code>a&lt;/code>.
+其中&lt;code>Name&lt;/code>代表这个变量的&lt;strong>名称&lt;/strong>,第二栏&lt;code>Type&lt;/code>是这个变量的&lt;strong>类型&lt;/strong>.而最后一栏&lt;code>Value&lt;/code>是该变量的&lt;strong>值&lt;/strong>.(Size不用管,暂时用不上.)
+并且控制台中的&lt;code>----&amp;gt;&lt;/code>符号指向了第二行. 说明第一行执行完毕,再次点击将执行第二行.
+&lt;img src="start-debug-2.png" alt="" />&lt;/p>
+&lt;p>举个例子:
+以图中的变量&lt;code>a&lt;/code>为例,这个变量的名称是&lt;code>a&lt;/code>,它的类型是&lt;code>int&lt;/code>,值为&lt;code>0&lt;/code>.
+(正好也和我们预期的情况相同&amp;ndash;我们执行了一句&lt;code>a=0&lt;/code>)&lt;/p>
+&lt;hr />
+&lt;p>我们接着点刚才的&lt;strong>Run Current Line&lt;/strong>.可以看到,&lt;code>Variable explorer&lt;/code>中又多出了第二行变量&lt;code>i&lt;/code>.并且此时控制台中的&lt;code>----&amp;gt;&lt;/code>指向了第三行.
+&lt;img src="start-debug-3.png" alt="" />
+这说明此时,&lt;code>i&lt;/code>的值为&lt;code>0&lt;/code>,&lt;code>a&lt;/code>的值也为&lt;code>0&lt;/code>.&lt;/p>
+&lt;hr />
+&lt;p>我们点击&lt;strong>Run Current Line&lt;/strong>(这是第三次).发现&lt;code>i&lt;/code>的值由&lt;code>0&lt;/code>变为&lt;code>1&lt;/code>.
+再点击一次&lt;strong>Run Current Line&lt;/strong>(这是第四次),&lt;code>a&lt;/code>的值也变成了&lt;code>1&lt;/code>.
+注意一下,经过四次逐行执行,控制台输出如下:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; None
+&amp;gt; c:\users\rise\desktop\temp.py(2)&amp;lt;module&amp;gt;()
+1 a = 0
+----&amp;gt; 2 for i in range(10):
+3 i += 1
+4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>我们可以看到,&lt;code>----&amp;gt;&lt;/code>符号指向第二行(for所在的那行).
+这说明此时第一次for循环执行完毕.由于还有&lt;strong>后面的循环&lt;/strong>,所以这里程序要&lt;strong>跳回for循环的起始位置&lt;/strong>,继续进行剩下几次循环.&lt;/p>
+&lt;hr />
+&lt;p>我们通过逐行调试,可以很直观清楚地跟踪程序的运行过程.
+如果我们想中途停止此次调试,只需要点击一下&lt;strong>6号按钮&lt;/strong>,即&lt;code>Stop Debugging&lt;/code>.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>这就是逐行调试了.&lt;/p>
+&lt;hr />
+&lt;h3 id="小总结">小总结&lt;/h3>
+&lt;p>来总结一下:&lt;/p>
+&lt;ol>
+&lt;li>要开始调试,需要点击&lt;code>Debug File&lt;/code>. 点击之后,会进入调试模式.&lt;/li>
+&lt;li>一定记得切换到&lt;code>Variable explorer&lt;/code>,这样才能查看变量的变化情况.&lt;/li>
+&lt;li>点击&lt;code>Run Current Line&lt;/code>,运行第一行代码.&lt;/li>
+&lt;li>继续点击&lt;code>Run Current Line&lt;/code>这个按钮,会&lt;strong>按照程序逻辑&lt;/strong>运行下一行代码. 直至执行完毕为止.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;p>在上述的调试过程中:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Variable explorer&lt;/code>中将显示当前存在的所有变量. &lt;code>Type&lt;/code>表示该变量的类型&lt;code>Value&lt;/code>一栏将显示变量的值.(不要看走眼,不是&lt;code>Size&lt;/code>一栏)&lt;/li>
+&lt;li>在控制台中,我们可以通过&lt;code>----&amp;gt;&lt;/code>这个符号所指向的行数,看到即将被执行的代码是哪一行.&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h2 id="第二招式---断点调试">第二招式 - 断点调试&lt;/h2>
+&lt;p>断点调试顾名思义,是可以在某一行(或多行)设置断点,对该行进行调试.
+而逐行调试是对每一行进行调试.
+断点调试是更有针对性的调试方法.&lt;/p>
+&lt;p>如果你能搞清楚逐行调试,那么断点调试也不难.&lt;/p>
+&lt;h3 id="设置断点">设置断点&lt;/h3>
+&lt;p>如图. 双击某一行行号前面的空白处,之后在这个地方会出现如图所示的小红点.
+&lt;img src="set-breakpoint.png" alt="" />
+这个小红点就是我们所说的断点.&lt;/p>
+&lt;h3 id="开始调试">开始调试&lt;/h3>
+&lt;p>如图所示,我们现在在&lt;strong>第3行,第4行&lt;/strong>设置&lt;strong>两个&lt;/strong>断点.&lt;/p>
+&lt;p>我们按&lt;code>Debug File&lt;/code>开始调试代码.
+此时可以看到,控制台里面的显示是这样的:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; &amp;gt; c:\users\rise\desktop\temp.py(3)&amp;lt;module&amp;gt;()
+1 a = 0
+2 for i in range(10):
+1---&amp;gt; 3 i += 1
+2 4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>其中,行号前面的1和2,代表我们设置的两个断点.
+所以此时即将运行&lt;strong>第一个断点处,即第三行.&lt;/strong>&lt;/p>
+&lt;h3 id="继续调试">继续调试&lt;/h3>
+&lt;p>程序的执行此时暂停.我们要让它继续运行,需要按一下第五个按钮,即&lt;code>Continue executation until next breakpoint&lt;/code>:
+&lt;img src="spyder-debug.png" alt="" />
+这个按钮的意思就是,继续执行直到下一个断点.
+因为我们第二个断点设置在第四行,所以代码将继续执行,在&lt;strong>将要执行&lt;/strong>第四行的时候会暂停.&lt;/p>
+&lt;h3 id="断点调试小总结">断点调试小总结&lt;/h3>
+&lt;p>我来总结一下断点调试的几个步骤.&lt;/p>
+&lt;ol>
+&lt;li>双击行号前面的空白处,以设置断点&lt;/li>
+&lt;li>点击&lt;code>Debug file&lt;/code>开始进入调试&lt;/li>
+&lt;li>在调试过程中,通过&lt;code>Variable explorer&lt;/code>观察变量的值&lt;/li>
+&lt;li>点击&lt;code>Continue executation until next breakpoint&lt;/code>执行到下一个断点处.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h2 id="调试器总结">调试器总结&lt;/h2>
+&lt;p>几点需要注意的地方:&lt;/p>
+&lt;ul>
+&lt;li>每次打开Spyder的时候,右上方区域默认显示的是&lt;code>Help&lt;/code>. 所以我们需要手动切换到&lt;code>Variable explorer&lt;/code>.&lt;/li>
+&lt;li>在调试的时候,&lt;code>----&amp;gt;&lt;/code>指向的是即将执行的代码,而&lt;strong>不是已经执行的代码&lt;/strong>.&lt;/li>
+&lt;li>当一次调试完毕后,开始第二次调试的时候,&lt;code>Variable explorer&lt;/code>&lt;strong>不会&lt;/strong>自己清空. 这点一定要注意,上一次调试残留的变量的值仍然会留在&lt;code>Variable explorer&lt;/code>里面. 所以我们可以按一下下图所示的按钮清空.
+&lt;img src="clear-explorer.png" alt="" />&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h1 id="写在最后">写在最后&lt;/h1>
+&lt;p>调试是IDE中很重要的一个功能.
+这篇文章虽然字很多,但实际上用起来是很简单的,它并不复杂,而且很适合新手.
+如果我们学会了调试器的使用,那么写代码将会事半功倍.&lt;/p>
+&lt;p>另外,其他的IDE的调试功能也是大同小异.大家可以探索一下!&lt;/p>
+&lt;p>那么最后呢,就祝各位学有所成~ Cheers!&lt;/p>
+&lt;p>(未完待续,因为可能会有补充)&lt;/p>- https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>粤语入声的初探究</title><link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate><guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid><description>左手的世界 https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ -&lt;p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别.
+另外,本人并非专业研究人员.若有错误欢迎指正!&lt;/p>
+&lt;!-- more -->
+&lt;h1 id="何为入声-">何为入声&lt;/h1>
+&lt;ul>
+&lt;li>入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留.&lt;/li>
+&lt;li>与入声相对的是舒声. 所以普通话里面全都是舒声.&lt;/li>
+&lt;li>入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程.&lt;/li>
+&lt;li>入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断.&lt;/li>
+&lt;li>然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)&lt;/li>
+&lt;/ul>
+&lt;h1 id="五度标记法-">五度标记法&lt;/h1>
+&lt;p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名.
 这一点让许多非汉语母语的人摸不到头脑.
-所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)&lt;/p&gt;
-&lt;p&gt;考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%B5%B5%E5%85%83%E4%BB%BB&#34;&gt;赵元任先生&lt;/a&gt;发明,他被称爲汉语言学之父)&lt;/p&gt;
-&lt;p&gt;下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.&lt;/p&gt;
-&lt;h2 id=&#34;用五度标记法表示现代汉语的四个声调-&#34;&gt;用五度标记法表示现代汉语的四个声调&lt;/h2&gt;
-&lt;p&gt;在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声.
-现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.&lt;/p&gt;
-&lt;p&gt;五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低.
+所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)&lt;/p>
+&lt;p>考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由&lt;a href="https://zh.wikipedia.org/wiki/%E8%B5%B5%E5%85%83%E4%BB%BB">赵元任先生&lt;/a>发明,他被称爲汉语言学之父)&lt;/p>
+&lt;p>下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.&lt;/p>
+&lt;h2 id="用五度标记法表示现代汉语的四个声调-">用五度标记法表示现代汉语的四个声调&lt;/h2>
+&lt;p>在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声.
+现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.&lt;/p>
+&lt;p>五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低.
 对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法.
-以现代汉语普通话的四个声调爲例,我放出一张用&lt;em&gt;五度标记法&lt;/em&gt;标记的四个声调的图,大家先体会一下.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;pinyin-tone-chart.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.&lt;/p&gt;
-&lt;p&gt;曲线法很直观,声调越高,曲线中对应的那一点越高.
-而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.&lt;/p&gt;
-&lt;p&gt;所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51.
-(一些北方方言与普通话的最大区别便在于调值)&lt;/p&gt;
-&lt;p&gt;这麽说可能不是很直观.
+以现代汉语普通话的四个声调爲例,我放出一张用&lt;em>五度标记法&lt;/em>标记的四个声调的图,大家先体会一下.&lt;/p>
+&lt;p>&lt;img src="pinyin-tone-chart.png" alt="" />&lt;/p>
+&lt;p>图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.&lt;/p>
+&lt;p>曲线法很直观,声调越高,曲线中对应的那一点越高.
+而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.&lt;/p>
+&lt;p>所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51.
+(一些北方方言与普通话的最大区别便在于调值)&lt;/p>
+&lt;p>这麽说可能不是很直观.
 大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化.
 (感谢维基百科提供的好例子)
-番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。&lt;/p&gt;
-&lt;h2 id=&#34;五度标记法表示了音调的相对高低-&#34;&gt;五度标记法表示了音调的相对高低&lt;/h2&gt;
-&lt;p&gt;五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型.
-(与粤拼类似)&lt;/p&gt;
-&lt;p&gt;好的,这就是五度标记法.
+番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。&lt;/p>
+&lt;h2 id="五度标记法表示了音调的相对高低-">五度标记法表示了音调的相对高低&lt;/h2>
+&lt;p>五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型.
+(与粤拼类似)&lt;/p>
+&lt;p>好的,这就是五度标记法.
 大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调.
 由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用.
-(反正我当时觉得,哇,这玩意简直是神器)&lt;/p&gt;
-&lt;h1 id=&#34;粤语中的九声六调-&#34;&gt;粤语中的九声六调&lt;/h1&gt;
-&lt;p&gt;由于笔者所接触到的粤语大多均爲广州话.
-所以本文暂且以&lt;em&gt;粤语广州话&lt;/em&gt;爲标准探讨.
-下文所指粤语,也均爲广州话爲代表的粤语.&lt;/p&gt;
-&lt;p&gt;援引自「&lt;a href=&#34;http://input.foruto.com/ccc/jyt/005.htm&#34;&gt;中文字元资料页&lt;/a&gt;」的内容：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;粤音则由四声，发展成九种声调，分别爲：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;音调&lt;/th&gt;
-&lt;th&gt;阴平&lt;/th&gt;
-&lt;th&gt;阳上&lt;/th&gt;
-&lt;th&gt;阴去&lt;/th&gt;
-&lt;th&gt;阳平&lt;/th&gt;
-&lt;th&gt;阳上&lt;/th&gt;
-&lt;th&gt;阳去&lt;/th&gt;
-&lt;th&gt;阴入&lt;/th&gt;
-&lt;th&gt;中入&lt;/th&gt;
-&lt;th&gt;阳入&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;五度数字法&lt;/td&gt;
-&lt;td&gt;55&lt;/td&gt;
-&lt;td&gt;35&lt;/td&gt;
-&lt;td&gt;33&lt;/td&gt;
-&lt;td&gt;21&lt;/td&gt;
-&lt;td&gt;13&lt;/td&gt;
-&lt;td&gt;22&lt;/td&gt;
-&lt;td&gt;5(5)&lt;/td&gt;
-&lt;td&gt;3(3)&lt;/td&gt;
-&lt;td&gt;2(2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;简单的粤拼&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;另一种粤拼&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;9&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;em&gt;爲了简略描述,有的音调对应非唯一调值的我没有标出.大家见谅. 最准确的请参照原网页.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;值得注意的是,现代粤拼的数字,&lt;strong&gt;仅仅代表某一个调型&lt;/strong&gt;,并不代表本身声调的高低. 与现代汉语拼音方案一样,数字本身是无意义的.
-因此，人们说粤语有「九声六调」（九个声调，六种音高）。至于语音学学者，则大多把「声调」直接定义作音高，不计算其顿错性，就会直接说粤语有「六个声调」。两种说法的分别，只是对「声调」定义不同而已。&lt;/p&gt;
-&lt;p&gt;下面附上更加直观的曲线法.
+(反正我当时觉得,哇,这玩意简直是神器)&lt;/p>
+&lt;h1 id="粤语中的九声六调-">粤语中的九声六调&lt;/h1>
+&lt;p>由于笔者所接触到的粤语大多均爲广州话.
+所以本文暂且以&lt;em>粤语广州话&lt;/em>爲标准探讨.
+下文所指粤语,也均爲广州话爲代表的粤语.&lt;/p>
+&lt;p>援引自「&lt;a href="http://input.foruto.com/ccc/jyt/005.htm">中文字元资料页&lt;/a>」的内容：&lt;/p>
+&lt;blockquote>
+&lt;p>粤音则由四声，发展成九种声调，分别爲：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。&lt;/p>
+&lt;/blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>音调&lt;/th>
+&lt;th>阴平&lt;/th>
+&lt;th>阳上&lt;/th>
+&lt;th>阴去&lt;/th>
+&lt;th>阳平&lt;/th>
+&lt;th>阳上&lt;/th>
+&lt;th>阳去&lt;/th>
+&lt;th>阴入&lt;/th>
+&lt;th>中入&lt;/th>
+&lt;th>阳入&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>五度数字法&lt;/td>
+&lt;td>55&lt;/td>
+&lt;td>35&lt;/td>
+&lt;td>33&lt;/td>
+&lt;td>21&lt;/td>
+&lt;td>13&lt;/td>
+&lt;td>22&lt;/td>
+&lt;td>5(5)&lt;/td>
+&lt;td>3(3)&lt;/td>
+&lt;td>2(2)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>简单的粤拼&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>6&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>6&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>另一种粤拼&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>3&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>5&lt;/td>
+&lt;td>6&lt;/td>
+&lt;td>7&lt;/td>
+&lt;td>8&lt;/td>
+&lt;td>9&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>爲了简略描述,有的音调对应非唯一调值的我没有标出.大家见谅. 最准确的请参照原网页.&lt;/em>&lt;/p>
+&lt;p>值得注意的是,现代粤拼的数字,&lt;strong>仅仅代表某一个调型&lt;/strong>,并不代表本身声调的高低. 与现代汉语拼音方案一样,数字本身是无意义的.
+因此，人们说粤语有「九声六调」（九个声调，六种音高）。至于语音学学者，则大多把「声调」直接定义作音高，不计算其顿错性，就会直接说粤语有「六个声调」。两种说法的分别，只是对「声调」定义不同而已。&lt;/p>
+&lt;p>下面附上更加直观的曲线法.
 其中省略了7 8 9三个声调,因爲它们的音高与1 3 6的起点是相同的.
-(图片援引自&lt;a href=&#34;http://www.cantonese.asia/portal.php?mod=view&amp;amp;aid=229&#34;&gt;粤语协会&lt;/a&gt;)
-&lt;img src=&#34;tone.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;有一个简单的方法,你需要找一个会广州话的人,分别读一下「三 九 四 零 五 二 七 八 六」.
-这九个数字正好分别对应粤拼的1 2 3 4 5 6 7 8 9声.&lt;/p&gt;
-&lt;p&gt;如果读者在此对于区分六个音调仍然存疑,可进入这个网站:&lt;a href=&#34;http://www.iso10646hk.net/jp/learning/course_03.jsp&#34;&gt;香港语言学学会粤语拼音方案&lt;/a&gt;进行音频试听.
+(图片援引自&lt;a href="http://www.cantonese.asia/portal.php?mod=view&amp;amp;aid=229">粤语协会&lt;/a>)
+&lt;img src="tone.jpg" alt="" />&lt;/p>
+&lt;p>有一个简单的方法,你需要找一个会广州话的人,分别读一下「三 九 四 零 五 二 七 八 六」.
+这九个数字正好分别对应粤拼的1 2 3 4 5 6 7 8 9声.&lt;/p>
+&lt;p>如果读者在此对于区分六个音调仍然存疑,可进入这个网站:&lt;a href="http://www.iso10646hk.net/jp/learning/course_03.jsp">香港语言学学会粤语拼音方案&lt;/a>进行音频试听.
 仔细听,才能体会出它们的区别.
-毕竟多听才是学习语言的最佳方式.&lt;/p&gt;
-&lt;p&gt;个人认爲,对于非粤语母语者,学习粤语最准确的方法是先学习这一拼音方案.
-(这样才能更加准确. 当然,多听多说才是根本.)&lt;/p&gt;
-&lt;h1 id=&#34;粤语广州话中的入声-&#34;&gt;粤语(广州话)中的入声&lt;/h1&gt;
-&lt;p&gt;粤语(广州话)中很好保留了入声的三个韵尾: -p -t -k.
-在粤语中,入声是无声除阻音. 也就是说,唸到入声的时候,是不需要发出声音的,但是需要有气流的阻断这一过程.&lt;/p&gt;
-&lt;p&gt;但是不同韵尾的阻断方式是不一样的.&lt;/p&gt;
-&lt;h2 id=&#34;我是如何发现入声的区别的-&#34;&gt;我是如何发现入声的区别的&lt;/h2&gt;
-&lt;p&gt;起初我以爲粤语的入声只是单纯地阻断气流.
+毕竟多听才是学习语言的最佳方式.&lt;/p>
+&lt;p>个人认爲,对于非粤语母语者,学习粤语最准确的方法是先学习这一拼音方案.
+(这样才能更加准确. 当然,多听多说才是根本.)&lt;/p>
+&lt;h1 id="粤语广州话中的入声-">粤语(广州话)中的入声&lt;/h1>
+&lt;p>粤语(广州话)中很好保留了入声的三个韵尾: -p -t -k.
+在粤语中,入声是无声除阻音. 也就是说,唸到入声的时候,是不需要发出声音的,但是需要有气流的阻断这一过程.&lt;/p>
+&lt;p>但是不同韵尾的阻断方式是不一样的.&lt;/p>
+&lt;h2 id="我是如何发现入声的区别的-">我是如何发现入声的区别的&lt;/h2>
+&lt;p>起初我以爲粤语的入声只是单纯地阻断气流.
 于是忽略掉了入声之间的区别.
-&lt;del&gt;后来被事实狠狠地打脸.&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;最早是读「入」和「日」字的时候,感觉到这两个字的韵尾略有不同.
-我仔细查阅了一下字典,又听了一下,发现这两个字确实有区别.&lt;/p&gt;
-&lt;p&gt;入的粤拼是: jap6
-日的粤拼是: jat6&lt;/p&gt;
-&lt;p&gt;同样的区别可以体现在「八」和「百」这两个字上面.
+&lt;del>后来被事实狠狠地打脸.&lt;/del>&lt;/p>
+&lt;p>最早是读「入」和「日」字的时候,感觉到这两个字的韵尾略有不同.
+我仔细查阅了一下字典,又听了一下,发现这两个字确实有区别.&lt;/p>
+&lt;p>入的粤拼是: jap6
+日的粤拼是: jat6&lt;/p>
+&lt;p>同样的区别可以体现在「八」和「百」这两个字上面.
 八: baat3
-百: baak3&lt;/p&gt;
-&lt;h2 id=&#34;入声的区别-&#34;&gt;入声的区别&lt;/h2&gt;
-&lt;p&gt;前面说过,入声听起来就像气流被突然阻断一样.
-而粤语中 -p -t -k三个入声的区别就在于:&lt;strong&gt;气流被阻断的部位不同.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;简单来讲:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;-p 要在嘴脣处阻断气流. 如 垃圾 laap6 saap3. 在两个字的结尾,要将嘴脣闭合,以阻断气流.
+百: baak3&lt;/p>
+&lt;h2 id="入声的区别-">入声的区别&lt;/h2>
+&lt;p>前面说过,入声听起来就像气流被突然阻断一样.
+而粤语中 -p -t -k三个入声的区别就在于:&lt;strong>气流被阻断的部位不同.&lt;/strong>&lt;/p>
+&lt;p>简单来讲:&lt;/p>
+&lt;blockquote>
+&lt;p>-p 要在嘴脣处阻断气流. 如 垃圾 laap6 saap3. 在两个字的结尾,要将嘴脣闭合,以阻断气流.
 -t 要在舌尖处阻断气流. 如 佛山 fat6 saan1. 在佛字的结尾,要用舌尖抵住牙齿阻断气流.
--k 要在舌根处阻断气流. 如 白话 baak6 wa2. 在白的结尾,要用舌根抵住硬齶软齶交界处阻断气流.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如果我们用更通俗一些的方式阐述,则是:
-&lt;strong&gt;在粤拼中遇到这三个韵尾的时候, 你需要分别做出p t k的口型来阻断气流.&lt;/strong&gt;
-这与英语口语中的尾音略有类似.(例如keep,不可能读成 ki pu,最后的p会很轻很轻,并且不发音.)&lt;/p&gt;
-&lt;h2 id=&#34;入声试听-&#34;&gt;入声试听&lt;/h2&gt;
-&lt;p&gt;关于每个字的具体读音,我强烈推荐粤拼方案的网站.
-&lt;a href=&#34;http://www.iso10646hk.net/jp/database/index.jsp&#34;&gt;粤拼资料库&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;补充之其他粤语拼音方案-&#34;&gt;补充之其他粤语拼音方案&lt;/h2&gt;
-&lt;p&gt;目前最广泛的粤语拼音方案是粤拼,也就是香港语言学学会的粤语拼音方案.
-故本文採用粤拼来标注.&lt;/p&gt;
-&lt;p&gt;但在我阅读一些其他的粤语教程的时候,发现有的教程的入声韵尾并不是用-p -t -k这三个字母标记的.
+-k 要在舌根处阻断气流. 如 白话 baak6 wa2. 在白的结尾,要用舌根抵住硬齶软齶交界处阻断气流.&lt;/p>
+&lt;/blockquote>
+&lt;p>如果我们用更通俗一些的方式阐述,则是:
+&lt;strong>在粤拼中遇到这三个韵尾的时候, 你需要分别做出p t k的口型来阻断气流.&lt;/strong>
+这与英语口语中的尾音略有类似.(例如keep,不可能读成 ki pu,最后的p会很轻很轻,并且不发音.)&lt;/p>
+&lt;h2 id="入声试听-">入声试听&lt;/h2>
+&lt;p>关于每个字的具体读音,我强烈推荐粤拼方案的网站.
+&lt;a href="http://www.iso10646hk.net/jp/database/index.jsp">粤拼资料库&lt;/a>&lt;/p>
+&lt;h2 id="补充之其他粤语拼音方案-">补充之其他粤语拼音方案&lt;/h2>
+&lt;p>目前最广泛的粤语拼音方案是粤拼,也就是香港语言学学会的粤语拼音方案.
+故本文採用粤拼来标注.&lt;/p>
+&lt;p>但在我阅读一些其他的粤语教程的时候,发现有的教程的入声韵尾并不是用-p -t -k这三个字母标记的.
 我见过-b -d -g这三个字母标注韵尾.甚至说与-p -t -k相混合标注韵尾的用法.
 其实这些标记方法是相同的.
 因爲前面说过入声在粤语中是无声除阻音,也就是不发声.
 而p-b, t-d, k-g这三组辅音的区别在于前者送气,后者不送气.
 在入声的环境中,由于不发声,只需要摆好口型,所以送气和不送气辅音可以视作等同的
-(这里用IPA来标注更加准确.后来想想还是算了.太複杂了没必要.)&lt;/p&gt;
-&lt;p&gt;举个例子,在韵尾爲p的字中,收尾的时候无论你是摆b的口型,还是摆p的口型,是一样的.
-(顺便体会一下入声的发声程度)&lt;/p&gt;
-&lt;p&gt;不过我们还是要以最流行的粤拼方案爲准.
-这样可以少走一些弯路.&lt;/p&gt;
-&lt;h1 id=&#34;次回予告-&#34;&gt;次回予告&lt;/h1&gt;
-&lt;p&gt;今天就写到这里.🤔️
+(这里用IPA来标注更加准确.后来想想还是算了.太複杂了没必要.)&lt;/p>
+&lt;p>举个例子,在韵尾爲p的字中,收尾的时候无论你是摆b的口型,还是摆p的口型,是一样的.
+(顺便体会一下入声的发声程度)&lt;/p>
+&lt;p>不过我们还是要以最流行的粤拼方案爲准.
+这样可以少走一些弯路.&lt;/p>
+&lt;h1 id="次回予告-">次回予告&lt;/h1>
+&lt;p>今天就写到这里.🤔️
 回顾了一下整个文章,我讲九声六调还费了不少工夫. 哈哈哈
 突然想到我下一篇是不是应该讲一下-a- 与 -aa- 的区别呢?
-&lt;del&gt;算了算了,我自己还没搞明白. 😂️&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;下一篇我可能写一篇随想,也有可能加一篇对本篇的补充.
-(如果是随想的话,那麽大概是关于「元」（meta）这一概念？)&lt;/p&gt;
-&lt;p&gt;如果有什麽不准确的地方,欢迎各位在评论区指出.
+&lt;del>算了算了,我自己还没搞明白. 😂️&lt;/del>&lt;/p>
+&lt;p>下一篇我可能写一篇随想,也有可能加一篇对本篇的补充.
+(如果是随想的话,那麽大概是关于「元」（meta）这一概念？)&lt;/p>
+&lt;p>如果有什麽不准确的地方,欢迎各位在评论区指出.
 (原创)作者amazingRise
 请尊重作者的劳动成果,未经许可不得转载.
-但欢迎转发本网址,以分享给其他人.&lt;/p&gt;
-&lt;p&gt;共同传承中华文化🥳&lt;/p&gt;
-- https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>我的一份自我介绍</title>
-        <link>https://amazingrise.net/about/</link>
-        <pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/about/</guid>
-        <description>左手的世界 https://amazingrise.net/about/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
-&lt;p&gt;此页正在建设中^_^&lt;/p&gt;
-&lt;p&gt;（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）&lt;/p&gt;
-&lt;h1 id=&#34;关于本站&#34;&gt;关于本站&lt;/h1&gt;
-&lt;h2 id=&#34;版权声明&#34;&gt;版权声明&lt;/h2&gt;
-&lt;p&gt;本站遵循 &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34;&gt;CC-BY-NC 4.0 协议&lt;/a&gt;.&lt;/p&gt;
-&lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
-&lt;p&gt;我叫 Rise.&lt;/p&gt;
-&lt;h2 id=&#34;创作&#34;&gt;创作&lt;/h2&gt;
-&lt;p&gt;创作是一件美好的事情。&lt;/p&gt;
-&lt;p&gt;我喜欢创作。&lt;/p&gt;
-&lt;p&gt;因为创作可以给大家带来欢乐。&lt;/p&gt;
-&lt;p&gt;写代码也是一种创作。&lt;/p&gt;
-&lt;p&gt;我的代码可能会帮助到世界上的其他人&lt;/p&gt;
-&lt;p&gt;我乐此不疲&lt;/p&gt;
-&lt;p&gt;😉️&lt;/p&gt;
-&lt;h2 id=&#34;音乐&#34;&gt;音乐&lt;/h2&gt;
-&lt;p&gt;虽然没有创作音乐的才能&amp;hellip; 🙈️&lt;/p&gt;
-&lt;p&gt;但是我很喜欢听音乐。&lt;/p&gt;
-&lt;p&gt;尤其是一些老摇滚。&lt;/p&gt;
-&lt;p&gt;像是甲壳虫，枪花，绿洲&amp;hellip;&lt;/p&gt;
-&lt;h2 id=&#34;运动&#34;&gt;运动&lt;/h2&gt;
-&lt;p&gt;我喜欢骑单车，能骑到好远的地方。&lt;/p&gt;
-&lt;p&gt;还有什么呢。&lt;/p&gt;
-&lt;h1 id=&#34;未完待续&#34;&gt;未完待续&lt;/h1&gt;
-&lt;p&gt;剩下的，留着我有时间补充吧。&lt;/p&gt;
-- https://amazingrise.net/about/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>如何把Kotlin项目打包为可执行的jar</title>
-        <link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link>
-        <pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ -&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href=&#34;https://github.com/amazingrise/qqbotkotlin&#34;&gt;GitHub Repo - QQ Group Chatting Robot&lt;/a&gt;
+但欢迎转发本网址,以分享给其他人.&lt;/p>
+&lt;p>共同传承中华文化🥳&lt;/p>
+- https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>我的一份自我介绍</title><link>https://amazingrise.net/about/</link><pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate><guid>https://amazingrise.net/about/</guid><description>左手的世界 https://amazingrise.net/about/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>此页正在建设中^_^&lt;/p>
+&lt;p>（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）&lt;/p>
+&lt;h1 id="关于本站">关于本站&lt;/h1>
+&lt;h2 id="版权声明">版权声明&lt;/h2>
+&lt;p>本站遵循 &lt;a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0 协议&lt;/a>.&lt;/p>
+&lt;h1 id="关于我">关于我&lt;/h1>
+&lt;p>我叫 Rise.&lt;/p>
+&lt;h2 id="创作">创作&lt;/h2>
+&lt;p>创作是一件美好的事情。&lt;/p>
+&lt;p>我喜欢创作。&lt;/p>
+&lt;p>因为创作可以给大家带来欢乐。&lt;/p>
+&lt;p>写代码也是一种创作。&lt;/p>
+&lt;p>我的代码可能会帮助到世界上的其他人&lt;/p>
+&lt;p>我乐此不疲&lt;/p>
+&lt;p>😉️&lt;/p>
+&lt;h2 id="音乐">音乐&lt;/h2>
+&lt;p>虽然没有创作音乐的才能&amp;hellip; 🙈️&lt;/p>
+&lt;p>但是我很喜欢听音乐。&lt;/p>
+&lt;p>尤其是一些老摇滚。&lt;/p>
+&lt;p>像是甲壳虫，枪花，绿洲&amp;hellip;&lt;/p>
+&lt;h2 id="运动">运动&lt;/h2>
+&lt;p>我喜欢骑单车，能骑到好远的地方。&lt;/p>
+&lt;p>还有什么呢。&lt;/p>
+&lt;h1 id="未完待续">未完待续&lt;/h1>
+&lt;p>剩下的，留着我有时间补充吧。&lt;/p>
+- https://amazingrise.net/about/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>如何把Kotlin项目打包为可执行的jar</title><link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link><pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate><guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid><description>左手的世界 https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ -&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot&lt;/a>
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
-于是我打算把该项目打包成可执行的jar，这样&lt;code&gt;java -jar xxxxx.jar&lt;/code&gt;就可以执行了，这多好呀。
-然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code&gt;没有主清单属性&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;正确的食用方式-&#34;&gt;正确的食用方式&lt;/h2&gt;
-&lt;p&gt;如何正确地将Kotlin项目封装为jar，
-并且避免上述的错误？&lt;/p&gt;
-&lt;h3 id=&#34;第一步-创建jar-artifacts-&#34;&gt;第一步 创建Jar Artifacts&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）&lt;/li&gt;
-&lt;li&gt;然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
-&lt;img src=&#34;step1.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
-请注意&lt;strong&gt;将Main Class一栏留空，让它自己判断。&lt;/strong&gt;（前提是你写的主函数的格式是正确的）
-&lt;img src=&#34;step2.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;第二步-手动添加manifest-&#34;&gt;第二步 手动添加MANIFEST&lt;/h3&gt;
-&lt;p&gt;为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;点击图示中的按钮&lt;code&gt;Create Directory&lt;/code&gt;，创建一个新的文件夹，名字叫&lt;code&gt;META-INF&lt;/code&gt;
-&lt;img src=&#34;step3.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;选中&lt;code&gt;META-INF&lt;/code&gt;，点击上图中的&lt;code&gt;+&lt;/code&gt;按钮，再点击菜单中的&lt;code&gt;File&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这时，我们选择工程根目录下的&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;，以便将&lt;code&gt;MANIFEST.MF&lt;/code&gt;添加到该文件夹下。&lt;/li&gt;
-&lt;li&gt;如果成功的话，你会在这个窗口中看到&lt;code&gt;META-INF&lt;/code&gt;里面有刚刚添加的&lt;code&gt;MANIFEST.MF&lt;/code&gt;。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt; 核对一下&lt;code&gt;src/main/kotlin/META-INF/MANIFEST.MF&lt;/code&gt;的内容，应该为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Manifest-Version: 1.0
+于是我打算把该项目打包成可执行的jar，这样&lt;code>java -jar xxxxx.jar&lt;/code>就可以执行了，这多好呀。
+然而我踩了一天的坑QAQ：IDE自动生成的jar直接执行会提示&lt;code>没有主清单属性&lt;/code>&lt;/p>
+&lt;h2 id="正确的食用方式-">正确的食用方式&lt;/h2>
+&lt;p>如何正确地将Kotlin项目封装为jar，
+并且避免上述的错误？&lt;/p>
+&lt;h3 id="第一步-创建jar-artifacts-">第一步 创建Jar Artifacts&lt;/h3>
+&lt;ol>
+&lt;li>首先打开Intellij IDEA（这不废话么），菜单栏 File - Project Structure （或者快捷键Ctrl+Alt+Shift+S）&lt;/li>
+&lt;li>然后点击左边侧栏的Artifacts，点击加号添加，选择jar，From modules with dependencies。如图。
+&lt;img src="step1.png" alt="" />&lt;/li>
+&lt;li>在新弹出的Create JAR from Modules对话框中，选择Module为你要启动的模块（下拉菜单）。在本例中，模块为qqbotkotlin.main。
+请注意&lt;strong>将Main Class一栏留空，让它自己判断。&lt;/strong>（前提是你写的主函数的格式是正确的）
+&lt;img src="step2.png" alt="" />&lt;/li>
+&lt;/ol>
+&lt;h3 id="第二步-手动添加manifest-">第二步 手动添加MANIFEST&lt;/h3>
+&lt;p>为了避免出现我前言中说的那个错误，这里需要自己建立META-INF目录，并添加MANIFEST文件。&lt;/p>
+&lt;ol>
+&lt;li>点击图示中的按钮&lt;code>Create Directory&lt;/code>，创建一个新的文件夹，名字叫&lt;code>META-INF&lt;/code>
+&lt;img src="step3.png" alt="" />&lt;/li>
+&lt;li>选中&lt;code>META-INF&lt;/code>，点击上图中的&lt;code>+&lt;/code>按钮，再点击菜单中的&lt;code>File&lt;/code>。&lt;/li>
+&lt;li>这时，我们选择工程根目录下的&lt;code>src/main/kotlin/META-INF/MANIFEST.MF&lt;/code>，以便将&lt;code>MANIFEST.MF&lt;/code>添加到该文件夹下。&lt;/li>
+&lt;li>如果成功的话，你会在这个窗口中看到&lt;code>META-INF&lt;/code>里面有刚刚添加的&lt;code>MANIFEST.MF&lt;/code>。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>Tips:&lt;/strong> 核对一下&lt;code>src/main/kotlin/META-INF/MANIFEST.MF&lt;/code>的内容，应该为：&lt;/p>
+&lt;pre>&lt;code>Manifest-Version: 1.0
 Main-Class: main.MainKt
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，本人的主类文件位于&lt;code&gt;/src/main/kotlin/main/Main.Kt&lt;/code&gt;。可供参考。&lt;/p&gt;
-&lt;h3 id=&#34;第三步-调整位置让新添加的manifest后来居上-&#34;&gt;第三步 调整位置，让新添加的MANIFEST后来居上&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;还是刚才的那个地方，&lt;strong&gt;取消&lt;/strong&gt;图中所示&lt;code&gt;Sort Elemets by Names and Types&lt;/code&gt;，以便自定义排序。
-&lt;img src=&#34;step4.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
-&lt;li&gt;点击上箭头，让&lt;code&gt;META-INF&lt;/code&gt;目录上升到最上面。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;第四步-完成-&#34;&gt;第四步 完成&lt;/h3&gt;
-&lt;p&gt;如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
-&lt;img src=&#34;step5-ok.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;上述步骤确认无误了之后，&lt;code&gt;Apply&lt;/code&gt;，&lt;code&gt;OK&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;主界面菜单栏，选择&lt;code&gt;Build&lt;/code&gt;菜单栏下的&lt;code&gt;Build Artifacts&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;在新弹出的窗口中选择&lt;code&gt;Build&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;这个时候你就会看到&lt;code&gt;/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar&lt;/code&gt;。
-尝试在终端中运行，&lt;code&gt;java -jar xxxxxxx.main.jar&lt;/code&gt;。没问题，正常执行！&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;参考-&#34;&gt;参考&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;本人刚开始参照的是这个：&lt;a href=&#34;https://www.bilibili.com/read/cv456609/&#34;&gt;将Kotlin项目打包为可执行JAR - Xabean&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;但是用方法1，运行jar时，java会提示&lt;code&gt;没有主清单属性&lt;/code&gt;的问题。&lt;/li&gt;
-&lt;li&gt;用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;后来参照类似案例才解决了这个问题。
-类似案例：&lt;a href=&#34;https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-&#34;&gt;[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。&lt;/p&gt;- https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>(译)Kotlin中的等号，&#34;==&#34;，&#34;===&#34;和&#34;equals&#34;</title>
-        <link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link>
-        <pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/ -&lt;p&gt;Translated from: &lt;a href=&#34;https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1&#34;&gt;Equality in Kotlin&lt;/a&gt;
+&lt;/code>&lt;/pre>&lt;p>其中，本人的主类文件位于&lt;code>/src/main/kotlin/main/Main.Kt&lt;/code>。可供参考。&lt;/p>
+&lt;h3 id="第三步-调整位置让新添加的manifest后来居上-">第三步 调整位置，让新添加的MANIFEST后来居上&lt;/h3>
+&lt;ol>
+&lt;li>还是刚才的那个地方，&lt;strong>取消&lt;/strong>图中所示&lt;code>Sort Elemets by Names and Types&lt;/code>，以便自定义排序。
+&lt;img src="step4.png" alt="" />&lt;/li>
+&lt;li>点击上箭头，让&lt;code>META-INF&lt;/code>目录上升到最上面。&lt;/li>
+&lt;/ol>
+&lt;h3 id="第四步-完成-">第四步 完成&lt;/h3>
+&lt;p>如果你的操作无误的话，现在的Project Structure看起来应该是这样的：
+&lt;img src="step5-ok.png" alt="" />&lt;/p>
+&lt;ol>
+&lt;li>上述步骤确认无误了之后，&lt;code>Apply&lt;/code>，&lt;code>OK&lt;/code>。&lt;/li>
+&lt;li>主界面菜单栏，选择&lt;code>Build&lt;/code>菜单栏下的&lt;code>Build Artifacts&lt;/code>。&lt;/li>
+&lt;li>在新弹出的窗口中选择&lt;code>Build&lt;/code>。&lt;/li>
+&lt;li>这个时候你就会看到&lt;code>/out/artifacts/xxxxxxx_main_jar/xxxxxxx.main.jar&lt;/code>。
+尝试在终端中运行，&lt;code>java -jar xxxxxxx.main.jar&lt;/code>。没问题，正常执行！&lt;/li>
+&lt;/ol>
+&lt;h2 id="参考-">参考&lt;/h2>
+&lt;ol>
+&lt;li>本人刚开始参照的是这个：&lt;a href="https://www.bilibili.com/read/cv456609/">将Kotlin项目打包为可执行JAR - Xabean&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>但是用方法1，运行jar时，java会提示&lt;code>没有主清单属性&lt;/code>的问题。&lt;/li>
+&lt;li>用方法2，也就是gradle编译jar，虽然可以运行，但是没有把依赖一并打包进来。&lt;/li>
+&lt;li>&lt;em>本人已经尝试过网上所说的各种方法，包括在build.gradle里面添加sourceDir啊，或者是jar下面什么from zipTree的，都不行。&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>后来参照类似案例才解决了这个问题。
+类似案例：&lt;a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000120864--SOLVED-How-to-turn-a-mixed-Kotlin-Java-project-with-a-Kotlin-file-as-main-class-into-a-JAR-">[SOLVED] How to turn a mixed Kotlin/Java project (with a Kotlin file as main class) into a JAR?&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;p>如果有问题，欢迎在下面评论区指出。新评论我会在第一时间在手机上收到（邮箱通知，并且手机自动收信）。欢迎大家的评论。&lt;/p>- https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>(译)Kotlin中的等号，"=="，"==="和"equals"</title><link>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</link><pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate><guid>https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/</guid><description>左手的世界 https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/ -&lt;p>Translated from: &lt;a href="https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1">Equality in Kotlin&lt;/a>
 Author: Suneet Agrawal
-Translated by : AmazingRise (Authorized by original author)&lt;/p&gt;
-&lt;p&gt;在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。
-Kotlin语言里，“等号”有这么几种：&lt;code&gt;==&lt;/code&gt;，&lt;code&gt;===&lt;/code&gt;与&lt;code&gt;.equals&lt;/code&gt;。
-那么问题来了，我们该如何正确使用这些相等性判断呢？&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;我们来一起看一看Kotlin的几种相等性判断：&lt;/p&gt;
-&lt;h2 id=&#34;结构性相等--&#34;&gt;结构性相等 (&amp;ldquo;==&amp;rdquo;)&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;==&lt;/code&gt;操作符用于比较两个变量的值。
-&lt;strong&gt;请不要与Java中的&lt;code&gt;==&lt;/code&gt;相混淆。&lt;/strong&gt;
-与Java中的&lt;code&gt;==&lt;/code&gt;操作符&lt;strong&gt;不同&lt;/strong&gt;的是：&lt;code&gt;==&lt;/code&gt;操作符在Kotlin中只比较值。
-而Java或其它语言中，&lt;code&gt;==&lt;/code&gt;通常用来比较两个对象的引用。
-Kotlin中，&lt;code&gt;==&lt;/code&gt;的否定形式是&lt;code&gt;!=&lt;/code&gt;，当两个变量值不同时返回真。&lt;/p&gt;
-&lt;h2 id=&#34;引用性相等-&#34;&gt;引用性相等(&amp;ldquo;===&amp;rdquo;)&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;===&lt;/code&gt;操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，&lt;code&gt;===&lt;/code&gt;的值才为真。
-&lt;code&gt;===&lt;/code&gt;的否定形式是&lt;code&gt;!==&lt;/code&gt;，当两个对象的引用不同的时候返回真。&lt;/p&gt;
-&lt;p&gt;不过对于原始类型（Primitive type）来说（例如 Int），&lt;code&gt;=== &lt;/code&gt;等价于&lt;code&gt; ==&lt;/code&gt; 。&lt;/p&gt;
-&lt;h2 id=&#34;equals-方法-&#34;&gt;.equals 方法&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;equals(other: Any?)&lt;/code&gt;方法是在&lt;code&gt;Any&lt;/code&gt;类里实现的。
-并且所有类中&lt;code&gt;.equals&lt;/code&gt;都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;.equals&lt;/code&gt;方法将会比较两个变量的值。
-与&lt;code&gt;==&lt;/code&gt;不同体现在比较&lt;code&gt;Float&lt;/code&gt;和&lt;code&gt;Double&lt;/code&gt;的时候，&lt;code&gt;.equals&lt;/code&gt;违背了IEEE 754 浮点数运算标准。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;与IEEE 754浮点数运算标准相违背，意味着什么？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这意味着：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;NaN 等于它本身&lt;/li&gt;
-&lt;li&gt;NaN 比任何其他元素要大，包括正无穷 &lt;code&gt;POSITIVE_INFINITY&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;编译器会认为&lt;code&gt;-0.0&lt;/code&gt; 要比 &lt;code&gt;0.0&lt;/code&gt; 小。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;一头雾水？&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;举个栗子-&#34;&gt;举个栗子&lt;/h2&gt;
-&lt;p&gt;我来举几个例子解释一下。&lt;/p&gt;
-&lt;p&gt;首先，我们用这几个方法比较两个原始类型的变量（Int）。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; int1 = &lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; int2 = &lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;
-
-	println(int1 == int2)			&lt;span style=&#34;color:#228b22&#34;&gt;// true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(int1.equals(int2))		&lt;span style=&#34;color:#228b22&#34;&gt;// true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(int1 === int2)		&lt;span style=&#34;color:#228b22&#34;&gt;// true
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这三个println最后都会输出&lt;code&gt;true&lt;/code&gt;，因为对于原始类型，这三种判断都仅仅检查变量的值。
-所以在这种情况下，&lt;code&gt;===&lt;/code&gt;输出的结果也是一样的。&lt;/p&gt;
-&lt;p&gt;现在让我们把原始类型换成包装类，看看三种方法表现出的行为。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; first = Integer(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;)
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; second = Integer(&lt;span style=&#34;color:#b452cd&#34;&gt;10&lt;/span&gt;)
-
-	println(first == second)		&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(first.equals(second))		&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(first === second)		&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在上面的例子中，&lt;code&gt;==&lt;/code&gt;与&lt;code&gt;.equals&lt;/code&gt;输出了&lt;code&gt;true&lt;/code&gt;，因为他们仅仅比较了两个变量的值。
-而&lt;code&gt;===&lt;/code&gt;比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了&lt;code&gt;false&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; name: String)
-
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp1 = Employee(&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;“&lt;/span&gt;Suneet&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;”&lt;/span&gt;)
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp2 = Employee(&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;“&lt;/span&gt;Suneet&lt;span style=&#34;color:#a61717;background-color:#e3d2d2&#34;&gt;”&lt;/span&gt;)
-
-	println(emp1 == emp2)				&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
-	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了&lt;code&gt;false&lt;/code&gt;。
-但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;等等，你说&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;.equals&lt;/code&gt;只比较两个对象的内容，在我们的这个例子里它们都是一样的呀&lt;/strong&gt;
+Translated by : AmazingRise (Authorized by original author)&lt;/p>
+&lt;p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。
+Kotlin语言里，“等号”有这么几种：&lt;code>==&lt;/code>，&lt;code>===&lt;/code>与&lt;code>.equals&lt;/code>。
+那么问题来了，我们该如何正确使用这些相等性判断呢？&lt;/p>
+&lt;!-- more -->
+&lt;p>我们来一起看一看Kotlin的几种相等性判断：&lt;/p>
+&lt;h2 id="结构性相等--">结构性相等 (&amp;ldquo;==&amp;rdquo;)&lt;/h2>
+&lt;p>&lt;code>==&lt;/code>操作符用于比较两个变量的值。
+&lt;strong>请不要与Java中的&lt;code>==&lt;/code>相混淆。&lt;/strong>
+与Java中的&lt;code>==&lt;/code>操作符&lt;strong>不同&lt;/strong>的是：&lt;code>==&lt;/code>操作符在Kotlin中只比较值。
+而Java或其它语言中，&lt;code>==&lt;/code>通常用来比较两个对象的引用。
+Kotlin中，&lt;code>==&lt;/code>的否定形式是&lt;code>!=&lt;/code>，当两个变量值不同时返回真。&lt;/p>
+&lt;h2 id="引用性相等-">引用性相等(&amp;ldquo;===&amp;rdquo;)&lt;/h2>
+&lt;p>&lt;code>===&lt;/code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，&lt;code>===&lt;/code>的值才为真。
+&lt;code>===&lt;/code>的否定形式是&lt;code>!==&lt;/code>，当两个对象的引用不同的时候返回真。&lt;/p>
+&lt;p>不过对于原始类型（Primitive type）来说（例如 Int），&lt;code>=== &lt;/code>等价于&lt;code> ==&lt;/code> 。&lt;/p>
+&lt;h2 id="equals-方法-">.equals 方法&lt;/h2>
+&lt;p>&lt;code>equals(other: Any?)&lt;/code>方法是在&lt;code>Any&lt;/code>类里实现的。
+并且所有类中&lt;code>.equals&lt;/code>都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。&lt;/p>
+&lt;p>&lt;code>.equals&lt;/code>方法将会比较两个变量的值。
+与&lt;code>==&lt;/code>不同体现在比较&lt;code>Float&lt;/code>和&lt;code>Double&lt;/code>的时候，&lt;code>.equals&lt;/code>违背了IEEE 754 浮点数运算标准。&lt;/p>
+&lt;p>&lt;strong>与IEEE 754浮点数运算标准相违背，意味着什么？&lt;/strong>&lt;/p>
+&lt;p>这意味着：&lt;/p>
+&lt;ul>
+&lt;li>NaN 等于它本身&lt;/li>
+&lt;li>NaN 比任何其他元素要大，包括正无穷 &lt;code>POSITIVE_INFINITY&lt;/code>&lt;/li>
+&lt;li>编译器会认为&lt;code>-0.0&lt;/code> 要比 &lt;code>0.0&lt;/code> 小。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>一头雾水？&lt;/strong>&lt;/p>
+&lt;h2 id="举个栗子-">举个栗子&lt;/h2>
+&lt;p>我来举几个例子解释一下。&lt;/p>
+&lt;p>首先，我们用这几个方法比较两个原始类型的变量（Int）。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin"> &lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> int1 = &lt;span style="color:#b452cd">10&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> int2 = &lt;span style="color:#b452cd">10&lt;/span>
+println(int1 == int2) &lt;span style="color:#228b22">// true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(int1.equals(int2)) &lt;span style="color:#228b22">// true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(int1 === int2) &lt;span style="color:#228b22">// true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这三个println最后都会输出&lt;code>true&lt;/code>，因为对于原始类型，这三种判断都仅仅检查变量的值。
+所以在这种情况下，&lt;code>===&lt;/code>输出的结果也是一样的。&lt;/p>
+&lt;p>现在让我们把原始类型换成包装类，看看三种方法表现出的行为。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin"> &lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> first = Integer(&lt;span style="color:#b452cd">10&lt;/span>)
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> second = Integer(&lt;span style="color:#b452cd">10&lt;/span>)
+println(first == second) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(first.equals(second)) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(first === second) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在上面的例子中，&lt;code>==&lt;/code>与&lt;code>.equals&lt;/code>输出了&lt;code>true&lt;/code>，因为他们仅仅比较了两个变量的值。
+而&lt;code>===&lt;/code>比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了&lt;code>false&lt;/code>。&lt;/p>
+&lt;p>现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#8b008b;font-weight:bold">class&lt;/span> &lt;span style="color:#008b45;font-weight:bold">Employee&lt;/span> (&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> name: String)
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> emp1 = Employee(&lt;span style="color:#a61717;background-color:#e3d2d2">“&lt;/span>Suneet&lt;span style="color:#a61717;background-color:#e3d2d2">”&lt;/span>)
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> emp2 = Employee(&lt;span style="color:#a61717;background-color:#e3d2d2">“&lt;/span>Suneet&lt;span style="color:#a61717;background-color:#e3d2d2">”&lt;/span>)
+println(emp1 == emp2) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.equals(emp2)) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1 === emp2) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;span style="color:#228b22">&lt;/span>
+println(emp1.name == emp2.name) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.name.equals(emp2.name)) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.name === emp2.name) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了&lt;code>false&lt;/code>。
+但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了&lt;code>true&lt;/code>。&lt;/p>
+&lt;p>&lt;strong>等等，你说&lt;code>==&lt;/code>和&lt;code>.equals&lt;/code>只比较两个对象的内容，在我们的这个例子里它们都是一样的呀&lt;/strong>
 (译者注：指第一段，三个比较全都返回了false)
-**这没毛病。**但内容比较仅对于&lt;code&gt;data&lt;/code&gt;类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于&lt;code&gt;data&lt;/code&gt;类，编译器将比较对象的内容，并且在内容相同的情况下返回&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;让我们把上面的普通类改为&lt;code&gt;data&lt;/code&gt;类：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Employee&lt;/span&gt; (&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; name: String)
-
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp1 = Employee(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
-	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; emp2 = Employee(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Suneet&amp;#34;&lt;/span&gt;)
-
-	println(emp1 == emp2)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.equals(emp2))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1 === emp2)			&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
-	println(emp1.name == emp2.name)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name.equals(emp2.name))			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;	println(emp1.name === emp2.name)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Kotlin&#34; data-lang=&#34;Kotlin&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; negZero = -&lt;span style=&#34;color:#b452cd&#34;&gt;0.0f&lt;/span&gt;
-&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;val&lt;/span&gt; posZero = &lt;span style=&#34;color:#b452cd&#34;&gt;0.0f&lt;/span&gt;
-
-println(negZero == posZero)				&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;println(negZero.equals(posZero))			&lt;span style=&#34;color:#228b22&#34;&gt;//false
-&lt;/span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;println(negZero === posZero)			&lt;span style=&#34;color:#228b22&#34;&gt;//true
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对于&lt;code&gt;Float&lt;/code&gt;和&lt;code&gt;Double&lt;/code&gt;类的比较，&lt;code&gt;.equals&lt;/code&gt;方法违背了IEEE 754 浮点数运算标准，当&lt;code&gt;-0.0&lt;/code&gt;与&lt;code&gt;0.0&lt;/code&gt;比较的时候，它会返回&lt;code&gt;false&lt;/code&gt;。
-而&lt;code&gt;==&lt;/code&gt;和&lt;code&gt;===&lt;/code&gt;都会返回&lt;code&gt;true&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;最后谨记-&#34;&gt;最后谨记&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;因为Kotlin里没有像&lt;code&gt;String(&amp;quot;&amp;quot;)&lt;/code&gt;这样的构造器，当比较字符串的时候，只要内容相等，都会返回&lt;code&gt;true&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;对于&lt;code&gt;null&lt;/code&gt;引用的判断，我们不必做任何优化。&lt;code&gt;a == null&lt;/code&gt; 会被自动转换为 &lt;code&gt;a === null&lt;/code&gt;，因为null本身也是一个引用，它将会引发引用检查（而不是值检查）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;就酱。&lt;a href=&#34;https://agrawalsuneet.github.io/agrawalsuneet/publications/&#34;&gt;点击这里&lt;/a&gt;看看我写的其他有趣文章。
-或者&lt;a href=&#34;https://agrawalsuneet.github.io/agrawalsuneet/personalgamesandapps/&#34;&gt;点击这里&lt;/a&gt;，瞧一瞧我写的App和游戏。
-另外，欢迎在你的App里面使用&lt;a href=&#34;https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/&#34;&gt;我的Android开源组件&lt;/a&gt;。
-如果你需要帮助的话，可以给我发邮件： agrawalsuneet AT gmail.com。&lt;/p&gt;
-&lt;p&gt;引用: &lt;a href=&#34;https://kotlinlang.org/docs/reference/equality.html&#34;&gt;Kotlin docs&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;翻译完结。&lt;/p&gt;
-&lt;p&gt;作者：Suneet Agrawal.
+**这没毛病。**但内容比较仅对于&lt;code>data&lt;/code>类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于&lt;code>data&lt;/code>类，编译器将比较对象的内容，并且在内容相同的情况下返回&lt;code>true&lt;/code>。&lt;/p>
+&lt;p>让我们把上面的普通类改为&lt;code>data&lt;/code>类：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#8b008b;font-weight:bold">data&lt;/span> &lt;span style="color:#8b008b;font-weight:bold">class&lt;/span> &lt;span style="color:#008b45;font-weight:bold">Employee&lt;/span> (&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> name: String)
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> emp1 = Employee(&lt;span style="color:#cd5555">&amp;#34;Suneet&amp;#34;&lt;/span>)
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> emp2 = Employee(&lt;span style="color:#cd5555">&amp;#34;Suneet&amp;#34;&lt;/span>)
+println(emp1 == emp2) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.equals(emp2)) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1 === emp2) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;span style="color:#228b22">&lt;/span>
+println(emp1.name == emp2.name) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.name.equals(emp2.name)) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span> println(emp1.name === emp2.name) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> negZero = -&lt;span style="color:#b452cd">0.0f&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">val&lt;/span> posZero = &lt;span style="color:#b452cd">0.0f&lt;/span>
+println(negZero == posZero) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;span style="color:#228b22">&lt;/span>println(negZero.equals(posZero)) &lt;span style="color:#228b22">//false
+&lt;/span>&lt;span style="color:#228b22">&lt;/span>println(negZero === posZero) &lt;span style="color:#228b22">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于&lt;code>Float&lt;/code>和&lt;code>Double&lt;/code>类的比较，&lt;code>.equals&lt;/code>方法违背了IEEE 754 浮点数运算标准，当&lt;code>-0.0&lt;/code>与&lt;code>0.0&lt;/code>比较的时候，它会返回&lt;code>false&lt;/code>。
+而&lt;code>==&lt;/code>和&lt;code>===&lt;/code>都会返回&lt;code>true&lt;/code>。&lt;/p>
+&lt;h2 id="最后谨记-">最后谨记&lt;/h2>
+&lt;ul>
+&lt;li>因为Kotlin里没有像&lt;code>String(&amp;quot;&amp;quot;)&lt;/code>这样的构造器，当比较字符串的时候，只要内容相等，都会返回&lt;code>true&lt;/code>。&lt;/li>
+&lt;li>对于&lt;code>null&lt;/code>引用的判断，我们不必做任何优化。&lt;code>a == null&lt;/code> 会被自动转换为 &lt;code>a === null&lt;/code>，因为null本身也是一个引用，它将会引发引用检查（而不是值检查）。&lt;/li>
+&lt;/ul>
+&lt;p>就酱。&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/publications/">点击这里&lt;/a>看看我写的其他有趣文章。
+或者&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/personalgamesandapps/">点击这里&lt;/a>，瞧一瞧我写的App和游戏。
+另外，欢迎在你的App里面使用&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/">我的Android开源组件&lt;/a>。
+如果你需要帮助的话，可以给我发邮件： agrawalsuneet AT gmail.com。&lt;/p>
+&lt;p>引用: &lt;a href="https://kotlinlang.org/docs/reference/equality.html">Kotlin docs&lt;/a>&lt;/p>
+&lt;hr />
+&lt;p>翻译完结。&lt;/p>
+&lt;p>作者：Suneet Agrawal.
 网站：https://agrawalsuneet.github.io/agrawalsuneet/
 十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。
-原作者保留所有权利。&lt;/p&gt;
-- https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>Manjaro 在笔记本上的多显示器配置</title>
-        <link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link>
-        <pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate>
-        
-        <guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid>
-        <description>左手的世界 https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ -&lt;p&gt;2020.3.25 更新&lt;/p&gt;
-&lt;p&gt;原文提到:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;据本人今日的评测，这个&lt;code&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/code&gt;(注意不是&lt;code&gt;video-nvidia-440xx&lt;/code&gt;)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code&gt;prime&lt;/code&gt;驱动。出现了一些问题，首先&lt;code&gt;prime-run&lt;/code&gt;并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p&gt;
-&lt;p&gt;新的驱动还是不太好用的。所以&lt;strong&gt;这篇教程仍然有效&lt;/strong&gt;，各位仍然可以用&lt;code&gt;video-nvidia-440xx&lt;/code&gt;，而不是混合驱动。&lt;/p&gt;
-&lt;p&gt;本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p&gt;
-&lt;h2 id=&#34;前言-&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
-（参见下文&lt;a href=&#34;#%E9%A2%98%E5%A4%96%E8%AF%9D-&#34;&gt;题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a&gt;）
+原作者保留所有权利。&lt;/p>
+- https://amazingrise.net/2019/05/18/equality-in-kotlin-translation/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>左手的世界 https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ -&lt;p>2020.3.25 更新&lt;/p>
+&lt;p>原文提到:&lt;/p>
+&lt;blockquote>
+&lt;p>440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p>
+&lt;/blockquote>
+&lt;p>据本人今日的评测，这个&lt;code>video-hybrid-intel-nvidia-440xx-prime&lt;/code>(注意不是&lt;code>video-nvidia-440xx&lt;/code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code>prime&lt;/code>驱动。出现了一些问题，首先&lt;code>prime-run&lt;/code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p>
+&lt;p>新的驱动还是不太好用的。所以&lt;strong>这篇教程仍然有效&lt;/strong>，各位仍然可以用&lt;code>video-nvidia-440xx&lt;/code>，而不是混合驱动。&lt;/p>
+&lt;p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p>
+&lt;h2 id="前言-">前言&lt;/h2>
+&lt;p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
+（参见下文&lt;a href="#%E9%A2%98%E5%A4%96%E8%AF%9D-">题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a>）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
 Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;背景-&#34;&gt;背景&lt;/h2&gt;
-&lt;p&gt;还是老规矩，我先介绍一下这个问题的背景。
-解决方法请翻到&lt;a href=&#34;#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-&#34;&gt;解决方法&lt;/a&gt;一节。&lt;/p&gt;
-&lt;p&gt;环境：&lt;/p&gt;
-&lt;p&gt;intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。&lt;/p&gt;
-&lt;p&gt;症状：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;无法接外接显示器，接上后无论是系统设置还是&lt;code&gt;inxi -Fx&lt;/code&gt;都无法识别外置显示器。&lt;/li&gt;
-&lt;li&gt;检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;如果你的是&lt;strong&gt;外接显卡坞+显示器，这篇教程不适合你&lt;/strong&gt;。不过有网友（感谢&lt;code&gt;@sunlitforest&lt;/code&gt;）用另一种方法操作成功了，详情请看&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
-&lt;h2 id=&#34;分析问题-&#34;&gt;分析问题&lt;/h2&gt;
-&lt;p&gt;参照&lt;a href=&#34;https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&#34;&gt;ArchWiki上面的说法&lt;/a&gt;，让Optimus显卡在linux里面有三种实现方法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;BIOS里面禁用掉一个显卡。缺点：难以切换显卡。&lt;/li&gt;
-&lt;li&gt;用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。&lt;/li&gt;
-&lt;li&gt;用Bumblebee。不过Bumblebee很难支持双显示器。&lt;/li&gt;
-&lt;li&gt;用专有驱动。&lt;/li&gt;
-&lt;li&gt;用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr /&gt;
-&lt;h2 id=&#34;解决方法-&#34;&gt;解决方法&lt;/h2&gt;
-&lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p&gt;
-&lt;p&gt;刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
-我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p&gt;
-&lt;p&gt;以下内容均为本人的中文翻译。&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;原帖前言-&#34;&gt;原帖前言&lt;/h3&gt;
-&lt;p&gt;如何在Optimus的笔记本上开启PRIME：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;方法&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;优点&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;缺点&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;bumblebee(Render offload)&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;按需使用独立显卡，Manjaro默认配置&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;有一定的开销，对性能有所影响&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;PRIME&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;直接使用独立显卡，性能更强&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;两块显卡都一直供电，需要手动配置&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;optimus-manager&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;显卡切换更简单&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;暂不成熟，还在开发中&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NVIDIA 官方支持的 render offload.&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;在译者机器上仍有 bug，不建议用&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。&lt;br /&gt;
-optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;1-移除bumblebee-&#34;&gt;1 移除Bumblebee&lt;/h3&gt;
-&lt;p&gt;如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
-bumblebee很碍事，所以我们得先干掉它。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -r pci nonfree &lt;span style=&#34;color:#b452cd&#34;&gt;0300&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-安装nvidia驱动-&#34;&gt;2 安装NVIDIA驱动&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mhwd -i pci video-nvidia-440xx
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/p&gt;
-&lt;h3 id=&#34;3-修改mhwd设置-&#34;&gt;3 修改MHWD设置&lt;/h3&gt;
-&lt;p&gt;mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。&lt;/p&gt;
-&lt;h4 id=&#34;另起炉灶-&#34;&gt;另起炉灶&lt;/h4&gt;
-&lt;p&gt;首先要删掉&lt;code&gt;/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code&gt;
+后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p>
+&lt;hr />
+&lt;h2 id="背景-">背景&lt;/h2>
+&lt;p>还是老规矩，我先介绍一下这个问题的背景。
+解决方法请翻到&lt;a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-">解决方法&lt;/a>一节。&lt;/p>
+&lt;p>环境：&lt;/p>
+&lt;p>intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。&lt;/p>
+&lt;p>症状：&lt;/p>
+&lt;ul>
+&lt;li>无法接外接显示器，接上后无论是系统设置还是&lt;code>inxi -Fx&lt;/code>都无法识别外置显示器。&lt;/li>
+&lt;li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。&lt;/li>
+&lt;/ul>
+&lt;p>如果你的是&lt;strong>外接显卡坞+显示器，这篇教程不适合你&lt;/strong>。不过有网友（感谢&lt;code>@sunlitforest&lt;/code>）用另一种方法操作成功了，详情请看&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749">这里&lt;/a>。&lt;/p>
+&lt;h2 id="分析问题-">分析问题&lt;/h2>
+&lt;p>参照&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">ArchWiki上面的说法&lt;/a>，让Optimus显卡在linux里面有三种实现方法：&lt;/p>
+&lt;ol>
+&lt;li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。&lt;/li>
+&lt;li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。&lt;/li>
+&lt;li>用Bumblebee。不过Bumblebee很难支持双显示器。&lt;/li>
+&lt;li>用专有驱动。&lt;/li>
+&lt;li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h2 id="解决方法-">解决方法&lt;/h2>
+&lt;p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p>
+&lt;p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p>
+&lt;p>以下内容均为本人的中文翻译。&lt;a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;h3 id="原帖前言-">原帖前言&lt;/h3>
+&lt;p>如何在Optimus的笔记本上开启PRIME：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th align="left">方法&lt;/th>
+&lt;th align="left">优点&lt;/th>
+&lt;th align="left">缺点&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td align="left">bumblebee(Render offload)&lt;/td>
+&lt;td align="left">按需使用独立显卡，Manjaro默认配置&lt;/td>
+&lt;td align="left">有一定的开销，对性能有所影响&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">PRIME&lt;/td>
+&lt;td align="left">直接使用独立显卡，性能更强&lt;/td>
+&lt;td align="left">两块显卡都一直供电，需要手动配置&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">optimus-manager&lt;/td>
+&lt;td align="left">显卡切换更简单&lt;/td>
+&lt;td align="left">暂不成熟，还在开发中&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">video-hybrid-intel-nvidia-440xx-prime&lt;/td>
+&lt;td align="left">NVIDIA 官方支持的 render offload.&lt;/td>
+&lt;td align="left">在译者机器上仍有 bug，不建议用&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。&lt;br />
+optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="1-移除bumblebee-">1 移除Bumblebee&lt;/h3>
+&lt;p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
+bumblebee很碍事，所以我们得先干掉它。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mhwd -r pci nonfree &lt;span style="color:#b452cd">0300&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-安装nvidia驱动-">2 安装NVIDIA驱动&lt;/h3>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia-440xx
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/p>
+&lt;h3 id="3-修改mhwd设置-">3 修改MHWD设置&lt;/h3>
+&lt;p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。&lt;/p>
+&lt;h4 id="另起炉灶-">另起炉灶&lt;/h4>
+&lt;p>首先要删掉&lt;code>/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code>
 （如果你不放心可以mv嘛。）
-然后新建一个文件&lt;code&gt;/etc/X11/xorg.conf.d/optimus.conf&lt;/code&gt;：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;Section &amp;#34;Module&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#658b00&#34;&gt;Load &amp;#34;modesetting&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;EndSection&lt;/span&gt;
-
-&lt;span style=&#34;color:#658b00&#34;&gt;Section &amp;#34;Device&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#658b00&#34;&gt;Identifier &amp;#34;nvidia&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#658b00&#34;&gt;Driver &amp;#34;nvidia&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#658b00&#34;&gt;BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#658b00&#34;&gt;Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;EndSection&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;注意：BusID一栏需要&lt;strong&gt;根据自己的电脑配置&lt;/strong&gt;进行修改。BusID的值是这么查询的：&lt;code&gt;lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;禁用模块-&#34;&gt;禁用模块&lt;/h4&gt;
-&lt;p&gt;PRIME依赖于&lt;code&gt;nvidia-drm&lt;/code&gt;，但mhwd在默认情况下会禁用它，我们需要手动启用。
+然后新建一个文件&lt;code>/etc/X11/xorg.conf.d/optimus.conf&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#658b00">Section &amp;#34;Module&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">Load &amp;#34;modesetting&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">EndSection&lt;/span>
+&lt;span style="color:#658b00">Section &amp;#34;Device&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">Identifier &amp;#34;nvidia&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">Driver &amp;#34;nvidia&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">EndSection&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>注意：BusID一栏需要&lt;strong>根据自己的电脑配置&lt;/strong>进行修改。BusID的值是这么查询的：&lt;code>lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="禁用模块-">禁用模块&lt;/h4>
+&lt;p>PRIME依赖于&lt;code>nvidia-drm&lt;/code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
 此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
-所以，我们需要对&lt;code&gt;/etc/modprobe.d&lt;/code&gt;动动手脚。&lt;/p&gt;
-&lt;p&gt;首先，我们得把mhwd自动生成的黑名单删掉。
+所以，我们需要对&lt;code>/etc/modprobe.d&lt;/code>动动手脚。&lt;/p>
+&lt;p>首先，我们得把mhwd自动生成的黑名单删掉。
 （译者注：不放心的话，就把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
-比如这样：&lt;strong&gt;视情况而定，你的配置可能不同&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ls /etc/modprobe.d/mhwd*
+比如这样：&lt;strong>视情况而定，你的配置可能不同&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">ls /etc/modprobe.d/mhwd*
 sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后我们要新建一个黑名单，屏蔽一些其他的模块。
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
-写入：&lt;code&gt;/etc/modprobe.d/nvidia.conf&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;blacklist nouveau&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;blacklist nvidiafb&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;blacklist rivafb&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-开启-modeset-&#34;&gt;4 开启 modeset&lt;/h3&gt;
-&lt;p&gt;创建一个新文件，&lt;code&gt;/etc/modprobe.d/nvidia-drm.conf&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#658b00&#34;&gt;options nvidia_drm modeset&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-设置启动脚本-&#34;&gt;5 设置启动脚本&lt;/h3&gt;
-&lt;p&gt;我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
-如果你现在重启，桌面环境的输出可能会有一些问题。&lt;/p&gt;
-&lt;p&gt;我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;针对 LightDM (xfce默认)&lt;/strong&gt;
-创建一个文件，&lt;code&gt;/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;#!/bin/sh
-&lt;/span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;&lt;/span&gt;
+写入：&lt;code>/etc/modprobe.d/nvidia.conf&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#658b00">blacklist nouveau&lt;/span>
+&lt;span style="color:#658b00">blacklist nvidiafb&lt;/span>
+&lt;span style="color:#658b00">blacklist rivafb&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-开启-modeset-">4 开启 modeset&lt;/h3>
+&lt;p>创建一个新文件，&lt;code>/etc/modprobe.d/nvidia-drm.conf&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#658b00">options nvidia_drm modeset&lt;/span>=&lt;span style="color:#cd5555">1&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="5-设置启动脚本-">5 设置启动脚本&lt;/h3>
+&lt;p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。&lt;/p>
+&lt;p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p>
+&lt;blockquote>
+&lt;p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。&lt;/p>
+&lt;/blockquote>
+&lt;hr />
+&lt;p>&lt;strong>针对 LightDM (xfce默认)&lt;/strong>
+创建一个文件，&lt;code>/usr/local/bin/optimus.sh&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#1e889b">#!/bin/sh
+&lt;/span>&lt;span style="color:#1e889b">&lt;/span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照国际惯例（hhh），让它可写可执行：&lt;code&gt;chmod a+rx /usr/local/bin/optimus.sh&lt;/code&gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后按照国际惯例（hhh），让它可写可执行：&lt;code>chmod a+rx /usr/local/bin/optimus.sh&lt;/code>
 现在你还得把它设置为启动脚本。
-编辑&lt;code&gt;/etc/lightdm/lightdm.conf&lt;/code&gt;，然后在**[Seat:* ]**这一节设置
-&lt;code&gt;display-setup-script=/usr/local/bin/optimus.sh&lt;/code&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;针对 GDM (Gnome默认)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;创建一个文件&lt;code&gt;/usr/local/share/optimus.desktop&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-Ini&#34; data-lang=&#34;Ini&#34;&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;[Desktop Entry]&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;Type&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;Application&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;Name&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;Optimus&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;Exec&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;NoDisplay&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;true&lt;/span&gt;
-&lt;span style=&#34;color:#658b00&#34;&gt;X-GNOME-Autostart-Phase&lt;/span&gt;=&lt;span style=&#34;color:#cd5555&#34;&gt;DisplayServer&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)&lt;br /&gt;
-然后建立连接，让它随着GDM启动。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+编辑&lt;code>/etc/lightdm/lightdm.conf&lt;/code>，然后在**[Seat:* ]**这一节设置
+&lt;code>display-setup-script=/usr/local/bin/optimus.sh&lt;/code>&lt;/p>
+&lt;hr />
+&lt;p>&lt;strong>针对 GDM (Gnome默认)&lt;/strong>&lt;/p>
+&lt;p>创建一个文件&lt;code>/usr/local/share/optimus.desktop&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#8b008b;font-weight:bold">[Desktop Entry]&lt;/span>
+&lt;span style="color:#658b00">Type&lt;/span>=&lt;span style="color:#cd5555">Application&lt;/span>
+&lt;span style="color:#658b00">Name&lt;/span>=&lt;span style="color:#cd5555">Optimus&lt;/span>
+&lt;span style="color:#658b00">Exec&lt;/span>=&lt;span style="color:#cd5555">sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span>
+&lt;span style="color:#658b00">NoDisplay&lt;/span>=&lt;span style="color:#cd5555">true&lt;/span>
+&lt;span style="color:#658b00">X-GNOME-Autostart-Phase&lt;/span>=&lt;span style="color:#cd5555">DisplayServer&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)&lt;br />
+然后建立连接，让它随着GDM启动。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;针对 SDDM (KDE 默认)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;创建一个文件：&lt;code&gt;/usr/share/sddm/scripts/Xsetup&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;#!/bin/sh
-&lt;/span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;&lt;/span&gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;hr />
+&lt;p>&lt;strong>针对 SDDM (KDE 默认)&lt;/strong>&lt;/p>
+&lt;p>创建一个文件：&lt;code>/usr/share/sddm/scripts/Xsetup&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#1e889b">#!/bin/sh
+&lt;/span>&lt;span style="color:#1e889b">&lt;/span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后用chmod让它变为可执行的文件。&lt;/p&gt;
-&lt;h3 id=&#34;6-最后的工作-&#34;&gt;6 最后的工作&lt;/h3&gt;
-&lt;p&gt;译者注：如果以上的工作都已经完成，我建议你再做一步。
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后用chmod让它变为可执行的文件。&lt;/p>
+&lt;h3 id="6-最后的工作-">6 最后的工作&lt;/h3>
+&lt;p>译者注：如果以上的工作都已经完成，我建议你再做一步。
 我当时没有做这一步，之后重启发现内核模块加载错误。
-所以还是建议，编译一下内核。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mkinitcpio -P linux
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后重启，大功告成。&lt;/p&gt;
-&lt;h3 id=&#34;验证是否成功-&#34;&gt;验证是否成功&lt;/h3&gt;
-&lt;p&gt;如果以上你都设置正确了，当你重启之后，可以敲&lt;code&gt;glxinfo | grep -i vendor&lt;/code&gt;
-然后看看是不是像下面这样的信息。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ glxinfo | grep -i vendor
+所以还是建议，编译一下内核。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mkinitcpio -P linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>最后重启，大功告成。&lt;/p>
+&lt;h3 id="验证是否成功-">验证是否成功&lt;/h3>
+&lt;p>如果以上你都设置正确了，当你重启之后，可以敲&lt;code>glxinfo | grep -i vendor&lt;/code>
+然后看看是不是像下面这样的信息。&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ glxinfo | grep -i vendor
 server glx vendor string: NVIDIA Corporation
 client glx vendor string: NVIDIA Corporation
 OpenGL vendor string: NVIDIA Corporation
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果是，说明你已经设置成功，可以欢呼了！
-&lt;em&gt;当然我有双显示器，一看显示器亮了就知道了2333&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;最后-&#34;&gt;最后&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.v2ex.com/t/526544&#34;&gt;这个奇怪的问题（点击查看）&lt;/a&gt;当时也困扰了我很久
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果是，说明你已经设置成功，可以欢呼了！
+&lt;em>当然我有双显示器，一看显示器亮了就知道了2333&lt;/em>&lt;/p>
+&lt;h2 id="最后-">最后&lt;/h2>
+&lt;p>&lt;a href="https://www.v2ex.com/t/526544">这个奇怪的问题（点击查看）&lt;/a>当时也困扰了我很久
 打开任务管理器没有任何占用，为啥还是一卡一卡的？
 后来才知道，噢，原来是双显卡的坑。
 听说最近19H1来了？反正我不想用Windows了。
-自从Windows 7 之后我就没用过没bug的系统！&lt;/p&gt;
-&lt;p&gt;希望我的这篇博文能帮到各位看官。 :)
-新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p&gt;
-&lt;p&gt;（2019-8 更新：感谢评论区的小伙伴的支持哦）&lt;/p&gt;
-&lt;h3 id=&#34;参考资料-&#34;&gt;参考资料&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225&#34;&gt;How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/NVIDIA_Optimus&#34;&gt;Optimus - ArchWiki&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;github-评论区-&#34;&gt;GitHub 评论区&lt;/h3&gt;
-&lt;p&gt;本站评论区改为 Valine, 原评论区请&lt;a href=&#34;https://github.com/AmazingRise/amazingrise.github.io/issues/1&#34;&gt;移步至此&lt;/a&gt;.&lt;/p&gt;- https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description>
-        </item>
-    
-    
-    
-    
-  </channel>
-</rss> 
+自从Windows 7 之后我就没用过没bug的系统！&lt;/p>
+&lt;p>希望我的这篇博文能帮到各位看官。 :)
+新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p>
+&lt;p>（2019-8 更新：感谢评论区的小伙伴的支持哦）&lt;/p>
+&lt;h3 id="参考资料-">参考资料&lt;/h3>
+&lt;p>&lt;a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus">Optimus - ArchWiki&lt;/a>&lt;/p>
+&lt;h3 id="github-评论区-">GitHub 评论区&lt;/h3>
+&lt;p>本站评论区改为 Valine, 原评论区请&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此&lt;/a>.&lt;/p>- https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item></channel></rss>
