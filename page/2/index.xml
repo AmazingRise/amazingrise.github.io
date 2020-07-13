@@ -1,176 +1,189 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://amazingrise.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate><atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml"/><item><title>粤语入声的初探究</title><link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate><guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid><description>左手的世界 https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ -&lt;p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别.
-另外,本人并非专业研究人员.若有错误欢迎指正!&lt;/p>
-&lt;!-- more -->
-&lt;h1 id="何为入声-">何为入声&lt;/h1>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://amazingrise.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sat, 04 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml"/><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid><description>左手的世界 https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>这是一个面向初学者的文章.
+很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
+这个时候调试器就要上场了~
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p>
+&lt;h2 id="为什么">为什么&lt;/h2>
+&lt;h3 id="我们为什么要学会调试">我们为什么要学会调试&lt;/h3>
+&lt;p>学会调试,对于我们理解程序的运行流程,以及找bug很有帮助.
+想一下,如果我们能够在程序运行的时候,实时查看变量是怎么变化,岂不美哉?&lt;/p>
+&lt;h3 id="为嘛要用spyder">为嘛要用Spyder&lt;/h3>
+&lt;p>首先,这是一个面向Python初学者的文章.
+考虑到本篇文章的读者可能都是从Anaconda开始的,所以我在此以Spyder为例讲解调试器的使用.
+其他IDE的调试功能其实大同小异.&lt;/p>
+&lt;hr />
+&lt;h1 id="spyder初体验">Spyder初体验&lt;/h1>
+&lt;h2 id="熟悉spyder的界面">熟悉Spyder的界面&lt;/h2>
+&lt;p>我们先来熟悉一下Spyder的界面.
+&lt;img src="spyder-main.png" alt="" />&lt;/p>
 &lt;ul>
-&lt;li>入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留.&lt;/li>
-&lt;li>与入声相对的是舒声. 所以普通话里面全都是舒声.&lt;/li>
-&lt;li>入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程.&lt;/li>
-&lt;li>入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断.&lt;/li>
-&lt;li>然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.)&lt;/li>
+&lt;li>最上面有一排按钮,我们俗称工具栏.&lt;/li>
+&lt;li>在左侧,我们可以写代码. 按一下工具栏上&lt;strong>绿色&lt;/strong>的开始按钮,即可开始运行程序.&lt;/li>
+&lt;li>右侧分为上下两栏.
+&lt;ul>
+&lt;li>上栏中,有三个&lt;code>选项卡&lt;/code>.分别是&lt;code>Variable explorer&lt;/code>(这个很重要),&lt;code>File explorer&lt;/code>,还有&lt;code>Help&lt;/code>(后面两个基本没啥鸟用)&lt;/li>
+&lt;li>下栏叫做&lt;code>IPython console&lt;/code>,我们俗称为&lt;strong>控制台&lt;/strong>. 一般来说,运行代码时候的输出,会在控制台里面看到. 当然,我们可以在没有运行代码的时候,在&lt;code>In [n]: &lt;/code>(n是几不用关心)后面打入命令与控制台交互.&lt;/li>
 &lt;/ul>
-&lt;h1 id="五度标记法-">五度标记法&lt;/h1>
-&lt;p>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名.
-这一点让许多非汉语母语的人摸不到头脑.
-所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)&lt;/p>
-&lt;p>考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由&lt;a href="https://zh.wikipedia.org/wiki/%E8%B5%B5%E5%85%83%E4%BB%BB">赵元任先生&lt;/a>发明,他被称爲汉语言学之父)&lt;/p>
-&lt;p>下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.&lt;/p>
-&lt;h2 id="用五度标记法表示现代汉语的四个声调-">用五度标记法表示现代汉语的四个声调&lt;/h2>
-&lt;p>在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声.
-现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.&lt;/p>
-&lt;p>五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低.
-对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法.
-以现代汉语普通话的四个声调爲例,我放出一张用&lt;em>五度标记法&lt;/em>标记的四个声调的图,大家先体会一下.&lt;/p>
-&lt;p>&lt;img src="pinyin-tone-chart.png" alt="" />&lt;/p>
-&lt;p>图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.&lt;/p>
-&lt;p>曲线法很直观,声调越高,曲线中对应的那一点越高.
-而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.&lt;/p>
-&lt;p>所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51.
-(一些北方方言与普通话的最大区别便在于调值)&lt;/p>
-&lt;p>这麽说可能不是很直观.
-大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化.
-(感谢维基百科提供的好例子)
-番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。&lt;/p>
-&lt;h2 id="五度标记法表示了音调的相对高低-">五度标记法表示了音调的相对高低&lt;/h2>
-&lt;p>五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型.
-(与粤拼类似)&lt;/p>
-&lt;p>好的,这就是五度标记法.
-大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调.
-由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用.
-(反正我当时觉得,哇,这玩意简直是神器)&lt;/p>
-&lt;h1 id="粤语中的九声六调-">粤语中的九声六调&lt;/h1>
-&lt;p>由于笔者所接触到的粤语大多均爲广州话.
-所以本文暂且以&lt;em>粤语广州话&lt;/em>爲标准探讨.
-下文所指粤语,也均爲广州话爲代表的粤语.&lt;/p>
-&lt;p>援引自「&lt;a href="http://input.foruto.com/ccc/jyt/005.htm">中文字元资料页&lt;/a>」的内容：&lt;/p>
-&lt;blockquote>
-&lt;p>粤音则由四声，发展成九种声调，分别爲：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。&lt;/p>
-&lt;/blockquote>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>音调&lt;/th>
-&lt;th>阴平&lt;/th>
-&lt;th>阳上&lt;/th>
-&lt;th>阴去&lt;/th>
-&lt;th>阳平&lt;/th>
-&lt;th>阳上&lt;/th>
-&lt;th>阳去&lt;/th>
-&lt;th>阴入&lt;/th>
-&lt;th>中入&lt;/th>
-&lt;th>阳入&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>五度数字法&lt;/td>
-&lt;td>55&lt;/td>
-&lt;td>35&lt;/td>
-&lt;td>33&lt;/td>
-&lt;td>21&lt;/td>
-&lt;td>13&lt;/td>
-&lt;td>22&lt;/td>
-&lt;td>5(5)&lt;/td>
-&lt;td>3(3)&lt;/td>
-&lt;td>2(2)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>简单的粤拼&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>3&lt;/td>
-&lt;td>4&lt;/td>
-&lt;td>5&lt;/td>
-&lt;td>6&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>3&lt;/td>
-&lt;td>6&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>另一种粤拼&lt;/td>
-&lt;td>1&lt;/td>
-&lt;td>2&lt;/td>
-&lt;td>3&lt;/td>
-&lt;td>4&lt;/td>
-&lt;td>5&lt;/td>
-&lt;td>6&lt;/td>
-&lt;td>7&lt;/td>
-&lt;td>8&lt;/td>
-&lt;td>9&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>&lt;em>爲了简略描述,有的音调对应非唯一调值的我没有标出.大家见谅. 最准确的请参照原网页.&lt;/em>&lt;/p>
-&lt;p>值得注意的是,现代粤拼的数字,&lt;strong>仅仅代表某一个调型&lt;/strong>,并不代表本身声调的高低. 与现代汉语拼音方案一样,数字本身是无意义的.
-因此，人们说粤语有「九声六调」（九个声调，六种音高）。至于语音学学者，则大多把「声调」直接定义作音高，不计算其顿错性，就会直接说粤语有「六个声调」。两种说法的分别，只是对「声调」定义不同而已。&lt;/p>
-&lt;p>下面附上更加直观的曲线法.
-其中省略了7 8 9三个声调,因爲它们的音高与1 3 6的起点是相同的.
-(图片援引自&lt;a href="http://www.cantonese.asia/portal.php?mod=view&amp;amp;aid=229">粤语协会&lt;/a>)
-&lt;img src="tone.jpg" alt="" />&lt;/p>
-&lt;p>有一个简单的方法,你需要找一个会广州话的人,分别读一下「三 九 四 零 五 二 七 八 六」.
-这九个数字正好分别对应粤拼的1 2 3 4 5 6 7 8 9声.&lt;/p>
-&lt;p>如果读者在此对于区分六个音调仍然存疑,可进入这个网站:&lt;a href="http://www.iso10646hk.net/jp/learning/course_03.jsp">香港语言学学会粤语拼音方案&lt;/a>进行音频试听.
-仔细听,才能体会出它们的区别.
-毕竟多听才是学习语言的最佳方式.&lt;/p>
-&lt;p>个人认爲,对于非粤语母语者,学习粤语最准确的方法是先学习这一拼音方案.
-(这样才能更加准确. 当然,多听多说才是根本.)&lt;/p>
-&lt;h1 id="粤语广州话中的入声-">粤语(广州话)中的入声&lt;/h1>
-&lt;p>粤语(广州话)中很好保留了入声的三个韵尾: -p -t -k.
-在粤语中,入声是无声除阻音. 也就是说,唸到入声的时候,是不需要发出声音的,但是需要有气流的阻断这一过程.&lt;/p>
-&lt;p>但是不同韵尾的阻断方式是不一样的.&lt;/p>
-&lt;h2 id="我是如何发现入声的区别的-">我是如何发现入声的区别的&lt;/h2>
-&lt;p>起初我以爲粤语的入声只是单纯地阻断气流.
-于是忽略掉了入声之间的区别.
-&lt;del>后来被事实狠狠地打脸.&lt;/del>&lt;/p>
-&lt;p>最早是读「入」和「日」字的时候,感觉到这两个字的韵尾略有不同.
-我仔细查阅了一下字典,又听了一下,发现这两个字确实有区别.&lt;/p>
-&lt;p>入的粤拼是: jap6
-日的粤拼是: jat6&lt;/p>
-&lt;p>同样的区别可以体现在「八」和「百」这两个字上面.
-八: baat3
-百: baak3&lt;/p>
-&lt;h2 id="入声的区别-">入声的区别&lt;/h2>
-&lt;p>前面说过,入声听起来就像气流被突然阻断一样.
-而粤语中 -p -t -k三个入声的区别就在于:&lt;strong>气流被阻断的部位不同.&lt;/strong>&lt;/p>
-&lt;p>简单来讲:&lt;/p>
-&lt;blockquote>
-&lt;p>-p 要在嘴脣处阻断气流. 如 垃圾 laap6 saap3. 在两个字的结尾,要将嘴脣闭合,以阻断气流.
--t 要在舌尖处阻断气流. 如 佛山 fat6 saan1. 在佛字的结尾,要用舌尖抵住牙齿阻断气流.
--k 要在舌根处阻断气流. 如 白话 baak6 wa2. 在白的结尾,要用舌根抵住硬齶软齶交界处阻断气流.&lt;/p>
-&lt;/blockquote>
-&lt;p>如果我们用更通俗一些的方式阐述,则是:
-&lt;strong>在粤拼中遇到这三个韵尾的时候, 你需要分别做出p t k的口型来阻断气流.&lt;/strong>
-这与英语口语中的尾音略有类似.(例如keep,不可能读成 ki pu,最后的p会很轻很轻,并且不发音.)&lt;/p>
-&lt;h2 id="入声试听-">入声试听&lt;/h2>
-&lt;p>关于每个字的具体读音,我强烈推荐粤拼方案的网站.
-&lt;a href="http://www.iso10646hk.net/jp/database/index.jsp">粤拼资料库&lt;/a>&lt;/p>
-&lt;h2 id="补充之其他粤语拼音方案-">补充之其他粤语拼音方案&lt;/h2>
-&lt;p>目前最广泛的粤语拼音方案是粤拼,也就是香港语言学学会的粤语拼音方案.
-故本文採用粤拼来标注.&lt;/p>
-&lt;p>但在我阅读一些其他的粤语教程的时候,发现有的教程的入声韵尾并不是用-p -t -k这三个字母标记的.
-我见过-b -d -g这三个字母标注韵尾.甚至说与-p -t -k相混合标注韵尾的用法.
-其实这些标记方法是相同的.
-因爲前面说过入声在粤语中是无声除阻音,也就是不发声.
-而p-b, t-d, k-g这三组辅音的区别在于前者送气,后者不送气.
-在入声的环境中,由于不发声,只需要摆好口型,所以送气和不送气辅音可以视作等同的
-(这里用IPA来标注更加准确.后来想想还是算了.太複杂了没必要.)&lt;/p>
-&lt;p>举个例子,在韵尾爲p的字中,收尾的时候无论你是摆b的口型,还是摆p的口型,是一样的.
-(顺便体会一下入声的发声程度)&lt;/p>
-&lt;p>不过我们还是要以最流行的粤拼方案爲准.
-这样可以少走一些弯路.&lt;/p>
-&lt;h1 id="次回予告-">次回予告&lt;/h1>
-&lt;p>今天就写到这里.🤔️
-回顾了一下整个文章,我讲九声六调还费了不少工夫. 哈哈哈
-突然想到我下一篇是不是应该讲一下-a- 与 -aa- 的区别呢?
-&lt;del>算了算了,我自己还没搞明白. 😂️&lt;/del>&lt;/p>
-&lt;p>下一篇我可能写一篇随想,也有可能加一篇对本篇的补充.
-(如果是随想的话,那麽大概是关于「元」（meta）这一概念？)&lt;/p>
-&lt;p>如果有什麽不准确的地方,欢迎各位在评论区指出.
-(原创)作者amazingRise
-请尊重作者的劳动成果,未经许可不得转载.
-但欢迎转发本网址,以分享给其他人.&lt;/p>
-&lt;p>共同传承中华文化🥳&lt;/p>
-- https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>我的一份自我介绍</title><link>https://amazingrise.net/about/</link><pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate><guid>https://amazingrise.net/about/</guid><description>左手的世界 https://amazingrise.net/about/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="用spyder运行示例代码">用Spyder运行示例代码&lt;/h2>
+&lt;p>现在我们在左侧代码区域,粘贴下面的代码.&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a = &lt;span style="color:#b452cd">0&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">for&lt;/span> i &lt;span style="color:#8b008b">in&lt;/span> &lt;span style="color:#658b00">range&lt;/span>(&lt;span style="color:#b452cd">10&lt;/span>):
+i += &lt;span style="color:#b452cd">1&lt;/span>
+a += i
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后按一下绿色的开始按钮,我们可以在&lt;strong>控制台&lt;/strong>中看到输出.
+输出:&lt;/p>
+&lt;pre>&lt;code>55
+&lt;/code>&lt;/pre>&lt;p>&lt;em>给初学者的注释: i += 1 等同于 i = i + 1.&lt;/em>&lt;/p>
+&lt;h2 id="调试目标">调试目标&lt;/h2>
+&lt;p>我们想知道每一次for循环进行的时候,a和 i的值是怎么变化的.&lt;/p>
+&lt;h1 id="朴素的-print-调试法">朴素的 print 调试法&lt;/h1>
+&lt;p>这个方法自古以来就有了. &lt;del>(胡说,古代哪有Python)&lt;/del>
+在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.&lt;/p>
+&lt;p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
+所以我们把代码修改成:&lt;/p>
+&lt;div class="highlight">&lt;pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a = &lt;span style="color:#b452cd">0&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">for&lt;/span> i &lt;span style="color:#8b008b">in&lt;/span> &lt;span style="color:#658b00">range&lt;/span>(&lt;span style="color:#b452cd">10&lt;/span>):
+i += &lt;span style="color:#b452cd">1&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(&lt;span style="color:#cd5555">&amp;#34;此时i的值为:&amp;#34;&lt;/span>,i) &lt;span style="color:#228b22"># 在i变化后立马print,看看它的值是多少&lt;/span>
+a += i
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(&lt;span style="color:#cd5555">&amp;#34;此时a的值为:&amp;#34;&lt;/span>,a) &lt;span style="color:#228b22"># 在a变化后立马print,看看它的值是多少&lt;/span>
+&lt;span style="color:#8b008b;font-weight:bold">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果是这样的:&lt;/p>
+&lt;pre>&lt;code>此时i的值为: 1
+此时a的值为: 1
+中间省略无数个此时
+此时i的值为: 10
+此时a的值为: 55
+55
+&lt;/code>&lt;/pre>&lt;p>这样我们就能看出来每次for循环的i和a的变化情况了.&lt;/p>
+&lt;p>但是这样太麻烦了,而且满屏幕的i的值,a的值,看得人眼晕.
+而且当变量很多的时候,我们要加很多print.
+最后到了提交之前,还要记得把自己打的这些print给删除掉.&lt;/p>
+&lt;p>那么,有没有更直观,更优雅的方法呢?&lt;/p>
+&lt;h1 id="隆重登场的调试器法">隆重登场的调试器法&lt;/h1>
+&lt;p>我们如果要运行程序,只需要点击工具栏中那个绿色的开始按钮就可以了.&lt;/p>
+&lt;p>但是这只是&lt;strong>单纯的运行&lt;/strong>.
+它会像IDLE一样,正常运行程序,没有调试没有逗留.&lt;/p>
+&lt;h2 id="第一招式---逐行调试">第一招式 - 逐行调试&lt;/h2>
+&lt;h3 id="进入调试模式">进入调试模式&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>想要开始调试,我们需要按下图中所示的&lt;strong>1号按钮&lt;/strong>(Debug File).
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>然后我们再&lt;strong>点击一下&lt;/strong>下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>红色箭头: 一定要记住,我们一定要&lt;strong>切换&lt;/strong>到下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>,这样我们才可以看到变量此时的值. (不过因为我们还没有执行第一行代码,所以这里是空的.)
+&lt;img src="start-debug-1.png" alt="" />&lt;/li>
+&lt;li>蓝色箭头: 它所指的地方,上面有个&lt;code>----&amp;gt;&lt;/code>的符号,并且后面有&lt;strong>行号&lt;/strong>1.这代表当前调试器&lt;strong>将要&lt;/strong>(还未)运行第一行代码. &lt;em>(划重点,不要搞错,「将要」)&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h3 id="开始逐行调试">开始逐行调试&lt;/h3>
+&lt;p>现在,按下图中所示的2号按钮**(以下称为Run Current Line)**,开始在调试器里面运行下一行代码.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>我们可以看到,&lt;code>Variable explorer&lt;/code>里面多出了变量&lt;code>a&lt;/code>.
+其中&lt;code>Name&lt;/code>代表这个变量的&lt;strong>名称&lt;/strong>,第二栏&lt;code>Type&lt;/code>是这个变量的&lt;strong>类型&lt;/strong>.而最后一栏&lt;code>Value&lt;/code>是该变量的&lt;strong>值&lt;/strong>.(Size不用管,暂时用不上.)
+并且控制台中的&lt;code>----&amp;gt;&lt;/code>符号指向了第二行. 说明第一行执行完毕,再次点击将执行第二行.
+&lt;img src="start-debug-2.png" alt="" />&lt;/p>
+&lt;p>举个例子:
+以图中的变量&lt;code>a&lt;/code>为例,这个变量的名称是&lt;code>a&lt;/code>,它的类型是&lt;code>int&lt;/code>,值为&lt;code>0&lt;/code>.
+(正好也和我们预期的情况相同&amp;ndash;我们执行了一句&lt;code>a=0&lt;/code>)&lt;/p>
+&lt;hr />
+&lt;p>我们接着点刚才的&lt;strong>Run Current Line&lt;/strong>.可以看到,&lt;code>Variable explorer&lt;/code>中又多出了第二行变量&lt;code>i&lt;/code>.并且此时控制台中的&lt;code>----&amp;gt;&lt;/code>指向了第三行.
+&lt;img src="start-debug-3.png" alt="" />
+这说明此时,&lt;code>i&lt;/code>的值为&lt;code>0&lt;/code>,&lt;code>a&lt;/code>的值也为&lt;code>0&lt;/code>.&lt;/p>
+&lt;hr />
+&lt;p>我们点击&lt;strong>Run Current Line&lt;/strong>(这是第三次).发现&lt;code>i&lt;/code>的值由&lt;code>0&lt;/code>变为&lt;code>1&lt;/code>.
+再点击一次&lt;strong>Run Current Line&lt;/strong>(这是第四次),&lt;code>a&lt;/code>的值也变成了&lt;code>1&lt;/code>.
+注意一下,经过四次逐行执行,控制台输出如下:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; None
+&amp;gt; c:\users\rise\desktop\temp.py(2)&amp;lt;module&amp;gt;()
+1 a = 0
+----&amp;gt; 2 for i in range(10):
+3 i += 1
+4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>我们可以看到,&lt;code>----&amp;gt;&lt;/code>符号指向第二行(for所在的那行).
+这说明此时第一次for循环执行完毕.由于还有&lt;strong>后面的循环&lt;/strong>,所以这里程序要&lt;strong>跳回for循环的起始位置&lt;/strong>,继续进行剩下几次循环.&lt;/p>
+&lt;hr />
+&lt;p>我们通过逐行调试,可以很直观清楚地跟踪程序的运行过程.
+如果我们想中途停止此次调试,只需要点击一下&lt;strong>6号按钮&lt;/strong>,即&lt;code>Stop Debugging&lt;/code>.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>这就是逐行调试了.&lt;/p>
+&lt;hr />
+&lt;h3 id="小总结">小总结&lt;/h3>
+&lt;p>来总结一下:&lt;/p>
+&lt;ol>
+&lt;li>要开始调试,需要点击&lt;code>Debug File&lt;/code>. 点击之后,会进入调试模式.&lt;/li>
+&lt;li>一定记得切换到&lt;code>Variable explorer&lt;/code>,这样才能查看变量的变化情况.&lt;/li>
+&lt;li>点击&lt;code>Run Current Line&lt;/code>,运行第一行代码.&lt;/li>
+&lt;li>继续点击&lt;code>Run Current Line&lt;/code>这个按钮,会&lt;strong>按照程序逻辑&lt;/strong>运行下一行代码. 直至执行完毕为止.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;p>在上述的调试过程中:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Variable explorer&lt;/code>中将显示当前存在的所有变量. &lt;code>Type&lt;/code>表示该变量的类型&lt;code>Value&lt;/code>一栏将显示变量的值.(不要看走眼,不是&lt;code>Size&lt;/code>一栏)&lt;/li>
+&lt;li>在控制台中,我们可以通过&lt;code>----&amp;gt;&lt;/code>这个符号所指向的行数,看到即将被执行的代码是哪一行.&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h2 id="第二招式---断点调试">第二招式 - 断点调试&lt;/h2>
+&lt;p>断点调试顾名思义,是可以在某一行(或多行)设置断点,对该行进行调试.
+而逐行调试是对每一行进行调试.
+断点调试是更有针对性的调试方法.&lt;/p>
+&lt;p>如果你能搞清楚逐行调试,那么断点调试也不难.&lt;/p>
+&lt;h3 id="设置断点">设置断点&lt;/h3>
+&lt;p>如图. 双击某一行行号前面的空白处,之后在这个地方会出现如图所示的小红点.
+&lt;img src="set-breakpoint.png" alt="" />
+这个小红点就是我们所说的断点.&lt;/p>
+&lt;h3 id="开始调试">开始调试&lt;/h3>
+&lt;p>如图所示,我们现在在&lt;strong>第3行,第4行&lt;/strong>设置&lt;strong>两个&lt;/strong>断点.&lt;/p>
+&lt;p>我们按&lt;code>Debug File&lt;/code>开始调试代码.
+此时可以看到,控制台里面的显示是这样的:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; &amp;gt; c:\users\rise\desktop\temp.py(3)&amp;lt;module&amp;gt;()
+1 a = 0
+2 for i in range(10):
+1---&amp;gt; 3 i += 1
+2 4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>其中,行号前面的1和2,代表我们设置的两个断点.
+所以此时即将运行&lt;strong>第一个断点处,即第三行.&lt;/strong>&lt;/p>
+&lt;h3 id="继续调试">继续调试&lt;/h3>
+&lt;p>程序的执行此时暂停.我们要让它继续运行,需要按一下第五个按钮,即&lt;code>Continue executation until next breakpoint&lt;/code>:
+&lt;img src="spyder-debug.png" alt="" />
+这个按钮的意思就是,继续执行直到下一个断点.
+因为我们第二个断点设置在第四行,所以代码将继续执行,在&lt;strong>将要执行&lt;/strong>第四行的时候会暂停.&lt;/p>
+&lt;h3 id="断点调试小总结">断点调试小总结&lt;/h3>
+&lt;p>我来总结一下断点调试的几个步骤.&lt;/p>
+&lt;ol>
+&lt;li>双击行号前面的空白处,以设置断点&lt;/li>
+&lt;li>点击&lt;code>Debug file&lt;/code>开始进入调试&lt;/li>
+&lt;li>在调试过程中,通过&lt;code>Variable explorer&lt;/code>观察变量的值&lt;/li>
+&lt;li>点击&lt;code>Continue executation until next breakpoint&lt;/code>执行到下一个断点处.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h2 id="调试器总结">调试器总结&lt;/h2>
+&lt;p>几点需要注意的地方:&lt;/p>
+&lt;ul>
+&lt;li>每次打开Spyder的时候,右上方区域默认显示的是&lt;code>Help&lt;/code>. 所以我们需要手动切换到&lt;code>Variable explorer&lt;/code>.&lt;/li>
+&lt;li>在调试的时候,&lt;code>----&amp;gt;&lt;/code>指向的是即将执行的代码,而&lt;strong>不是已经执行的代码&lt;/strong>.&lt;/li>
+&lt;li>当一次调试完毕后,开始第二次调试的时候,&lt;code>Variable explorer&lt;/code>&lt;strong>不会&lt;/strong>自己清空. 这点一定要注意,上一次调试残留的变量的值仍然会留在&lt;code>Variable explorer&lt;/code>里面. 所以我们可以按一下下图所示的按钮清空.
+&lt;img src="clear-explorer.png" alt="" />&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h1 id="写在最后">写在最后&lt;/h1>
+&lt;p>调试是IDE中很重要的一个功能.
+这篇文章虽然字很多,但实际上用起来是很简单的,它并不复杂,而且很适合新手.
+如果我们学会了调试器的使用,那么写代码将会事半功倍.&lt;/p>
+&lt;p>另外,其他的IDE的调试功能也是大同小异.大家可以探索一下!&lt;/p>
+&lt;p>那么最后呢,就祝各位学有所成~ Cheers!&lt;/p>
+&lt;p>(未完待续,因为可能会有补充)&lt;/p>- https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>我的一份自我介绍</title><link>https://amazingrise.net/about/</link><pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate><guid>https://amazingrise.net/about/</guid><description>左手的世界 https://amazingrise.net/about/ -&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>此页正在建设中^_^&lt;/p>
 &lt;p>（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）&lt;/p>
 &lt;h1 id="关于本站">关于本站&lt;/h1>

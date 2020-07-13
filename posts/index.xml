@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 左手的世界</title><link>https://amazingrise.net/posts/</link><description>Recent content in Posts on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Tue, 05 May 2020 12:52:49 +0800</lastBuildDate><atom:link href="https://amazingrise.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://amazingrise.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://amazingrise.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 左手的世界</title><link>https://amazingrise.net/posts/</link><description>Recent content in Posts on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sat, 04 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amazingrise.net/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>粤语的声调及入声</title><link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate><guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid><description>本文原发于2019.10.27。今日梳理了一下文章思路，删除了一些冗余的内容，并调整了一下文章的结构。
+前言 汉语读起来十分动听， 而它正是以其抑扬顿挫之语调而著名。而粤语(广州话)中很好保留了中古汉语中的一些特征，例如声调和韵尾。
+本文将要介绍粤语的声调和韵尾。由于本人并非专业研究人员。若有错误欢迎指正！
+注：下文所指粤语，均为广州话为代表的粤语。
+声调 五度标记法 为了更好地给大家介绍粤语声调，这里先引入一种记录现代汉语声调的最广泛的方法：五度标记法。五度标记法在汉语方言相关研究中大量使用。 (由赵元任先生发明，他被称为汉语言学之父)
+五度标记法它标记了一个音韵的起始，中间过程(有时省略)，和结尾的音调高低。 下面我将以现代汉语普通话为例， 跟大家介绍一下五度标记法。
+现代汉语拼音方案中用一声，二声，三声，四声表示普通话中的四个音调。以这四个声调为例，我放出一张用五度标记法标记的四个声调的图，大家先体会一下。
+曲线很直观，声调越高，曲线中对应的那一点越高。而某一位置所对应的数值越高，则代表该位置的数字表示的声调越高。我们可以从图中读出，普通话中：
+一声的调值为55 二声的调值为35 三声的调值为214 四声的调值为51 大家可以尝试用普通话大声朗读这四个字来体会一下。
+番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。
+(感谢维基百科提供的好例子)
+我们可以看出，五度标记法的数字是有表面含义的，它们每个都代表调的相对高低。而现代汉语拼音方案的数字是无表面意义的，只是四种调型的序号而已。
+粤语的九声六调 目前最广泛的粤语拼音方案是粤拼，也就是香港语言学学会的粤语拼音方案。本文采用粤拼来标注粤语的声调。
+援引自「中文字元资料页」的内容：
+粤音则由四声，发展成九种声调，分别为：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。
+这些声调分别对应粤拼方案的1-9。不过这段话可能过于抽象。为了让大家更好理解，我们来用刚刚学的五度标记法来标识一下：
+音调 阴平 阳上 阴去 阳平 阳上 阳去 阴入 中入 阳入 粤拼 1 2 3 4 5 6 7 8 9 五度 55/53 35 33 11/21 13 22 5(5) 3(3) 2(2) 我们可以看到，粤拼的数字，与现代汉语拼音方案都仅仅代表某一个调型，并不代表本身声调的高低，数值本身是无意义的。</description></item><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://amazingrise.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://amazingrise.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
 网上的各种攻略琳琅满目，五花八门。
 终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。
 &amp;ndash; 即使是 2020 年，在更新策略激进的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。
@@ -79,19 +95,7 @@ const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`
 &lt;p>这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
 这个时候调试器就要上场了~
-所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p></description></item><item><title>粤语入声的初探究</title><link>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sun, 27 Oct 2019 09:08:33 +0000</pubDate><guid>https://amazingrise.net/2019/10/27/checked-tone-in-cantonese/</guid><description>汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 而粤语(广州话)中很好保留了入声的三个韵尾.本篇旨在描述粤语中三个入声的区别. 另外,本人并非专业研究人员.若有错误欢迎指正!
-何为入声 入声早已消失在现代普通话(或更泛化地说,北方方言)中. 但是在一些方言,例如粤语,客家话,闽南语中得以保留. 与入声相对的是舒声. 所以普通话里面全都是舒声. 入声又被称爲喉塞音. 这种叫法很形象,可能会加快理解的过程. 入声字的韵尾以塞音快速结束, 大部分入声字听起来就像气流突然被阻断. 然而古代汉语却有入声, 时人作赋之时, 有些便以入声作爲韵尾. (所以从这一角度讲,用一些方言(例如粤语)而不是现代普通话,才能更好地表现出它的艺术特色. 下文会举出一些例子.) 五度标记法 汉语读起来十分动听, 而它正是以其抑扬顿挫之语调而著名. 这一点让许多非汉语母语的人摸不到头脑. 所以如何表示汉语的声调呢?(这里汉语泛指普通话以及其他汉语方言)
-考虑到读者很多爲讲普通话的朋友.故在讲述入声之前,先给大家介绍一种记录现代汉语声调的最广泛的方法:五度标记法.(由赵元任先生发明,他被称爲汉语言学之父)
-下面我将以现代汉语普通话爲例, 跟大家简单介绍一下五度标记法.
-用五度标记法表示现代汉语的四个声调 在现代普通话中有四个声调,他们分别是: 阴平, 阳平, 上声, 去声. 现代汉语拼音方案中用一声,二声,三声,四声表示这四个音调.
-五度标记法它标记了一个音韵的起始,中间过程(有时省略),和结尾的音调高低. 对于音调的高低有两种表示形式:一种是数字法, 一种是曲线法. 以现代汉语普通话的四个声调爲例,我放出一张用五度标记法标记的四个声调的图,大家先体会一下.
-图中的曲线就是五度标记法的曲线法啦,而右侧 一二三四五 表示五度标记法的数字法.
-曲线法很直观,声调越高,曲线中对应的那一点越高. 而数字法的某一位置的数值越高,则代表该位置的数字表示的声调越高.
-所以说,普通话的一声的调值爲55, 二声的调值爲35, 三声的调值爲214, 四声的调值爲51. (一些北方方言与普通话的最大区别便在于调值)
-这麽说可能不是很直观. 大家可以尝试用普通话大声朗读这四个字来体会一下它的声调变化. (感谢维基百科提供的好例子) 番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。
-五度标记法表示了音调的相对高低 五度标记法与现代汉语拼音方案的最大不同在于: 五度标记法的数字代表相对调值的高低.而现代汉语拼音方案的四个数字则仅代表不同的声调调型. (与粤拼类似)
-好的,这就是五度标记法. 大家可能还是有一些不懂的地方. 在下文我将介绍粤语的九声六调. 由于粤语的音调更加丰富,所以可能更加便于理解五度标记法的作用. (反正我当时觉得,哇,这玩意简直是神器)
-粤语中的九声六调 由于笔者所接触到的粤语大多均爲广州话. 所以本文暂且以粤语广州话爲标准探讨. 下文所指粤语,也均爲广州话爲代表的粤语.</description></item><item><title>如何把Kotlin项目打包为可执行的jar</title><link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link><pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate><guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid><description>&lt;h2 id="前言-">前言&lt;/h2>
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p></description></item><item><title>如何把Kotlin项目打包为可执行的jar</title><link>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</link><pubDate>Sun, 11 Aug 2019 13:52:16 +0000</pubDate><guid>https://amazingrise.net/2019/08/11/package-kotlin-project-in-jar/</guid><description>&lt;h2 id="前言-">前言&lt;/h2>
 &lt;p>最近在做QQ机器人的后端。本人用Sun的HTTPServer实现HTTP服务的提供，可以看本人的 &lt;a href="https://github.com/amazingrise/qqbotkotlin">GitHub Repo - QQ Group Chatting Robot&lt;/a>
 该项目用Kotlin编写，刚开始是在IDE里面直接F9运行的。但是时间长了这也不是事&amp;hellip;&amp;hellip;
 于是我打算把该项目打包成可执行的jar，这样&lt;code>java -jar xxxxx.jar&lt;/code>就可以执行了，这多好呀。
