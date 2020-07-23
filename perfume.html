@@ -1,0 +1,62 @@
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection"> 
+
+<script src="/vendor/js/vue.min.js"></script>
+<script src="/vendor/js/jquery.min.js"" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<div id="app">
+    <div class="container">
+        <h1>Parfum Français Generator</h1>
+        <form>
+            <div class="form-group">
+                <label>学院</label>
+                <input type="text" class="form-control" v-model="college">
+            </div>
+            <div class="form-group">
+                <label>专业</label>
+                <input type="text" class="form-control" v-model="major">
+            </div>
+            <div class="form-group">
+                <label>没落原因</label>
+                <input type="text" class="form-control" v-model="reason">
+                <small class="form-text text-muted">因为“{{reason}}”大家不太了解，所以专业的分数并不高。</small>
+            </div>
+            <div class="form-group">
+                <label>位置</label>
+                <input type="text" class="form-control" v-model="location">
+            </div>
+        </form>
+        <div class="card">
+            <div class="card-body">
+                {{details()}}
+            </div>
+            <div class="card-footer">
+                Parfum Français Generator
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            college: "IESR",
+            major: "经济学(国际化创新班)",
+            reason: "新开不久",
+            location: "本部",
+        },
+        methods: {
+            details: function (){
+                return this.college+"是一个的规格超高的学院，也是我特别推荐大家报考的一个学院。开设了一个叫做"+this.major+"的专业。因为"+this.reason+"大家不太了解，所以专业的分数并不高，但是未来预计会大涨。在2019年毕业的一届本科生100%进行了深造，75%都进入了剑桥大学，哥伦比亚大学，新加坡国立大学等海外知名大学就读研究生，其他进入国内顶级985高校等就读。"+this.college+"采用小班教学，导师制教学，全英文教学，教授全部毕业于海内指定知名院校。在"+this.college+"，即使是本科生也积极投身科研，产出了众多论文成果。6000一年的学费可以读出一年几万的感觉。在"+this.location+"。"
+            }
+
+        }
+    })
+</script>
