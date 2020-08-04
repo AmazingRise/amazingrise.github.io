@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>Manjaro 在笔记本上的多显示器配置</title><meta charset=utf-8><meta name=X-UA-Compatible content="IE=edge"><meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport><meta content="telephone=no" name=format-detection><meta name=description content="很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。"><meta name=renderer content="webkit"><meta name=theme-color content="#ffffff"><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-139087684-1','auto');ga('send','pageview');}</script><script src=/vendor/js/jquery.min.js></script><script src=/vendor/js/popper.min.js></script><script src=/vendor/js/bootstrap.min.js></script><script src=/vendor/js/smooth-scroll.polyfills.min.js></script><link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css><script src=/vendor/js/vue.min.js></script><link rel=stylesheet href=https://amazingrise.net/scss/journal.min.47aa1ffb60880ad8c72feecd6962a14331eca7a7a30e08354a1ca91009b8bc5b.css integrity="sha256-R6of+2CICtjHL+7NaWKhQzHsp6ejDgg1ShypEAm4vFs=" media=screen><link rel=stylesheet href=https://amazingrise.net/scss/dark-mode.min.832f90e2bc07191c85a3b6c0310607f539897546b1126dd04df64aff22316ecd.css integrity="sha256-gy+Q4rwHGRyFo7bAMQYH9TmJdUaxEm3QTfZK/yIxbs0=" media=screen><script src=https://amazingrise.net/js/loadCSS.js></script><script>loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");</script><script src=https://amazingrise.net/js/toc-collapse.js></script><script src=https://unpkg.com/valine@1.4.14/dist/Valine.min.js></script></head><body><div id=app><div ref=sideContainer class=side-container><a class="a-block nav-head false" href=https://amazingrise.net><div class=nav-title>左手的世界</div><div class=nav-subtitle>Rise's Blog</div></a><div class=nav-link-list><a class="a-block nav-link-item false" href=/posts>歸檔</a>
+<!doctype html><html><head><title>Manjaro 在笔记本上的多显示器配置</title><meta charset=utf-8><meta name=X-UA-Compatible content="IE=edge"><meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport><meta content="telephone=no" name=format-detection><meta name=description content="很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。"><meta name=renderer content="webkit"><meta name=theme-color content="#ffffff"><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-139087684-1','auto');ga('send','pageview');}</script><script src=/vendor/js/jquery.min.js></script><script src=/vendor/js/popper.min.js></script><script src=/vendor/js/bootstrap.min.js></script><script src=/vendor/js/smooth-scroll.polyfills.min.js></script><link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css><script src=/vendor/js/vue.min.js></script><link rel=stylesheet href=https://amazingrise.net/scss/journal.min.e8263494e9f4a1bf7bf9b96d3321c56ed0bdca6402b184bbe3235776bd017788.css integrity="sha256-6CY0lOn0ob97+bltMyHFbtC9ymQCsYS74yNXdr0Bd4g=" media=screen><link rel=stylesheet href=https://amazingrise.net/scss/dark-mode.min.792994365282098be16c3441ba1ecf01866183d781b67a0a03ead12a50b10f89.css integrity="sha256-eSmUNlKCCYvhbDRBuh7PAYZhg9eBtnoKA+rRKlCxD4k=" media=screen><script src=https://amazingrise.net/js/loadCSS.js></script><script>loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");</script><script src=https://amazingrise.net/js/toc-collapse.js></script><script src=https://unpkg.com/valine@1.4.14/dist/Valine.min.js></script></head><body><div id=app><div ref=sideContainer class=side-container><a class="a-block nav-head false" href=https://amazingrise.net><div class=nav-title>左手的世界</div><div class=nav-subtitle>Rise's Blog</div></a><div class=nav-link-list><a class="a-block nav-link-item false" href=/posts>歸檔</a>
 <a class="a-block nav-link-item false" href=/categories>分類</a>
 <a class="a-block nav-link-item false" href=/about>關於</a>
 <a class="a-block nav-link-item false" href=/friends>朋友們</a>
@@ -24,59 +24,59 @@ Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
 后来经过一阵探索，才在Manjaro上用上了外置显示器。</p><hr><h2 id=背景->背景</h2><p>还是老规矩，我先介绍一下这个问题的背景。
 解决方法请翻到<a href=#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95->解决方法</a>一节。</p><p>环境：</p><p>intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。</p><p>症状：</p><ul><li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li><li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。</li></ul><p>如果你的是<strong>外接显卡坞+显示器，这篇教程不适合你</strong>。不过有网友（感谢<code>@sunlitforest</code>）用另一种方法操作成功了，详情请看<a href=https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749>这里</a>。</p><h2 id=分析问题->分析问题</h2><p>参照<a href=https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)>ArchWiki上面的说法</a>，让Optimus显卡在linux里面有三种实现方法：</p><ol><li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。</li><li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li><li>用Bumblebee。不过Bumblebee很难支持双显示器。</li><li>用专有驱动。</li><li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li></ol><hr><h2 id=解决方法->解决方法</h2><p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）</p><p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
 我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。</p><p>以下内容均为本人的中文翻译。<a href=https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225>原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p><h3 id=原帖前言->原帖前言</h3><p>如何在Optimus的笔记本上开启PRIME：</p><table><thead><tr><th align=left>方法</th><th align=left>优点</th><th align=left>缺点</th></tr></thead><tbody><tr><td align=left>bumblebee(Render offload)</td><td align=left>按需使用独立显卡，Manjaro默认配置</td><td align=left>有一定的开销，对性能有所影响</td></tr><tr><td align=left>PRIME</td><td align=left>直接使用独立显卡，性能更强</td><td align=left>两块显卡都一直供电，需要手动配置</td></tr><tr><td align=left>optimus-manager</td><td align=left>显卡切换更简单</td><td align=left>暂不成熟，还在开发中</td></tr><tr><td align=left>video-hybrid-intel-nvidia-440xx-prime</td><td align=left>NVIDIA 官方支持的 render offload.</td><td align=left>在译者机器上仍有 bug，不建议用</td></tr></tbody></table><blockquote><p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。<br>optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。</p></blockquote><blockquote><p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</p></blockquote><h3 id=1-移除bumblebee->1 移除Bumblebee</h3><p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
-bumblebee很碍事，所以我们得先干掉它。</p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -r pci nonfree <span style=color:#b452cd>0300</span>
-</code></pre></div><h3 id=2-安装nvidia驱动->2 安装NVIDIA驱动</h3><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -i pci video-nvidia-440xx
+bumblebee很碍事，所以我们得先干掉它。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -r pci nonfree <span style=color:#bd93f9>0300</span>
+</code></pre></div><h3 id=2-安装nvidia驱动->2 安装NVIDIA驱动</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -i pci video-nvidia-440xx
 </code></pre></div><p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程</p><h3 id=3-修改mhwd设置->3 修改MHWD设置</h3><p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。</p><h4 id=另起炉灶->另起炉灶</h4><p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
 （如果你不放心可以mv嘛。）
-然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#658b00>Section &#34;Module&#34;</span>
-    <span style=color:#658b00>Load &#34;modesetting&#34;</span>
-<span style=color:#658b00>EndSection</span>
+然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>Section &#34;Module&#34;</span>
+    <span style=color:#50fa7b>Load &#34;modesetting&#34;</span>
+<span style=color:#50fa7b>EndSection</span>
 
-<span style=color:#658b00>Section &#34;Device&#34;</span>
-    <span style=color:#658b00>Identifier &#34;nvidia&#34;</span>
-    <span style=color:#658b00>Driver &#34;nvidia&#34;</span>
-    <span style=color:#658b00>BusID &#34;PCI:1:0:0&#34;</span>
-    <span style=color:#658b00>Option &#34;AllowEmptyInitialConfiguration&#34;</span>
-<span style=color:#658b00>EndSection</span>
+<span style=color:#50fa7b>Section &#34;Device&#34;</span>
+    <span style=color:#50fa7b>Identifier &#34;nvidia&#34;</span>
+    <span style=color:#50fa7b>Driver &#34;nvidia&#34;</span>
+    <span style=color:#50fa7b>BusID &#34;PCI:1:0:0&#34;</span>
+    <span style=color:#50fa7b>Option &#34;AllowEmptyInitialConfiguration&#34;</span>
+<span style=color:#50fa7b>EndSection</span>
 </code></pre></div><blockquote><p>注意：BusID一栏需要<strong>根据自己的电脑配置</strong>进行修改。BusID的值是这么查询的：<code>lspci | grep -E "VGA|3D"</code></p></blockquote><h4 id=禁用模块->禁用模块</h4><p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
 此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
 所以，我们需要对<code>/etc/modprobe.d</code>动动手脚。</p><p>首先，我们得把mhwd自动生成的黑名单删掉。
 （译者注：不放心的话，就把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
-比如这样：<strong>视情况而定，你的配置可能不同</strong></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls /etc/modprobe.d/mhwd*
+比如这样：<strong>视情况而定，你的配置可能不同</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls /etc/modprobe.d/mhwd*
 sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 </code></pre></div><p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
-写入：<code>/etc/modprobe.d/nvidia.conf</code></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#658b00>blacklist nouveau</span>
-<span style=color:#658b00>blacklist nvidiafb</span>
-<span style=color:#658b00>blacklist rivafb</span>
-</code></pre></div><h3 id=4-开启-modeset->4 开启 modeset</h3><p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#658b00>options nvidia_drm modeset</span>=<span style=color:#cd5555>1</span>
+写入：<code>/etc/modprobe.d/nvidia.conf</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>blacklist nouveau</span>
+<span style=color:#50fa7b>blacklist nvidiafb</span>
+<span style=color:#50fa7b>blacklist rivafb</span>
+</code></pre></div><h3 id=4-开启-modeset->4 开启 modeset</h3><p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>options nvidia_drm modeset</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>1</span>
 </code></pre></div><h3 id=5-设置启动脚本->5 设置启动脚本</h3><p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
 如果你现在重启，桌面环境的输出可能会有一些问题。</p><p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。</p><blockquote><p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。</p></blockquote><hr><p><strong>针对 LightDM (xfce默认)</strong>
-创建一个文件，<code>/usr/local/bin/optimus.sh</code></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#1e889b>#!/bin/sh
-</span><span style=color:#1e889b></span>
+创建一个文件，<code>/usr/local/bin/optimus.sh</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
+</span><span style=color:#ff79c6></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 </code></pre></div><p>然后按照国际惯例（hhh），让它可写可执行：<code>chmod a+rx /usr/local/bin/optimus.sh</code>
 现在你还得把它设置为启动脚本。
 编辑<code>/etc/lightdm/lightdm.conf</code>，然后在**[Seat:* ]**这一节设置
-<code>display-setup-script=/usr/local/bin/optimus.sh</code></p><hr><p><strong>针对 GDM (Gnome默认)</strong></p><p>创建一个文件<code>/usr/local/share/optimus.desktop</code></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#8b008b;font-weight:700>[Desktop Entry]</span>
-<span style=color:#658b00>Type</span>=<span style=color:#cd5555>Application</span>
-<span style=color:#658b00>Name</span>=<span style=color:#cd5555>Optimus</span>
-<span style=color:#658b00>Exec</span>=<span style=color:#cd5555>sh -c &#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&#34;</span>
-<span style=color:#658b00>NoDisplay</span>=<span style=color:#cd5555>true</span>
-<span style=color:#658b00>X-GNOME-Autostart-Phase</span>=<span style=color:#cd5555>DisplayServer</span>
-</code></pre></div><p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)<br>然后建立连接，让它随着GDM启动。</p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+<code>display-setup-script=/usr/local/bin/optimus.sh</code></p><hr><p><strong>针对 GDM (Gnome默认)</strong></p><p>创建一个文件<code>/usr/local/share/optimus.desktop</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#ff79c6>[Desktop Entry]</span>
+<span style=color:#50fa7b>Type</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>Application</span>
+<span style=color:#50fa7b>Name</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>Optimus</span>
+<span style=color:#50fa7b>Exec</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>sh -c &#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&#34;</span>
+<span style=color:#50fa7b>NoDisplay</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>true</span>
+<span style=color:#50fa7b>X-GNOME-Autostart-Phase</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>DisplayServer</span>
+</code></pre></div><p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)<br>然后建立连接，让它随着GDM启动。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
-</code></pre></div><hr><p><strong>针对 SDDM (KDE 默认)</strong></p><p>创建一个文件：<code>/usr/share/sddm/scripts/Xsetup</code></p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#1e889b>#!/bin/sh
-</span><span style=color:#1e889b></span>
+</code></pre></div><hr><p><strong>针对 SDDM (KDE 默认)</strong></p><p>创建一个文件：<code>/usr/share/sddm/scripts/Xsetup</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
+</span><span style=color:#ff79c6></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 </code></pre></div><p>然后用chmod让它变为可执行的文件。</p><h3 id=6-最后的工作->6 最后的工作</h3><p>译者注：如果以上的工作都已经完成，我建议你再做一步。
 我当时没有做这一步，之后重启发现内核模块加载错误。
-所以还是建议，编译一下内核。</p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mkinitcpio -P linux
+所以还是建议，编译一下内核。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mkinitcpio -P linux
 </code></pre></div><p>最后重启，大功告成。</p><h3 id=验证是否成功->验证是否成功</h3><p>如果以上你都设置正确了，当你重启之后，可以敲<code>glxinfo | grep -i vendor</code>
-然后看看是不是像下面这样的信息。</p><div class=highlight><pre style=background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ glxinfo | grep -i vendor
+然后看看是不是像下面这样的信息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ glxinfo | grep -i vendor
 server glx vendor string: NVIDIA Corporation
 client glx vendor string: NVIDIA Corporation
 OpenGL vendor string: NVIDIA Corporation
