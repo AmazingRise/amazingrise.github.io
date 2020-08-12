@@ -1,4 +1,267 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://amazingrise.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sat, 04 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml"/><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid><description>左手的世界 https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ -&lt;h1 id="前言">前言&lt;/h1>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://amazingrise.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Tue, 11 Aug 2020 08:42:26 +0800</lastBuildDate><atom:link href="https://amazingrise.net/index.xml" rel="self" type="application/rss+xml"/><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://amazingrise.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/obs-now-playing/</guid><description>左手的世界 https://amazingrise.net/posts/obs-now-playing/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;h2 id="前言的前言">前言的前言&lt;/h2>
+&lt;p>欢迎大家关注我的 bilibili 帐号：&lt;a href="https://space.bilibili.com/441928938/">bili-Amazingrise&lt;/a>&lt;/p>
+&lt;p>不定期直播搬砖，游戏，或者其他有趣的东西~&lt;/p>
+&lt;h2 id="缘由">缘由&lt;/h2>
+&lt;p>为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。&lt;/p>
+&lt;p>看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。&lt;/p>
+&lt;p>另外，这篇文章的诞生也是受到这位的启发：&lt;a href="https://keep.moe/2019/05/16/netease-now-playing-lldb/">获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 &lt;/a>
+（没错，就是这个主题的原作者。）&lt;/p>
+&lt;h1 id="正文">正文&lt;/h1>
+&lt;h2 id="原理">原理&lt;/h2>
+&lt;p>当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。&lt;/p>
+&lt;p>由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。&lt;/p>
+&lt;p>以我用的 &lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music">Electron Netease Cloud Music&lt;/a> 为例。&lt;/p>
+&lt;p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。&lt;/p>
+&lt;p>仔细看该项目的源代码，可以找到&lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14">这几行&lt;/a>：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#ff79c6">const&lt;/span> i &lt;span style="color:#ff79c6">=&lt;/span> {
+name(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`org.mpris.MediaPlayer2.&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span>;
+},
+path(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`/org/mpris/MediaPlayer2/&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span>;
+}
+};
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。&lt;/p>
+&lt;p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？&lt;/p>
+&lt;p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们会得到这样一段结果：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">method &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">time&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>1578801147.817851 &lt;span style="color:#8be9fd;font-style:italic">sender&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.89 -&amp;gt; &lt;span style="color:#8be9fd;font-style:italic">destination&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.303 &lt;span style="color:#8be9fd;font-style:italic">serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">100&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">reply_serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">2&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:trackid&amp;#34;&lt;/span>
+variant object path &lt;span style="color:#f1fa8c">&amp;#34;/org/mpris/MediaPlayer2/1475050&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:length&amp;#34;&lt;/span>
+variant int64 &lt;span style="color:#bd93f9">164000000&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:artUrl&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:album&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Working Class Hero: The Definitive Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:artist&amp;#34;&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;John Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:discNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">0&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:title&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Oh My Love&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:trackNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">9&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>从结果中我们可以找到我们想要的信息：歌手，标题等等。&lt;/p>
+&lt;p>最后，我们只需要用正则表达式提取一下就🉑️️了。&lt;/p>
+&lt;h2 id="实现">实现&lt;/h2>
+&lt;p>正则表达式 &lt;del>当时鼓捣了好久，&lt;/del> 能用就行。&lt;/p>
+&lt;p>下面是具体的 Shell 脚本实现。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#6272a4">#/bin/sh!&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;Song Daemon is running......&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">PREFIX&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;Rise 正在播放:&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">FILENAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;/tmp/songdaemon&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">NOSONG&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;当前没有播放歌曲&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">while&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> : &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">do&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">ARTIST&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/artist/{n;n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#8be9fd;font-style:italic">NAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/title/{n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#6272a4"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$PREFIX&lt;/span>&lt;span style="color:#f1fa8c"> &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c"> - &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$ARTIST&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>cat &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+sleep 1;
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">done&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。&lt;/p>
+&lt;h1 id="后记">后记&lt;/h1>
+&lt;p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。&lt;/p>
+&lt;p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。&lt;/p>
+&lt;p>当时水了一些别的文章，总之这篇文章就留到了今年。&lt;/p>
+&lt;p>希望对各位有所帮助。&lt;/p>
+&lt;p>&lt;del>又水完一篇博客，好开心。&lt;/del>&lt;/p>
+- https://amazingrise.net/posts/obs-now-playing/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>test</title><link>https://amazingrise.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/2ng/</guid><description>左手的世界 https://amazingrise.net/posts/2ng/ -
+&lt;figure align="Right" role="group" aria-describedby="caption-b702144d9bf18a49078547e2789a824e">
+&lt;a href="https://amazingrise.net/posts/2ng/tone.jpg" class="img-link">
+&lt;img src="https://amazingrise.net/posts/2ng/tone_huafd0d313779d35bf7a8f3cc64747e841_31188_700x0_resize_q75_box.jpg">
+&lt;/a>
+&lt;figcaption id="caption-b702144d9bf18a49078547e2789a824e">
+The Sun is the star at the center of the Solar System. It is a nearly perfect sphere of hot plasma, with internal convective motion that generates a magnetic field via a dynamo process. It is by far the most important source of energy for life on Earth. &lt;a href="https://images.nasa.gov/details-GSFC_20171208_Archive_e000393.html">Credits&lt;/a>.
+&lt;/figcaption>
+&lt;/figure>
+&lt;h1 id="一级标题">一级标题&lt;/h1>
+&lt;h2 id="二级标题">二级标题&lt;/h2>
+&lt;h3 id="三级标题">三级标题&lt;/h3>
+&lt;p>以此类推 最高六级&lt;/p>
+&lt;p>When $a \ne 0$, there are two solutions to &lt;code>\(ax^2 + bx + c = 0\)&lt;/code> and they are:&lt;/p>
+&lt;p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
+$$
+\frac{1}{2}
+$$&lt;/p>
+&lt;p>&lt;img src="header" alt="" />
+&lt;img src="https://amazingrise.net/covers/obs-now-playing.jpg" width=50% />&lt;/p>
+&lt;h2 id="前言的前言">前言的前言&lt;/h2>
+&lt;p>欢迎大家关注我的 bilibili 帐号：&lt;a href="https://space.bilibili.com/441928938/">bili-Amazingrise&lt;/a>&lt;/p>
+&lt;p>不定期直播搬砖，游戏，或者其他有趣的东西~&lt;/p>
+&lt;h2 id="缘由">缘由&lt;/h2>
+&lt;p>为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。&lt;/p>
+&lt;p>看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。&lt;/p>
+&lt;p>另外，这篇文章的诞生也是受到这位的启发：&lt;a href="https://keep.moe/2019/05/16/netease-now-playing-lldb/">获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 &lt;/a>
+（没错，就是这个主题的原作者。）&lt;/p>
+&lt;h1 id="正文">正文&lt;/h1>
+&lt;h2 id="原理">原理&lt;/h2>
+&lt;p>当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。&lt;/p>
+&lt;p>由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。&lt;/p>
+&lt;p>以我用的 &lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music">Electron Netease Cloud Music&lt;/a> 为例。&lt;/p>
+&lt;p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。&lt;/p>
+&lt;p>仔细看该项目的源代码，可以找到&lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14">这几行&lt;/a>：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#ff79c6">const&lt;/span> i &lt;span style="color:#ff79c6">=&lt;/span> {
+name(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`org.mpris.MediaPlayer2.&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span>;
+},
+path(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`/org/mpris/MediaPlayer2/&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span>;
+}
+};
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="原理-1">原理&lt;/h2>
+&lt;p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。&lt;/p>
+&lt;p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？&lt;/p>
+&lt;h2 id="原理-2">原理&lt;/h2>
+&lt;p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们会得到这样一段结果：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">method &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">time&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>1578801147.817851 &lt;span style="color:#8be9fd;font-style:italic">sender&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.89 -&amp;gt; &lt;span style="color:#8be9fd;font-style:italic">destination&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.303 &lt;span style="color:#8be9fd;font-style:italic">serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">100&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">reply_serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">2&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:trackid&amp;#34;&lt;/span>
+variant object path &lt;span style="color:#f1fa8c">&amp;#34;/org/mpris/MediaPlayer2/1475050&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:length&amp;#34;&lt;/span>
+variant int64 &lt;span style="color:#bd93f9">164000000&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:artUrl&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:album&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Working Class Hero: The Definitive Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:artist&amp;#34;&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;John Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:discNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">0&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:title&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Oh My Love&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:trackNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">9&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="原理-3">原理&lt;/h2>
+&lt;p>从结果中我们可以找到我们想要的信息：歌手，标题等等。&lt;/p>
+&lt;p>最后，我们只需要用正则表达式提取一下就🉑️️了。&lt;/p>
+&lt;h2 id="实现">实现&lt;/h2>
+&lt;p>正则表达式 &lt;del>当时鼓捣了好久，&lt;/del> 能用就行。&lt;/p>
+&lt;h2 id="原理-4">原理&lt;/h2>
+&lt;p>下面是具体的 Shell 脚本实现。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#6272a4">#/bin/sh!&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;Song Daemon is running......&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">PREFIX&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;Rise 正在播放:&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">FILENAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;/tmp/songdaemon&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">NOSONG&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;当前没有播放歌曲&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">while&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> : &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">do&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">ARTIST&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/artist/{n;n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#8be9fd;font-style:italic">NAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/title/{n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#6272a4"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$PREFIX&lt;/span>&lt;span style="color:#f1fa8c"> &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c"> - &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$ARTIST&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>cat &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+sleep 1;
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">done&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。&lt;/p>
+&lt;h1 id="后记">后记&lt;/h1>
+&lt;p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。&lt;/p>
+&lt;h2 id="原理-5">原理&lt;/h2>
+&lt;h2 id="原理-6">原理&lt;/h2>
+&lt;h2 id="原理-7">原理&lt;/h2>
+&lt;h2 id="原理-8">原理&lt;/h2>
+&lt;h2 id="原理-9">原理&lt;/h2>
+&lt;h2 id="原理-10">原理&lt;/h2>
+&lt;h2 id="原理-11">原理&lt;/h2>
+&lt;h2 id="原理-12">原理&lt;/h2>
+&lt;h2 id="原理-13">原理&lt;/h2>
+&lt;h2 id="原理-14">原理&lt;/h2>
+&lt;h2 id="原理-15">原理&lt;/h2>
+&lt;h2 id="原理-16">原理&lt;/h2>
+&lt;h2 id="原理-17">原理&lt;/h2>
+&lt;h2 id="原理-18">原理&lt;/h2>
+&lt;h2 id="原理-19">原理&lt;/h2>
+&lt;h2 id="原理-20">原理&lt;/h2>
+&lt;h2 id="原理-21">原理&lt;/h2>
+&lt;h2 id="原理-22">原理&lt;/h2>
+&lt;h2 id="原理-23">原理&lt;/h2>
+&lt;h2 id="原理-24">原理&lt;/h2>
+&lt;h2 id="原理-25">原理&lt;/h2>
+&lt;h2 id="原理-26">原理&lt;/h2>
+&lt;h2 id="原理-27">原理&lt;/h2>
+&lt;h2 id="原理-28">原理&lt;/h2>
+&lt;h2 id="原理-29">原理&lt;/h2>
+&lt;h2 id="原理-30">原理&lt;/h2>
+&lt;h2 id="原理-31">原理&lt;/h2>
+&lt;h2 id="原理-32">原理&lt;/h2>
+&lt;h2 id="原理-33">原理&lt;/h2>
+&lt;p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。&lt;/p>
+&lt;h2 id="原理-34">原理&lt;/h2>
+&lt;p>当时水了一些别的文章，总之这篇文章就留到了今年。&lt;/p>
+&lt;h2 id="原理-35">原理&lt;/h2>
+&lt;p>希望对各位有所帮助。&lt;/p>
+&lt;h2 id="原理-36">原理&lt;/h2>
+&lt;p>&lt;del>又水完一篇博客，好开心。&lt;/del>&lt;/p>
+- https://amazingrise.net/posts/2ng/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/</guid><description>左手的世界 https://amazingrise.net/2019/10/28/howto-use-spyder-debugger/ -&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
 这个时候调试器就要上场了~
