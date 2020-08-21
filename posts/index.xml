@@ -138,7 +138,7 @@ val int1 = 10 val int2 = 10 println(int1 == int2) // true println(int1.</descrip
 &lt;p>据本人今日的评测，这个&lt;code>video-hybrid-intel-nvidia-440xx-prime&lt;/code>(注意不是&lt;code>video-nvidia-440xx&lt;/code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code>prime&lt;/code>驱动。出现了一些问题，首先&lt;code>prime-run&lt;/code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p>
 &lt;p>新的驱动还是不太好用的。所以&lt;strong>这篇教程仍然有效&lt;/strong>，各位仍然可以用&lt;code>video-nvidia-440xx&lt;/code>，而不是混合驱动。&lt;/p>
 &lt;p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p>
-&lt;h2 id="前言-">前言&lt;/h2>
+&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
 （参见下文&lt;a href="#%E9%A2%98%E5%A4%96%E8%AF%9D-">题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a>）
 Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
