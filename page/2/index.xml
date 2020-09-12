@@ -451,7 +451,7 @@ println(negZero == posZero) &lt;span style="color:#6272a4">//true
 &lt;p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p>
 &lt;p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
 我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p>
-&lt;p>以下内容均为本人的中文翻译。&lt;a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;p>以下内容均为本人的中文翻译。&lt;a href="https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
 &lt;p>如何在Optimus的笔记本上开启PRIME：&lt;/p>
 &lt;table>
 &lt;thead>
@@ -480,7 +480,7 @@ println(negZero == posZero) &lt;span style="color:#6272a4">//true
 &lt;tr>
 &lt;td align="left">video-hybrid-intel-nvidia-440xx-prime&lt;/td>
 &lt;td align="left">NVIDIA 官方支持的 render offload.&lt;/td>
-&lt;td align="left">在译者机器上仍有 bug，不建议用&lt;/td>
+&lt;td align="left">&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -597,9 +597,8 @@ OpenGL vendor string: NVIDIA Corporation
 自从Windows 7 之后我就没用过没bug的系统！&lt;/p>
 &lt;p>希望我的这篇博文能帮到各位看官。 :)
 新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p>
-&lt;p>（2019-8 更新：感谢评论区的小伙伴的支持哦）&lt;/p>
 &lt;h2 id="参考资料">参考资料&lt;/h2>
-&lt;p>&lt;a href="https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus">Optimus - ArchWiki&lt;/a>&lt;/p>
 &lt;h2 id="github-评论区">GitHub 评论区&lt;/h2>
 &lt;p>本站评论区改为 Valine, 原评论区请&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此&lt;/a>.&lt;/p>
