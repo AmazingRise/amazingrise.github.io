@@ -129,17 +129,21 @@ const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`
 NaN 等于它本身 NaN 比任何其他元素要大，包括正无穷 POSITIVE_INFINITY 编译器会认为-0.0 要比 0.0 小。 一头雾水？
 举个栗子 我来举几个例子解释一下。
 首先，我们用这几个方法比较两个原始类型的变量（Int）。
-val int1 = 10 val int2 = 10 println(int1 == int2) // true println(int1.</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>&lt;p>2020.3.25 更新&lt;/p>
-&lt;p>原文提到:&lt;/p>
-&lt;blockquote>
-&lt;p>440xx update: If you have something which supports driver series 440xx then you should switch to video-hybrid-intel-nvidia-440xx-prime and ignore this guide (unless you want to use only the dGPU). Specify using the dGPU with e.g. prime-run glxinfo.&lt;/p>
-&lt;/blockquote>
-&lt;p>据本人今日的评测，这个&lt;code>video-hybrid-intel-nvidia-440xx-prime&lt;/code>(注意不是&lt;code>video-nvidia-440xx&lt;/code>)很不好用：我恢复了本篇文章的所有配置，并且安装了这个新版的&lt;code>prime&lt;/code>驱动。出现了一些问题，首先&lt;code>prime-run&lt;/code>并不能正常运行，其次 vmware 里面的 Windows 7 的 SVGA 3D 驱动也不能正常开启（Aero效果没了）。&lt;/p>
-&lt;p>新的驱动还是不太好用的。所以&lt;strong>这篇教程仍然有效&lt;/strong>，各位仍然可以用&lt;code>video-nvidia-440xx&lt;/code>，而不是混合驱动。&lt;/p>
-&lt;p>本文已经在2020年3月25日再次验证过，各位大可放心，按照步骤操作就可以了。&lt;/p>
-&lt;h2 id="前言">前言&lt;/h2>
-&lt;p>很久之前，就给自己新买的笔记本装上了Manjaro。可惜由于笔记本是双显卡，总会有些奇奇怪怪的问题。
-（参见下文&lt;a href="#%E9%A2%98%E5%A4%96%E8%AF%9D-">题外话，关于Windows 10上双显卡的“优秀表现”&lt;/a>）
-Manjaro上的问题就是，无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。
-Ubuntu 上不需要修改任何设置，直接就能识别外接显示器。
-后来经过一阵探索，才在Manjaro上用上了外置显示器。&lt;/p></description></item></channel></rss>
+val int1 = 10 val int2 = 10 println(int1 == int2) // true println(int1.</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>最新方法 2020.9.12 更新
+这篇文章里提到的解决方法应该用不上了，因为 video-hybrid-intel-nvidia-450xx-prime 可以直接识别笔记本上的双显示器。
+如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。 如果你以前看过这篇教程，建议将现有的video-nvidia-???xx更换为上述驱动，并且记得把这篇教程里更改过的配置文件一一还原。这个新的驱动修复了很多小问题。 如果你用的就是 video-hybrid-intel-nvidia-450xx-prime，并且双显示器无法工作，那么你可以参考这篇文章的内容，也许对你有帮助。 重要的话说三遍：
+建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
+建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
+建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
+失败了再回来试一下这篇文章的方法。
+背景 解决方法请翻到解决方法一节。
+环境：
+intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。
+症状：
+无法接外接显示器，接上后无论是系统设置还是inxi -Fx都无法识别外置显示器。 检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。 如果你的是外接显卡坞+显示器，这篇教程不适合你。不过有网友（感谢@sunlitforest）用另一种方法操作成功了，详情请看这里。
+参照ArchWiki上面的说法，让Optimus显卡在linux里面有三种实现方法：
+BIOS里面禁用掉一个显卡。缺点：难以切换显卡。 用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。 用Bumblebee。不过Bumblebee很难支持双显示器。 用专有驱动。 用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。） 解决方法 我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
+刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！ 我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。
+以下内容均为本人的中文翻译。原帖在此 - How To Set up PRIME with NVIDIA proprietary driver
+如何在Optimus的笔记本上开启PRIME：
+方法 优点 缺点 bumblebee(Render offload) 按需使用独立显卡，Manjaro默认配置 有一定的开销，对性能有所影响 PRIME 直接使用独立显卡，性能更强 两块显卡都一直供电，需要手动配置 optimus-manager 显卡切换更简单 暂不成熟，还在开发中 video-hybrid-intel-nvidia-440xx-prime NVIDIA 官方支持的 render offload.</description></item></channel></rss>
