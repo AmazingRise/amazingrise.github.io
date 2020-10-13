@@ -321,13 +321,13 @@ Kotlin语言里，“等号”有这么几种：&lt;code>==&lt;/code>，&lt;code
 那么问题来了，我们该如何正确使用这些相等性判断呢？&lt;/p>
 &lt;!-- more -->
 &lt;p>我们来一起看一看Kotlin的几种相等性判断：&lt;/p>
-&lt;h2 id="结构性相等-">结构性相等 (&amp;ldquo;==&amp;rdquo;)&lt;/h2>
+&lt;h2 id="结构性相等-">结构性相等 (&amp;quot;==&amp;quot;)&lt;/h2>
 &lt;p>&lt;code>==&lt;/code>操作符用于比较两个变量的值。
 &lt;strong>请不要与Java中的&lt;code>==&lt;/code>相混淆。&lt;/strong>
 与Java中的&lt;code>==&lt;/code>操作符&lt;strong>不同&lt;/strong>的是：&lt;code>==&lt;/code>操作符在Kotlin中只比较值。
 而Java或其它语言中，&lt;code>==&lt;/code>通常用来比较两个对象的引用。
 Kotlin中，&lt;code>==&lt;/code>的否定形式是&lt;code>!=&lt;/code>，当两个变量值不同时返回真。&lt;/p>
-&lt;h2 id="引用性相等">引用性相等(&amp;ldquo;===&amp;rdquo;)&lt;/h2>
+&lt;h2 id="引用性相等">引用性相等(&amp;quot;===&amp;quot;)&lt;/h2>
 &lt;p>&lt;code>===&lt;/code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，&lt;code>===&lt;/code>的值才为真。
 &lt;code>===&lt;/code>的否定形式是&lt;code>!==&lt;/code>，当两个对象的引用不同的时候返回真。&lt;/p>
 &lt;p>不过对于原始类型（Primitive type）来说（例如 Int），&lt;code>=== &lt;/code>等价于&lt;code> ==&lt;/code> 。&lt;/p>
