@@ -35,7 +35,7 @@
 援引自「中文字元资料页」的内容：
 粤音则由四声，发展成九种声调，分别为：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。
 这些声调分别对应粤拼方案的1-9。不过这段话可能过于抽象。为了让大家更好理解，我们来用刚刚学的五度标记法来标识一下：
-音调 阴平 阳上 阴去 阳平 阳上 阳去 阴入 中入 阳入 粤拼 1 2 3 4 5 6 7 8 9 五度 55/53 35 33 11/21 13 22 5(5) 3(3) 2(2) 我们可以看到，粤拼的数字，与现代汉语拼音方案都仅仅代表某一个调型，并不代表本身声调的高低，数值本身是无意义的。</description></item><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://amazingrise.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://amazingrise.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
+音调 阴平 阴上 阴去 阳平 阳上 阳去 阴入 中入 阳入 粤拼 1 2 3 4 5 6 7 8 9 五度 55/53 35 33 11/21 13 22 5(5) 3(3) 2(2) 我们可以看到，粤拼的数字，与现代汉语拼音方案都仅仅代表某一个调型，并不代表本身声调的高低，数值本身是无意义的。</description></item><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://amazingrise.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://amazingrise.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
 网上的各种攻略琳琅满目，五花八门。
 终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。
 &amp;ndash; 即使是 2020 年，在更新策略激进的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。
