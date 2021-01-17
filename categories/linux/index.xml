@@ -8,7 +8,7 @@
 以我用的 Electron Netease Cloud Music 为例。
 在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
 仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/manjaro-optimus-dual-monitor/</guid><description>最新方法 2020.9.12 更新
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://amazingrise.net/2019/04/20/Manjaro-Optimus-Dual-Monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://amazingrise.net/2019/04/20/Manjaro-Optimus-Dual-Monitor/</guid><description>最新方法 2020.9.12 更新
 这篇文章里提到的解决方法应该用不上了，因为 video-hybrid-intel-nvidia-450xx-prime 可以直接识别笔记本上的双显示器。
 如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。 如果你以前看过这篇教程，建议将现有的video-nvidia-???xx更换为上述驱动，并且记得把这篇教程里更改过的配置文件一一还原。这个新的驱动修复了很多小问题。 如果你用的就是 video-hybrid-intel-nvidia-450xx-prime，并且双显示器无法工作，那么你可以参考这篇文章的内容，也许对你有帮助。 重要的话说三遍：
 建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
