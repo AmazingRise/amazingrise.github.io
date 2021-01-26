@@ -45,7 +45,7 @@ addi x1,x1,&lt;span style="color:#bd93f9">12&lt;/span>&lt;span style="color:#627
 &lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>那么，我们是否可以将 C 语言程序移植到这个平台上呢？&lt;/p>
 &lt;p>还是交叉编译那一套&amp;ndash;借助 RISC-V 交叉编译工具链，我们可以将 C 语言程序移植到我们造的计算机上。&lt;/p>
 &lt;h1 id="正文">正文&lt;/h1>
-&lt;h3 id="获得工具链">获得工具链&lt;/h3>
+&lt;h2 id="获得工具链">获得工具链&lt;/h2>
 &lt;p>我们注意到，RISC-V 工具链分为两个版本：&lt;/p>
 &lt;ul>
 &lt;li>Newlib 版本，所有的命令开头是&lt;code>riscv64-unknown-elf-&lt;/code>。&lt;/li>
@@ -54,7 +54,7 @@ addi x1,x1,&lt;span style="color:#bd93f9">12&lt;/span>&lt;span style="color:#627
 &lt;p>那么我们应该选哪个呢？经过试验两者产生的机器码（.text部分）并无区别，但我建议选择 Newlib 版本的工具链。具体原因将在&lt;a href="#faq">后面&lt;/a>说。&lt;/p>
 &lt;p>Arch Linux 用户们可以&lt;strong>直接在 AUR 上获取&lt;/strong> &lt;code>riscv64-unknown-elf-gcc&lt;/code> 和 &lt;code>riscv64-unknown-elf-newlib&lt;/code> 这两个包。安装后你将获得两个版本的工具链。&lt;/p>
 &lt;p>你可以从源代码自行构建 &amp;ndash; &lt;a href="https://github.com/riscv/riscv-gnu-toolchain">RISC-V GNU Compiler Toolchain&lt;/a>。&lt;/p>
-&lt;h2 id="c-语言部分的编写">C 语言部分的编写&lt;/h2>
+&lt;h2 id="主程序的编写">主程序的编写&lt;/h2>
 &lt;p>利用 C 语言的指针操作，我们可以直接读写内存。下面是实现 Fibonacci 数计算的代码：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-C" data-lang="C">&lt;span style="color:#8be9fd">int&lt;/span> &lt;span style="color:#50fa7b">main&lt;/span>(){
 &lt;span style="color:#8be9fd">int&lt;/span>&lt;span style="color:#ff79c6">*&lt;/span> n; &lt;span style="color:#6272a4">// Input
@@ -96,7 +96,7 @@ n2 &lt;span style="color:#ff79c6">=&lt;/span> n3;
 &lt;li>&lt;code>-O binary&lt;/code> 选项用于输出纯二进制文件。&lt;/li>
 &lt;li>&lt;code>-j .text&lt;/code> 是告诉它只保留 &lt;code>.text&lt;/code> 部分。&lt;/li>
 &lt;/ul>
-&lt;p>经过处理，生成的二进制文件只含有机器指令。但此时的程序并不能直接运行。排查一下原因，发现&lt;code>sp&lt;/code>寄存器在运行第一条指令时，内容变成了&lt;code>0xFFFFFFD0&lt;/code>，是个负数。我们用 &lt;code>objdump&lt;/code> 进行反编译：&lt;/p>
+&lt;p>经过处理，生成的二进制文件只含有机器指令。但此时的程序并不能直接运行。我们用 &lt;code>objdump&lt;/code> 进行反编译，看看生成的机器码是怎么样的：&lt;/p>
 &lt;pre>&lt;code>➜ riscv64-unknown-elf-objdump -D -b binary main.bin -mriscv
 main.bin: file format binary
 Disassembly of section .data:
@@ -106,27 +106,27 @@ Disassembly of section .data:
 8: 03010413 addi s0,sp,48
 c: 400007b7 lui a5,0x40000
 ...
-&lt;/code>&lt;/pre>&lt;p>&lt;code>lui a5,0x40000&lt;/code> 显然对应我们代码的开头（将变量 n 指向 &lt;code>0x40000000&lt;/code>）。GCC在前面加了三条指令，而第一句就将&lt;code>sp&lt;/code>寄存器减去了48，这便是它变成负数的原因。&lt;/p>
+&lt;/code>&lt;/pre>&lt;p>&lt;code>lui a5,0x40000&lt;/code> 显然对应我们代码的开头（将变量 n 指向 &lt;code>0x40000000&lt;/code>）。GCC在前面加了三条指令，而第一句就将&lt;code>sp&lt;/code>寄存器减去了48。&lt;code>sp&lt;/code>为负，程序肯定不能正常运行。&lt;/p>
 &lt;blockquote>
 &lt;p>这三条指令用于设置 Stack Pointer(&lt;code>sp&lt;/code>) 和 Frame Pointer(&lt;code>s0&lt;/code>)。&lt;/p>
 &lt;/blockquote>
-&lt;p>所以，要解决这个问题，我们需要给 &lt;code>sp&lt;/code> 寄存器设置一个初始值。&lt;/p>
-&lt;h2 id="汇编部分的编写">汇编部分的编写&lt;/h2>
-&lt;p>要给 &lt;code>sp&lt;/code> 寄存器一个初始值，只需要一行汇编代码 &lt;code>lui sp, 0x10&lt;/code>。但是这行代码怎么放，又是一个问题。&lt;/p>
+&lt;p>所以，在运行 C 语言程序之前，我们需要给 &lt;code>sp&lt;/code> 寄存器设置一个初始值。这个不难，一行汇编代码就能搞定：&lt;code>lui sp, 0x10&lt;/code>。但是这行代码怎么放，又是一个问题。&lt;/p>
+&lt;h2 id="将汇编语句连接到主程序">将汇编语句连接到主程序&lt;/h2>
 &lt;p>下面我们将探索三种思路：&lt;/p>
 &lt;ul>
 &lt;li>内联汇编&lt;/li>
 &lt;li>直接用 cat 合并两个二进制文件&lt;/li>
 &lt;li>用 ld 连接汇编和 C 语言程序&lt;/li>
 &lt;/ul>
-&lt;h3 id="内联汇编是否可行">内联汇编是否可行&lt;/h3>
-&lt;p>我们可不可以在 C 语言里内联汇编实现对 &lt;code>sp&lt;/code> 的初始化呢？答案是&lt;strong>否定&lt;/strong>的，试试便知：&lt;/p>
+&lt;h3 id="内联汇编">内联汇编？&lt;/h3>
+&lt;p>我们可不可以在 C 语言里内联汇编实现对 &lt;code>sp&lt;/code> 的初始化呢？答案是&lt;strong>否定&lt;/strong>的。我们在 main 的第一行加一句内联汇编：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-c" data-lang="c">&lt;span style="color:#8be9fd">int&lt;/span> &lt;span style="color:#50fa7b">main&lt;/span>(){
 &lt;span style="color:#ff79c6">asm&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#34;lui sp,0x10&amp;#34;&lt;/span>);
 &lt;span style="color:#8be9fd">int&lt;/span>&lt;span style="color:#ff79c6">*&lt;/span> n; &lt;span style="color:#6272a4">// Input
 &lt;/span>&lt;span style="color:#6272a4">&lt;/span> n &lt;span style="color:#ff79c6">=&lt;/span> (&lt;span style="color:#8be9fd">int&lt;/span>&lt;span style="color:#ff79c6">*&lt;/span>) &lt;span style="color:#bd93f9">0x40000000&lt;/span>; &lt;span style="color:#6272a4">// Point input to 0x40000000
 &lt;/span>&lt;span style="color:#6272a4">&lt;/span>...
-&lt;/code>&lt;/pre>&lt;/div>&lt;pre>&lt;code>➜ riscv64-unknown-elf-objdump -D -b binary main.bin -mriscv
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后尝试反编译，看看这句话被加到了哪里：&lt;/p>
+&lt;pre>&lt;code>➜ riscv64-unknown-elf-objdump -D -b binary main.bin -mriscv
 main.bin: file format binary
 Disassembly of section .data:
 0000000000000000 &amp;lt;.data&amp;gt;:
@@ -136,22 +136,22 @@ Disassembly of section .data:
 c: 00010137 lui sp,0x10
 10: 400007b7 lui a5,0x40000
 ...
-&lt;/code>&lt;/pre>&lt;p>可以看到，内联汇编被放在了那三条指令后面，&lt;strong>马后炮&lt;/strong>。我们要换一种方法。&lt;/p>
-&lt;h3 id="用-cat-合并两个二进制文件">用 cat 合并两个二进制文件&lt;/h3>
+&lt;/code>&lt;/pre>&lt;p>可以看到，内联汇编被放在了&lt;code>0xc&lt;/code>的位置，在设置栈顶指针之后才被调用。很显然这是&lt;strong>马后炮&lt;/strong>。我们要换一种方法。&lt;/p>
+&lt;h3 id="方法1-用-cat-合并">方法1 用 cat 合并&lt;/h3>
 &lt;p>我们先写一个汇编文件，命名为&lt;code>init.s&lt;/code>。内容如下&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-asm" data-lang="asm">&lt;span style="color:#50fa7b">lui&lt;/span> sp, &lt;span style="color:#bd93f9">0x10&lt;/span>
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们用相同的方法编译它，并把它剪切成纯二进制格式：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">riscv64-unknown-elf-gcc -c -nostdlib -march&lt;span style="color:#ff79c6">=&lt;/span>rv32i -mabi&lt;span style="color:#ff79c6">=&lt;/span>ilp32 init.s -o init.o
 riscv64-unknown-elf-objcopy -O binary -j .text init.o init.bin
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>为了验证我们的编译结果，再对&lt;code>init.bin&lt;/code>进行反编译，我们可以看到：&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>再对&lt;code>init.bin&lt;/code>进行反编译，我们可以看到：&lt;/p>
 &lt;pre>&lt;code>➜ riscv64-unknown-elf-objdump -D -b binary init.bin -mriscv
 init.bin: file format binary
 Disassembly of section .data:
 0000000000000000 &amp;lt;.data&amp;gt;:
 0: 00010137 lui sp,0x10
-&lt;/code>&lt;/pre>&lt;p>汇编生成的机器码没有任何问题。最后，我们用 &lt;code>cat&lt;/code> 将 &lt;code>main.bin&lt;/code> 和 &lt;code>init.bin&lt;/code> 进行合并：&lt;/p>
+&lt;/code>&lt;/pre>&lt;p>汇编生成的机器码没有任何问题，它只含有一句话。我们用 &lt;code>cat&lt;/code> 将 &lt;code>init.bin&lt;/code> 附到 &lt;code>main.bin&lt;/code> 前面（注意调用顺序）：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">cat init.bin main.bin &amp;gt; final_cat.bin
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以看到我们生成了 &lt;code>final_cat.bin&lt;/code>。对&lt;code>final_cat.bin&lt;/code>进行反编译，我们可以看到：&lt;/p>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以看到我们生成了 &lt;code>final_cat.bin&lt;/code>。对它进行反编译，我们可以看到：&lt;/p>
 &lt;pre>&lt;code>➜ riscv64-unknown-elf-objdump -D -b binary final_cat.bin -mriscv
 final_cat.bin: file format binary
 Disassembly of section .data:
@@ -162,7 +162,13 @@ Disassembly of section .data:
 c: 03010413 addi s0,sp,48
 ...
 &lt;/code>&lt;/pre>&lt;p>我们的&lt;code>lui sp,0x10&lt;/code>被成功加到了最前面。此时将 &lt;code>final_cat.bin&lt;/code> 烧录进 ROM，可以看到程序&lt;strong>正常运行&lt;/strong>。&lt;/p>
-&lt;h3 id="用-ld-合并汇编部分和-c-语言部分">用 ld 合并汇编部分和 C 语言部分&lt;/h3>
+&lt;p>总结一下，用 cat 合并的步骤是：&lt;/p>
+&lt;ol>
+&lt;li>分别编写 C 语言部分和汇编部分，编译后剪成纯二进制格式&lt;/li>
+&lt;li>用 cat 将两个 binary 合并在一起，注意顺序。&lt;/li>
+&lt;li>烧录，运行。&lt;/li>
+&lt;/ol>
+&lt;h3 id="方法2-用-ld-合并">方法2 用 ld 合并&lt;/h3>
 &lt;p>直接缝合两个二进制文件在这个例子中没有问题，因为&lt;code>main.bin&lt;/code>里面的地址都是相对地址，在它前面加一个指令并不会导致后面的指令出问题。但是更正规的做法是用 &lt;code>ld&lt;/code> 缝合两个部分：在汇编中，我们导入 C 语言的 &lt;code>main&lt;/code> 函数，在汇编程序中调用它。&lt;/p>
 &lt;p>&lt;code>init.s&lt;/code> 改写如下：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-asm" data-lang="asm">&lt;span style="color:#50fa7b">.text&lt;/span>
@@ -189,8 +195,16 @@ c: 02812623 sw s0,44(sp)
 &lt;/code>&lt;/pre>&lt;p>可以看到，在&lt;code>0x4&lt;/code>的位置多了一条 &lt;code>jal ra,0x8&lt;/code>。这是 &lt;code>ld&lt;/code> 进行链接的结果。&lt;/p>
 &lt;p>将程序烧录进 ROM ，运行仿真，可以看到我们的结果被正确计算：&lt;/p>
 &lt;p>&lt;img src="https://amazingrise.net/images/running-c-program-on-bare-machine/final.png" alt="" />&lt;/p>
-&lt;h2 id="makefile-的编写">Makefile 的编写&lt;/h2>
-&lt;p>每次都这样编译的话就麻烦死了。所以我写了一个 Makefile：&lt;/p>
+&lt;p>总结一下，用 ld 连接的步骤是：&lt;/p>
+&lt;ol>
+&lt;li>编写 C 语言部分，编译成 ELF 文件。&lt;/li>
+&lt;li>编写汇编语言部分，它负责初始化栈顶指针。也编译成 ELF 文件。&lt;/li>
+&lt;li>用 ld 将两个部分连接到一起。&lt;/li>
+&lt;li>连接后用 &lt;code>objcopy&lt;/code> 剪成纯二进制文件。&lt;/li>
+&lt;li>烧录，运行。&lt;/li>
+&lt;/ol>
+&lt;h2 id="使用-makefile-自动构建">使用 Makefile 自动构建&lt;/h2>
+&lt;p>无论是方法1还是方法2，编译流程都比较复杂，借用某名星的话：&lt;code>TMD 烦死了&lt;/code>。所以我们可以用 Makefile 完成编译连接剪切一整套流程：&lt;/p>
 &lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Makefile" data-lang="Makefile">&lt;span style="color:#8be9fd;font-style:italic">CROSS_COMPILE&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>riscv64-unknown-elf-
 &lt;span style="color:#8be9fd;font-style:italic">CC&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>CROSS_COMPILE&lt;span style="color:#ff79c6">)&lt;/span>gcc
 &lt;span style="color:#8be9fd;font-style:italic">CFLAGS&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>-c -nostdlib -march&lt;span style="color:#ff79c6">=&lt;/span>rv32i -mabi&lt;span style="color:#ff79c6">=&lt;/span>ilp32
@@ -270,13 +284,6 @@ no symbols
 &lt;h2 id="内存大小的问题">内存大小的问题&lt;/h2>
 &lt;p>我们在这里规定的栈顶指针初始值是&lt;code>0x10000&lt;/code>。请根据你的实际内存大小进行修改。&lt;/p>
 &lt;p>如果你有兴趣进行综合，那么一定要注意，有些板子的内存是不够的，例如 EGO-1。但 Minisys 好像是可以的。&lt;/p>
-&lt;h1 id="总结">总结&lt;/h1>
-&lt;ol>
-&lt;li>编写 C 语言部分，编译成 ELF 文件。&lt;/li>
-&lt;li>编写汇编语言部分，它负责初始化栈顶指针。也编译成 ELF 文件。&lt;/li>
-&lt;li>用 ld 将两个部分链接到一起，最后用 objcopy 剪成纯二进制文件。或者将两个 ELF 文件用 objcopy 剪干净，之后直接用 cat 进行合并。&lt;/li>
-&lt;li>烧录，运行。&lt;/li>
-&lt;/ol>
 &lt;h1 id="最后">最后&lt;/h1>
 &lt;p>在写文章的过程中，发现自己之前是误打误撞做出来的，能跑起来纯属瞎猫碰上死耗子。这个文章写了一整天，人都快没了，已经被机器码恶心死了（bushi&lt;/p>
 &lt;p>在编写过程中参考了以下资料：&lt;/p>
