@@ -194,7 +194,7 @@ c: 02812623 sw s0,44(sp)
 ...
 &lt;/code>&lt;/pre>&lt;p>可以看到，在&lt;code>0x4&lt;/code>的位置多了一条 &lt;code>jal ra,0x8&lt;/code>。这是 &lt;code>ld&lt;/code> 进行链接的结果。&lt;/p>
 &lt;p>将程序烧录进 ROM ，运行仿真，可以看到我们的结果被正确计算：&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/running-c-program-on-bare-machine/final.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="final.png" alt="" />&lt;/p>
 &lt;p>总结一下，用 ld 连接的步骤是：&lt;/p>
 &lt;ol>
 &lt;li>编写 C 语言部分，编译成 ELF 文件。&lt;/li>
@@ -521,7 +521,7 @@ no symbols
 &lt;li>而有些地方的敌人会选择性失明、失聪。甚至劳拉在武士们头上过独木桥，在墙边上爬，也没有被发现。不过也似乎解释得通：这些日本武士已经活了上千年了，眼神不好使也正常（雾）。&lt;/li>
 &lt;li>就算死了，也能从存档点复活。并且随时随地都能存档。&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200810103931_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200810103931_1.jpg" alt="" />&lt;/p>
 &lt;p>难道这个游戏真的是一款老掉牙的过气游戏吗？&lt;/p>
 &lt;h2 id="制作精良">制作精良&lt;/h2>
 &lt;p>当然不是。它的制作之精良甚至令人叹为观止。现在也是。&lt;/p>
@@ -531,33 +531,33 @@ no symbols
 &lt;h3 id="运镜巧妙-画幅宏伟">运镜巧妙 画幅宏伟&lt;/h3>
 &lt;p>除此之外，游戏对于构图和运镜也十分考究。有一幕是，劳拉需要爬无线电塔，向紧急电台发送求救信号。这时，镜头渐渐拉远，天空中微微飘着雪，苍茫的大地在屏幕里无限延伸，与渺小的劳拉形成了鲜明的对比。突然就有一种“寄蜉蝣于天地，渺沧海之一粟”的空虚感。&lt;/p>
 &lt;p>是的，在大自然面前，人就是蝼蚁一般的存在。&lt;del>随后过来救援的直升机就被雷电击中了。&lt;/del>&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200809203835_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200809203835_1.jpg" alt="" />&lt;/p>
 &lt;p>下图打败最终 BOSS 的视角。圣洁的光，照在了大地上（雾）&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200810173422_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200810173422_1.jpg" alt="" />&lt;/p>
 &lt;p>还有另外几处攀爬地点，在经过这些地点时，镜头也会自动拉到一个合适的角度，不会使人产生眩晕感。并且这种手法和电影运镜很相似，让人有一种在看大片的感觉，体验极佳。&lt;/p>
 &lt;h3 id="宝物瑰丽-建筑精美">宝物瑰丽 建筑精美&lt;/h3>
 &lt;p>失落的日本邪马台（虚构）古文明究竟是什么样子？我们不曾得知。但游戏制作方从各个角度呈现出了古老帝国曾经的辉煌。&lt;/p>
 &lt;p>邪马台的宫殿历经风霜雨雪，仍旧矗立在这个荒岛上，宏伟而壮观。&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200809214307_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200809214307_1.jpg" alt="" />&lt;/p>
 &lt;p>这里也有辉煌的大型古代墓穴，在地下甚至有高耸的楼阁，和一幅幅精美而巨大的壁画。&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200811175317_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200811175317_1.jpg" alt="" />&lt;/p>
 &lt;p>在这里，不仅有日本的古物，他们还发现了来自中国和泰国等地的文物。说明这个古老的帝国文明和东亚各国，乃至东南亚都有过密切交流。&lt;/p>
 &lt;p>仔细观察就会发现，岛上也有二战时期的一些遗留：地上的很多遗体还披着日本二战时候的军装，很多指示牌也是二战时期的，还有一个分支墓位于二战废弃实验室。从这些细节我们可以窥探出，这个岛曾经是一个重要的军事基地。但遗憾的是，游戏未能在此展开。&lt;/p>
 &lt;p>（有一说一，那个二战废弃实验室的分支墓居然是古风，给人一种风马牛不相及的感觉。）&lt;/p>
 &lt;h3 id="开放世界-永不止步">开放世界 永不止步&lt;/h3>
 &lt;p>这个游戏是开放世界游戏。在完成主线结局后，你可以继续在岛上完成剩余部分的探索。不过这个在现在已经不是什么亮点了，在此游戏发售之前就有很多开放世界游戏了。&lt;/p>
 &lt;p>刚开始我是打算先粗略通关一次，分支留着下次再仔细打。没想到在游戏的最后，劳拉说：我可不打算回家，我还要继续探索。原来在结局后还能继续探索！令我有点失望的是，分支墓规模很小，开到最后也只有一个宝箱。&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200811180704_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200811180704_1.jpg" alt="" />&lt;/p>
 &lt;p>另外，这个游戏还支持联机，而且有多种模式，看来制作组野心不小。它作为 FPS 手感还真说得过去，不过它一直不温不火，我认为是有些遗憾的。&lt;/p>
 &lt;h3 id="主角好看-真的好看">主角好看 真的好看&lt;/h3>
 &lt;p>主角是真的好看，这我就不必多说了，你们自己下载一个就知道了，2333。（不会编了）&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200810173600_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200810173600_1.jpg" alt="" />&lt;/p>
 &lt;h1 id="总结">总结&lt;/h1>
 &lt;h2 id="对游戏的结语">对游戏的结语&lt;/h2>
 &lt;p>任何事物不可能做到完美，它也有一些缺点。文章刚开始的时候说的难度低，虽然有很多人吐槽，但也算是可以理解的：因为如果游戏过难，就不容易突出它的故事性了。除此之外，它所讲的故事有些过于牵强，主角居然为了救一个人而使那么多人牺牲。&lt;/p>
 &lt;p>不过，总体来看，还是瑕不掩瑜的，可以看出制作组在很多地方都十分用心。这款游戏在现在（2020年）来看，不算落伍。时至今日，它仍是一部可玩性很高的大作。&lt;/p>
 &lt;p>如果有人问我这款游戏是否值得入手，我一定会说，值得。&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/tomb-raider/20200810150442_1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="20200810150442_1.jpg" alt="" />&lt;/p>
 &lt;p>（就算为了看看劳拉，也不错的！）&lt;/p>
 &lt;h2 id="关于本篇">关于本篇&lt;/h2>
 &lt;p>写文章呢，是希望以这种方式纪念一下通关的游戏。&lt;/p>
@@ -1085,7 +1085,7 @@ template&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c
 &lt;p>首先，学校肯定是不会接这样的赞助恰烂钱，学校&lt;strong>不缺这点钱&lt;/strong>，尤其是985/211工程院校。并且据老同学(曾经担任过社团社长)透露，学校也是禁止社团拉这样的赞助的。所以，学校不可能跟商家联合推出这样的活动，这只是商家为了增加可信度所加上的谎言。&lt;/p>
 &lt;p>第二，这种&lt;code>套近乎&lt;/code>的手段其实屡见不鲜。要戳破这个谎言也很简单：我们打开其中的某一篇推文。查看一下阅读量。以今天早上我看到的这篇推文为例，阅读量只有&lt;strong>9800&lt;/strong>。然后我们关注一下公众号，按照他们说的办法，我们找到了&amp;quot;抽奖助手&amp;quot;小程序二维码。扫码进入，发现参与抽奖人数是&lt;strong>2w&lt;/strong>。这说明什么?(doge&lt;/p>
 &lt;p>其实我们也可以直接利用微信的搜一搜功能，以关键词&lt;code>寻找 大学 不出门 锦鲤&lt;/code>查找，便会找到 n 多一模一样，只是大学名字换了的推文:&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/koi-carp-scam/search_result.jpg" alt="" />&lt;/p>
+&lt;p>&lt;img src="search_result.jpg" alt="" />&lt;/p>
 &lt;p>所以，推文推给的，并不是&amp;quot;被独宠的那个ta&amp;quot;。我们只是商家 &lt;strong>&amp;ldquo;广撒网&amp;quot;的猎物&lt;/strong>。&lt;/p>
 &lt;p>更何况，这些活动往年就有几乎一模一样的东西。第二年出来换个外衣，说个校庆，或者是蹭疫情热度，来个换汤不换药的推文。&lt;/p>
 &lt;h2 id="分母的秘密">分母的秘密&lt;/h2>
@@ -1153,7 +1153,7 @@ template&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c
 &lt;p>感谢能耐心看到最后的读者们。这篇文章花费了我一天的时间写成，只为让大家远离这些骗局，实是为大家着想。&lt;/p>
 &lt;p>如有冒犯，请各位原谅。我知道我这样的行为也很不讨好。我觉得只要能让大家远离骗局，这篇文章就不白写。哪怕是你把我拉黑了，换你今后的不上当，我也值了。&lt;/p>
 &lt;p>营销套路千千万，希望大家永不上当。（“永不上当”梗来自春晚，见下图）&lt;/p>
-&lt;p>&lt;img src="https://amazingrise.net/images/koi-carp-scam/never_cheated.gif" alt="" />&lt;/p>
+&lt;p>&lt;img src="never_cheated.gif" alt="" />&lt;/p>
 &lt;p>本篇文章不欢迎不署名转载，但欢迎转发。&lt;/p>
 - https://amazingrise.net/posts/koi-carp-scam/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://amazingrise.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://amazingrise.net/posts/obs-now-playing/</guid><description>左手的世界 https://amazingrise.net/posts/obs-now-playing/ -&lt;h1 id="前言">前言&lt;/h1>
 &lt;h2 id="前言的前言">前言的前言&lt;/h2>
