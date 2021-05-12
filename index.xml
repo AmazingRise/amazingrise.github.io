@@ -884,7 +884,17 @@ OpenJDK 64-Bit Server VM &lt;span style="color:#ff79c6">(&lt;/span>build 25.71-b
 &lt;p>总结一下，过去的一年，有不满意的地方，也有让自己惊喜的地方。&lt;/p>
 &lt;p>嗯。大概就是这么多话吧。如果有什么话想跟我说，欢迎评论区留言。&lt;/p>
 &lt;p>（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）&lt;/p>
-- https://amazingrise.net/posts/one-year-anniversary/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://amazingrise.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid><description>左手的世界 https://amazingrise.net/posts/getting-to-know-vue-components/ -&lt;h1 id="前言">前言&lt;/h1>
+- https://amazingrise.net/posts/one-year-anniversary/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>世界上最贵的燕窝</title><link>https://amazingrise.net/posts/unpublished/the-invaluable-home/</link><pubDate>Sun, 22 Mar 2020 12:10:00 +0800</pubDate><guid>https://amazingrise.net/posts/unpublished/the-invaluable-home/</guid><description>左手的世界 https://amazingrise.net/posts/unpublished/the-invaluable-home/ -&lt;blockquote>
+&lt;p>Penny lane is in my ears and in my eyes.&lt;br />
+便士巷总在我眼前浮现，在我耳畔萦绕&lt;br />
+There beneath the blue suburban skies&lt;br />
+背景是一片湛蓝天空下的市郊&lt;br />
+I sit, and meanwhile back.&lt;br />
+我一坐下，它就在我的脑海中激起记忆的浪涛&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;em>From &amp;ldquo;Penny Lane &amp;ndash; The Beatles&amp;rdquo;&lt;/em>&lt;/p>
+&lt;p>$\frac{12}{12}$&lt;/p>
+- https://amazingrise.net/posts/unpublished/the-invaluable-home/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://amazingrise.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid><description>左手的世界 https://amazingrise.net/posts/getting-to-know-vue-components/ -&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>这又是一篇很基础很基础的文章。&lt;del>（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。&lt;/del>&lt;/p>
 &lt;p>本篇文章主要讲述如何用 Vue Components 减少重复代码量。&lt;/p>
 &lt;h2 id="需求">需求&lt;/h2>
