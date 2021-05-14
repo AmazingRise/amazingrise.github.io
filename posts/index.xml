@@ -83,14 +83,7 @@ A Rock &amp;lsquo;n&amp;rsquo; Roll Fantasy - The Kinks
 同时，我还有做自媒体的想法。可惜现在时间不是很充裕，大概很难做大。
 最后 总结一下，过去的一年，有不满意的地方，也有让自己惊喜的地方。
 嗯。大概就是这么多话吧。如果有什么话想跟我说，欢迎评论区留言。
-（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）</description></item><item><title>世界上最贵的燕窝</title><link>https://amazingrise.net/posts/unpublished/the-invaluable-home/</link><pubDate>Sun, 22 Mar 2020 12:10:00 +0800</pubDate><guid>https://amazingrise.net/posts/unpublished/the-invaluable-home/</guid><description>Penny lane is in my ears and in my eyes.
-便士巷总在我眼前浮现，在我耳畔萦绕
-There beneath the blue suburban skies
-背景是一片湛蓝天空下的市郊
-I sit, and meanwhile back.
-我一坐下，它就在我的脑海中激起记忆的浪涛
-From &amp;ldquo;Penny Lane &amp;ndash; The Beatles&amp;rdquo;
-$\frac{12}{12}$</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://amazingrise.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid><description>前言 这又是一篇很基础很基础的文章。（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。
+（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://amazingrise.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://amazingrise.net/posts/getting-to-know-vue-components/</guid><description>前言 这又是一篇很基础很基础的文章。（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。
 本篇文章主要讲述如何用 Vue Components 减少重复代码量。
 需求 博客的友链页是由一个表格构成的：
 name url description 张三 https://zhangsan.com 张三的挖坑日记 李四 https://lisi.com 李四的网络日志 不行，这太简陋了。如何编写一个更好的友链页呢？
