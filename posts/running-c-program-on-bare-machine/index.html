@@ -1,0 +1,677 @@
+<!doctype html><html><head>
+<title>如何把 C 语言移植到 RISC-V 裸机上</title>
+<meta charset=utf-8>
+<meta name=X-UA-Compatible content="IE=edge">
+<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
+<meta content="telephone=no" name=format-detection>
+<meta name=description content="想要在 RISC-V 裸机上运行 C 语言程序，不但要进行交叉编译，还要对生成的二进制程序进行一些修改。">
+<meta name=renderer content="webkit">
+<meta name=theme-color content="#ffffff">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
+<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
+<script src=/vendor/js/vue.min.js></script>
+<link rel=stylesheet href=https://risehere.net/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media=screen>
+<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c0082f0b082177f6fb3768ff91439a097de49689bd26f4d49f76d94ebb81e02d.css integrity="sha256-wAgvCwghd/b7N2j/kUOaCX3klom9JvTUn3bZTruB4C0=" media=screen>
+<script src=/js/loadCSS.js></script>
+<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
+<script src=/js/toc.js></script>
+<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
+</head>
+<body>
+<div id=app><div ref=sideContainer class=side-container>
+<a class="a-block nav-head false" href=https://risehere.net>
+<div class=nav-title>
+左手的世界
+</div>
+<div class=nav-subtitle>
+Rise's Blog
+</div>
+</a>
+<div class=nav-link-list>
+<a class="a-block nav-link-item active" href=/posts>
+歸檔
+</a>
+<a class="a-block nav-link-item false" href=/categories>
+分類
+</a>
+<a class="a-block nav-link-item false" href=/about>
+關於
+</a>
+<a class="a-block nav-link-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block nav-link-item false" href=/index.xml>
+RSS
+</a>
+</div>
+<div class=nav-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div><div ref=extraContainer class=extra-container>
+<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<li>
+<a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>
+正文
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%8e%b7%e5%be%97%e5%b7%a5%e5%85%b7%e9%93%be onclick="onNavClick(`#获得工具链-nav`)" id=获得工具链-nav>
+获得工具链
+</a>
+</li>
+<li>
+<a href=#%e4%b8%bb%e7%a8%8b%e5%ba%8f%e7%9a%84%e7%bc%96%e5%86%99 onclick="onNavClick(`#主程序的编写-nav`)" id=主程序的编写-nav>
+主程序的编写
+</a>
+</li>
+<li>
+<a href=#%e5%b0%86%e6%b1%87%e7%bc%96%e8%af%ad%e5%8f%a5%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%b8%bb%e7%a8%8b%e5%ba%8f onclick="onNavClick(`#将汇编语句连接到主程序-nav`)" id=将汇编语句连接到主程序-nav>
+将汇编语句连接到主程序
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e5%86%85%e8%81%94%e6%b1%87%e7%bc%96 onclick="onNavClick(`#内联汇编-nav`)" id=内联汇编-nav>
+内联汇编？
+</a>
+</li>
+<li>
+<a href=#%e6%96%b9%e6%b3%951-%e7%94%a8-cat-%e5%90%88%e5%b9%b6 onclick="onNavClick(`#方法1-用-cat-合并-nav`)" id=方法1-用-cat-合并-nav>
+方法1 用 cat 合并
+</a>
+</li>
+<li>
+<a href=#%e6%96%b9%e6%b3%952-%e7%94%a8-ld-%e5%90%88%e5%b9%b6 onclick="onNavClick(`#方法2-用-ld-合并-nav`)" id=方法2-用-ld-合并-nav>
+方法2 用 ld 合并
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e4%bd%bf%e7%94%a8-makefile-%e8%87%aa%e5%8a%a8%e6%9e%84%e5%bb%ba onclick="onNavClick(`#使用-makefile-自动构建-nav`)" id=使用-makefile-自动构建-nav>
+使用 Makefile 自动构建
+</a>
+</li>
+</ul>
+<li>
+<a href=#faq onclick="onNavClick(`#faq-nav`)" id=faq-nav>
+FAQ
+</a>
+</li>
+<ul>
+<li>
+<a href=#newlib-%e5%92%8c-linux-%e7%9a%84%e5%b7%a5%e5%85%b7%e9%93%be%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab onclick="onNavClick(`#newlib-和-linux-的工具链有什么区别-nav`)" id=newlib-和-linux-的工具链有什么区别-nav>
+Newlib 和 Linux 的工具链有什么区别
+</a>
+</li>
+<li>
+<a href=#32%e4%bd%8d%e7%9a%84%e5%a4%84%e7%90%86%e5%99%a8%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e7%94%a8-riscv64-%e7%9a%84%e5%b7%a5%e5%85%b7%e9%93%be onclick="onNavClick(`#32位的处理器为什么要用-riscv64-的工具链-nav`)" id=32位的处理器为什么要用-riscv64-的工具链-nav>
+32位的处理器为什么要用 riscv64 的工具链
+</a>
+</li>
+<li>
+<a href=#%e7%9b%b4%e6%8e%a5%e7%94%a8-cat-%e5%90%88%e5%b9%b6%e4%b8%8d%e7%94%a8%e6%8b%85%e5%bf%83%e9%87%8d%e5%ae%9a%e4%bd%8d%e7%9a%84%e9%97%ae%e9%a2%98%e5%90%97 onclick="onNavClick(`#直接用-cat-合并不用担心重定位的问题吗-nav`)" id=直接用-cat-合并不用担心重定位的问题吗-nav>
+直接用 cat 合并，不用担心重定位的问题吗
+</a>
+</li>
+<li>
+<a href=#%e5%86%85%e5%ad%98%e5%a4%a7%e5%b0%8f%e7%9a%84%e9%97%ae%e9%a2%98 onclick="onNavClick(`#内存大小的问题-nav`)" id=内存大小的问题-nav>
+内存大小的问题
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
+最后
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class=pagination>
+<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
+<i class="material-icons pagination-action-icon">
+keyboard_arrow_up
+</i>
+</a>
+<a class=pagination-action v-on:click=toggleDarkMode>
+<i class="material-icons pagination-action-icon" v-if=isDarkMode>
+brightness_4
+</i>
+<i class="material-icons pagination-action-icon" v-else=isDarkMode>
+brightness_7
+</i>
+</a>
+</div>
+</div>
+<div class=single-column-drawer-container ref=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+<div class=drawer-content>
+<div class=drawer-menu>
+<a class="a-block drawer-menu-item active" href=/posts>
+歸檔
+</a>
+<a class="a-block drawer-menu-item false" href=/categories>
+分類
+</a>
+<a class="a-block drawer-menu-item false" href=/about>
+關於
+</a>
+<a class="a-block drawer-menu-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>
+RSS
+</a>
+<div class=toc>
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<li>
+<a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>
+正文
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%8e%b7%e5%be%97%e5%b7%a5%e5%85%b7%e9%93%be onclick="onNavClick(`#获得工具链-nav`)" id=获得工具链-nav>
+获得工具链
+</a>
+</li>
+<li>
+<a href=#%e4%b8%bb%e7%a8%8b%e5%ba%8f%e7%9a%84%e7%bc%96%e5%86%99 onclick="onNavClick(`#主程序的编写-nav`)" id=主程序的编写-nav>
+主程序的编写
+</a>
+</li>
+<li>
+<a href=#%e5%b0%86%e6%b1%87%e7%bc%96%e8%af%ad%e5%8f%a5%e8%bf%9e%e6%8e%a5%e5%88%b0%e4%b8%bb%e7%a8%8b%e5%ba%8f onclick="onNavClick(`#将汇编语句连接到主程序-nav`)" id=将汇编语句连接到主程序-nav>
+将汇编语句连接到主程序
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e5%86%85%e8%81%94%e6%b1%87%e7%bc%96 onclick="onNavClick(`#内联汇编-nav`)" id=内联汇编-nav>
+内联汇编？
+</a>
+</li>
+<li>
+<a href=#%e6%96%b9%e6%b3%951-%e7%94%a8-cat-%e5%90%88%e5%b9%b6 onclick="onNavClick(`#方法1-用-cat-合并-nav`)" id=方法1-用-cat-合并-nav>
+方法1 用 cat 合并
+</a>
+</li>
+<li>
+<a href=#%e6%96%b9%e6%b3%952-%e7%94%a8-ld-%e5%90%88%e5%b9%b6 onclick="onNavClick(`#方法2-用-ld-合并-nav`)" id=方法2-用-ld-合并-nav>
+方法2 用 ld 合并
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e4%bd%bf%e7%94%a8-makefile-%e8%87%aa%e5%8a%a8%e6%9e%84%e5%bb%ba onclick="onNavClick(`#使用-makefile-自动构建-nav`)" id=使用-makefile-自动构建-nav>
+使用 Makefile 自动构建
+</a>
+</li>
+</ul>
+<li>
+<a href=#faq onclick="onNavClick(`#faq-nav`)" id=faq-nav>
+FAQ
+</a>
+</li>
+<ul>
+<li>
+<a href=#newlib-%e5%92%8c-linux-%e7%9a%84%e5%b7%a5%e5%85%b7%e9%93%be%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab onclick="onNavClick(`#newlib-和-linux-的工具链有什么区别-nav`)" id=newlib-和-linux-的工具链有什么区别-nav>
+Newlib 和 Linux 的工具链有什么区别
+</a>
+</li>
+<li>
+<a href=#32%e4%bd%8d%e7%9a%84%e5%a4%84%e7%90%86%e5%99%a8%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e7%94%a8-riscv64-%e7%9a%84%e5%b7%a5%e5%85%b7%e9%93%be onclick="onNavClick(`#32位的处理器为什么要用-riscv64-的工具链-nav`)" id=32位的处理器为什么要用-riscv64-的工具链-nav>
+32位的处理器为什么要用 riscv64 的工具链
+</a>
+</li>
+<li>
+<a href=#%e7%9b%b4%e6%8e%a5%e7%94%a8-cat-%e5%90%88%e5%b9%b6%e4%b8%8d%e7%94%a8%e6%8b%85%e5%bf%83%e9%87%8d%e5%ae%9a%e4%bd%8d%e7%9a%84%e9%97%ae%e9%a2%98%e5%90%97 onclick="onNavClick(`#直接用-cat-合并不用担心重定位的问题吗-nav`)" id=直接用-cat-合并不用担心重定位的问题吗-nav>
+直接用 cat 合并，不用担心重定位的问题吗
+</a>
+</li>
+<li>
+<a href=#%e5%86%85%e5%ad%98%e5%a4%a7%e5%b0%8f%e7%9a%84%e9%97%ae%e9%a2%98 onclick="onNavClick(`#内存大小的问题-nav`)" id=内存大小的问题-nav>
+内存大小的问题
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
+最后
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<transition name=fade>
+<div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
+</transition>
+<nav ref=navBar class="navbar sticky-top navbar-light single-column-nav-container">
+<div ref=navBackground class=nav-background></div>
+<div class="container container-narrow nav-content">
+<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>
+menu
+</i>
+</button>
+<a ref=navTitle class=navbar-brand href=https://risehere.net>
+左手的世界
+</a>
+<button type=button class=nav-darkmode-toggle v-on:click=toggleDarkMode>
+<i class=material-icons v-if=isDarkMode>
+brightness_4
+</i>
+<i class=material-icons v-else=isDarkMode>
+brightness_7
+</i>
+</button>
+</div>
+</nav>
+<div class=single-column-header-container ref=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+<a href=https://risehere.net>
+<div class=single-column-header-title>左手的世界</div>
+<div class=single-column-header-subtitle>Rise's Blog</div>
+</a>
+</div>
+<div id=content>
+<div ref=streamContainer class=stream-container>
+<div class="post-list-container post-list-container-shadow">
+<div class=post>
+<div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/running-c-program-on-bare-machine/running-c-program-on-bare-machine.jpg)>
+<div class=post-title>
+如何把 C 语言移植到 RISC-V 裸机上
+<div class=post-subtitle>
+想要在 RISC-V 裸机上运行 C 语言程序，不但要进行交叉编译，还要对生成的二进制程序进行一些修改。
+</div>
+<div class=post-meta>
+<time itemprop=datePublished>
+2021-01-14 20:04
+</time>
+<i class=material-icons>folder</i>
+<a href=/categories/%E7%BC%96%E8%AF%91>编译</a>
+&nbsp;
+</div>
+</div>
+</div>
+<div class=post-body-wrapper>
+<div class=post-body v-pre>
+<h1 id=前言>前言</h1>
+<p>之前用 Verilog 模拟实现了一个简易的 RISC-V 处理器（RV32I 指令集）。为了跑测试程序，我们的这个处理器自然也要带上存储器，所以实际上它是一台简单的计算机。为了简化设计，这台计算机基于<a href=https://en.wikipedia.org/wiki/Harvard_architecture>哈佛架构</a>。简单来说，就是数据和指令分开存储，机器读取。想要运行程序，就要把汇编代码编译出来，烧写到我们的 ROM 上。</p>
+<p>为了方便调试，我对 CPU 进行了一些简单的约定：</p>
+<ul>
+<li>外界可以通过8个二进制开关对计算机输入一个值。这个值可以在内存地址 <code>0x40000000</code> 处读取到。</li>
+<li>8个 LED 灯与内存地址 <code>0x80000000</code> 上的值相绑定。也就是这里的值，将会以二进制的形式显示在 8 个 LED 灯上。</li>
+<li>处理器加电时会产生 RST 信号。寄存器收到 RST 信号时，所有的寄存器将会被置零。这个约定是为了方便初始化寄存器。</li>
+</ul>
+<p>我们的目标是在我们的 RISC-V 计算机上成功运行一个 Fibonacci 数运算程序。流程是：</p>
+<ol>
+<li>拨动8个开关，作为输入。</li>
+<li>给板子加电。</li>
+<li>Fibonacci 运算程序从 <code>0x40000000</code> 处读取8位开关的输入。</li>
+<li>Fibonacci 运算程序进行计算。</li>
+<li>Fibonacci 运算程序将结果写到 <code>0x80000000</code> 这个地址上。</li>
+<li>8位 LED 灯以二进制的形式显示<code>0x80000000</code> 处的内容。</li>
+</ol>
+<p>用汇编实现这个程序很轻松。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-asm data-lang=asm><span style=color:#50fa7b>.globl</span> __start 
+.globl end
+
+<span style=color:#50fa7b>.text</span>
+<span style=color:#8be9fd;font-style:italic>__start:</span>
+  <span style=color:#50fa7b>lui</span> x1,<span style=color:#bd93f9>0x0</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  lw x10,<span style=color:#bd93f9>0x40000000</span>(x0)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  
+  addi x2,x0,<span style=color:#bd93f9>3</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  addi x5,x0,<span style=color:#bd93f9>1</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  blt x10,x2,end<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  
+  addi x1,x1,<span style=color:#bd93f9>12</span><span style=color:#6272a4>; # init
+</span><span style=color:#6272a4></span>  addi x6,x0,<span style=color:#bd93f9>1</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  sw x6,-<span style=color:#bd93f9>8</span>(x1)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  sw x6,-<span style=color:#bd93f9>4</span>(x1)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>main:
+  <span style=color:#50fa7b>lw</span> x3,-<span style=color:#bd93f9>8</span>(x1)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  lw x4,-<span style=color:#bd93f9>4</span>(x1)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  add x5,x3,x4<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  sw x5,<span style=color:#bd93f9>0</span>(x1)<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  beq x2,x10,end<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  addi x1,x1,<span style=color:#bd93f9>4</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  addi x2,x2,<span style=color:#bd93f9>1</span><span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>  beq x0,x0,main<span style=color:#6272a4>;
+</span><span style=color:#6272a4></span>end:
+  <span style=color:#50fa7b>sw</span> x5,<span style=color:#bd93f9>0x80000000</span>(x0)<span style=color:#6272a4>;
+</span></code></pre></div><p>那么，我们是否可以将 C 语言程序移植到这个平台上呢？</p>
+<p>还是交叉编译那一套&ndash;借助 RISC-V 交叉编译工具链，我们可以将 C 语言程序移植到我们造的计算机上。</p>
+<h1 id=正文>正文</h1>
+<h2 id=获得工具链>获得工具链</h2>
+<p>我们注意到，RISC-V 工具链分为两个版本：</p>
+<ul>
+<li>Newlib 版本，所有的命令开头是<code>riscv64-unknown-elf-</code>。</li>
+<li>Linux 版本，所有的命令开头是<code>riscv64-linux-gnu-</code>。</li>
+</ul>
+<p>那么我们应该选哪个呢？经过试验两者产生的机器码（.text部分）并无区别，但我建议选择 Newlib 版本的工具链。具体原因将在<a href=#faq>后面</a>说。</p>
+<p>Arch Linux 用户们可以<strong>直接在 AUR 上获取</strong> <code>riscv64-unknown-elf-gcc</code> 和 <code>riscv64-unknown-elf-newlib</code> 这两个包。安装后你将获得两个版本的工具链。</p>
+<p>你可以从源代码自行构建 &ndash; <a href=https://github.com/riscv/riscv-gnu-toolchain>RISC-V GNU Compiler Toolchain</a>。</p>
+<h2 id=主程序的编写>主程序的编写</h2>
+<p>利用 C 语言的指针操作，我们可以直接读写内存。下面是实现 Fibonacci 数计算的代码：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C data-lang=C><span style=color:#8be9fd>int</span> <span style=color:#50fa7b>main</span>(){
+	<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span> n; <span style=color:#6272a4>// Input
+</span><span style=color:#6272a4></span>	n <span style=color:#ff79c6>=</span> (<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span>) <span style=color:#bd93f9>0x40000000</span>; <span style=color:#6272a4>// Point input to 0x40000000
+</span><span style=color:#6272a4></span>	<span style=color:#8be9fd>int</span> n1 <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>;
+    <span style=color:#8be9fd>int</span> n2 <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>1</span>;
+    <span style=color:#8be9fd>int</span> n3;
+    <span style=color:#8be9fd>int</span> i;
+	<span style=color:#ff79c6>for</span> (i <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>2</span>; i <span style=color:#ff79c6>&lt;</span> (<span style=color:#ff79c6>*</span>n) <span style=color:#ff79c6>+</span> <span style=color:#bd93f9>1</span>; <span style=color:#ff79c6>++</span>i){
+		n3 <span style=color:#ff79c6>=</span> n1 <span style=color:#ff79c6>+</span> n2;
+		n1 <span style=color:#ff79c6>=</span> n2;
+		n2 <span style=color:#ff79c6>=</span> n3;
+	}
+	<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span> result; <span style=color:#6272a4>// Output
+</span><span style=color:#6272a4></span>	result <span style=color:#ff79c6>=</span> (<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span>) <span style=color:#bd93f9>0x80000000</span>; <span style=color:#6272a4>// Point output to 0x40000000
+</span><span style=color:#6272a4></span>	<span style=color:#ff79c6>*</span>result <span style=color:#ff79c6>=</span> n3; <span style=color:#6272a4>// Write result to 0x40000000
+</span><span style=color:#6272a4></span>	<span style=color:#ff79c6>for</span>(;;){
+	} <span style=color:#6272a4>// Endless loop, to hold on the result
+</span><span style=color:#6272a4></span>	<span style=color:#ff79c6>return</span> <span style=color:#bd93f9>0</span>;
+}
+</code></pre></div><blockquote>
+<p>注意：</p>
+<ul>
+<li>我们现在在为裸机编写 C 语言程序，不能引用标准库中的函数，如 printf。</li>
+<li>由于内存紧张，我们尽量不要用递归。</li>
+<li>最后要写一个死循环，相当于停机。</li>
+</ul>
+</blockquote>
+<p>现在我们的主程序已经编写完毕了，下面我们要编译它。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>riscv64-unknown-elf-gcc -c -nostdlib -march<span style=color:#ff79c6>=</span>rv32i -mabi<span style=color:#ff79c6>=</span>ilp32 main.c -o main.o
+</code></pre></div><ul>
+<li><code>-c</code>选项是编译、汇编到目标代码，不进行链接。</li>
+<li><code>-nostdlib</code>告诉编译器不要把标准库编译进去。</li>
+<li><code>-march=rv32i -mabi=ilp32</code> 用于指定指令集架构和 ABI。</li>
+</ul>
+<p>编译后，我们可以得到 <code>main.o</code>，它是一个 ELF 文件。我们只需要 <code>.text</code> 部分的机器指令，所以用 <code>objcopy</code> 对它进行处理：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>riscv64-unknown-elf-objcopy -O binary -j .text main.o main.bin
+</code></pre></div><ul>
+<li><code>-O binary</code> 选项用于输出纯二进制文件。</li>
+<li><code>-j .text</code> 是告诉它只保留 <code>.text</code> 部分。</li>
+</ul>
+<p>经过处理，生成的二进制文件只含有机器指令。但此时的程序并不能直接运行。我们用 <code>objdump</code> 进行反编译，看看生成的机器码是怎么样的：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -D -b binary main.bin -mriscv
+
+main.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 &lt;.data&gt;:
+   0:   fd010113                addi    sp,sp,-48
+   4:   02812623                sw      s0,44(sp)
+   8:   03010413                addi    s0,sp,48
+   c:   400007b7                lui     a5,0x40000
+...
+</code></pre><p><code>lui a5,0x40000</code> 显然对应我们代码的开头（将变量 n 指向 <code>0x40000000</code>）。GCC在前面加了三条指令，而第一句就将<code>sp</code>寄存器减去了48。<code>sp</code>为负，程序肯定不能正常运行。</p>
+<blockquote>
+<p>这三条指令用于设置 Stack Pointer(<code>sp</code>) 和 Frame Pointer(<code>s0</code>)。</p>
+</blockquote>
+<p>所以，在运行 C 语言程序之前，我们需要给 <code>sp</code> 寄存器设置一个初始值。这个不难，一行汇编代码就能搞定：<code>lui sp, 0x10</code>。但是这行代码怎么放，又是一个问题。</p>
+<h2 id=将汇编语句连接到主程序>将汇编语句连接到主程序</h2>
+<p>下面我们将探索三种思路：</p>
+<ul>
+<li>内联汇编</li>
+<li>直接用 cat 合并两个二进制文件</li>
+<li>用 ld 连接汇编和 C 语言程序</li>
+</ul>
+<h3 id=内联汇编>内联汇编？</h3>
+<p>我们可不可以在 C 语言里内联汇编实现对 <code>sp</code> 的初始化呢？答案是<strong>否定</strong>的。我们在 main 的第一行加一句内联汇编：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c><span style=color:#8be9fd>int</span> <span style=color:#50fa7b>main</span>(){
+    <span style=color:#ff79c6>asm</span>(<span style=color:#f1fa8c>&#34;lui sp,0x10&#34;</span>);
+	<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span> n; <span style=color:#6272a4>// Input
+</span><span style=color:#6272a4></span>	n <span style=color:#ff79c6>=</span> (<span style=color:#8be9fd>int</span><span style=color:#ff79c6>*</span>) <span style=color:#bd93f9>0x40000000</span>; <span style=color:#6272a4>// Point input to 0x40000000
+</span><span style=color:#6272a4></span>...
+</code></pre></div><p>然后尝试反编译，看看这句话被加到了哪里：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -D -b binary main.bin -mriscv
+
+main.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 &lt;.data&gt;:
+   0:   fd010113                addi    sp,sp,-48
+   4:   02812623                sw      s0,44(sp)
+   8:   03010413                addi    s0,sp,48
+   c:   00010137                lui     sp,0x10
+  10:   400007b7                lui     a5,0x40000
+...
+</code></pre><p>可以看到，内联汇编被放在了<code>0xc</code>的位置，在设置栈顶指针之后才被调用。很显然这是<strong>马后炮</strong>。我们要换一种方法。</p>
+<h3 id=方法1-用-cat-合并>方法1 用 cat 合并</h3>
+<p>我们先写一个汇编文件，命名为<code>init.s</code>。内容如下</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-asm data-lang=asm><span style=color:#50fa7b>lui</span> sp, <span style=color:#bd93f9>0x10</span>
+</code></pre></div><p>然后我们用相同的方法编译它，并把它剪切成纯二进制格式：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>riscv64-unknown-elf-gcc -c -nostdlib -march<span style=color:#ff79c6>=</span>rv32i -mabi<span style=color:#ff79c6>=</span>ilp32 init.s -o init.o
+riscv64-unknown-elf-objcopy -O binary -j .text init.o init.bin
+</code></pre></div><p>再对<code>init.bin</code>进行反编译，我们可以看到：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -D -b binary init.bin -mriscv
+
+init.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 &lt;.data&gt;:
+   0:   00010137                lui     sp,0x10
+</code></pre><p>汇编生成的机器码没有任何问题，它只含有一句话。我们用 <code>cat</code> 将 <code>init.bin</code> 附到 <code>main.bin</code> 前面（注意调用顺序）：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>cat init.bin main.bin &gt; final_cat.bin
+</code></pre></div><p>可以看到我们生成了 <code>final_cat.bin</code>。对它进行反编译，我们可以看到：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -D -b binary final_cat.bin -mriscv   
+
+final_cat.bin:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 &lt;.data&gt;:
+   0:   00010137                lui     sp,0x10
+   4:   fd010113                addi    sp,sp,-48 # 0xffd0
+   8:   02812623                sw      s0,44(sp)
+   c:   03010413                addi    s0,sp,48
+...
+</code></pre><p>我们的<code>lui sp,0x10</code>被成功加到了最前面。此时将 <code>final_cat.bin</code> 烧录进 ROM，可以看到程序<strong>正常运行</strong>。</p>
+<p>总结一下，用 cat 合并的步骤是：</p>
+<ol>
+<li>分别编写 C 语言部分和汇编部分，编译后剪成纯二进制格式</li>
+<li>用 cat 将两个 binary 合并在一起，注意顺序。</li>
+<li>烧录，运行。</li>
+</ol>
+<h3 id=方法2-用-ld-合并>方法2 用 ld 合并</h3>
+<p>直接缝合两个二进制文件在这个例子中没有问题，因为<code>main.bin</code>里面的地址都是相对地址，在它前面加一个指令并不会导致后面的指令出问题。但是更正规的做法是用 <code>ld</code> 缝合两个部分：在汇编中，我们导入 C 语言的 <code>main</code> 函数，在汇编程序中调用它。</p>
+<p><code>init.s</code> 改写如下：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-asm data-lang=asm><span style=color:#50fa7b>.text</span>
+<span style=color:#50fa7b>.globl</span> main
+<span style=color:#50fa7b>lui</span> x2, <span style=color:#bd93f9>0x00010</span>
+<span style=color:#50fa7b>call</span> main
+
+</code></pre></div><p>然后我们编译这些源文件：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>riscv64-unknown-elf-gcc -c -nostdlib init.s init.o
+riscv64-unknown-elf-gcc -c -nostdlib main.c main.o
+riscv64-unknown-elf-ld -melf32lriscv -o final.o init.o main.o
+riscv64-unknown-elf-objcopy -O binary final.o final_ld
+</code></pre></div><p>其中 ld 的 <code>-melf32lriscv</code> 参数用于指定架构。</p>
+<p>我们再反编译一下结果，看一下用 ld 生成的和 cat 生成的二进制文件有什么区别：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -b binary -D -mriscv final_ld
+
+final_ld:     file format binary
+
+
+Disassembly of section .data:
+
+0000000000000000 &lt;.data&gt;:
+   0:   00010137                lui     sp,0x10
+   4:   004000ef                jal     ra,0x8
+   8:   fd010113                addi    sp,sp,-48 # 0xffd0
+   c:   02812623                sw      s0,44(sp)
+  10:   03010413                addi    s0,sp,48
+...
+</code></pre><p>可以看到，在<code>0x4</code>的位置多了一条 <code>jal ra,0x8</code>。这是 <code>ld</code> 进行链接的结果。</p>
+<p>将程序烧录进 ROM ，运行仿真，可以看到我们的结果被正确计算：</p>
+<p><img src=final.png alt></p>
+<p>总结一下，用 ld 连接的步骤是：</p>
+<ol>
+<li>编写 C 语言部分，编译成 ELF 文件。</li>
+<li>编写汇编语言部分，它负责初始化栈顶指针。也编译成 ELF 文件。</li>
+<li>用 ld 将两个部分连接到一起。</li>
+<li>连接后用 <code>objcopy</code> 剪成纯二进制文件。</li>
+<li>烧录，运行。</li>
+</ol>
+<h2 id=使用-makefile-自动构建>使用 Makefile 自动构建</h2>
+<p>无论是方法1还是方法2，编译流程都比较复杂，借用某名星的话：<code>TMD 烦死了</code>。所以我们可以用 Makefile 完成编译连接剪切一整套流程：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Makefile data-lang=Makefile><span style=color:#8be9fd;font-style:italic>CROSS_COMPILE</span><span style=color:#ff79c6>=</span>riscv64-unknown-elf-
+<span style=color:#8be9fd;font-style:italic>CC</span><span style=color:#ff79c6>=</span><span style=color:#ff79c6>$(</span>CROSS_COMPILE<span style=color:#ff79c6>)</span>gcc
+<span style=color:#8be9fd;font-style:italic>CFLAGS</span><span style=color:#ff79c6>=</span>-c -nostdlib -march<span style=color:#ff79c6>=</span>rv32i -mabi<span style=color:#ff79c6>=</span>ilp32
+<span style=color:#8be9fd;font-style:italic>OBJCOPY</span><span style=color:#ff79c6>=</span><span style=color:#ff79c6>$(</span>CROSS_COMPILE<span style=color:#ff79c6>)</span>objcopy
+<span style=color:#8be9fd;font-style:italic>OBJCOPYFLAGS</span><span style=color:#ff79c6>=</span>-O binary -j .text
+<span style=color:#8be9fd;font-style:italic>LD</span><span style=color:#ff79c6>=</span><span style=color:#ff79c6>$(</span>CROSS_COMPILE<span style=color:#ff79c6>)</span>ld
+<span style=color:#8be9fd;font-style:italic>LDFLAGS</span><span style=color:#ff79c6>=</span>-melf32lriscv
+
+<span style=color:#50fa7b>all</span><span style=color:#ff79c6>:</span> main.o init.o
+	<span style=color:#ff79c6>$(</span>LD<span style=color:#ff79c6>)</span> <span style=color:#ff79c6>$(</span>LDFLAGS<span style=color:#ff79c6>)</span> -o final.o init.o main.o
+	<span style=color:#ff79c6>$(</span>OBJCOPY<span style=color:#ff79c6>)</span> <span style=color:#ff79c6>$(</span>OBJCOPYFLAGS<span style=color:#ff79c6>)</span> final.o final
+
+<span style=color:#50fa7b>main.o</span><span style=color:#ff79c6>:</span> main.c
+	<span style=color:#ff79c6>$(</span>CC<span style=color:#ff79c6>)</span> <span style=color:#ff79c6>$(</span>CFLAGS<span style=color:#ff79c6>)</span> main.c -o main.o
+
+<span style=color:#50fa7b>init.o</span><span style=color:#ff79c6>:</span> init.s
+	<span style=color:#ff79c6>$(</span>CC<span style=color:#ff79c6>)</span> <span style=color:#ff79c6>$(</span>CFLAGS<span style=color:#ff79c6>)</span> init.s -o init.o
+
+<span style=color:#50fa7b>clean</span><span style=color:#ff79c6>:</span>
+	rm -f *.o
+	rm -f *.bin
+</code></pre></div><h1 id=faq>FAQ</h1>
+<h2 id=newlib-和-linux-的工具链有什么区别>Newlib 和 Linux 的工具链有什么区别</h2>
+<p>Newlib 是不带 Glibc 的，也不支持动态链接。</p>
+<p>这两个工具链生成的 ELF 文件略有区别。下面是 Linux 工具链生成的 ELF文件，我们对其 objdump：</p>
+<pre><code>➜  riscv64-linux-gnu-objdump -x fibl
+
+fibl:     file format elf32-littleriscv
+fibl
+architecture: riscv:rv32, flags 0x00000102:
+EXEC_P, D_PAGED
+start address 0x000100b8
+
+Program Header:
+    LOAD off    0x00000000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x000001a0 memsz 0x000001a0 flags r-x
+    NOTE off    0x00000094 vaddr 0x00010094 paddr 0x00010094 align 2**2
+         filesz 0x00000024 memsz 0x00000024 flags r--
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4
+         filesz 0x00000000 memsz 0x00000000 flags rw-
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .note.gnu.build-id 00000024  00010094  00010094  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .text         000000e8  000100b8  000100b8  000000b8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000012  00000000  00000000  000001a0  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+no symbols
+</code></pre><p>下面是 Newlib 工具链生成的 ELF 文件的 objdump 结果：</p>
+<pre><code>➜  riscv64-unknown-elf-objdump -x fibu
+
+fibu:     file format elf32-littleriscv
+fibu
+architecture: riscv:rv32, flags 0x00000102:
+EXEC_P, D_PAGED
+start address 0x00010054
+
+Program Header:
+    LOAD off    0x00000000 vaddr 0x00010000 paddr 0x00010000 align 2**12
+         filesz 0x0000013c memsz 0x0000013c flags r-x
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000e8  00010054  00010054  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .comment      00000022  00000000  00000000  0000013c  2**0
+                  CONTENTS, READONLY
+  2 .riscv.attributes 0000001c  00000000  00000000  0000015e  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+no symbols
+</code></pre><p>可以看到，两者的差别在于 <code>.note.gnu.build-id</code> 和 <code>.riscv.attributes</code> 这两个部分。不过这些都是无关的注释信息。我们再用 <code>objcopy</code> 把 ELF 文件处理一下，只保留 <code>.text</code> 部分。可以看到，生成的纯二进制文件是一样的。</p>
+<p>因为我们只需要<code>.text</code>部分的机器码，并且我们的程序也不涉及动态链接的问题。所以在这个代码上，用这两个工具链并无实质上的区别。不过我仍然推荐 <code>Newlib</code> 版本的工具链，因为它只有静态编译，更适合嵌入式编程这个场景。</p>
+<h2 id=32位的处理器为什么要用-riscv64-的工具链>32位的处理器为什么要用 riscv64 的工具链</h2>
+<p>这个问题我也注意到了。在一些老的文章，例如这篇<a href=https://five-embeddev.com/toolchain/2019/06/26/gcc-targets/>RISC-V Compile Targets, GCC</a>，里面会提到<code>riscv32-</code>开头的工具链。但实际上现在的 <code>riscv64</code> 工具链已经包含了 32 位支持：</p>
+<blockquote>
+<p>Yeah, that confused me too. The riscv toolchain is a little funny in that way. Upstream recommends you just build the riscv64-unknown-elf-gcc and then compile with -march=rv32i -mabi=ilp32 (or whatever suits your platform).</p>
+</blockquote>
+<p>来源：<a href=https://aur.archlinux.org/packages/riscv64-unknown-elf-gcc/>AUR 上的讨论</a>。</p>
+<h2 id=直接用-cat-合并不用担心重定位的问题吗>直接用 cat 合并，不用担心重定位的问题吗</h2>
+<p>不用。因为所有的跳转都基于相对地址。</p>
+<p>反编译可以发现，cat 缝合的二进制，在 0x2c 处有一句<code>j 0x5c</code>。同样的代码出现在 ld 版本的 0x30 处，并且变成了 <code>j 0x60</code>。但它们的机器码是一样的，都是<code>0x0300006F</code>。所以用 cat 在 <code>main.bin</code> 前面加一万句话都没事。</p>
+<p>我用两种方法都编译了一次，发现 <code>ld</code> 生成和 <code>cat</code> 直接缝合的两个二进制程序，实际上只差了一句 <code>jal ra,0x8</code>。这句是调用约定，不过我们的 <code>main</code> 函数并不需要返回，所以无所谓啦。</p>
+<h2 id=内存大小的问题>内存大小的问题</h2>
+<p>我们在这里规定的栈顶指针初始值是<code>0x10000</code>。请根据你的实际内存大小进行修改。</p>
+<p>如果你有兴趣进行综合，那么一定要注意，有些板子的内存是不够的，例如 EGO-1。但 Minisys 好像是可以的。</p>
+<h1 id=最后>最后</h1>
+<p>在写文章的过程中，发现自己之前是误打误撞做出来的，能跑起来纯属瞎猫碰上死耗子。这个文章写了一整天，人都快没了，已经被机器码恶心死了（bushi</p>
+<p>在编写过程中参考了以下资料：</p>
+<p><a href=http://crva.ict.ac.cn/documents/RISC-V-Reader-Chinese-v2p1.pdf.11.3>RISC-V 中文手册</a></p>
+<p><a href=https://www.cs.cornell.edu/courses/cs3410/2019sp/riscv/interpreter/>RISC-V Online Interpreter</a> （十分推荐，可以在线运行 RISC-V 汇编指令）</p>
+<p><a href=https://stackoverflow.com/questions/47028724/newlib-embedded-vs-desktop>StackOverflow - Newlib: embedded vs desktop</a></p>
+<p><a href=https://aur.archlinux.org/packages/riscv64-unknown-elf-gcc/>AUR (en) - riscv64-unknown-elf-gcc</a></p>
+<p>另外感谢王老师提供的 CPU 讲解课程及实验器械，以及孟老师对一些问题的解答。</p>
+<hr width=100% id=EOF>
+<p style=color:#777>上次修改於 2021-01-14</p>
+</div>
+</div>
+<nav class=post-pagination>
+<a class=newer-posts>
+下回<br>已經到底啦。
+</a>
+<a class=older-posts href=https://risehere.net/posts/checked-tone-in-japanese/>
+上回<br>为什么有些汉字在日语中会读成两拍
+</a>
+</nav>
+<div class=post-comment-wrapper>
+<div id=waline></div>
+</div>
+</div>
+</div>
+</div>
+</div><div id=single-column-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div>
+<script>let app;app=new Vue({el:'#app',data:{scrollY:0,navOpacity:0,isDrawerOpen:!1,mounted:!1,isDarkMode:!1},methods:{sgn(a,b){let c=1/(1-2*a);return b<=a?0:b>=1-a?1:c*(b-a)},handleScroll(){this.scrollY=window.scrollY,this.navOpacity=this.sgn(0,Math.min(1,Math.max(0,window.scrollY/(this.pageHeadHeight()-this.navBarHeight()*.8))));const{navBar:c,navBackground:a,navTitle:b,extraContainer:d,streamContainer:e}=this.$refs;this.navOpacity>=1?(a.style.opacity=1,b.style.opacity=1):(a.style.opacity=0,b.style.opacity=0)},handleResize(){const{navBar:c,navBackground:d,navTitle:e,extraContainer:a,streamContainer:b}=this.$refs;a.style.left=b.offsetWidth-a.offsetWidth+'px'},navBarHeight(){return this.$refs.navBar.offsetHeight},pageHeadHeight(){return this.$refs.pageHead.offsetHeight},toggleDrawer(){this.isDrawerOpen=!this.isDrawerOpen,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},closeDrawer(){this.isDrawerOpen=!1,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},toggleDarkMode(){this.isDarkMode=!this.isDarkMode,this.isDarkMode==!0?(document.cookie="night=1;path=/",document.body.classList.add("night")):(document.cookie="night=0;path=/",document.body.classList.remove("night"))},debounce(t,b,f){let e,g,l,d,a,c,i=0,q=!1,h=!1,n=!0;const s=!b&&b!==0&&typeof root.requestAnimationFrame=='function';if(typeof t!='function')throw new TypeError('Expected a function');function w(a){const b=typeof a;return a!=null&&(b==='object'||b==='function')}b=+b||0,w(f)&&(q=!!f.leading,h='maxWait'in f,l=h?Math.max(+f.maxWait||0,b):l,n='trailing'in f?!!f.trailing:n);function o(a){const b=e,c=g;return e=g=void 0,i=a,d=t.apply(c,b),d}function k(b,c){return s?(root.cancelAnimationFrame(a),root.requestAnimationFrame(b)):setTimeout(b,c)}function v(a){if(s)return root.cancelAnimationFrame(a);clearTimeout(a)}function A(c){return i=c,a=k(m,b),q?o(c):d}function u(a){const e=a-c,f=a-i,d=b-e;return h?Math.min(d,l-f):d}function r(a){const d=a-c,e=a-i;return c===void 0||d>=b||d<0||h&&e>=l}function m(){const b=Date.now();if(r(b))return p(b);a=k(m,u(b))}function p(b){return a=void 0,n&&e?o(b):(e=g=void 0,d)}function x(){a!==void 0&&v(a),i=0,e=c=g=a=void 0}function y(){return a===void 0?d:p(Date.now())}function z(){return a!==void 0}function j(...i){const f=Date.now(),j=r(f);if(e=i,g=this,c=f,j){if(a===void 0)return A(c);if(h)return a=k(m,b),o(c)}return a===void 0&&(a=k(m,b)),d}return j.cancel=x,j.flush=y,j.pending=z,j}},created(){window.addEventListener('scroll',this.handleScroll),window.addEventListener('resize',this.handleResize),window._nonDesktop=function(){let a=!1;return function(b){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(b)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(b.substr(0,4)))&&(a=!0)}(navigator.userAgent||navigator.vendor||window.opera),a};var a=document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/,"$1");a==""?window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches:a=="1"&&this.toggleDarkMode()},mounted(){this.handleScroll(),this.handleResize(),this.mounted=!0,new Waline({el:'#waline',path:location.pathname,requiredFields:['nick','mail'],serverURL:"https://comment.amazingrise.net",locale:{placeholder:'欢迎发表你的看法！为了防止垃圾留言，你的评论将在「审核」后显示。（我一天之内就能看到）'}}),document.querySelectorAll("table").forEach(function(a){a.classList.add("table-striped"),a.classList.add("table"),a.classList.add("table-responsive"),a.classList.add("table-hover")}),spy(),window.addEventListener('scroll',this.debounce(spy,250,{maxWait:250}),!1)},destroyed(){window.removeEventListener('scroll',this.handleScroll),window.removeEventListener('resize',this.handleResize)}})</script>
+</body>
+</html>

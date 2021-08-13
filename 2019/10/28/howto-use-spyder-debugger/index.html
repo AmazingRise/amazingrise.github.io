@@ -1,0 +1,611 @@
+<!doctype html><html><head>
+<title>如何优雅地使用 Spyder 的调试器</title>
+<meta charset=utf-8>
+<meta name=X-UA-Compatible content="IE=edge">
+<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
+<meta content="telephone=no" name=format-detection>
+<meta name=description content="这是一个面向初学者的文章.很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.这个时候调试器就要上场了~">
+<meta name=renderer content="webkit">
+<meta name=theme-color content="#ffffff">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
+<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
+<script src=/vendor/js/vue.min.js></script>
+<link rel=stylesheet href=https://risehere.net/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media=screen>
+<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c0082f0b082177f6fb3768ff91439a097de49689bd26f4d49f76d94ebb81e02d.css integrity="sha256-wAgvCwghd/b7N2j/kUOaCX3klom9JvTUn3bZTruB4C0=" media=screen>
+<script src=/js/loadCSS.js></script>
+<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
+<script src=/js/toc.js></script>
+<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
+</head>
+<body>
+<div id=app><div ref=sideContainer class=side-container>
+<a class="a-block nav-head false" href=https://risehere.net>
+<div class=nav-title>
+左手的世界
+</div>
+<div class=nav-subtitle>
+Rise's Blog
+</div>
+</a>
+<div class=nav-link-list>
+<a class="a-block nav-link-item false" href=/posts>
+歸檔
+</a>
+<a class="a-block nav-link-item false" href=/categories>
+分類
+</a>
+<a class="a-block nav-link-item false" href=/about>
+關於
+</a>
+<a class="a-block nav-link-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block nav-link-item false" href=/index.xml>
+RSS
+</a>
+</div>
+<div class=nav-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div><div ref=extraContainer class=extra-container>
+<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e4%b8%ba%e4%bb%80%e4%b9%88 onclick="onNavClick(`#为什么-nav`)" id=为什么-nav>
+为什么
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95 onclick="onNavClick(`#我们为什么要学会调试-nav`)" id=我们为什么要学会调试-nav>
+我们为什么要学会调试
+</a>
+</li>
+<li>
+<a href=#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder onclick="onNavClick(`#为嘛要用spyder-nav`)" id=为嘛要用spyder-nav>
+为嘛要用Spyder
+</a>
+</li>
+</ul>
+</ul>
+<li>
+<a href=#spyder%e5%88%9d%e4%bd%93%e9%aa%8c onclick="onNavClick(`#spyder初体验-nav`)" id=spyder初体验-nav>
+Spyder初体验
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2 onclick="onNavClick(`#熟悉spyder的界面-nav`)" id=熟悉spyder的界面-nav>
+熟悉Spyder的界面
+</a>
+</li>
+<li>
+<a href=#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81 onclick="onNavClick(`#用spyder运行示例代码-nav`)" id=用spyder运行示例代码-nav>
+用Spyder运行示例代码
+</a>
+</li>
+<li>
+<a href=#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87 onclick="onNavClick(`#调试目标-nav`)" id=调试目标-nav>
+调试目标
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95 onclick="onNavClick(`#朴素的-print-调试法-nav`)" id=朴素的-print-调试法-nav>
+朴素的 print 调试法
+</a>
+</li>
+<li>
+<a href=#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95 onclick="onNavClick(`#隆重登场的调试器法-nav`)" id=隆重登场的调试器法-nav>
+隆重登场的调试器法
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95 onclick="onNavClick(`#第一招式---逐行调试-nav`)" id=第一招式---逐行调试-nav>
+第一招式 - 逐行调试
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f onclick="onNavClick(`#进入调试模式-nav`)" id=进入调试模式-nav>
+进入调试模式
+</a>
+</li>
+<li>
+<a href=#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95 onclick="onNavClick(`#开始逐行调试-nav`)" id=开始逐行调试-nav>
+开始逐行调试
+</a>
+</li>
+<li>
+<a href=#%e5%b0%8f%e6%80%bb%e7%bb%93 onclick="onNavClick(`#小总结-nav`)" id=小总结-nav>
+小总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95 onclick="onNavClick(`#第二招式---断点调试-nav`)" id=第二招式---断点调试-nav>
+第二招式 - 断点调试
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9 onclick="onNavClick(`#设置断点-nav`)" id=设置断点-nav>
+设置断点
+</a>
+</li>
+<li>
+<a href=#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95 onclick="onNavClick(`#开始调试-nav`)" id=开始调试-nav>
+开始调试
+</a>
+</li>
+<li>
+<a href=#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95 onclick="onNavClick(`#继续调试-nav`)" id=继续调试-nav>
+继续调试
+</a>
+</li>
+<li>
+<a href=#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93 onclick="onNavClick(`#断点调试小总结-nav`)" id=断点调试小总结-nav>
+断点调试小总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93 onclick="onNavClick(`#调试器总结-nav`)" id=调试器总结-nav>
+调试器总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e onclick="onNavClick(`#写在最后-nav`)" id=写在最后-nav>
+写在最后
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class=pagination>
+<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
+<i class="material-icons pagination-action-icon">
+keyboard_arrow_up
+</i>
+</a>
+<a class=pagination-action v-on:click=toggleDarkMode>
+<i class="material-icons pagination-action-icon" v-if=isDarkMode>
+brightness_4
+</i>
+<i class="material-icons pagination-action-icon" v-else=isDarkMode>
+brightness_7
+</i>
+</a>
+</div>
+</div>
+<div class=single-column-drawer-container ref=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+<div class=drawer-content>
+<div class=drawer-menu>
+<a class="a-block drawer-menu-item false" href=/posts>
+歸檔
+</a>
+<a class="a-block drawer-menu-item false" href=/categories>
+分類
+</a>
+<a class="a-block drawer-menu-item false" href=/about>
+關於
+</a>
+<a class="a-block drawer-menu-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>
+RSS
+</a>
+<div class=toc>
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e4%b8%ba%e4%bb%80%e4%b9%88 onclick="onNavClick(`#为什么-nav`)" id=为什么-nav>
+为什么
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e6%88%91%e4%bb%ac%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%bc%9a%e8%b0%83%e8%af%95 onclick="onNavClick(`#我们为什么要学会调试-nav`)" id=我们为什么要学会调试-nav>
+我们为什么要学会调试
+</a>
+</li>
+<li>
+<a href=#%e4%b8%ba%e5%98%9b%e8%a6%81%e7%94%a8spyder onclick="onNavClick(`#为嘛要用spyder-nav`)" id=为嘛要用spyder-nav>
+为嘛要用Spyder
+</a>
+</li>
+</ul>
+</ul>
+<li>
+<a href=#spyder%e5%88%9d%e4%bd%93%e9%aa%8c onclick="onNavClick(`#spyder初体验-nav`)" id=spyder初体验-nav>
+Spyder初体验
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%86%9f%e6%82%89spyder%e7%9a%84%e7%95%8c%e9%9d%a2 onclick="onNavClick(`#熟悉spyder的界面-nav`)" id=熟悉spyder的界面-nav>
+熟悉Spyder的界面
+</a>
+</li>
+<li>
+<a href=#%e7%94%a8spyder%e8%bf%90%e8%a1%8c%e7%a4%ba%e4%be%8b%e4%bb%a3%e7%a0%81 onclick="onNavClick(`#用spyder运行示例代码-nav`)" id=用spyder运行示例代码-nav>
+用Spyder运行示例代码
+</a>
+</li>
+<li>
+<a href=#%e8%b0%83%e8%af%95%e7%9b%ae%e6%a0%87 onclick="onNavClick(`#调试目标-nav`)" id=调试目标-nav>
+调试目标
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e6%9c%b4%e7%b4%a0%e7%9a%84-print-%e8%b0%83%e8%af%95%e6%b3%95 onclick="onNavClick(`#朴素的-print-调试法-nav`)" id=朴素的-print-调试法-nav>
+朴素的 print 调试法
+</a>
+</li>
+<li>
+<a href=#%e9%9a%86%e9%87%8d%e7%99%bb%e5%9c%ba%e7%9a%84%e8%b0%83%e8%af%95%e5%99%a8%e6%b3%95 onclick="onNavClick(`#隆重登场的调试器法-nav`)" id=隆重登场的调试器法-nav>
+隆重登场的调试器法
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%ac%ac%e4%b8%80%e6%8b%9b%e5%bc%8f---%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95 onclick="onNavClick(`#第一招式---逐行调试-nav`)" id=第一招式---逐行调试-nav>
+第一招式 - 逐行调试
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%bf%9b%e5%85%a5%e8%b0%83%e8%af%95%e6%a8%a1%e5%bc%8f onclick="onNavClick(`#进入调试模式-nav`)" id=进入调试模式-nav>
+进入调试模式
+</a>
+</li>
+<li>
+<a href=#%e5%bc%80%e5%a7%8b%e9%80%90%e8%a1%8c%e8%b0%83%e8%af%95 onclick="onNavClick(`#开始逐行调试-nav`)" id=开始逐行调试-nav>
+开始逐行调试
+</a>
+</li>
+<li>
+<a href=#%e5%b0%8f%e6%80%bb%e7%bb%93 onclick="onNavClick(`#小总结-nav`)" id=小总结-nav>
+小总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e7%ac%ac%e4%ba%8c%e6%8b%9b%e5%bc%8f---%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95 onclick="onNavClick(`#第二招式---断点调试-nav`)" id=第二招式---断点调试-nav>
+第二招式 - 断点调试
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9 onclick="onNavClick(`#设置断点-nav`)" id=设置断点-nav>
+设置断点
+</a>
+</li>
+<li>
+<a href=#%e5%bc%80%e5%a7%8b%e8%b0%83%e8%af%95 onclick="onNavClick(`#开始调试-nav`)" id=开始调试-nav>
+开始调试
+</a>
+</li>
+<li>
+<a href=#%e7%bb%a7%e7%bb%ad%e8%b0%83%e8%af%95 onclick="onNavClick(`#继续调试-nav`)" id=继续调试-nav>
+继续调试
+</a>
+</li>
+<li>
+<a href=#%e6%96%ad%e7%82%b9%e8%b0%83%e8%af%95%e5%b0%8f%e6%80%bb%e7%bb%93 onclick="onNavClick(`#断点调试小总结-nav`)" id=断点调试小总结-nav>
+断点调试小总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e8%b0%83%e8%af%95%e5%99%a8%e6%80%bb%e7%bb%93 onclick="onNavClick(`#调试器总结-nav`)" id=调试器总结-nav>
+调试器总结
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e5%86%99%e5%9c%a8%e6%9c%80%e5%90%8e onclick="onNavClick(`#写在最后-nav`)" id=写在最后-nav>
+写在最后
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<transition name=fade>
+<div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
+</transition>
+<nav ref=navBar class="navbar sticky-top navbar-light single-column-nav-container">
+<div ref=navBackground class=nav-background></div>
+<div class="container container-narrow nav-content">
+<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>
+menu
+</i>
+</button>
+<a ref=navTitle class=navbar-brand href=https://risehere.net>
+左手的世界
+</a>
+<button type=button class=nav-darkmode-toggle v-on:click=toggleDarkMode>
+<i class=material-icons v-if=isDarkMode>
+brightness_4
+</i>
+<i class=material-icons v-else=isDarkMode>
+brightness_7
+</i>
+</button>
+</div>
+</nav>
+<div class=single-column-header-container ref=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+<a href=https://risehere.net>
+<div class=single-column-header-title>左手的世界</div>
+<div class=single-column-header-subtitle>Rise's Blog</div>
+</a>
+</div>
+<div id=content>
+<div ref=streamContainer class=stream-container>
+<div class="post-list-container post-list-container-shadow">
+<div class=post>
+<div class=post-head-wrapper style=background-image:url(https://risehere.net/2019/10/28/howto-use-spyder-debugger/spyder-main.png)>
+<div class=post-title>
+如何优雅地使用 Spyder 的调试器
+<div class=post-subtitle>
+这是一个面向初学者的文章.很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.这个时候调试器就要上场了~
+</div>
+<div class=post-meta>
+<time itemprop=datePublished>
+2019-10-28 23:28
+</time>
+<i class=material-icons>folder</i>
+<a href=/categories/python>Python</a>
+&nbsp;
+</div>
+</div>
+</div>
+<div class=post-body-wrapper>
+<div class=post-body v-pre>
+<h1 id=前言>前言</h1>
+<p>这是一个面向初学者的文章.
+很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
+这个时候调试器就要上场了~
+所以在这里我要以Spyder为例,介绍调试器的用法.</p>
+<h2 id=为什么>为什么</h2>
+<h3 id=我们为什么要学会调试>我们为什么要学会调试</h3>
+<p>学会调试,对于我们理解程序的运行流程,以及找bug很有帮助.
+想一下,如果我们能够在程序运行的时候,实时查看变量是怎么变化,岂不美哉?</p>
+<h3 id=为嘛要用spyder>为嘛要用Spyder</h3>
+<p>首先,这是一个面向Python初学者的文章.
+考虑到本篇文章的读者可能都是从Anaconda开始的,所以我在此以Spyder为例讲解调试器的使用.
+其他IDE的调试功能其实大同小异.</p>
+<hr>
+<h1 id=spyder初体验>Spyder初体验</h1>
+<h2 id=熟悉spyder的界面>熟悉Spyder的界面</h2>
+<p>我们先来熟悉一下Spyder的界面.
+<img src=spyder-main.png alt></p>
+<ul>
+<li>最上面有一排按钮,我们俗称工具栏.</li>
+<li>在左侧,我们可以写代码. 按一下工具栏上<strong>绿色</strong>的开始按钮,即可开始运行程序.</li>
+<li>右侧分为上下两栏.
+<ul>
+<li>上栏中,有三个<code>选项卡</code>.分别是<code>Variable explorer</code>(这个很重要),<code>File explorer</code>,还有<code>Help</code>(后面两个基本没啥鸟用)</li>
+<li>下栏叫做<code>IPython console</code>,我们俗称为<strong>控制台</strong>. 一般来说,运行代码时候的输出,会在控制台里面看到. 当然,我们可以在没有运行代码的时候,在<code>In [n]: </code>(n是几不用关心)后面打入命令与控制台交互.</li>
+</ul>
+</li>
+</ul>
+<h2 id=用spyder运行示例代码>用Spyder运行示例代码</h2>
+<p>现在我们在左侧代码区域,粘贴下面的代码.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python>a <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>
+<span style=color:#ff79c6>for</span> i <span style=color:#ff79c6>in</span> <span style=color:#8be9fd;font-style:italic>range</span>(<span style=color:#bd93f9>10</span>):
+	i <span style=color:#ff79c6>+=</span> <span style=color:#bd93f9>1</span>
+	a <span style=color:#ff79c6>+=</span> i
+<span style=color:#8be9fd;font-style:italic>print</span>(a)
+</code></pre></div><p>然后按一下绿色的开始按钮,我们可以在<strong>控制台</strong>中看到输出.
+输出:</p>
+<pre><code>55
+</code></pre><p><em>给初学者的注释: i += 1 等同于 i = i + 1.</em></p>
+<h2 id=调试目标>调试目标</h2>
+<p>我们想知道每一次for循环进行的时候,a和 i的值是怎么变化的.</p>
+<h1 id=朴素的-print-调试法>朴素的 print 调试法</h1>
+<p>这个方法自古以来就有了. <del>(胡说,古代哪有Python)</del>
+在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.</p>
+<p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
+所以我们把代码修改成:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python>a <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>0</span>
+<span style=color:#ff79c6>for</span> i <span style=color:#ff79c6>in</span> <span style=color:#8be9fd;font-style:italic>range</span>(<span style=color:#bd93f9>10</span>):
+	i <span style=color:#ff79c6>+=</span> <span style=color:#bd93f9>1</span>
+	<span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;此时i的值为:&#34;</span>,i) <span style=color:#6272a4># 在i变化后立马print,看看它的值是多少</span>
+	a <span style=color:#ff79c6>+=</span> i
+	<span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;此时a的值为:&#34;</span>,a) <span style=color:#6272a4># 在a变化后立马print,看看它的值是多少</span>
+<span style=color:#8be9fd;font-style:italic>print</span>(a)
+</code></pre></div><p>运行结果是这样的:</p>
+<pre><code>此时i的值为: 1
+此时a的值为: 1
+
+中间省略无数个此时
+
+此时i的值为: 10
+此时a的值为: 55
+55
+</code></pre><p>这样我们就能看出来每次for循环的i和a的变化情况了.</p>
+<p>但是这样太麻烦了,而且满屏幕的i的值,a的值,看得人眼晕.
+而且当变量很多的时候,我们要加很多print.
+最后到了提交之前,还要记得把自己打的这些print给删除掉.</p>
+<p>那么,有没有更直观,更优雅的方法呢?</p>
+<h1 id=隆重登场的调试器法>隆重登场的调试器法</h1>
+<p>我们如果要运行程序,只需要点击工具栏中那个绿色的开始按钮就可以了.</p>
+<p>但是这只是<strong>单纯的运行</strong>.
+它会像IDLE一样,正常运行程序,没有调试没有逗留.</p>
+<h2 id=第一招式---逐行调试>第一招式 - 逐行调试</h2>
+<h3 id=进入调试模式>进入调试模式</h3>
+<ol>
+<li>
+<p>想要开始调试,我们需要按下图中所示的<strong>1号按钮</strong>(Debug File).
+<img src=spyder-debug.png alt></p>
+</li>
+<li>
+<p>然后我们再<strong>点击一下</strong>下图中红色箭头所指的<code>Variable explorer</code>.</p>
+<ul>
+<li>红色箭头: 一定要记住,我们一定要<strong>切换</strong>到下图中红色箭头所指的<code>Variable explorer</code>,这样我们才可以看到变量此时的值. (不过因为我们还没有执行第一行代码,所以这里是空的.)
+<img src=start-debug-1.png alt></li>
+<li>蓝色箭头: 它所指的地方,上面有个<code>----></code>的符号,并且后面有<strong>行号</strong>1.这代表当前调试器<strong>将要</strong>(还未)运行第一行代码. <em>(划重点,不要搞错,「将要」)</em></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id=开始逐行调试>开始逐行调试</h3>
+<p>现在,按下图中所示的2号按钮**(以下称为Run Current Line)**,开始在调试器里面运行下一行代码.
+<img src=spyder-debug.png alt></p>
+<p>我们可以看到,<code>Variable explorer</code>里面多出了变量<code>a</code>.
+其中<code>Name</code>代表这个变量的<strong>名称</strong>,第二栏<code>Type</code>是这个变量的<strong>类型</strong>.而最后一栏<code>Value</code>是该变量的<strong>值</strong>.(Size不用管,暂时用不上.)
+并且控制台中的<code>----></code>符号指向了第二行. 说明第一行执行完毕,再次点击将执行第二行.
+<img src=start-debug-2.png alt></p>
+<p>举个例子:
+以图中的变量<code>a</code>为例,这个变量的名称是<code>a</code>,它的类型是<code>int</code>,值为<code>0</code>.
+(正好也和我们预期的情况相同&ndash;我们执行了一句<code>a=0</code>)</p>
+<hr>
+<p>我们接着点刚才的<strong>Run Current Line</strong>.可以看到,<code>Variable explorer</code>中又多出了第二行变量<code>i</code>.并且此时控制台中的<code>----></code>指向了第三行.
+<img src=start-debug-3.png alt>
+这说明此时,<code>i</code>的值为<code>0</code>,<code>a</code>的值也为<code>0</code>.</p>
+<hr>
+<p>我们点击<strong>Run Current Line</strong>(这是第三次).发现<code>i</code>的值由<code>0</code>变为<code>1</code>.
+再点击一次<strong>Run Current Line</strong>(这是第四次),<code>a</code>的值也变成了<code>1</code>.
+注意一下,经过四次逐行执行,控制台输出如下:</p>
+<pre><code>ipdb&gt; None
+&gt; c:\users\rise\desktop\temp.py(2)&lt;module&gt;()
+      1 a = 0
+----&gt; 2 for i in range(10):
+      3         i += 1
+      4         a += i
+      5 print(a)
+</code></pre><p>我们可以看到,<code>----></code>符号指向第二行(for所在的那行).
+这说明此时第一次for循环执行完毕.由于还有<strong>后面的循环</strong>,所以这里程序要<strong>跳回for循环的起始位置</strong>,继续进行剩下几次循环.</p>
+<hr>
+<p>我们通过逐行调试,可以很直观清楚地跟踪程序的运行过程.
+如果我们想中途停止此次调试,只需要点击一下<strong>6号按钮</strong>,即<code>Stop Debugging</code>.
+<img src=spyder-debug.png alt></p>
+<p>这就是逐行调试了.</p>
+<hr>
+<h3 id=小总结>小总结</h3>
+<p>来总结一下:</p>
+<ol>
+<li>要开始调试,需要点击<code>Debug File</code>. 点击之后,会进入调试模式.</li>
+<li>一定记得切换到<code>Variable explorer</code>,这样才能查看变量的变化情况.</li>
+<li>点击<code>Run Current Line</code>,运行第一行代码.</li>
+<li>继续点击<code>Run Current Line</code>这个按钮,会<strong>按照程序逻辑</strong>运行下一行代码. 直至执行完毕为止.</li>
+<li>通过点击<code>Stop Debugging</code>,我们可以停止调试.</li>
+</ol>
+<p>在上述的调试过程中:</p>
+<ul>
+<li><code>Variable explorer</code>中将显示当前存在的所有变量. <code>Type</code>表示该变量的类型<code>Value</code>一栏将显示变量的值.(不要看走眼,不是<code>Size</code>一栏)</li>
+<li>在控制台中,我们可以通过<code>----></code>这个符号所指向的行数,看到即将被执行的代码是哪一行.</li>
+</ul>
+<hr>
+<h2 id=第二招式---断点调试>第二招式 - 断点调试</h2>
+<p>断点调试顾名思义,是可以在某一行(或多行)设置断点,对该行进行调试.
+而逐行调试是对每一行进行调试.
+断点调试是更有针对性的调试方法.</p>
+<p>如果你能搞清楚逐行调试,那么断点调试也不难.</p>
+<h3 id=设置断点>设置断点</h3>
+<p>如图. 双击某一行行号前面的空白处,之后在这个地方会出现如图所示的小红点.
+<img src=set-breakpoint.png alt>
+这个小红点就是我们所说的断点.</p>
+<h3 id=开始调试>开始调试</h3>
+<p>如图所示,我们现在在<strong>第3行,第4行</strong>设置<strong>两个</strong>断点.</p>
+<p>我们按<code>Debug File</code>开始调试代码.
+此时可以看到,控制台里面的显示是这样的:</p>
+<pre><code>ipdb&gt; &gt; c:\users\rise\desktop\temp.py(3)&lt;module&gt;()
+      1 a = 0
+      2 for i in range(10):
+1---&gt; 3         i += 1
+2     4         a += i
+      5 print(a)
+</code></pre><p>其中,行号前面的1和2,代表我们设置的两个断点.
+所以此时即将运行<strong>第一个断点处,即第三行.</strong></p>
+<h3 id=继续调试>继续调试</h3>
+<p>程序的执行此时暂停.我们要让它继续运行,需要按一下第五个按钮,即<code>Continue executation until next breakpoint</code>:
+<img src=spyder-debug.png alt>
+这个按钮的意思就是,继续执行直到下一个断点.
+因为我们第二个断点设置在第四行,所以代码将继续执行,在<strong>将要执行</strong>第四行的时候会暂停.</p>
+<h3 id=断点调试小总结>断点调试小总结</h3>
+<p>我来总结一下断点调试的几个步骤.</p>
+<ol>
+<li>双击行号前面的空白处,以设置断点</li>
+<li>点击<code>Debug file</code>开始进入调试</li>
+<li>在调试过程中,通过<code>Variable explorer</code>观察变量的值</li>
+<li>点击<code>Continue executation until next breakpoint</code>执行到下一个断点处.</li>
+<li>通过点击<code>Stop Debugging</code>,我们可以停止调试.</li>
+</ol>
+<hr>
+<h2 id=调试器总结>调试器总结</h2>
+<p>几点需要注意的地方:</p>
+<ul>
+<li>每次打开Spyder的时候,右上方区域默认显示的是<code>Help</code>. 所以我们需要手动切换到<code>Variable explorer</code>.</li>
+<li>在调试的时候,<code>----></code>指向的是即将执行的代码,而<strong>不是已经执行的代码</strong>.</li>
+<li>当一次调试完毕后,开始第二次调试的时候,<code>Variable explorer</code><strong>不会</strong>自己清空. 这点一定要注意,上一次调试残留的变量的值仍然会留在<code>Variable explorer</code>里面. 所以我们可以按一下下图所示的按钮清空.
+<img src=clear-explorer.png alt></li>
+</ul>
+<hr>
+<h1 id=写在最后>写在最后</h1>
+<p>调试是IDE中很重要的一个功能.
+这篇文章虽然字很多,但实际上用起来是很简单的,它并不复杂,而且很适合新手.
+如果我们学会了调试器的使用,那么写代码将会事半功倍.</p>
+<p>另外,其他的IDE的调试功能也是大同小异.大家可以探索一下!</p>
+<p>那么最后呢,就祝各位学有所成~ Cheers!</p>
+<p>(未完待续,因为可能会有补充)</p>
+<hr width=100% id=EOF>
+<p style=color:#777>上次修改於 2019-10-28</p>
+</div>
+</div>
+<nav class=post-pagination>
+<a class=newer-posts href=https://risehere.net/posts/obs-now-playing/>
+下回<br>OBS Studio 显示正在播放的歌曲 in Linux
+</a>
+<a class=older-posts href=https://risehere.net/about/>
+上回<br>我的一份自我介绍
+</a>
+</nav>
+<div class=post-comment-wrapper>
+<div id=waline></div>
+</div>
+</div>
+</div>
+</div>
+</div><div id=single-column-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div>
+<script>let app;app=new Vue({el:'#app',data:{scrollY:0,navOpacity:0,isDrawerOpen:!1,mounted:!1,isDarkMode:!1},methods:{sgn(a,b){let c=1/(1-2*a);return b<=a?0:b>=1-a?1:c*(b-a)},handleScroll(){this.scrollY=window.scrollY,this.navOpacity=this.sgn(0,Math.min(1,Math.max(0,window.scrollY/(this.pageHeadHeight()-this.navBarHeight()*.8))));const{navBar:c,navBackground:a,navTitle:b,extraContainer:d,streamContainer:e}=this.$refs;this.navOpacity>=1?(a.style.opacity=1,b.style.opacity=1):(a.style.opacity=0,b.style.opacity=0)},handleResize(){const{navBar:c,navBackground:d,navTitle:e,extraContainer:a,streamContainer:b}=this.$refs;a.style.left=b.offsetWidth-a.offsetWidth+'px'},navBarHeight(){return this.$refs.navBar.offsetHeight},pageHeadHeight(){return this.$refs.pageHead.offsetHeight},toggleDrawer(){this.isDrawerOpen=!this.isDrawerOpen,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},closeDrawer(){this.isDrawerOpen=!1,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},toggleDarkMode(){this.isDarkMode=!this.isDarkMode,this.isDarkMode==!0?(document.cookie="night=1;path=/",document.body.classList.add("night")):(document.cookie="night=0;path=/",document.body.classList.remove("night"))},debounce(t,b,f){let e,g,l,d,a,c,i=0,q=!1,h=!1,n=!0;const s=!b&&b!==0&&typeof root.requestAnimationFrame=='function';if(typeof t!='function')throw new TypeError('Expected a function');function w(a){const b=typeof a;return a!=null&&(b==='object'||b==='function')}b=+b||0,w(f)&&(q=!!f.leading,h='maxWait'in f,l=h?Math.max(+f.maxWait||0,b):l,n='trailing'in f?!!f.trailing:n);function o(a){const b=e,c=g;return e=g=void 0,i=a,d=t.apply(c,b),d}function k(b,c){return s?(root.cancelAnimationFrame(a),root.requestAnimationFrame(b)):setTimeout(b,c)}function v(a){if(s)return root.cancelAnimationFrame(a);clearTimeout(a)}function A(c){return i=c,a=k(m,b),q?o(c):d}function u(a){const e=a-c,f=a-i,d=b-e;return h?Math.min(d,l-f):d}function r(a){const d=a-c,e=a-i;return c===void 0||d>=b||d<0||h&&e>=l}function m(){const b=Date.now();if(r(b))return p(b);a=k(m,u(b))}function p(b){return a=void 0,n&&e?o(b):(e=g=void 0,d)}function x(){a!==void 0&&v(a),i=0,e=c=g=a=void 0}function y(){return a===void 0?d:p(Date.now())}function z(){return a!==void 0}function j(...i){const f=Date.now(),j=r(f);if(e=i,g=this,c=f,j){if(a===void 0)return A(c);if(h)return a=k(m,b),o(c)}return a===void 0&&(a=k(m,b)),d}return j.cancel=x,j.flush=y,j.pending=z,j}},created(){window.addEventListener('scroll',this.handleScroll),window.addEventListener('resize',this.handleResize),window._nonDesktop=function(){let a=!1;return function(b){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(b)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(b.substr(0,4)))&&(a=!0)}(navigator.userAgent||navigator.vendor||window.opera),a};var a=document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/,"$1");a==""?window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches:a=="1"&&this.toggleDarkMode()},mounted(){this.handleScroll(),this.handleResize(),this.mounted=!0,new Waline({el:'#waline',path:location.pathname,requiredFields:['nick','mail'],serverURL:"https://comment.amazingrise.net",locale:{placeholder:'欢迎发表你的看法！为了防止垃圾留言，你的评论将在「审核」后显示。（我一天之内就能看到）'}}),document.querySelectorAll("table").forEach(function(a){a.classList.add("table-striped"),a.classList.add("table"),a.classList.add("table-responsive"),a.classList.add("table-hover")}),spy(),window.addEventListener('scroll',this.debounce(spy,250,{maxWait:250}),!1)},destroyed(){window.removeEventListener('scroll',this.handleScroll),window.removeEventListener('resize',this.handleResize)}})</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前端 on 左手的世界</title><link>https://risehere.net/categories/%E5%89%8D%E7%AB%AF/</link><description>Recent content in 前端 on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Mon, 16 Mar 2020 10:12:18 +0800</lastBuildDate><atom:link href="https://risehere.net/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://risehere.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://risehere.net/posts/getting-to-know-vue-components/</guid><description>前言 这又是一篇很基础很基础的文章。（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。
+本篇文章主要讲述如何用 Vue Components 减少重复代码量。
+需求 博客的友链页是由一个表格构成的：
+name url description 张三 https://zhangsan.com 张三的挖坑日记 李四 https://lisi.com 李四的网络日志 不行，这太简陋了。如何编写一个更好的友链页呢？
+实现 那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。
+实现1 不用 Vue 下面我们用 Bootstrap 的卡片实现一个友链卡片。
+&amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt; &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt; &amp;lt;!-- 标题 --&amp;gt; &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;张三&amp;lt;/p&amp;gt; &amp;lt;!-- 描述 --&amp;gt; &amp;lt;p&amp;gt;张三的挖坑日记&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt; &amp;lt;!-- 链接 --&amp;gt; &amp;lt;a href=&amp;#34;https://zhangsan.com&amp;#34;&amp;gt;https://zhangsan.com&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 实现效果如下：
+张三
+张三的挖坑日记</description></item></channel></rss>

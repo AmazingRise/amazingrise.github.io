@@ -1,0 +1,352 @@
+<!doctype html><html><head>
+<title>(译)Kotlin中的等号，"=="，"==="和"equals"</title>
+<meta charset=utf-8>
+<meta name=X-UA-Compatible content="IE=edge">
+<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
+<meta content="telephone=no" name=format-detection>
+<meta name=description content="我们该如何正确使用Kotlin里面这些相等性判断呢？">
+<meta name=renderer content="webkit">
+<meta name=theme-color content="#ffffff">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
+<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
+<script src=/vendor/js/vue.min.js></script>
+<link rel=stylesheet href=https://risehere.net/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media=screen>
+<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c0082f0b082177f6fb3768ff91439a097de49689bd26f4d49f76d94ebb81e02d.css integrity="sha256-wAgvCwghd/b7N2j/kUOaCX3klom9JvTUn3bZTruB4C0=" media=screen>
+<script src=/js/loadCSS.js></script>
+<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
+<script src=/js/toc.js></script>
+<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
+</head>
+<body>
+<div id=app><div ref=sideContainer class=side-container>
+<a class="a-block nav-head false" href=https://risehere.net>
+<div class=nav-title>
+左手的世界
+</div>
+<div class=nav-subtitle>
+Rise's Blog
+</div>
+</a>
+<div class=nav-link-list>
+<a class="a-block nav-link-item false" href=/posts>
+歸檔
+</a>
+<a class="a-block nav-link-item false" href=/categories>
+分類
+</a>
+<a class="a-block nav-link-item false" href=/about>
+關於
+</a>
+<a class="a-block nav-link-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block nav-link-item false" href=/index.xml>
+RSS
+</a>
+</div>
+<div class=nav-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div><div ref=extraContainer class=extra-container>
+<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<ul>
+<li>
+<a href=#%e7%bb%93%e6%9e%84%e6%80%a7%e7%9b%b8%e7%ad%89- onclick="onNavClick(`#结构性相等--nav`)" id=结构性相等--nav>
+结构性相等 ("==")
+</a>
+</li>
+<li>
+<a href=#%e5%bc%95%e7%94%a8%e6%80%a7%e7%9b%b8%e7%ad%89 onclick="onNavClick(`#引用性相等-nav`)" id=引用性相等-nav>
+引用性相等("===")
+</a>
+</li>
+<li>
+<a href=#equals-%e6%96%b9%e6%b3%95 onclick="onNavClick(`#equals-方法-nav`)" id=equals-方法-nav>
+.equals 方法
+</a>
+</li>
+<li>
+<a href=#%e4%b8%be%e4%b8%aa%e6%a0%97%e5%ad%90 onclick="onNavClick(`#举个栗子-nav`)" id=举个栗子-nav>
+举个栗子
+</a>
+</li>
+<li>
+<a href=#%e6%9c%80%e5%90%8e%e8%b0%a8%e8%ae%b0 onclick="onNavClick(`#最后谨记-nav`)" id=最后谨记-nav>
+最后谨记
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class=pagination>
+<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
+<i class="material-icons pagination-action-icon">
+keyboard_arrow_up
+</i>
+</a>
+<a class=pagination-action v-on:click=toggleDarkMode>
+<i class="material-icons pagination-action-icon" v-if=isDarkMode>
+brightness_4
+</i>
+<i class="material-icons pagination-action-icon" v-else=isDarkMode>
+brightness_7
+</i>
+</a>
+</div>
+</div>
+<div class=single-column-drawer-container ref=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+<div class=drawer-content>
+<div class=drawer-menu>
+<a class="a-block drawer-menu-item false" href=/posts>
+歸檔
+</a>
+<a class="a-block drawer-menu-item false" href=/categories>
+分類
+</a>
+<a class="a-block drawer-menu-item false" href=/about>
+關於
+</a>
+<a class="a-block drawer-menu-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>
+RSS
+</a>
+<div class=toc>
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<ul>
+<li>
+<a href=#%e7%bb%93%e6%9e%84%e6%80%a7%e7%9b%b8%e7%ad%89- onclick="onNavClick(`#结构性相等--nav`)" id=结构性相等--nav>
+结构性相等 ("==")
+</a>
+</li>
+<li>
+<a href=#%e5%bc%95%e7%94%a8%e6%80%a7%e7%9b%b8%e7%ad%89 onclick="onNavClick(`#引用性相等-nav`)" id=引用性相等-nav>
+引用性相等("===")
+</a>
+</li>
+<li>
+<a href=#equals-%e6%96%b9%e6%b3%95 onclick="onNavClick(`#equals-方法-nav`)" id=equals-方法-nav>
+.equals 方法
+</a>
+</li>
+<li>
+<a href=#%e4%b8%be%e4%b8%aa%e6%a0%97%e5%ad%90 onclick="onNavClick(`#举个栗子-nav`)" id=举个栗子-nav>
+举个栗子
+</a>
+</li>
+<li>
+<a href=#%e6%9c%80%e5%90%8e%e8%b0%a8%e8%ae%b0 onclick="onNavClick(`#最后谨记-nav`)" id=最后谨记-nav>
+最后谨记
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<transition name=fade>
+<div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
+</transition>
+<nav ref=navBar class="navbar sticky-top navbar-light single-column-nav-container">
+<div ref=navBackground class=nav-background></div>
+<div class="container container-narrow nav-content">
+<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>
+menu
+</i>
+</button>
+<a ref=navTitle class=navbar-brand href=https://risehere.net>
+左手的世界
+</a>
+<button type=button class=nav-darkmode-toggle v-on:click=toggleDarkMode>
+<i class=material-icons v-if=isDarkMode>
+brightness_4
+</i>
+<i class=material-icons v-else=isDarkMode>
+brightness_7
+</i>
+</button>
+</div>
+</nav>
+<div class=single-column-header-container ref=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+<a href=https://risehere.net>
+<div class=single-column-header-title>左手的世界</div>
+<div class=single-column-header-subtitle>Rise's Blog</div>
+</a>
+</div>
+<div id=content>
+<div ref=streamContainer class=stream-container>
+<div class="post-list-container post-list-container-shadow">
+<div class=post>
+<div class=post-head-wrapper-text-only>
+<div class=post-title>
+(译)Kotlin中的等号，"=="，"==="和"equals"
+<div class=post-subtitle>
+我们该如何正确使用Kotlin里面这些相等性判断呢？
+</div>
+<div class=post-meta>
+<time itemprop=datePublished>
+2019-05-18 10:47
+</time>
+<i class=material-icons>folder</i>
+<a href=/categories/kotlin>Kotlin</a>
+&nbsp;
+<i class=material-icons>label</i>
+<a href=/tags/kotlin>Kotlin</a>
+&nbsp;
+<a href=/tags/translation>Translation</a>
+&nbsp;
+</div>
+</div>
+</div>
+<div class=post-body-wrapper>
+<div class=post-body v-pre>
+<p>Translated from: <a href=https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1>Equality in Kotlin</a>
+Author: Suneet Agrawal
+Translated by : AmazingRise (Authorized by original author)</p>
+<p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。
+Kotlin语言里，“等号”有这么几种：<code>==</code>，<code>===</code>与<code>.equals</code>。
+那么问题来了，我们该如何正确使用这些相等性判断呢？</p>
+<p>我们来一起看一看Kotlin的几种相等性判断：</p>
+<h2 id=结构性相等->结构性相等 ("==")</h2>
+<p><code>==</code>操作符用于比较两个变量的值。
+<strong>请不要与Java中的<code>==</code>相混淆。</strong>
+与Java中的<code>==</code>操作符<strong>不同</strong>的是：<code>==</code>操作符在Kotlin中只比较值。
+而Java或其它语言中，<code>==</code>通常用来比较两个对象的引用。
+Kotlin中，<code>==</code>的否定形式是<code>!=</code>，当两个变量值不同时返回真。</p>
+<h2 id=引用性相等>引用性相等("===")</h2>
+<p><code>===</code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，<code>===</code>的值才为真。
+<code>===</code>的否定形式是<code>!==</code>，当两个对象的引用不同的时候返回真。</p>
+<p>不过对于原始类型（Primitive type）来说（例如 Int），<code>=== </code>等价于<code> ==</code> 。</p>
+<h2 id=equals-方法>.equals 方法</h2>
+<p><code>equals(other: Any?)</code>方法是在<code>Any</code>类里实现的。
+并且所有类中<code>.equals</code>都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。</p>
+<p><code>.equals</code>方法将会比较两个变量的值。
+与<code>==</code>不同体现在比较<code>Float</code>和<code>Double</code>的时候，<code>.equals</code>违背了IEEE 754 浮点数运算标准。</p>
+<p><strong>与IEEE 754浮点数运算标准相违背，意味着什么？</strong></p>
+<p>这意味着：</p>
+<ul>
+<li>NaN 等于它本身</li>
+<li>NaN 比任何其他元素要大，包括正无穷 <code>POSITIVE_INFINITY</code></li>
+<li>编译器会认为<code>-0.0</code> 要比 <code>0.0</code> 小。</li>
+</ul>
+<p><strong>一头雾水？</strong></p>
+<h2 id=举个栗子>举个栗子</h2>
+<p>我来举几个例子解释一下。</p>
+<p>首先，我们用这几个方法比较两个原始类型的变量（Int）。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Kotlin data-lang=Kotlin>	<span style=color:#ff79c6>val</span> int1 = <span style=color:#bd93f9>10</span>
+	<span style=color:#ff79c6>val</span> int2 = <span style=color:#bd93f9>10</span>
+
+	println(int1 <span style=color:#ff79c6>==</span> int2)			<span style=color:#6272a4>// true
+</span><span style=color:#6272a4></span>	println(int1.equals(int2))		<span style=color:#6272a4>// true
+</span><span style=color:#6272a4></span>	println(int1 <span style=color:#ff79c6>===</span> int2)		<span style=color:#6272a4>// true
+</span></code></pre></div><p>这三个println最后都会输出<code>true</code>，因为对于原始类型，这三种判断都仅仅检查变量的值。
+所以在这种情况下，<code>===</code>输出的结果也是一样的。</p>
+<p>现在让我们把原始类型换成包装类，看看三种方法表现出的行为。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Kotlin data-lang=Kotlin>	<span style=color:#ff79c6>val</span> first = Integer(<span style=color:#bd93f9>10</span>)
+	<span style=color:#ff79c6>val</span> second = Integer(<span style=color:#bd93f9>10</span>)
+
+	println(first <span style=color:#ff79c6>==</span> second)		<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(first.equals(second))		<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(first <span style=color:#ff79c6>===</span> second)		<span style=color:#6272a4>//false
+</span></code></pre></div><p>在上面的例子中，<code>==</code>与<code>.equals</code>输出了<code>true</code>，因为他们仅仅比较了两个变量的值。
+而<code>===</code>比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了<code>false</code>。</p>
+<p>现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Kotlin data-lang=Kotlin><span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Employee</span> (<span style=color:#ff79c6>val</span> name: String)
+
+	<span style=color:#ff79c6>val</span> emp1 = Employee(“Suneet”)
+	<span style=color:#ff79c6>val</span> emp2 = Employee(“Suneet”)
+
+	println(emp1 <span style=color:#ff79c6>==</span> emp2)				<span style=color:#6272a4>//false
+</span><span style=color:#6272a4></span>	println(emp1.equals(emp2))			<span style=color:#6272a4>//false
+</span><span style=color:#6272a4></span>	println(emp1 <span style=color:#ff79c6>===</span> emp2)			<span style=color:#6272a4>//false
+</span><span style=color:#6272a4></span>
+	println(emp1.name <span style=color:#ff79c6>==</span> emp2.name)				<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1.name.equals(emp2.name))			<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1.name <span style=color:#ff79c6>===</span> emp2.name)			<span style=color:#6272a4>//true
+</span></code></pre></div><p>结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了<code>false</code>。
+但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了<code>true</code>。</p>
+<p><strong>等等，你说<code>==</code>和<code>.equals</code>只比较两个对象的内容，在我们的这个例子里它们都是一样的呀</strong>
+(译者注：指第一段，三个比较全都返回了false)
+**这没毛病。**但内容比较仅对于<code>data</code>类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于<code>data</code>类，编译器将比较对象的内容，并且在内容相同的情况下返回<code>true</code>。</p>
+<p>让我们把上面的普通类改为<code>data</code>类：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Kotlin data-lang=Kotlin><span style=color:#ff79c6>data</span> <span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Employee</span> (<span style=color:#ff79c6>val</span> name: String)
+
+	<span style=color:#ff79c6>val</span> emp1 = Employee(<span style=color:#f1fa8c>&#34;Suneet&#34;</span>)
+	<span style=color:#ff79c6>val</span> emp2 = Employee(<span style=color:#f1fa8c>&#34;Suneet&#34;</span>)
+
+	println(emp1 <span style=color:#ff79c6>==</span> emp2)				<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1.equals(emp2))			<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1 <span style=color:#ff79c6>===</span> emp2)			<span style=color:#6272a4>//false
+</span><span style=color:#6272a4></span>
+	println(emp1.name <span style=color:#ff79c6>==</span> emp2.name)				<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1.name.equals(emp2.name))			<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>	println(emp1.name <span style=color:#ff79c6>===</span> emp2.name)			<span style=color:#6272a4>//true
+</span></code></pre></div><p>这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Kotlin data-lang=Kotlin><span style=color:#ff79c6>val</span> negZero = -<span style=color:#bd93f9>0.0f</span>
+<span style=color:#ff79c6>val</span> posZero = <span style=color:#bd93f9>0.0f</span>
+
+println(negZero <span style=color:#ff79c6>==</span> posZero)				<span style=color:#6272a4>//true
+</span><span style=color:#6272a4></span>println(negZero.equals(posZero))			<span style=color:#6272a4>//false
+</span><span style=color:#6272a4></span>println(negZero <span style=color:#ff79c6>===</span> posZero)			<span style=color:#6272a4>//true
+</span></code></pre></div><p>对于<code>Float</code>和<code>Double</code>类的比较，<code>.equals</code>方法违背了IEEE 754 浮点数运算标准，当<code>-0.0</code>与<code>0.0</code>比较的时候，它会返回<code>false</code>。
+而<code>==</code>和<code>===</code>都会返回<code>true</code>。</p>
+<h2 id=最后谨记>最后谨记</h2>
+<ul>
+<li>因为Kotlin里没有像<code>String("")</code>这样的构造器，当比较字符串的时候，只要内容相等，都会返回<code>true</code>。</li>
+<li>对于<code>null</code>引用的判断，我们不必做任何优化。<code>a == null</code> 会被自动转换为 <code>a === null</code>，因为null本身也是一个引用，它将会引发引用检查（而不是值检查）。</li>
+</ul>
+<p>就酱。<a href=https://agrawalsuneet.github.io/agrawalsuneet/publications/>点击这里</a>看看我写的其他有趣文章。
+或者<a href=https://agrawalsuneet.github.io/agrawalsuneet/personalgamesandapps/>点击这里</a>，瞧一瞧我写的App和游戏。
+另外，欢迎在你的App里面使用<a href=https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/>我的Android开源组件</a>。
+如果你需要帮助的话，可以给我发邮件： agrawalsuneet AT gmail.com。</p>
+<p>引用: <a href=https://kotlinlang.org/docs/reference/equality.html>Kotlin docs</a></p>
+<hr>
+<p>翻译完结。</p>
+<p>作者：Suneet Agrawal.
+网站：https://agrawalsuneet.github.io/agrawalsuneet/
+十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。
+原作者保留所有权利。</p>
+<hr width=100% id=EOF>
+<p style=color:#777>上次修改於 2019-05-18</p>
+</div>
+</div>
+<nav class=post-pagination>
+<a class=newer-posts href=https://risehere.net/about/>
+下回<br>我的一份自我介绍
+</a>
+<a class=older-posts href=https://risehere.net/2019/04/20/Manjaro-Optimus-Dual-Monitor/>
+上回<br>Manjaro 在笔记本上的多显示器配置
+</a>
+</nav>
+<div class=post-comment-wrapper>
+<div id=waline></div>
+</div>
+</div>
+</div>
+</div>
+</div><div id=single-column-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div>
+<script>let app;app=new Vue({el:'#app',data:{scrollY:0,navOpacity:0,isDrawerOpen:!1,mounted:!1,isDarkMode:!1},methods:{sgn(a,b){let c=1/(1-2*a);return b<=a?0:b>=1-a?1:c*(b-a)},handleScroll(){this.scrollY=window.scrollY,this.navOpacity=this.sgn(0,Math.min(1,Math.max(0,window.scrollY/(this.pageHeadHeight()-this.navBarHeight()*.8))));const{navBar:c,navBackground:a,navTitle:b,extraContainer:d,streamContainer:e}=this.$refs;this.navOpacity>=1?(a.style.opacity=1,b.style.opacity=1):(a.style.opacity=0,b.style.opacity=0)},handleResize(){const{navBar:c,navBackground:d,navTitle:e,extraContainer:a,streamContainer:b}=this.$refs;a.style.left=b.offsetWidth-a.offsetWidth+'px'},navBarHeight(){return this.$refs.navBar.offsetHeight},pageHeadHeight(){return this.$refs.pageHead.offsetHeight},toggleDrawer(){this.isDrawerOpen=!this.isDrawerOpen,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},closeDrawer(){this.isDrawerOpen=!1,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},toggleDarkMode(){this.isDarkMode=!this.isDarkMode,this.isDarkMode==!0?(document.cookie="night=1;path=/",document.body.classList.add("night")):(document.cookie="night=0;path=/",document.body.classList.remove("night"))},debounce(t,b,f){let e,g,l,d,a,c,i=0,q=!1,h=!1,n=!0;const s=!b&&b!==0&&typeof root.requestAnimationFrame=='function';if(typeof t!='function')throw new TypeError('Expected a function');function w(a){const b=typeof a;return a!=null&&(b==='object'||b==='function')}b=+b||0,w(f)&&(q=!!f.leading,h='maxWait'in f,l=h?Math.max(+f.maxWait||0,b):l,n='trailing'in f?!!f.trailing:n);function o(a){const b=e,c=g;return e=g=void 0,i=a,d=t.apply(c,b),d}function k(b,c){return s?(root.cancelAnimationFrame(a),root.requestAnimationFrame(b)):setTimeout(b,c)}function v(a){if(s)return root.cancelAnimationFrame(a);clearTimeout(a)}function A(c){return i=c,a=k(m,b),q?o(c):d}function u(a){const e=a-c,f=a-i,d=b-e;return h?Math.min(d,l-f):d}function r(a){const d=a-c,e=a-i;return c===void 0||d>=b||d<0||h&&e>=l}function m(){const b=Date.now();if(r(b))return p(b);a=k(m,u(b))}function p(b){return a=void 0,n&&e?o(b):(e=g=void 0,d)}function x(){a!==void 0&&v(a),i=0,e=c=g=a=void 0}function y(){return a===void 0?d:p(Date.now())}function z(){return a!==void 0}function j(...i){const f=Date.now(),j=r(f);if(e=i,g=this,c=f,j){if(a===void 0)return A(c);if(h)return a=k(m,b),o(c)}return a===void 0&&(a=k(m,b)),d}return j.cancel=x,j.flush=y,j.pending=z,j}},created(){window.addEventListener('scroll',this.handleScroll),window.addEventListener('resize',this.handleResize),window._nonDesktop=function(){let a=!1;return function(b){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(b)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(b.substr(0,4)))&&(a=!0)}(navigator.userAgent||navigator.vendor||window.opera),a};var a=document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/,"$1");a==""?window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches:a=="1"&&this.toggleDarkMode()},mounted(){this.handleScroll(),this.handleResize(),this.mounted=!0,new Waline({el:'#waline',path:location.pathname,requiredFields:['nick','mail'],serverURL:"https://comment.amazingrise.net",locale:{placeholder:'欢迎发表你的看法！为了防止垃圾留言，你的评论将在「审核」后显示。（我一天之内就能看到）'}}),document.querySelectorAll("table").forEach(function(a){a.classList.add("table-striped"),a.classList.add("table"),a.classList.add("table-responsive"),a.classList.add("table-hover")}),spy(),window.addEventListener('scroll',this.debounce(spy,250,{maxWait:250}),!1)},destroyed(){window.removeEventListener('scroll',this.handleScroll),window.removeEventListener('resize',this.handleResize)}})</script>
+</body>
+</html>

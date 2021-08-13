@@ -1,0 +1,533 @@
+<!doctype html><html><head>
+<title>2020年，在 Linux 下动手编译 OpenJDK 8</title>
+<meta charset=utf-8>
+<meta name=X-UA-Compatible content="IE=edge">
+<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
+<meta content="telephone=no" name=format-detection>
+<meta name=description content="读深入理解 Java 虚拟机 - 经历了一天的折腾，我成功编译了 OpenJDK 8。">
+<meta name=renderer content="webkit">
+<meta name=theme-color content="#ffffff">
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
+<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
+<script src=/vendor/js/vue.min.js></script>
+<link rel=stylesheet href=https://risehere.net/scss/journal.min.3f72a5fc8f5b5dd732a4b476aced0eece2156958d9d414316494ddb10593ddf7.css integrity="sha256-P3Kl/I9bXdcypLR2rO0O7OIVaVjZ1BQxZJTdsQWT3fc=" media=screen>
+<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c0082f0b082177f6fb3768ff91439a097de49689bd26f4d49f76d94ebb81e02d.css integrity="sha256-wAgvCwghd/b7N2j/kUOaCX3klom9JvTUn3bZTruB4C0=" media=screen>
+<script src=/js/loadCSS.js></script>
+<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
+<script src=/js/toc.js></script>
+<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
+</head>
+<body>
+<div id=app><div ref=sideContainer class=side-container>
+<a class="a-block nav-head false" href=https://risehere.net>
+<div class=nav-title>
+左手的世界
+</div>
+<div class=nav-subtitle>
+Rise's Blog
+</div>
+</a>
+<div class=nav-link-list>
+<a class="a-block nav-link-item active" href=/posts>
+歸檔
+</a>
+<a class="a-block nav-link-item false" href=/categories>
+分類
+</a>
+<a class="a-block nav-link-item false" href=/about>
+關於
+</a>
+<a class="a-block nav-link-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block nav-link-item false" href=/index.xml>
+RSS
+</a>
+</div>
+<div class=nav-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div><div ref=extraContainer class=extra-container>
+<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<li>
+<a href=#%e5%87%86%e5%a4%87 onclick="onNavClick(`#准备-nav`)" id=准备-nav>
+准备
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%8e%af%e5%a2%83 onclick="onNavClick(`#环境-nav`)" id=环境-nav>
+环境
+</a>
+</li>
+<li>
+<a href=#openjdk-8 onclick="onNavClick(`#openjdk-8-nav`)" id=openjdk-8-nav>
+OpenJDK 8
+</a>
+</li>
+<li>
+<a href=#mercurial onclick="onNavClick(`#mercurial-nav`)" id=mercurial-nav>
+Mercurial
+</a>
+</li>
+<li>
+<a href=#gcc-%e5%92%8c-make onclick="onNavClick(`#gcc-和-make-nav`)" id=gcc-和-make-nav>
+GCC 和 make
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e7%bc%96%e8%af%91 onclick="onNavClick(`#编译-nav`)" id=编译-nav>
+编译
+</a>
+</li>
+<ul>
+<li>
+<a href=#clone onclick="onNavClick(`#clone-nav`)" id=clone-nav>
+clone
+</a>
+</li>
+<li>
+<a href=#get_source onclick="onNavClick(`#get_source-nav`)" id=get_source-nav>
+get_source
+</a>
+</li>
+<li>
+<a href=#configure onclick="onNavClick(`#configure-nav`)" id=configure-nav>
+configure
+</a>
+</li>
+<li>
+<a href=#dirty-hack onclick="onNavClick(`#dirty-hack-nav`)" id=dirty-hack-nav>
+dirty hack
+</a>
+</li>
+<li>
+<a href=#make onclick="onNavClick(`#make-nav`)" id=make-nav>
+make
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e4%bb%85%e7%bc%96%e8%af%91 onclick="onNavClick(`#仅编译-nav`)" id=仅编译-nav>
+仅编译
+</a>
+</li>
+<li>
+<a href=#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6 onclick="onNavClick(`#编译二进制-nav`)" id=编译二进制-nav>
+编译二进制
+</a>
+</li>
+</ul>
+</ul>
+<li>
+<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
+最后
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%bb%93%e8%af%ad onclick="onNavClick(`#结语-nav`)" id=结语-nav>
+结语
+</a>
+</li>
+<li>
+<a href=#%e5%8f%82%e8%80%83 onclick="onNavClick(`#参考-nav`)" id=参考-nav>
+参考
+</a>
+</li>
+<li>
+<a href=#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a onclick="onNavClick(`#次回予告-nav`)" id=次回予告-nav>
+次回予告
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class=pagination>
+<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
+<i class="material-icons pagination-action-icon">
+keyboard_arrow_up
+</i>
+</a>
+<a class=pagination-action v-on:click=toggleDarkMode>
+<i class="material-icons pagination-action-icon" v-if=isDarkMode>
+brightness_4
+</i>
+<i class="material-icons pagination-action-icon" v-else=isDarkMode>
+brightness_7
+</i>
+</a>
+</div>
+</div>
+<div class=single-column-drawer-container ref=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+<div class=drawer-content>
+<div class=drawer-menu>
+<a class="a-block drawer-menu-item active" href=/posts>
+歸檔
+</a>
+<a class="a-block drawer-menu-item false" href=/categories>
+分類
+</a>
+<a class="a-block drawer-menu-item false" href=/about>
+關於
+</a>
+<a class="a-block drawer-menu-item false" href=/friends>
+朋友們
+</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>
+RSS
+</a>
+<div class=toc>
+<div class=toc-content>
+<center>- 目錄 -</center>
+<ul>
+<li>
+<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
+前言
+</a>
+</li>
+<li>
+<a href=#%e5%87%86%e5%a4%87 onclick="onNavClick(`#准备-nav`)" id=准备-nav>
+准备
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%8e%af%e5%a2%83 onclick="onNavClick(`#环境-nav`)" id=环境-nav>
+环境
+</a>
+</li>
+<li>
+<a href=#openjdk-8 onclick="onNavClick(`#openjdk-8-nav`)" id=openjdk-8-nav>
+OpenJDK 8
+</a>
+</li>
+<li>
+<a href=#mercurial onclick="onNavClick(`#mercurial-nav`)" id=mercurial-nav>
+Mercurial
+</a>
+</li>
+<li>
+<a href=#gcc-%e5%92%8c-make onclick="onNavClick(`#gcc-和-make-nav`)" id=gcc-和-make-nav>
+GCC 和 make
+</a>
+</li>
+</ul>
+<li>
+<a href=#%e7%bc%96%e8%af%91 onclick="onNavClick(`#编译-nav`)" id=编译-nav>
+编译
+</a>
+</li>
+<ul>
+<li>
+<a href=#clone onclick="onNavClick(`#clone-nav`)" id=clone-nav>
+clone
+</a>
+</li>
+<li>
+<a href=#get_source onclick="onNavClick(`#get_source-nav`)" id=get_source-nav>
+get_source
+</a>
+</li>
+<li>
+<a href=#configure onclick="onNavClick(`#configure-nav`)" id=configure-nav>
+configure
+</a>
+</li>
+<li>
+<a href=#dirty-hack onclick="onNavClick(`#dirty-hack-nav`)" id=dirty-hack-nav>
+dirty hack
+</a>
+</li>
+<li>
+<a href=#make onclick="onNavClick(`#make-nav`)" id=make-nav>
+make
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e4%bb%85%e7%bc%96%e8%af%91 onclick="onNavClick(`#仅编译-nav`)" id=仅编译-nav>
+仅编译
+</a>
+</li>
+<li>
+<a href=#%e7%bc%96%e8%af%91%e4%ba%8c%e8%bf%9b%e5%88%b6 onclick="onNavClick(`#编译二进制-nav`)" id=编译二进制-nav>
+编译二进制
+</a>
+</li>
+</ul>
+</ul>
+<li>
+<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
+最后
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e7%bb%93%e8%af%ad onclick="onNavClick(`#结语-nav`)" id=结语-nav>
+结语
+</a>
+</li>
+<li>
+<a href=#%e5%8f%82%e8%80%83 onclick="onNavClick(`#参考-nav`)" id=参考-nav>
+参考
+</a>
+</li>
+<li>
+<a href=#%e6%ac%a1%e5%9b%9e%e4%ba%88%e5%91%8a onclick="onNavClick(`#次回予告-nav`)" id=次回予告-nav>
+次回予告
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<transition name=fade>
+<div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
+</transition>
+<nav ref=navBar class="navbar sticky-top navbar-light single-column-nav-container">
+<div ref=navBackground class=nav-background></div>
+<div class="container container-narrow nav-content">
+<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>
+menu
+</i>
+</button>
+<a ref=navTitle class=navbar-brand href=https://risehere.net>
+左手的世界
+</a>
+<button type=button class=nav-darkmode-toggle v-on:click=toggleDarkMode>
+<i class=material-icons v-if=isDarkMode>
+brightness_4
+</i>
+<i class=material-icons v-else=isDarkMode>
+brightness_7
+</i>
+</button>
+</div>
+</nav>
+<div class=single-column-header-container ref=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+<a href=https://risehere.net>
+<div class=single-column-header-title>左手的世界</div>
+<div class=single-column-header-subtitle>Rise's Blog</div>
+</a>
+</div>
+<div id=content>
+<div ref=streamContainer class=stream-container>
+<div class="post-list-container post-list-container-shadow">
+<div class=post>
+<div class=post-head-wrapper style=background-image:url(https://risehere.net/covers/building-openjdk.jpg)>
+<div class=post-title>
+2020年，在 Linux 下动手编译 OpenJDK 8
+<div class=post-subtitle>
+读深入理解 Java 虚拟机 - 经历了一天的折腾，我成功编译了 OpenJDK 8。
+</div>
+<div class=post-meta>
+<time itemprop=datePublished>
+2020-05-05 12:52
+</time>
+<i class=material-icons>folder</i>
+<a href=/categories/%E7%BC%96%E8%AF%91>编译</a>
+&nbsp;
+</div>
+</div>
+</div>
+<div class=post-body-wrapper>
+<div class=post-body v-pre>
+<h1 id=前言>前言</h1>
+<p>这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 <del>突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。</del></p>
+<p>网上的各种攻略琳琅满目，五花八门。</p>
+<p>终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。</p>
+<p>&ndash; 即使是 2020 年，在更新策略<strong>激进</strong>的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。</p>
+<blockquote>
+<p>注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。</p>
+</blockquote>
+<h1 id=准备>准备</h1>
+<h2 id=环境>环境</h2>
+<table>
+<thead>
+<tr>
+<th align=left>名称</th>
+<th align=left>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align=left>OS</td>
+<td align=left>Manjaro 20.0 Lysia</td>
+</tr>
+<tr>
+<td align=left>Kernel</td>
+<td align=left>x86_64 Linux 4.19.118-1-MANJARO</td>
+</tr>
+<tr>
+<td align=left>make</td>
+<td align=left>GNU Make 4.3 x86_64-pc-linux-gnu</td>
+</tr>
+<tr>
+<td align=left>GCC</td>
+<td align=left>gcc (Arch Linux 9.3.0-1) 9.3.0</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：我并没有切换到低版本的 gcc。</p>
+</blockquote>
+<h2 id=openjdk-8>OpenJDK 8</h2>
+<p>你需要一个 OpenJDK 8 来编译 OpenJDK 8 原代码中的 Java 代码。太高或太低都不能编译成功。</p>
+<blockquote>
+<p>注： OpenJDK 7 理论上可以，但编译时会出问题。还是建议用 OpenJDK 8。</p>
+</blockquote>
+<p>在 Arch Linux/Manjaro Linux 下，可以通过<code>archlinux-java status</code>查看是否有 OpenJDK 8。输入以下命令：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ archlinux-java status | grep <span style=color:#bd93f9>8</span> 
+  java-8-openjdk
+</code></pre></div><p>如果没有的话（即上面命令没有结果），赶紧去搞一个！（<code>sudo pacman -S jdk8-openjdk</code>）</p>
+<h2 id=mercurial>Mercurial</h2>
+<p>作为 OpenJDK 的版本管理系统，类似于 git。</p>
+<p>在 Arch Linux 下可以通过 <code>sudo pacman -S mercurial</code> 安装。</p>
+<p>（直接连接会很慢，请自行准备工具，具体工具请自行探索，支持 HTTP 代理就可以。下文会讲解如何给 mercurial 套 HTTP 代理。）</p>
+<blockquote>
+<p>注：本篇文章中提到的所有 sudo 操作都已经特别指出，不要在 sudo 模式下进行其它操作。</p>
+</blockquote>
+<h2 id=gcc-和-make>GCC 和 make</h2>
+<p>这个貌似不用我多说。这个年头用 Linux 写代码，没个 <code>gcc</code> 和 <code>make</code> 好像还是一件挺尴尬的事情。</p>
+<p>（还是说一句：make 不是系统自带的，gcc 大多数自带，缺什么装什么。）</p>
+<h1 id=编译>编译</h1>
+<p>以上的工具准备好了，就可以开始编译了。</p>
+<h2 id=clone>clone</h2>
+<p>正常下载是<code>hg clone 目标网址</code>。如果你的网络环境不好，可以出动 HTTP 代理。下例是让 mercurial 经过 http://127.0.0.1:8000/ 处的代理：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>hg --config http_proxy.host<span style=color:#ff79c6>=</span>127.0.0.1:8000 clone http://hg.openjdk.java.net/jdk8u/jdk8u/ 
+</code></pre></div><h2 id=get_source>get_source</h2>
+<p>如果你的网络环境不好，我们要预先定义一下代理：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#8be9fd;font-style:italic>export</span> <span style=color:#8be9fd;font-style:italic>HGFOREST_GLOBALOPTS</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>&#34; --config http_proxy.host=127.0.0.1:8000&#34;</span>
+</code></pre></div><blockquote>
+<p>注意：在<code>--config</code>前有<strong>一个空格</strong>。</p>
+</blockquote>
+<p>开始吧：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>chmod +x ./get_source.sh
+./get_source.sh
+</code></pre></div><p>如果中间失败，可以重复运行<code>get_source.sh</code>，脚本会从失败的地方继续下载。</p>
+<blockquote>
+<p>注意：有些地方提到可以去 <a href=http://jdk.java.net/>http://jdk.java.net/</a> 下载。但是我这里下载到的源代码都不能正常编译。</p>
+</blockquote>
+<h2 id=configure>configure</h2>
+<p>输入以下命令开始配置工作。这里需要手动指定 Bootstrap JDK 的路径。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>./configure --with-boot-jdk<span style=color:#ff79c6>=</span>/usr/lib/jvm/java-8-openjdk 
+</code></pre></div><p>如果没有报错，那么说明你的环境配置正常。</p>
+<h2 id=dirty-hack>dirty hack</h2>
+<p>我们还需要更改一下编译参数。OpenJDK 默认编译的时候会将所有 <code>warning</code> 视为 <code>error</code>，会导致以下错误：<code>cc1plus: all warnings being treated as errors</code></p>
+<p>因为 OpenJDK 8 的编译不支持 <code>--disable-warnings-as-errors</code> 参数，所以我们需要<strong>手动修改</strong>一下：</p>
+<p>打开<code>./hotspot/make/linux/makefiles/gcc.make</code>，然后找到 <code>WARNINGS_ARE_ERRORS =</code>，前面加<code>#</code>，把这行<strong>注释掉</strong>。</p>
+<h2 id=make>make</h2>
+<p>最后，可以正式编译了，分情况讨论。</p>
+<blockquote>
+<p>注：不需要指定 CPU 核心数。默认编译就是多核。</p>
+</blockquote>
+<h3 id=仅编译>仅编译</h3>
+<p>如果只编译，不想要二进制：输入<code>make</code>命令，开始编译。</p>
+<p>当你看到以下信息时，你就成功了：</p>
+<pre><code>## Finished jdk (build time 00:01:43)
+
+----- Build times -------
+Start 2020-05-05 13:14:42
+End   2020-05-05 13:20:26
+00:00:13 corba
+00:03:23 hotspot
+00:00:08 jaxp
+00:00:11 jaxws
+00:01:43 jdk
+00:00:06 langtools
+00:05:44 TOTAL
+-------------------------
+</code></pre><h3 id=编译二进制>编译二进制</h3>
+<p>如果你想编译出 JDK JRE 的那套二进制的话，请运行<code>make images</code>。</p>
+<p>此时结果应该是这样的：</p>
+<pre><code>## Finished images (build time 00:01:28)
+
+----- Build times -------
+Start 2020-05-05 19:36:50
+End   2020-05-05 19:38:49
+00:00:00 corba
+00:00:16 demos
+00:00:00 hotspot
+00:01:28 images
+00:00:01 jaxp
+00:00:00 jaxws
+00:00:05 jdk
+00:00:01 langtools
+00:00:08 nashorn
+00:01:59 TOTAL
+-------------------------
+</code></pre><p>这种情况下，你可以在<code>./build/linux-x86_64-normal-server-release/images/j2sdk-image/bin/</code>目录下找到<code>java</code>和<code>javac</code>。</p>
+<p>你可以运行一下：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ./java -version
+openjdk version <span style=color:#f1fa8c>&#34;1.8.0-internal&#34;</span>
+OpenJDK Runtime Environment <span style=color:#ff79c6>(</span>build 1.8.0-internal-amazingrise_2020_05_05_13_13-b00<span style=color:#ff79c6>)</span>
+OpenJDK 64-Bit Server VM <span style=color:#ff79c6>(</span>build 25.71-b00, mixed mode<span style=color:#ff79c6>)</span>
+</code></pre></div><p>没错，它的版本号里写着你的机器名。 很有成就感。</p>
+<h1 id=最后>最后</h1>
+<h2 id=结语>结语</h2>
+<p>真的就这些了吗？是的，就这些。在 Linux 上，书上那一长串的<code>export</code>统统不需要。</p>
+<p>而且可以看出，在我的普普通通的笔记本上，<strong>不设置任何参数</strong>也可以很快完成编译。网上和书上的各种优化大可不必，<code>configure</code>已经帮我们做好大部分了。</p>
+<blockquote>
+<p>尽信书不如无书。</p>
+</blockquote>
+<p>有人可能会说这篇文章很水，但实际上我花了很多时间：我编译过 OpenJDK 7, 9, 11, 14，试了网上各种各样的方法都不行。</p>
+<p>就是希望后人少走点弯路吧（不走是不可能的）。</p>
+<p>另外，网上有人说，OpenJDK 8 编译巨坑，<strong>其实也没那么复杂</strong>。（可能因为他是 macOS？）</p>
+<p>网上还有人说，怎么编译都不成功，把 Ubuntu 换成 CentOS 才行。我想说，<strong>真的不至于</strong>。</p>
+<h2 id=参考>参考</h2>
+<p>《深入理解 Java 虚拟机》周志明著，第二版。</p>
+<p><a href=https://blog.csdn.net/desiyonan/article/details/80801991>问题整理 [已解决] - Debian10 下编译 OpenJDK-8 源码 - cc1plus: all warnings being treated as errors</a></p>
+<p><a href=https://bugs.openjdk.java.net/browse/JDK-8144695>&ndash;disable-warnings-as-errors does not work for HotSpot build</a></p>
+<p><a href=https://www.jianshu.com/p/4e01daf8c357>osx环境编译jdk8</a></p>
+<p><a href=https://www.cnblogs.com/iou123lg/p/9696039.html>JVM-Ubuntu18.04.1下编译OpenJDK8</a></p>
+<h2 id=次回予告>次回予告</h2>
+<p>下次可能是 <code>NES 模拟器</code>或者<code>简单 NLP 问答机器人</code>的实现了，看我有没有时间吧。</p>
+<hr width=100% id=EOF>
+<p style=color:#777>上次修改於 2020-05-05</p>
+</div>
+</div>
+<nav class=post-pagination>
+<a class=newer-posts href=https://risehere.net/2019/10/27/checked-tone-in-cantonese/>
+下回<br>粤语的声调及入声
+</a>
+<a class=older-posts href=https://risehere.net/posts/one-year-anniversary/>
+上回<br>博客建立一周年纪念
+</a>
+</nav>
+<div class=post-comment-wrapper>
+<div id=waline></div>
+</div>
+</div>
+</div>
+</div>
+</div><div id=single-column-footer>
+Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://amazingrise.net>Rise</a>
+<br>
+移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
+<br>
+&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议
+</div>
+</div>
+<script>let app;app=new Vue({el:'#app',data:{scrollY:0,navOpacity:0,isDrawerOpen:!1,mounted:!1,isDarkMode:!1},methods:{sgn(a,b){let c=1/(1-2*a);return b<=a?0:b>=1-a?1:c*(b-a)},handleScroll(){this.scrollY=window.scrollY,this.navOpacity=this.sgn(0,Math.min(1,Math.max(0,window.scrollY/(this.pageHeadHeight()-this.navBarHeight()*.8))));const{navBar:c,navBackground:a,navTitle:b,extraContainer:d,streamContainer:e}=this.$refs;this.navOpacity>=1?(a.style.opacity=1,b.style.opacity=1):(a.style.opacity=0,b.style.opacity=0)},handleResize(){const{navBar:c,navBackground:d,navTitle:e,extraContainer:a,streamContainer:b}=this.$refs;a.style.left=b.offsetWidth-a.offsetWidth+'px'},navBarHeight(){return this.$refs.navBar.offsetHeight},pageHeadHeight(){return this.$refs.pageHead.offsetHeight},toggleDrawer(){this.isDrawerOpen=!this.isDrawerOpen,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},closeDrawer(){this.isDrawerOpen=!1,document.getElementsByTagName('html')[0].style.overflow=this.isDrawerOpen?'hidden':'unset'},toggleDarkMode(){this.isDarkMode=!this.isDarkMode,this.isDarkMode==!0?(document.cookie="night=1;path=/",document.body.classList.add("night")):(document.cookie="night=0;path=/",document.body.classList.remove("night"))},debounce(t,b,f){let e,g,l,d,a,c,i=0,q=!1,h=!1,n=!0;const s=!b&&b!==0&&typeof root.requestAnimationFrame=='function';if(typeof t!='function')throw new TypeError('Expected a function');function w(a){const b=typeof a;return a!=null&&(b==='object'||b==='function')}b=+b||0,w(f)&&(q=!!f.leading,h='maxWait'in f,l=h?Math.max(+f.maxWait||0,b):l,n='trailing'in f?!!f.trailing:n);function o(a){const b=e,c=g;return e=g=void 0,i=a,d=t.apply(c,b),d}function k(b,c){return s?(root.cancelAnimationFrame(a),root.requestAnimationFrame(b)):setTimeout(b,c)}function v(a){if(s)return root.cancelAnimationFrame(a);clearTimeout(a)}function A(c){return i=c,a=k(m,b),q?o(c):d}function u(a){const e=a-c,f=a-i,d=b-e;return h?Math.min(d,l-f):d}function r(a){const d=a-c,e=a-i;return c===void 0||d>=b||d<0||h&&e>=l}function m(){const b=Date.now();if(r(b))return p(b);a=k(m,u(b))}function p(b){return a=void 0,n&&e?o(b):(e=g=void 0,d)}function x(){a!==void 0&&v(a),i=0,e=c=g=a=void 0}function y(){return a===void 0?d:p(Date.now())}function z(){return a!==void 0}function j(...i){const f=Date.now(),j=r(f);if(e=i,g=this,c=f,j){if(a===void 0)return A(c);if(h)return a=k(m,b),o(c)}return a===void 0&&(a=k(m,b)),d}return j.cancel=x,j.flush=y,j.pending=z,j}},created(){window.addEventListener('scroll',this.handleScroll),window.addEventListener('resize',this.handleResize),window._nonDesktop=function(){let a=!1;return function(b){(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(b)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(b.substr(0,4)))&&(a=!0)}(navigator.userAgent||navigator.vendor||window.opera),a};var a=document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/,"$1");a==""?window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches:a=="1"&&this.toggleDarkMode()},mounted(){this.handleScroll(),this.handleResize(),this.mounted=!0,new Waline({el:'#waline',path:location.pathname,requiredFields:['nick','mail'],serverURL:"https://comment.amazingrise.net",locale:{placeholder:'欢迎发表你的看法！为了防止垃圾留言，你的评论将在「审核」后显示。（我一天之内就能看到）'}}),document.querySelectorAll("table").forEach(function(a){a.classList.add("table-striped"),a.classList.add("table"),a.classList.add("table-responsive"),a.classList.add("table-hover")}),spy(),window.addEventListener('scroll',this.debounce(spy,250,{maxWait:250}),!1)},destroyed(){window.removeEventListener('scroll',this.handleScroll),window.removeEventListener('resize',this.handleResize)}})</script>
+</body>
+</html>
