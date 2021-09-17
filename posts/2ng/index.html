@@ -1,5 +1,5 @@
 <!doctype html><html><head>
-<title>OBS Studio 显示正在播放的歌曲 in Linux</title>
+<title>test</title>
 <meta charset=utf-8>
 <meta name=X-UA-Compatible content="IE=edge">
 <meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
@@ -14,7 +14,10 @@
 <link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c0082f0b082177f6fb3768ff91439a097de49689bd26f4d49f76d94ebb81e02d.css integrity="sha256-wAgvCwghd/b7N2j/kUOaCX3klom9JvTUn3bZTruB4C0=" media=screen>
 <script src=/vendor/js/loadCSS.js></script>
 <script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
-<script src=/js/toc.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1},{left:'\\(',right:'\\)',display:!1},{left:'\\[',right:'\\]',display:!0}],throwOnError:!1})})</script>
 <script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
 </head>
 <body>
@@ -53,52 +56,6 @@ Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by 
 Rise. 本站遵循 CC-BY-NC 4.0 协议
 </div>
 </div><div id=extraContainer class=extra-container>
-<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
-<div class=toc-content>
-<center>- 目錄 -</center>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
-前言
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>
-前言的前言
-</a>
-</li>
-<li>
-<a href=#%e7%bc%98%e7%94%b1 onclick="onNavClick(`#缘由-nav`)" id=缘由-nav>
-缘由
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>
-正文
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8e%9f%e7%90%86 onclick="onNavClick(`#原理-nav`)" id=原理-nav>
-原理
-</a>
-</li>
-<li>
-<a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>
-实现
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>
-后记
-</a>
-</li>
-</ul>
-</div>
-</div>
 <div class=pagination>
 <a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
 <i class="material-icons pagination-action-icon">
@@ -135,11 +92,23 @@ RSS
 <center>- 目錄 -</center>
 <ul>
 <li>
-<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
-前言
+<a href=#%e4%b8%80%e7%ba%a7%e6%a0%87%e9%a2%98 onclick="onNavClick(`#一级标题-nav`)" id=一级标题-nav>
+一级标题
 </a>
 </li>
 <ul>
+<li>
+<a href=#%e4%ba%8c%e7%ba%a7%e6%a0%87%e9%a2%98 onclick="onNavClick(`#二级标题-nav`)" id=二级标题-nav>
+二级标题
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e4%b8%89%e7%ba%a7%e6%a0%87%e9%a2%98 onclick="onNavClick(`#三级标题-nav`)" id=三级标题-nav>
+三级标题
+</a>
+</li>
+</ul>
 <li>
 <a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>
 前言的前言
@@ -163,14 +132,195 @@ RSS
 </a>
 </li>
 <li>
+<a href=#%e5%8e%9f%e7%90%86-1 onclick="onNavClick(`#原理-1-nav`)" id=原理-1-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-2 onclick="onNavClick(`#原理-2-nav`)" id=原理-2-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-3 onclick="onNavClick(`#原理-3-nav`)" id=原理-3-nav>
+原理
+</a>
+</li>
+<li>
 <a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>
 实现
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-4 onclick="onNavClick(`#原理-4-nav`)" id=原理-4-nav>
+原理
 </a>
 </li>
 </ul>
 <li>
 <a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>
 后记
+</a>
+</li>
+<ul>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-5 onclick="onNavClick(`#原理-5-nav`)" id=原理-5-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-6 onclick="onNavClick(`#原理-6-nav`)" id=原理-6-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-7 onclick="onNavClick(`#原理-7-nav`)" id=原理-7-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-8 onclick="onNavClick(`#原理-8-nav`)" id=原理-8-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-9 onclick="onNavClick(`#原理-9-nav`)" id=原理-9-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-10 onclick="onNavClick(`#原理-10-nav`)" id=原理-10-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-11 onclick="onNavClick(`#原理-11-nav`)" id=原理-11-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-12 onclick="onNavClick(`#原理-12-nav`)" id=原理-12-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-13 onclick="onNavClick(`#原理-13-nav`)" id=原理-13-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-14 onclick="onNavClick(`#原理-14-nav`)" id=原理-14-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-15 onclick="onNavClick(`#原理-15-nav`)" id=原理-15-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-16 onclick="onNavClick(`#原理-16-nav`)" id=原理-16-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-17 onclick="onNavClick(`#原理-17-nav`)" id=原理-17-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-18 onclick="onNavClick(`#原理-18-nav`)" id=原理-18-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-19 onclick="onNavClick(`#原理-19-nav`)" id=原理-19-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-20 onclick="onNavClick(`#原理-20-nav`)" id=原理-20-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-21 onclick="onNavClick(`#原理-21-nav`)" id=原理-21-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-22 onclick="onNavClick(`#原理-22-nav`)" id=原理-22-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-23 onclick="onNavClick(`#原理-23-nav`)" id=原理-23-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-24 onclick="onNavClick(`#原理-24-nav`)" id=原理-24-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-25 onclick="onNavClick(`#原理-25-nav`)" id=原理-25-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-26 onclick="onNavClick(`#原理-26-nav`)" id=原理-26-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-27 onclick="onNavClick(`#原理-27-nav`)" id=原理-27-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-28 onclick="onNavClick(`#原理-28-nav`)" id=原理-28-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-29 onclick="onNavClick(`#原理-29-nav`)" id=原理-29-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-30 onclick="onNavClick(`#原理-30-nav`)" id=原理-30-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-31 onclick="onNavClick(`#原理-31-nav`)" id=原理-31-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-32 onclick="onNavClick(`#原理-32-nav`)" id=原理-32-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-33 onclick="onNavClick(`#原理-33-nav`)" id=原理-33-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-34 onclick="onNavClick(`#原理-34-nav`)" id=原理-34-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-35 onclick="onNavClick(`#原理-35-nav`)" id=原理-35-nav>
+原理
+</a>
+</li>
+<li>
+<a href=#%e5%8e%9f%e7%90%86-36 onclick="onNavClick(`#原理-36-nav`)" id=原理-36-nav>
+原理
 </a>
 </li>
 </ul>
@@ -210,9 +360,9 @@ dark_mode
 <div id=streamContainer class=stream-container>
 <div class="post-list-container post-list-container-shadow">
 <div class=post>
-<div class=post-head-wrapper style=background-image:url(https://risehere.net/covers/obs-now-playing.jpg)>
+<div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/2ng/tone.jpg)>
 <div class=post-title>
-OBS Studio 显示正在播放的歌曲 in Linux
+test
 <div class=post-subtitle>
 为了能在 Linux 下直播时显示正在播放的歌曲，我写了个简单的 Shell 脚本。
 </div>
@@ -228,7 +378,18 @@ OBS Studio 显示正在播放的歌曲 in Linux
 </div>
 <div class=post-body-wrapper>
 <div class=post-body v-pre>
-<h1 id=前言>前言</h1>
+<h1 id=一级标题>一级标题</h1>
+<h2 id=二级标题>二级标题</h2>
+<h3 id=三级标题>三级标题</h3>
+<p>以此类推 最高六级</p>
+<p>When $a \ne 0$, there are two solutions to <code>\(ax^2 + bx + c = 0\)</code> and they are:</p>
+<p>$$
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}
+$$</p>
+<p>$$
+\frac{1}{2}
+$$</p>
+<p><img src=tone.jpg alt></p>
 <h2 id=前言的前言>前言的前言</h2>
 <p>欢迎大家关注我的 bilibili 帐号：<a href=https://space.bilibili.com/441928938/>bili-Amazingrise</a></p>
 <p>不定期直播搬砖，游戏，或者其他有趣的东西~</p>
@@ -254,8 +415,10 @@ OBS Studio 显示正在播放的歌曲 in Linux
         <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#39;/org/mpris/MediaPlayer2&#39;</span>;
     }
 };
-</code></pre></div><p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。</p>
+</code></pre></div><h2 id=原理-1>原理</h2>
+<p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。</p>
 <p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？</p>
+<h2 id=原理-2>原理</h2>
 <p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dbus-send --print-reply --dest<span style=color:#ff79c6>=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
 </code></pre></div><p>然后我们会得到这样一段结果：</p>
@@ -296,10 +459,12 @@ OBS Studio 显示正在播放的歌曲 in Linux
             variant                int16 <span style=color:#bd93f9>9</span>
          <span style=color:#ff79c6>)</span>
       <span style=color:#ff79c6>]</span>
-</code></pre></div><p>从结果中我们可以找到我们想要的信息：歌手，标题等等。</p>
+</code></pre></div><h2 id=原理-3>原理</h2>
+<p>从结果中我们可以找到我们想要的信息：歌手，标题等等。</p>
 <p>最后，我们只需要用正则表达式提取一下就🉑️️了。</p>
 <h2 id=实现>实现</h2>
 <p>正则表达式 <del>当时鼓捣了好久，</del> 能用就行。</p>
+<h2 id=原理-4>原理</h2>
 <p>下面是具体的 Shell 脚本实现。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#6272a4>#/bin/sh!</span>
 
@@ -334,20 +499,52 @@ OBS Studio 显示正在播放的歌曲 in Linux
 </code></pre></div><p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。</p>
 <h1 id=后记>后记</h1>
 <p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。</p>
+<h2 id=原理-5>原理</h2>
+<h2 id=原理-6>原理</h2>
+<h2 id=原理-7>原理</h2>
+<h2 id=原理-8>原理</h2>
+<h2 id=原理-9>原理</h2>
+<h2 id=原理-10>原理</h2>
+<h2 id=原理-11>原理</h2>
+<h2 id=原理-12>原理</h2>
+<h2 id=原理-13>原理</h2>
+<h2 id=原理-14>原理</h2>
+<h2 id=原理-15>原理</h2>
+<h2 id=原理-16>原理</h2>
+<h2 id=原理-17>原理</h2>
+<h2 id=原理-18>原理</h2>
+<h2 id=原理-19>原理</h2>
+<h2 id=原理-20>原理</h2>
+<h2 id=原理-21>原理</h2>
+<h2 id=原理-22>原理</h2>
+<h2 id=原理-23>原理</h2>
+<h2 id=原理-24>原理</h2>
+<h2 id=原理-25>原理</h2>
+<h2 id=原理-26>原理</h2>
+<h2 id=原理-27>原理</h2>
+<h2 id=原理-28>原理</h2>
+<h2 id=原理-29>原理</h2>
+<h2 id=原理-30>原理</h2>
+<h2 id=原理-31>原理</h2>
+<h2 id=原理-32>原理</h2>
+<h2 id=原理-33>原理</h2>
 <p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。</p>
+<h2 id=原理-34>原理</h2>
 <p>当时水了一些别的文章，总之这篇文章就留到了今年。</p>
+<h2 id=原理-35>原理</h2>
 <p>希望对各位有所帮助。</p>
+<h2 id=原理-36>原理</h2>
 <p><del>又水完一篇博客，好开心。</del></p>
 <hr width=100% id=EOF>
 <p style=color:#777>上次修改於 2020-01-12</p>
 </div>
 </div>
 <nav class=post-pagination>
-<a class=newer-posts href=https://risehere.net/posts/koi-carp-scam/>
-下回<br>今天你是锦鲤吗
+<a class=newer-posts href=https://risehere.net/posts/obs-now-playing/>
+下回<br>OBS Studio 显示正在播放的歌曲 in Linux
 </a>
-<a class=older-posts href=https://risehere.net/posts/2ng/>
-上回<br>test
+<a class=older-posts href=https://risehere.net/2019/10/28/howto-use-spyder-debugger/>
+上回<br>如何优雅地使用 Spyder 的调试器
 </a>
 </nav>
 <div class=post-comment-wrapper>

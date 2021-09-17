@@ -128,7 +128,17 @@ name url description 张三 https://zhangsan.com 张三的挖坑日记 李四 ht
 以我用的 Electron Netease Cloud Music 为例。
 在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
 仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>test</title><link>https://risehere.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/2ng/</guid><description>一级标题 二级标题 三级标题 以此类推 最高六级
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+$$ \frac{1}{2} $$
+前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
+不定期直播搬砖，游戏，或者其他有趣的东西~
+缘由 为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。
+看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。
+另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 （没错，就是这个主题的原作者。）
+正文 原理 当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。
+由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。</description></item><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>这是一个面向初学者的文章.
 很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
 这个时候调试器就要上场了~
