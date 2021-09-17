@@ -8,7 +8,8 @@
 以我用的 Electron Netease Cloud Music 为例。
 在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
 仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>test</title><link>https://risehere.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/2ng/</guid><description>一级标题 二级标题 三级标题 以此类推 最高六级
+const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>test</title><link>https://risehere.net/posts/2ng/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/2ng/</guid><description>featured_image: tone.jpg
+一级标题 二级标题 三级标题 以此类推 最高六级
 When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
 $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 $$ \frac{1}{2} $$
