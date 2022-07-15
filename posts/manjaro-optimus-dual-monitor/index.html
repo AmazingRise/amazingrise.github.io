@@ -1,411 +1,27 @@
-<!doctype html><html><head>
-<title>Manjaro 在笔记本上的多显示器配置</title>
-<meta charset=utf-8>
-<meta name=X-UA-Compatible content="IE=edge">
-<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
-<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
-<meta content="telephone=no" name=format-detection>
-<meta name=description content="很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。">
-<meta name=renderer content="webkit">
-<meta name=theme-color content="#ffffff">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
-<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
-<link rel=stylesheet href=https://risehere.net/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media=screen>
-<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media=screen>
-<script src=/vendor/js/loadCSS.js></script>
-<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1},{left:'\\(',right:'\\)',display:!1},{left:'\\[',right:'\\]',display:!0}],throwOnError:!1})})</script>
-<script src=/js/toc.js></script>
-<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
-</head>
-<body>
-<div id=app><div id=sideContainer class=side-container>
-<a class="a-block nav-head false" href=https://risehere.net>
-<div class=nav-title>
-左手的世界
-</div>
-<div class=nav-subtitle>
-Rise's Blog
-</div>
-</a>
-<div class=nav-link-list>
-<a class="a-block nav-link-item active" href=/posts>
-歸檔
-</a>
-<a class="a-block nav-link-item false" href=/categories>
-分類
-</a>
-<a class="a-block nav-link-item false" href=/about>
-關於
-</a>
-<a class="a-block nav-link-item false" href=/friends>
-朋友們
-</a>
-<a class="a-block nav-link-item false" href=/index.xml>
-RSS
-</a>
-</div>
-<div class=nav-footer>
-Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a>
-<br>
-移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
-<br>
-&copy;
-Rise. 本站遵循 CC-BY-NC 4.0 协议
-</div>
-</div><div id=extraContainer class=extra-container>
-<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
-<div class=toc-content>
-<center>- 目錄 -</center>
-<ul>
-<li>
-<a href=#%e6%9c%80%e6%96%b0%e6%96%b9%e6%b3%95 onclick="onNavClick(`#最新方法-nav`)" id=最新方法-nav>
-最新方法
-</a>
-</li>
-<li>
-<a href=#%e8%83%8c%e6%99%af onclick="onNavClick(`#背景-nav`)" id=背景-nav>
-背景
-</a>
-</li>
-<li>
-<a href=#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95 onclick="onNavClick(`#解决方法-nav`)" id=解决方法-nav>
-解决方法
-</a>
-</li>
-<ul>
-<li>
-<a href=#1-%e7%a7%bb%e9%99%a4bumblebee onclick="onNavClick(`#1-移除bumblebee-nav`)" id=1-移除bumblebee-nav>
-1 移除Bumblebee
-</a>
-</li>
-<li>
-<a href=#2-%e5%ae%89%e8%a3%85nvidia%e9%a9%b1%e5%8a%a8 onclick="onNavClick(`#2-安装nvidia驱动-nav`)" id=2-安装nvidia驱动-nav>
-2 安装NVIDIA驱动
-</a>
-</li>
-<li>
-<a href=#3-%e4%bf%ae%e6%94%b9mhwd%e8%ae%be%e7%bd%ae onclick="onNavClick(`#3-修改mhwd设置-nav`)" id=3-修改mhwd设置-nav>
-3 修改MHWD设置
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8f%a6%e8%b5%b7%e7%82%89%e7%81%b6 onclick="onNavClick(`#另起炉灶-nav`)" id=另起炉灶-nav>
-另起炉灶
-</a>
-</li>
-<li>
-<a href=#%e7%a6%81%e7%94%a8%e6%a8%a1%e5%9d%97 onclick="onNavClick(`#禁用模块-nav`)" id=禁用模块-nav>
-禁用模块
-</a>
-</li>
-</ul>
-<li>
-<a href=#4-%e5%bc%80%e5%90%af-modeset onclick="onNavClick(`#4-开启-modeset-nav`)" id=4-开启-modeset-nav>
-4 开启 modeset
-</a>
-</li>
-<li>
-<a href=#5-%e8%ae%be%e7%bd%ae%e5%90%af%e5%8a%a8%e8%84%9a%e6%9c%ac onclick="onNavClick(`#5-设置启动脚本-nav`)" id=5-设置启动脚本-nav>
-5 设置启动脚本
-</a>
-</li>
-<li>
-<a href=#6-%e6%9c%80%e5%90%8e%e7%9a%84%e5%b7%a5%e4%bd%9c onclick="onNavClick(`#6-最后的工作-nav`)" id=6-最后的工作-nav>
-6 最后的工作
-</a>
-</li>
-<li>
-<a href=#%e9%aa%8c%e8%af%81%e6%98%af%e5%90%a6%e6%88%90%e5%8a%9f onclick="onNavClick(`#验证是否成功-nav`)" id=验证是否成功-nav>
-验证是否成功
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
-最后
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99 onclick="onNavClick(`#参考资料-nav`)" id=参考资料-nav>
-参考资料
-</a>
-</li>
-<li>
-<a href=#github-%e8%af%84%e8%ae%ba%e5%8c%ba onclick="onNavClick(`#github-评论区-nav`)" id=github-评论区-nav>
-GitHub 评论区
-</a>
-</li>
-</ul>
-</div>
-</div>
-<div class=pagination>
-<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
-<i class="material-icons pagination-action-icon">
-keyboard_arrow_up
-</i>
-</a>
-<a type=button class=pagination-action id=darkModeToggleButton>
-<span class="material-icons pagination-action-icon" id=darkModeToggleIcon>
-dark_mode
-</span>
-</a>
-</div>
-</div>
-<div class=single-column-drawer-container id=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-<div class=drawer-content>
-<div class=drawer-menu>
-<a class="a-block drawer-menu-item active" href=/posts>
-歸檔
-</a>
-<a class="a-block drawer-menu-item false" href=/categories>
-分類
-</a>
-<a class="a-block drawer-menu-item false" href=/about>
-關於
-</a>
-<a class="a-block drawer-menu-item false" href=/friends>
-朋友們
-</a>
-<a class="a-block drawer-menu-item false" href=/index.xml>
-RSS
-</a>
-<div class=toc>
-<div class=toc-content>
-<center>- 目錄 -</center>
-<ul>
-<li>
-<a href=#%e6%9c%80%e6%96%b0%e6%96%b9%e6%b3%95 onclick="onNavClick(`#最新方法-nav`)" id=最新方法-nav>
-最新方法
-</a>
-</li>
-<li>
-<a href=#%e8%83%8c%e6%99%af onclick="onNavClick(`#背景-nav`)" id=背景-nav>
-背景
-</a>
-</li>
-<li>
-<a href=#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95 onclick="onNavClick(`#解决方法-nav`)" id=解决方法-nav>
-解决方法
-</a>
-</li>
-<ul>
-<li>
-<a href=#1-%e7%a7%bb%e9%99%a4bumblebee onclick="onNavClick(`#1-移除bumblebee-nav`)" id=1-移除bumblebee-nav>
-1 移除Bumblebee
-</a>
-</li>
-<li>
-<a href=#2-%e5%ae%89%e8%a3%85nvidia%e9%a9%b1%e5%8a%a8 onclick="onNavClick(`#2-安装nvidia驱动-nav`)" id=2-安装nvidia驱动-nav>
-2 安装NVIDIA驱动
-</a>
-</li>
-<li>
-<a href=#3-%e4%bf%ae%e6%94%b9mhwd%e8%ae%be%e7%bd%ae onclick="onNavClick(`#3-修改mhwd设置-nav`)" id=3-修改mhwd设置-nav>
-3 修改MHWD设置
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8f%a6%e8%b5%b7%e7%82%89%e7%81%b6 onclick="onNavClick(`#另起炉灶-nav`)" id=另起炉灶-nav>
-另起炉灶
-</a>
-</li>
-<li>
-<a href=#%e7%a6%81%e7%94%a8%e6%a8%a1%e5%9d%97 onclick="onNavClick(`#禁用模块-nav`)" id=禁用模块-nav>
-禁用模块
-</a>
-</li>
-</ul>
-<li>
-<a href=#4-%e5%bc%80%e5%90%af-modeset onclick="onNavClick(`#4-开启-modeset-nav`)" id=4-开启-modeset-nav>
-4 开启 modeset
-</a>
-</li>
-<li>
-<a href=#5-%e8%ae%be%e7%bd%ae%e5%90%af%e5%8a%a8%e8%84%9a%e6%9c%ac onclick="onNavClick(`#5-设置启动脚本-nav`)" id=5-设置启动脚本-nav>
-5 设置启动脚本
-</a>
-</li>
-<li>
-<a href=#6-%e6%9c%80%e5%90%8e%e7%9a%84%e5%b7%a5%e4%bd%9c onclick="onNavClick(`#6-最后的工作-nav`)" id=6-最后的工作-nav>
-6 最后的工作
-</a>
-</li>
-<li>
-<a href=#%e9%aa%8c%e8%af%81%e6%98%af%e5%90%a6%e6%88%90%e5%8a%9f onclick="onNavClick(`#验证是否成功-nav`)" id=验证是否成功-nav>
-验证是否成功
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>
-最后
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99 onclick="onNavClick(`#参考资料-nav`)" id=参考资料-nav>
-参考资料
-</a>
-</li>
-<li>
-<a href=#github-%e8%af%84%e8%ae%ba%e5%8c%ba onclick="onNavClick(`#github-评论区-nav`)" id=github-评论区-nav>
-GitHub 评论区
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<transition name=fade>
-<div id=drawer-mask v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
-</transition>
-<nav id=navBar class="navbar sticky-top navbar-light single-column-nav-container">
-<div id=navBackground class=nav-background></div>
-<div class="container container-narrow nav-content">
-<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
-<i class=material-icons>
-menu
-</i>
-</button>
-<a id=navTitle class=navbar-brand href=https://risehere.net>
-左手的世界
-</a>
+<!doctype html><html><head><title>Manjaro 在笔记本上的多显示器配置</title><meta charset=utf-8><meta name=X-UA-Compatible content="IE=edge"><meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport><meta content="telephone=no" name=format-detection><meta name=description content="很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。"><meta name=renderer content="webkit"><meta name=theme-color content="#ffffff"><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-139087684-1','auto');ga('send','pageview');}</script><link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css><link rel=stylesheet href=https://risehere.net/scss/journal.min.13e9f1040e44e50a1d9c325e0f9bf599f96628dc8f40517f75c9742aa328182d.css integrity="sha256-E+nxBA5E5QodnDJeD5v1mflmKNyPQFF/dcl0KqMoGC0=" media=screen><link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c2829c0ea8cdceaf384dceff035d61cfd52b6669739122d1af8d9aca84a1a308.css integrity="sha256-woKcDqjNzq84Tc7/A11hz9UrZmlzkSLRr42ayoShowg=" media=screen><script src=/vendor/js/loadCSS.js></script><script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");</script><script src=/js/toc.js></script><script src=https://unpkg.com/@waline/client@v2/dist/waline.js></script><link rel=stylesheet href=https://unpkg.com/@waline/client@v2/dist/waline.css></head><body><div id=app><div id=sideContainer class=side-container><a class="a-block nav-head false" href=https://risehere.net><div class=nav-title>左手的世界</div><div class=nav-subtitle>Rise's Blog</div></a><div class=nav-link-list><a class="a-block nav-link-item active" href=/posts>歸檔</a>
+<a class="a-block nav-link-item false" href=/categories>分類</a>
+<a class="a-block nav-link-item false" href=/about>關於</a>
+<a class="a-block nav-link-item false" href=/friends>朋友們</a>
+<a class="a-block nav-link-item false" href=/index.xml>RSS</a></div><div class=nav-footer>Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a><br>移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a><br><br>&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议</div></div><div id=extraContainer class=extra-container><div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }"><div class=toc-content><center>- 目錄 -</center><ul><li><a href=#%e6%9c%80%e6%96%b0%e6%96%b9%e6%b3%95 onclick="onNavClick(`#最新方法-nav`)" id=最新方法-nav>最新方法</a></li><li><a href=#%e8%83%8c%e6%99%af onclick="onNavClick(`#背景-nav`)" id=背景-nav>背景</a></li><li><a href=#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95 onclick="onNavClick(`#解决方法-nav`)" id=解决方法-nav>解决方法</a></li><ul><li><a href=#1-%e7%a7%bb%e9%99%a4bumblebee onclick="onNavClick(`#1-移除bumblebee-nav`)" id=1-移除bumblebee-nav>1 移除Bumblebee</a></li><li><a href=#2-%e5%ae%89%e8%a3%85nvidia%e9%a9%b1%e5%8a%a8 onclick="onNavClick(`#2-安装nvidia驱动-nav`)" id=2-安装nvidia驱动-nav>2 安装NVIDIA驱动</a></li><li><a href=#3-%e4%bf%ae%e6%94%b9mhwd%e8%ae%be%e7%bd%ae onclick="onNavClick(`#3-修改mhwd设置-nav`)" id=3-修改mhwd设置-nav>3 修改MHWD设置</a></li><ul><li><a href=#%e5%8f%a6%e8%b5%b7%e7%82%89%e7%81%b6 onclick="onNavClick(`#另起炉灶-nav`)" id=另起炉灶-nav>另起炉灶</a></li><li><a href=#%e7%a6%81%e7%94%a8%e6%a8%a1%e5%9d%97 onclick="onNavClick(`#禁用模块-nav`)" id=禁用模块-nav>禁用模块</a></li></ul><li><a href=#4-%e5%bc%80%e5%90%af-modeset onclick="onNavClick(`#4-开启-modeset-nav`)" id=4-开启-modeset-nav>4 开启 modeset</a></li><li><a href=#5-%e8%ae%be%e7%bd%ae%e5%90%af%e5%8a%a8%e8%84%9a%e6%9c%ac onclick="onNavClick(`#5-设置启动脚本-nav`)" id=5-设置启动脚本-nav>5 设置启动脚本</a></li><li><a href=#6-%e6%9c%80%e5%90%8e%e7%9a%84%e5%b7%a5%e4%bd%9c onclick="onNavClick(`#6-最后的工作-nav`)" id=6-最后的工作-nav>6 最后的工作</a></li><li><a href=#%e9%aa%8c%e8%af%81%e6%98%af%e5%90%a6%e6%88%90%e5%8a%9f onclick="onNavClick(`#验证是否成功-nav`)" id=验证是否成功-nav>验证是否成功</a></li></ul><li><a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>最后</a></li><ul><li><a href=#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99 onclick="onNavClick(`#参考资料-nav`)" id=参考资料-nav>参考资料</a></li><li><a href=#github-%e8%af%84%e8%ae%ba%e5%8c%ba onclick="onNavClick(`#github-评论区-nav`)" id=github-评论区-nav>GitHub 评论区</a></li></ul></div></div><div class=pagination><a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }"><i class="material-icons pagination-action-icon">keyboard_arrow_up</i></a>
+<a type=button class=pagination-action id=darkModeToggleButton><span class="material-icons pagination-action-icon" id=darkModeToggleIcon>dark_mode</span></a></div></div><div class=single-column-drawer-container id=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }"><div class=drawer-content><div class=drawer-menu><a class="a-block drawer-menu-item active" href=/posts>歸檔</a>
+<a class="a-block drawer-menu-item false" href=/categories>分類</a>
+<a class="a-block drawer-menu-item false" href=/about>關於</a>
+<a class="a-block drawer-menu-item false" href=/friends>朋友們</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>RSS</a><div class=toc><div class=toc-content><center>- 目錄 -</center><ul><li><a href=#%e6%9c%80%e6%96%b0%e6%96%b9%e6%b3%95 onclick="onNavClick(`#最新方法-nav`)" id=最新方法-nav>最新方法</a></li><li><a href=#%e8%83%8c%e6%99%af onclick="onNavClick(`#背景-nav`)" id=背景-nav>背景</a></li><li><a href=#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95 onclick="onNavClick(`#解决方法-nav`)" id=解决方法-nav>解决方法</a></li><ul><li><a href=#1-%e7%a7%bb%e9%99%a4bumblebee onclick="onNavClick(`#1-移除bumblebee-nav`)" id=1-移除bumblebee-nav>1 移除Bumblebee</a></li><li><a href=#2-%e5%ae%89%e8%a3%85nvidia%e9%a9%b1%e5%8a%a8 onclick="onNavClick(`#2-安装nvidia驱动-nav`)" id=2-安装nvidia驱动-nav>2 安装NVIDIA驱动</a></li><li><a href=#3-%e4%bf%ae%e6%94%b9mhwd%e8%ae%be%e7%bd%ae onclick="onNavClick(`#3-修改mhwd设置-nav`)" id=3-修改mhwd设置-nav>3 修改MHWD设置</a></li><ul><li><a href=#%e5%8f%a6%e8%b5%b7%e7%82%89%e7%81%b6 onclick="onNavClick(`#另起炉灶-nav`)" id=另起炉灶-nav>另起炉灶</a></li><li><a href=#%e7%a6%81%e7%94%a8%e6%a8%a1%e5%9d%97 onclick="onNavClick(`#禁用模块-nav`)" id=禁用模块-nav>禁用模块</a></li></ul><li><a href=#4-%e5%bc%80%e5%90%af-modeset onclick="onNavClick(`#4-开启-modeset-nav`)" id=4-开启-modeset-nav>4 开启 modeset</a></li><li><a href=#5-%e8%ae%be%e7%bd%ae%e5%90%af%e5%8a%a8%e8%84%9a%e6%9c%ac onclick="onNavClick(`#5-设置启动脚本-nav`)" id=5-设置启动脚本-nav>5 设置启动脚本</a></li><li><a href=#6-%e6%9c%80%e5%90%8e%e7%9a%84%e5%b7%a5%e4%bd%9c onclick="onNavClick(`#6-最后的工作-nav`)" id=6-最后的工作-nav>6 最后的工作</a></li><li><a href=#%e9%aa%8c%e8%af%81%e6%98%af%e5%90%a6%e6%88%90%e5%8a%9f onclick="onNavClick(`#验证是否成功-nav`)" id=验证是否成功-nav>验证是否成功</a></li></ul><li><a href=#%e6%9c%80%e5%90%8e onclick="onNavClick(`#最后-nav`)" id=最后-nav>最后</a></li><ul><li><a href=#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99 onclick="onNavClick(`#参考资料-nav`)" id=参考资料-nav>参考资料</a></li><li><a href=#github-%e8%af%84%e8%ae%ba%e5%8c%ba onclick="onNavClick(`#github-评论区-nav`)" id=github-评论区-nav>GitHub 评论区</a></li></ul></div></div></div></div></div><transition name=fade><div id=drawer-mask v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div></transition><nav id=navBar class="navbar sticky-top navbar-light single-column-nav-container"><div id=navBackground class=nav-background></div><div class="container container-narrow nav-content"><button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>menu</i></button>
+<a id=navTitle class=navbar-brand href=https://risehere.net>左手的世界</a>
 <button type=button class=nav-darkmode-toggle id=darkModeToggleButton2>
-<i class=material-icons id=darkModeToggleIcon2>
-dark_mode
-</i>
-</button>
-</div>
-</nav>
-<div class=single-column-header-container id=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-<a href=https://risehere.net>
-<div class=single-column-header-title>左手的世界</div>
-<div class=single-column-header-subtitle>Rise's Blog</div>
-</a>
-</div>
-<div id=content>
-<div id=streamContainer class=stream-container>
-<div class="post-list-container post-list-container-shadow">
-<div class=post>
-<div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/manjaro-optimus-dual-monitor/dual-monitor.jpg)>
-<div class=post-title>
-Manjaro 在笔记本上的多显示器配置
-<div class=post-subtitle>
-很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。
-</div>
-<div class=post-meta>
-<time itemprop=datePublished>
-2019-04-20 16:11
-</time>
+<i class=material-icons id=darkModeToggleIcon2>dark_mode</i></button></div></nav><div class=single-column-header-container id=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }"><a href=https://risehere.net><div class=single-column-header-title>左手的世界</div><div class=single-column-header-subtitle>Rise's Blog</div></a></div><div id=content><div id=streamContainer class=stream-container><div class="post-list-container post-list-container-shadow"><div class=post><div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/manjaro-optimus-dual-monitor/dual-monitor.jpg)><div class=post-title>Manjaro 在笔记本上的多显示器配置<div class=post-subtitle>很久之前，就给自己新买的笔记本装上了Manjaro。可惜Manjaro无法识别外置显示器，只能搁置。看着黑的发亮的显示器，真是十分让人恼火。后来经过一阵探索，才在Manjaro上用上了外置显示器。</div><div class=post-meta><time itemprop=datePublished>2019-04-20 16:11</time>
 <i class=material-icons>folder</i>
 <a href=/categories/linux>Linux</a>
-&nbsp;
-</div>
-</div>
-</div>
-<div class=post-body-wrapper>
-<div class=post-body v-pre>
-<h1 id=最新方法>最新方法</h1>
-<p>2020.9.12 更新</p>
-<p>这篇文章里提到的解决方法应该<strong>用不上了</strong>，因为 <code>video-hybrid-intel-nvidia-450xx-prime</code> 可以<strong>直接识别</strong>笔记本上的双显示器。</p>
-<ul>
-<li>如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</li>
-<li>如果你以前看过这篇教程，建议将现有的<code>video-nvidia-???xx</code>更换为上述驱动，并且记得把这篇教程里更改过的配置文件<strong>一一还原</strong>。这个新的驱动修复了很多小问题。</li>
-<li>如果你用的就是 <code>video-hybrid-intel-nvidia-450xx-prime</code>，并且双显示器无法工作，那么你可以参考这篇文章的内容，<strong>也许</strong>对你有帮助。</li>
-</ul>
-<hr>
-<p>重要的话说三遍：</p>
-<p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p>
-<p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p>
-<p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p>
-<p>失败了再回来试一下这篇文章的方法。</p>
-<hr>
-<h1 id=背景>背景</h1>
-<p>解决方法请翻到<a href=#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95->解决方法</a>一节。</p>
-<p>环境：</p>
-<p>intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。</p>
-<p>症状：</p>
-<ul>
-<li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li>
-<li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。</li>
-</ul>
-<p>如果你的是<strong>外接显卡坞+显示器，这篇教程不适合你</strong>。不过有网友（感谢<code>@sunlitforest</code>）用另一种方法操作成功了，详情请看<a href=https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749>这里</a>。</p>
-<p>参照<a href=https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)>ArchWiki上面的说法</a>，让Optimus显卡在linux里面有三种实现方法：</p>
-<ol>
-<li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。</li>
-<li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li>
-<li>用Bumblebee。不过Bumblebee很难支持双显示器。</li>
-<li>用专有驱动。</li>
-<li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li>
-</ol>
-<hr>
-<h1 id=解决方法>解决方法</h1>
-<p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）</p>
-<p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
-我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。</p>
-<p>以下内容均为本人的中文翻译。<a href=https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225>原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p>
-<p>如何在Optimus的笔记本上开启PRIME：</p>
-<table>
-<thead>
-<tr>
-<th align=left>方法</th>
-<th align=left>优点</th>
-<th align=left>缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align=left>bumblebee(Render offload)</td>
-<td align=left>按需使用独立显卡，Manjaro默认配置</td>
-<td align=left>有一定的开销，对性能有所影响</td>
-</tr>
-<tr>
-<td align=left>PRIME</td>
-<td align=left>直接使用独立显卡，性能更强</td>
-<td align=left>两块显卡都一直供电，需要手动配置</td>
-</tr>
-<tr>
-<td align=left>optimus-manager</td>
-<td align=left>显卡切换更简单</td>
-<td align=left>暂不成熟，还在开发中</td>
-</tr>
-<tr>
-<td align=left>video-hybrid-intel-nvidia-440xx-prime</td>
-<td align=left>NVIDIA 官方支持的 render offload.</td>
-<td align=left></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。<br>
-optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。</p>
-</blockquote>
-<blockquote>
-<p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</p>
-</blockquote>
-<h2 id=1-移除bumblebee>1 移除Bumblebee</h2>
-<p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
-bumblebee很碍事，所以我们得先干掉它。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -r pci nonfree <span style=color:#bd93f9>0300</span>
-</code></pre></div><h2 id=2-安装nvidia驱动>2 安装NVIDIA驱动</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -i pci video-nvidia-440xx
-</code></pre></div><p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程</p>
-<h2 id=3-修改mhwd设置>3 修改MHWD设置</h2>
-<p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。</p>
-<h3 id=另起炉灶>另起炉灶</h3>
-<p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
+&nbsp;</div></div></div><div class=post-body-wrapper><div class=post-body v-pre><h1 id=最新方法>最新方法</h1><p>2020.9.12 更新</p><p>这篇文章里提到的解决方法应该<strong>用不上了</strong>，因为 <code>video-hybrid-intel-nvidia-450xx-prime</code> 可以<strong>直接识别</strong>笔记本上的双显示器。</p><ul><li>如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</li><li>如果你以前看过这篇教程，建议将现有的<code>video-nvidia-???xx</code>更换为上述驱动，并且记得把这篇教程里更改过的配置文件<strong>一一还原</strong>。这个新的驱动修复了很多小问题。</li><li>如果你用的就是 <code>video-hybrid-intel-nvidia-450xx-prime</code>，并且双显示器无法工作，那么你可以参考这篇文章的内容，<strong>也许</strong>对你有帮助。</li></ul><hr><p>重要的话说三遍：</p><p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p><p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p><p>建议将驱动更换为 <code>video-hybrid-intel-nvidia-450xx-prime</code>，在<strong>更换完成前不要看这篇文章</strong>。</p><p>失败了再回来试一下这篇文章的方法。</p><hr><h1 id=背景>背景</h1><p>解决方法请翻到<a href=#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95->解决方法</a>一节。</p><p>环境：</p><p>intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。</p><p>症状：</p><ul><li>无法接外接显示器，接上后无论是系统设置还是<code>inxi -Fx</code>都无法识别外置显示器。</li><li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。</li></ul><p>如果你的是<strong>外接显卡坞+显示器，这篇教程不适合你</strong>。不过有网友（感谢<code>@sunlitforest</code>）用另一种方法操作成功了，详情请看<a href=https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749>这里</a>。</p><p>参照<a href=https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)>ArchWiki上面的说法</a>，让Optimus显卡在linux里面有三种实现方法：</p><ol><li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。</li><li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。</li><li>用Bumblebee。不过Bumblebee很难支持双显示器。</li><li>用专有驱动。</li><li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）</li></ol><hr><h1 id=解决方法>解决方法</h1><p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）</p><p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。</p><p>以下内容均为本人的中文翻译。<a href=https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225>原帖在此 - How To Set up PRIME with NVIDIA proprietary driver</a></p><p>如何在Optimus的笔记本上开启PRIME：</p><table><thead><tr><th align=left>方法</th><th align=left>优点</th><th align=left>缺点</th></tr></thead><tbody><tr><td align=left>bumblebee(Render offload)</td><td align=left>按需使用独立显卡，Manjaro默认配置</td><td align=left>有一定的开销，对性能有所影响</td></tr><tr><td align=left>PRIME</td><td align=left>直接使用独立显卡，性能更强</td><td align=left>两块显卡都一直供电，需要手动配置</td></tr><tr><td align=left>optimus-manager</td><td align=left>显卡切换更简单</td><td align=left>暂不成熟，还在开发中</td></tr><tr><td align=left>video-hybrid-intel-nvidia-440xx-prime</td><td align=left>NVIDIA 官方支持的 render offload.</td><td align=left></td></tr></tbody></table><blockquote><p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。<br>optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。</p></blockquote><blockquote><p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。</p></blockquote><h2 id=1-移除bumblebee>1 移除Bumblebee</h2><p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
+bumblebee很碍事，所以我们得先干掉它。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -r pci nonfree <span style=color:#bd93f9>0300</span>
+</code></pre></div><h2 id=2-安装nvidia驱动>2 安装NVIDIA驱动</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mhwd -i pci video-nvidia-440xx
+</code></pre></div><p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程</p><h2 id=3-修改mhwd设置>3 修改MHWD设置</h2><p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。</p><h3 id=另起炉灶>另起炉灶</h3><p>首先要删掉<code>/etc/X11/xorg.conf.d/90-mhwd.conf</code>
 （如果你不放心可以mv嘛。）
-然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>Section &#34;Module&#34;</span>
+然后新建一个文件<code>/etc/X11/xorg.conf.d/optimus.conf</code>：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>Section &#34;Module&#34;</span>
     <span style=color:#50fa7b>Load &#34;modesetting&#34;</span>
 <span style=color:#50fa7b>EndSection</span>
 
@@ -415,123 +31,54 @@ bumblebee很碍事，所以我们得先干掉它。</p>
     <span style=color:#50fa7b>BusID &#34;PCI:1:0:0&#34;</span>
     <span style=color:#50fa7b>Option &#34;AllowEmptyInitialConfiguration&#34;</span>
 <span style=color:#50fa7b>EndSection</span>
-</code></pre></div><blockquote>
-<p>注意：BusID一栏需要<strong>根据自己的电脑配置</strong>进行修改。BusID的值是这么查询的：<code>lspci | grep -E "VGA|3D"</code></p>
-</blockquote>
-<h3 id=禁用模块>禁用模块</h3>
-<p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
+</code></pre></div><blockquote><p>注意：BusID一栏需要<strong>根据自己的电脑配置</strong>进行修改。BusID的值是这么查询的：<code>lspci | grep -E "VGA|3D"</code></p></blockquote><h3 id=禁用模块>禁用模块</h3><p>PRIME依赖于<code>nvidia-drm</code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
 此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
-所以，我们需要对<code>/etc/modprobe.d</code>动动手脚。</p>
-<p>首先，我们得把mhwd自动生成的黑名单删掉。
+所以，我们需要对<code>/etc/modprobe.d</code>动动手脚。</p><p>首先，我们得把mhwd自动生成的黑名单删掉。
 （译者注：不放心的话，就把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
-比如这样：<strong>视情况而定，你的配置可能不同</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls /etc/modprobe.d/mhwd*
+比如这样：<strong>视情况而定，你的配置可能不同</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls /etc/modprobe.d/mhwd*
 sudo rm /etc/modprobe.d/mhwd-gpu.conf
 sudo rm /etc/modprobe.d/mhwd-nvidia.conf
 </code></pre></div><p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
 新建一个文件，什么名字都可以，conf结尾就行
-写入：<code>/etc/modprobe.d/nvidia.conf</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>blacklist nouveau</span>
+写入：<code>/etc/modprobe.d/nvidia.conf</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>blacklist nouveau</span>
 <span style=color:#50fa7b>blacklist nvidiafb</span>
 <span style=color:#50fa7b>blacklist rivafb</span>
-</code></pre></div><h2 id=4-开启-modeset>4 开启 modeset</h2>
-<p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>options nvidia_drm modeset</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>1</span>
-</code></pre></div><h2 id=5-设置启动脚本>5 设置启动脚本</h2>
-<p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
-如果你现在重启，桌面环境的输出可能会有一些问题。</p>
-<p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。</p>
-<blockquote>
-<p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。</p>
-</blockquote>
-<hr>
-<p><strong>针对 LightDM (xfce默认)</strong>
-创建一个文件，<code>/usr/local/bin/optimus.sh</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
+</code></pre></div><h2 id=4-开启-modeset>4 开启 modeset</h2><p>创建一个新文件，<code>/etc/modprobe.d/nvidia-drm.conf</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#50fa7b>options nvidia_drm modeset</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>1</span>
+</code></pre></div><h2 id=5-设置启动脚本>5 设置启动脚本</h2><p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。</p><p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。</p><blockquote><p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。</p></blockquote><hr><p><strong>针对 LightDM (xfce默认)</strong>
+创建一个文件，<code>/usr/local/bin/optimus.sh</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
 </span><span style=color:#ff79c6></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 </code></pre></div><p>然后按照国际惯例（hhh），让它可写可执行：<code>chmod a+rx /usr/local/bin/optimus.sh</code>
 现在你还得把它设置为启动脚本。
 编辑<code>/etc/lightdm/lightdm.conf</code>，然后在**[Seat:* ]**这一节设置
-<code>display-setup-script=/usr/local/bin/optimus.sh</code></p>
-<hr>
-<p><strong>针对 GDM (Gnome默认)</strong></p>
-<p>创建一个文件<code>/usr/local/share/optimus.desktop</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#ff79c6>[Desktop Entry]</span>
+<code>display-setup-script=/usr/local/bin/optimus.sh</code></p><hr><p><strong>针对 GDM (Gnome默认)</strong></p><p>创建一个文件<code>/usr/local/share/optimus.desktop</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Ini data-lang=Ini><span style=color:#ff79c6>[Desktop Entry]</span>
 <span style=color:#50fa7b>Type</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>Application</span>
 <span style=color:#50fa7b>Name</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>Optimus</span>
 <span style=color:#50fa7b>Exec</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>sh -c &#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&#34;</span>
 <span style=color:#50fa7b>NoDisplay</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>true</span>
 <span style=color:#50fa7b>X-GNOME-Autostart-Phase</span><span style=color:#ff79c6>=</span><span style=color:#f1fa8c>DisplayServer</span>
-</code></pre></div><p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)<br>
-然后建立连接，让它随着GDM启动。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+</code></pre></div><p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)<br>然后建立连接，让它随着GDM启动。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
 sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
-</code></pre></div><hr>
-<p><strong>针对 SDDM (KDE 默认)</strong></p>
-<p>创建一个文件：<code>/usr/share/sddm/scripts/Xsetup</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
+</code></pre></div><hr><p><strong>针对 SDDM (KDE 默认)</strong></p><p>创建一个文件：<code>/usr/share/sddm/scripts/Xsetup</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ff79c6>#!/bin/sh
 </span><span style=color:#ff79c6></span>
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
-</code></pre></div><p>然后用chmod让它变为可执行的文件。</p>
-<h2 id=6-最后的工作>6 最后的工作</h2>
-<p>译者注：如果以上的工作都已经完成，我建议你再做一步。
+</code></pre></div><p>然后用chmod让它变为可执行的文件。</p><h2 id=6-最后的工作>6 最后的工作</h2><p>译者注：如果以上的工作都已经完成，我建议你再做一步。
 我当时没有做这一步，之后重启发现内核模块加载错误。
-所以还是建议，编译一下内核。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mkinitcpio -P linux
-</code></pre></div><p>最后重启，大功告成。</p>
-<h2 id=验证是否成功>验证是否成功</h2>
-<p>如果以上你都设置正确了，当你重启之后，可以敲<code>glxinfo | grep -i vendor</code>
-然后看看是不是像下面这样的信息。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ glxinfo | grep -i vendor
+所以还是建议，编译一下内核。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo mkinitcpio -P linux
+</code></pre></div><p>最后重启，大功告成。</p><h2 id=验证是否成功>验证是否成功</h2><p>如果以上你都设置正确了，当你重启之后，可以敲<code>glxinfo | grep -i vendor</code>
+然后看看是不是像下面这样的信息。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ glxinfo | grep -i vendor
 server glx vendor string: NVIDIA Corporation
 client glx vendor string: NVIDIA Corporation
 OpenGL vendor string: NVIDIA Corporation
 </code></pre></div><p>如果是，说明你已经设置成功，可以欢呼了！
-<em>当然我有双显示器，一看显示器亮了就知道了2333</em></p>
-<h1 id=最后>最后</h1>
-<p><a href=https://www.v2ex.com/t/526544>这个奇怪的问题（点击查看）</a>当时也困扰了我很久
+<em>当然我有双显示器，一看显示器亮了就知道了2333</em></p><h1 id=最后>最后</h1><p><a href=https://www.v2ex.com/t/526544>这个奇怪的问题（点击查看）</a>当时也困扰了我很久
 打开任务管理器没有任何占用，为啥还是一卡一卡的？
 后来才知道，噢，原来是双显卡的坑。
 听说最近19H1来了？反正我不想用Windows了。
-自从Windows 7 之后我就没用过没bug的系统！</p>
-<p>希望我的这篇博文能帮到各位看官。 :)
-新开的评论区(Gitment)，有问题可以在下面留言哦。</p>
-<h2 id=参考资料>参考资料</h2>
-<p><a href=https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225>How To Set up PRIME with NVIDIA proprietary driver</a></p>
-<p><a href=https://wiki.archlinux.org/index.php/NVIDIA_Optimus>Optimus - ArchWiki</a></p>
-<h2 id=github-评论区>GitHub 评论区</h2>
-<p>本站评论区改为 Valine, 原评论区请<a href=https://github.com/AmazingRise/amazingrise.github.io/issues/1>移步至此</a>.</p>
-<hr width=100% id=EOF>
-<p style=color:#777>上次修改於 2020-09-12</p>
-</div>
-</div>
-<nav class=post-pagination>
-<a class=newer-posts href=https://risehere.net/2019/05/18/Equality-In-Kotlin-Translation/>
-下回<br>(译)Kotlin中的等号，"=="，"==="和"equals"
-</a>
-<a class=older-posts href=https://risehere.net/friends/>
-上回<br>Rise 的朋友们
-</a>
-</nav>
-<div class=post-comment-wrapper>
-<div id=waline></div>
-<script>new Waline({el:'#waline',path:location.pathname,serverURL:"https://comment.risehere.net"})</script>
-</div>
-</div>
-</div>
-</div>
-</div><div id=single-column-footer>
-Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a>
-<br>
-移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
-<br>
-&copy;
-Rise. 本站遵循 CC-BY-NC 4.0 协议
-</div>
-</div>
-<script src=/js/journal.js></script>
-</body>
-</html>
+自从Windows 7 之后我就没用过没bug的系统！</p><p>希望我的这篇博文能帮到各位看官。 :)
+新开的评论区(Gitment)，有问题可以在下面留言哦。</p><h2 id=参考资料>参考资料</h2><p><a href=https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225>How To Set up PRIME with NVIDIA proprietary driver</a></p><p><a href=https://wiki.archlinux.org/index.php/NVIDIA_Optimus>Optimus - ArchWiki</a></p><h2 id=github-评论区>GitHub 评论区</h2><p>本站评论区改为 Valine, 原评论区请<a href=https://github.com/AmazingRise/amazingrise.github.io/issues/1>移步至此</a>.</p><hr width=100% id=EOF><p style=color:#777>上次修改於 2020-09-12</p></div></div><nav class=post-pagination><a class=newer-posts href=https://risehere.net/2019/05/18/equality-in-kotlin-translation/>下回<br>(译)Kotlin中的等号，"=="，"==="和"equals"</a>
+<a class=older-posts href=https://risehere.net/friends/>上回<br>Rise 的朋友们</a></nav><div class=post-comment-wrapper><div id=waline></div><script>Waline.init({el:'#waline',serverURL:"https://comment.risehere.net",});</script></div></div></div></div></div><div id=single-column-footer>Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a><br>移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a><br><br>&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议</div></div><script src=/js/journal.js></script></body></html>

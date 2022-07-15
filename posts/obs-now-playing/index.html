@@ -1,254 +1,22 @@
-<!doctype html><html><head>
-<title>OBS Studio 显示正在播放的歌曲 in Linux</title>
-<meta charset=utf-8>
-<meta name=X-UA-Compatible content="IE=edge">
-<meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI">
-<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport>
-<meta content="telephone=no" name=format-detection>
-<meta name=description content="为了能在 Linux 下直播时显示正在播放的歌曲，我写了个简单的 Shell 脚本。">
-<meta name=renderer content="webkit">
-<meta name=theme-color content="#ffffff">
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-139087684-1','auto'),ga('send','pageview'))</script>
-<link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css>
-<link rel=stylesheet href=https://risehere.net/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media=screen>
-<link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media=screen>
-<script src=/vendor/js/loadCSS.js></script>
-<script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons")</script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css integrity=sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js integrity=sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8 crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1},{left:'\\(',right:'\\)',display:!1},{left:'\\[',right:'\\]',display:!0}],throwOnError:!1})})</script>
-<script src=/js/toc.js></script>
-<script src=//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js></script>
-</head>
-<body>
-<div id=app><div id=sideContainer class=side-container>
-<a class="a-block nav-head false" href=https://risehere.net>
-<div class=nav-title>
-左手的世界
-</div>
-<div class=nav-subtitle>
-Rise's Blog
-</div>
-</a>
-<div class=nav-link-list>
-<a class="a-block nav-link-item active" href=/posts>
-歸檔
-</a>
-<a class="a-block nav-link-item false" href=/categories>
-分類
-</a>
-<a class="a-block nav-link-item false" href=/about>
-關於
-</a>
-<a class="a-block nav-link-item false" href=/friends>
-朋友們
-</a>
-<a class="a-block nav-link-item false" href=/index.xml>
-RSS
-</a>
-</div>
-<div class=nav-footer>
-Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a>
-<br>
-移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
-<br>
-&copy;
-Rise. 本站遵循 CC-BY-NC 4.0 协议
-</div>
-</div><div id=extraContainer class=extra-container>
-<div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
-<div class=toc-content>
-<center>- 目錄 -</center>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
-前言
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>
-前言的前言
-</a>
-</li>
-<li>
-<a href=#%e7%bc%98%e7%94%b1 onclick="onNavClick(`#缘由-nav`)" id=缘由-nav>
-缘由
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>
-正文
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8e%9f%e7%90%86 onclick="onNavClick(`#原理-nav`)" id=原理-nav>
-原理
-</a>
-</li>
-<li>
-<a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>
-实现
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>
-后记
-</a>
-</li>
-</ul>
-</div>
-</div>
-<div class=pagination>
-<a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }">
-<i class="material-icons pagination-action-icon">
-keyboard_arrow_up
-</i>
-</a>
-<a type=button class=pagination-action id=darkModeToggleButton>
-<span class="material-icons pagination-action-icon" id=darkModeToggleIcon>
-dark_mode
-</span>
-</a>
-</div>
-</div>
-<div class=single-column-drawer-container id=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-<div class=drawer-content>
-<div class=drawer-menu>
-<a class="a-block drawer-menu-item active" href=/posts>
-歸檔
-</a>
-<a class="a-block drawer-menu-item false" href=/categories>
-分類
-</a>
-<a class="a-block drawer-menu-item false" href=/about>
-關於
-</a>
-<a class="a-block drawer-menu-item false" href=/friends>
-朋友們
-</a>
-<a class="a-block drawer-menu-item false" href=/index.xml>
-RSS
-</a>
-<div class=toc>
-<div class=toc-content>
-<center>- 目錄 -</center>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>
-前言
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>
-前言的前言
-</a>
-</li>
-<li>
-<a href=#%e7%bc%98%e7%94%b1 onclick="onNavClick(`#缘由-nav`)" id=缘由-nav>
-缘由
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>
-正文
-</a>
-</li>
-<ul>
-<li>
-<a href=#%e5%8e%9f%e7%90%86 onclick="onNavClick(`#原理-nav`)" id=原理-nav>
-原理
-</a>
-</li>
-<li>
-<a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>
-实现
-</a>
-</li>
-</ul>
-<li>
-<a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>
-后记
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<transition name=fade>
-<div id=drawer-mask v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div>
-</transition>
-<nav id=navBar class="navbar sticky-top navbar-light single-column-nav-container">
-<div id=navBackground class=nav-background></div>
-<div class="container container-narrow nav-content">
-<button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
-<i class=material-icons>
-menu
-</i>
-</button>
-<a id=navTitle class=navbar-brand href=https://risehere.net>
-左手的世界
-</a>
+<!doctype html><html><head><title>OBS Studio 显示正在播放的歌曲 in Linux</title><meta charset=utf-8><meta name=X-UA-Compatible content="IE=edge"><meta name=google-site-verification content="8FPeds9oCwHQpi239OTYCTrxbiLlRLXR5ETV-upe1gI"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name=viewport><meta content="telephone=no" name=format-detection><meta name=description content="为了能在 Linux 下直播时显示正在播放的歌曲，我写了个简单的 Shell 脚本。"><meta name=renderer content="webkit"><meta name=theme-color content="#ffffff"><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-139087684-1','auto');ga('send','pageview');}</script><link type=text/css rel=stylesheet href=/vendor/css/bootstrap.min.css><link rel=stylesheet href=https://risehere.net/scss/journal.min.13e9f1040e44e50a1d9c325e0f9bf599f96628dc8f40517f75c9742aa328182d.css integrity="sha256-E+nxBA5E5QodnDJeD5v1mflmKNyPQFF/dcl0KqMoGC0=" media=screen><link rel=stylesheet href=https://risehere.net/scss/dark-mode.min.c2829c0ea8cdceaf384dceff035d61cfd52b6669739122d1af8d9aca84a1a308.css integrity="sha256-woKcDqjNzq84Tc7/A11hz9UrZmlzkSLRr42ayoShowg=" media=screen><script src=/vendor/js/loadCSS.js></script><script>loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");</script><script src=/js/toc.js></script><script src=https://unpkg.com/@waline/client@v2/dist/waline.js></script><link rel=stylesheet href=https://unpkg.com/@waline/client@v2/dist/waline.css></head><body><div id=app><div id=sideContainer class=side-container><a class="a-block nav-head false" href=https://risehere.net><div class=nav-title>左手的世界</div><div class=nav-subtitle>Rise's Blog</div></a><div class=nav-link-list><a class="a-block nav-link-item active" href=/posts>歸檔</a>
+<a class="a-block nav-link-item false" href=/categories>分類</a>
+<a class="a-block nav-link-item false" href=/about>關於</a>
+<a class="a-block nav-link-item false" href=/friends>朋友們</a>
+<a class="a-block nav-link-item false" href=/index.xml>RSS</a></div><div class=nav-footer>Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a><br>移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a><br><br>&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议</div></div><div id=extraContainer class=extra-container><div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }"><div class=toc-content><center>- 目錄 -</center><ul><li><a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>前言</a></li><ul><li><a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>前言的前言</a></li><li><a href=#%e7%bc%98%e7%94%b1 onclick="onNavClick(`#缘由-nav`)" id=缘由-nav>缘由</a></li></ul><li><a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>正文</a></li><ul><li><a href=#%e5%8e%9f%e7%90%86 onclick="onNavClick(`#原理-nav`)" id=原理-nav>原理</a></li><li><a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>实现</a></li></ul><li><a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>后记</a></li></ul></div></div><div class=pagination><a id=globalBackToTop class="pagination-action animated-visibility" href=#top :class="{ invisible: scrollY == 0 }"><i class="material-icons pagination-action-icon">keyboard_arrow_up</i></a>
+<a type=button class=pagination-action id=darkModeToggleButton><span class="material-icons pagination-action-icon" id=darkModeToggleIcon>dark_mode</span></a></div></div><div class=single-column-drawer-container id=drawer v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }"><div class=drawer-content><div class=drawer-menu><a class="a-block drawer-menu-item active" href=/posts>歸檔</a>
+<a class="a-block drawer-menu-item false" href=/categories>分類</a>
+<a class="a-block drawer-menu-item false" href=/about>關於</a>
+<a class="a-block drawer-menu-item false" href=/friends>朋友們</a>
+<a class="a-block drawer-menu-item false" href=/index.xml>RSS</a><div class=toc><div class=toc-content><center>- 目錄 -</center><ul><li><a href=#%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言-nav`)" id=前言-nav>前言</a></li><ul><li><a href=#%e5%89%8d%e8%a8%80%e7%9a%84%e5%89%8d%e8%a8%80 onclick="onNavClick(`#前言的前言-nav`)" id=前言的前言-nav>前言的前言</a></li><li><a href=#%e7%bc%98%e7%94%b1 onclick="onNavClick(`#缘由-nav`)" id=缘由-nav>缘由</a></li></ul><li><a href=#%e6%ad%a3%e6%96%87 onclick="onNavClick(`#正文-nav`)" id=正文-nav>正文</a></li><ul><li><a href=#%e5%8e%9f%e7%90%86 onclick="onNavClick(`#原理-nav`)" id=原理-nav>原理</a></li><li><a href=#%e5%ae%9e%e7%8e%b0 onclick="onNavClick(`#实现-nav`)" id=实现-nav>实现</a></li></ul><li><a href=#%e5%90%8e%e8%ae%b0 onclick="onNavClick(`#后记-nav`)" id=后记-nav>后记</a></li></ul></div></div></div></div></div><transition name=fade><div id=drawer-mask v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if=isDrawerOpen v-on:click=toggleDrawer></div></transition><nav id=navBar class="navbar sticky-top navbar-light single-column-nav-container"><div id=navBackground class=nav-background></div><div class="container container-narrow nav-content"><button id=nav_dropdown_btn class=nav-dropdown-toggle type=button v-on:click=toggleDrawer>
+<i class=material-icons>menu</i></button>
+<a id=navTitle class=navbar-brand href=https://risehere.net>左手的世界</a>
 <button type=button class=nav-darkmode-toggle id=darkModeToggleButton2>
-<i class=material-icons id=darkModeToggleIcon2>
-dark_mode
-</i>
-</button>
-</div>
-</nav>
-<div class=single-column-header-container id=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-<a href=https://risehere.net>
-<div class=single-column-header-title>左手的世界</div>
-<div class=single-column-header-subtitle>Rise's Blog</div>
-</a>
-</div>
-<div id=content>
-<div id=streamContainer class=stream-container>
-<div class="post-list-container post-list-container-shadow">
-<div class=post>
-<div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/obs-now-playing/obs-now-playing.jpg)>
-<div class=post-title>
-OBS Studio 显示正在播放的歌曲 in Linux
-<div class=post-subtitle>
-为了能在 Linux 下直播时显示正在播放的歌曲，我写了个简单的 Shell 脚本。
-</div>
-<div class=post-meta>
-<time itemprop=datePublished>
-2020-01-12 11:22
-</time>
+<i class=material-icons id=darkModeToggleIcon2>dark_mode</i></button></div></nav><div class=single-column-header-container id=pageHead v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }"><a href=https://risehere.net><div class=single-column-header-title>左手的世界</div><div class=single-column-header-subtitle>Rise's Blog</div></a></div><div id=content><div id=streamContainer class=stream-container><div class="post-list-container post-list-container-shadow"><div class=post><div class=post-head-wrapper style=background-image:url(https://risehere.net/posts/obs-now-playing/obs-now-playing.jpg)><div class=post-title>OBS Studio 显示正在播放的歌曲 in Linux<div class=post-subtitle>为了能在 Linux 下直播时显示正在播放的歌曲，我写了个简单的 Shell 脚本。</div><div class=post-meta><time itemprop=datePublished>2020-01-12 11:22</time>
 <i class=material-icons>folder</i>
 <a href=/categories/linux>Linux</a>
-&nbsp;
-</div>
-</div>
-</div>
-<div class=post-body-wrapper>
-<div class=post-body v-pre>
-<h1 id=前言>前言</h1>
-<h2 id=前言的前言>前言的前言</h2>
-<p>欢迎大家关注我的 bilibili 帐号：<a href=https://space.bilibili.com/441928938/>bili-Amazingrise</a></p>
-<p>不定期直播搬砖，游戏，或者其他有趣的东西~</p>
-<h2 id=缘由>缘由</h2>
-<p>为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。</p>
-<p>看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。</p>
-<p>另外，这篇文章的诞生也是受到这位的启发：<a href=https://keep.moe/2019/05/16/netease-now-playing-lldb/>获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 </a>
-（没错，就是这个主题的原作者。）</p>
-<h1 id=正文>正文</h1>
-<h2 id=原理>原理</h2>
-<p>当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。</p>
-<p>由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。</p>
-<p>以我用的 <a href=https://github.com/Rocket1184/electron-netease-cloud-music>Electron Netease Cloud Music</a> 为例。</p>
-<p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。</p>
-<p>仔细看该项目的源代码，可以找到<a href=https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14>这几行</a>：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#ff79c6>const</span> i <span style=color:#ff79c6>=</span> {
+&nbsp;</div></div></div><div class=post-body-wrapper><div class=post-body v-pre><h1 id=前言>前言</h1><h2 id=前言的前言>前言的前言</h2><p>欢迎大家关注我的 bilibili 帐号：<a href=https://space.bilibili.com/441928938/>bili-Amazingrise</a></p><p>不定期直播搬砖，游戏，或者其他有趣的东西~</p><h2 id=缘由>缘由</h2><p>为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。</p><p>看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。</p><p>另外，这篇文章的诞生也是受到这位的启发：<a href=https://keep.moe/2019/05/16/netease-now-playing-lldb/>获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路</a>
+（没错，就是这个主题的原作者。）</p><h1 id=正文>正文</h1><h2 id=原理>原理</h2><p>当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。</p><p>由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。</p><p>以我用的 <a href=https://github.com/Rocket1184/electron-netease-cloud-music>Electron Netease Cloud Music</a> 为例。</p><p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。</p><p>仔细看该项目的源代码，可以找到<a href=https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14>这几行</a>：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#ff79c6>const</span> i <span style=color:#ff79c6>=</span> {
     name(suffix) {
         <span style=color:#ff79c6>if</span> (suffix) <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>`org.mpris.MediaPlayer2.</span><span style=color:#f1fa8c>${</span>suffix<span style=color:#f1fa8c>}</span><span style=color:#f1fa8c>`</span>;
         <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#39;org.mpris.MediaPlayer2&#39;</span>;
@@ -258,12 +26,8 @@ OBS Studio 显示正在播放的歌曲 in Linux
         <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#39;/org/mpris/MediaPlayer2&#39;</span>;
     }
 };
-</code></pre></div><p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。</p>
-<p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？</p>
-<p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dbus-send --print-reply --dest<span style=color:#ff79c6>=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
-</code></pre></div><p>然后我们会得到这样一段结果：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>method <span style=color:#ff79c6>return</span> <span style=color:#8be9fd;font-style:italic>time</span><span style=color:#ff79c6>=</span>1578801147.817851 <span style=color:#8be9fd;font-style:italic>sender</span><span style=color:#ff79c6>=</span>:1.89 -&gt; <span style=color:#8be9fd;font-style:italic>destination</span><span style=color:#ff79c6>=</span>:1.303 <span style=color:#8be9fd;font-style:italic>serial</span><span style=color:#ff79c6>=</span><span style=color:#bd93f9>100</span> <span style=color:#8be9fd;font-style:italic>reply_serial</span><span style=color:#ff79c6>=</span><span style=color:#bd93f9>2</span>
+</code></pre></div><p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。</p><p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？</p><p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>dbus-send --print-reply --dest<span style=color:#ff79c6>=</span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+</code></pre></div><p>然后我们会得到这样一段结果：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>method <span style=color:#ff79c6>return</span> <span style=color:#8be9fd;font-style:italic>time</span><span style=color:#ff79c6>=</span>1578801147.817851 <span style=color:#8be9fd;font-style:italic>sender</span><span style=color:#ff79c6>=</span>:1.89 -&gt; <span style=color:#8be9fd;font-style:italic>destination</span><span style=color:#ff79c6>=</span>:1.303 <span style=color:#8be9fd;font-style:italic>serial</span><span style=color:#ff79c6>=</span><span style=color:#bd93f9>100</span> <span style=color:#8be9fd;font-style:italic>reply_serial</span><span style=color:#ff79c6>=</span><span style=color:#bd93f9>2</span>
    variant       array <span style=color:#ff79c6>[</span>
          dict entry<span style=color:#ff79c6>(</span>
             string <span style=color:#f1fa8c>&#34;mpris:trackid&#34;</span>
@@ -300,12 +64,7 @@ OBS Studio 显示正在播放的歌曲 in Linux
             variant                int16 <span style=color:#bd93f9>9</span>
          <span style=color:#ff79c6>)</span>
       <span style=color:#ff79c6>]</span>
-</code></pre></div><p>从结果中我们可以找到我们想要的信息：歌手，标题等等。</p>
-<p>最后，我们只需要用正则表达式提取一下就🉑️️了。</p>
-<h2 id=实现>实现</h2>
-<p>正则表达式 <del>当时鼓捣了好久，</del> 能用就行。</p>
-<p>下面是具体的 Shell 脚本实现。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#6272a4>#/bin/sh!</span>
+</code></pre></div><p>从结果中我们可以找到我们想要的信息：歌手，标题等等。</p><p>最后，我们只需要用正则表达式提取一下就🉑️️了。</p><h2 id=实现>实现</h2><p>正则表达式 <del>当时鼓捣了好久，</del> 能用就行。</p><p>下面是具体的 Shell 脚本实现。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#6272a4>#/bin/sh!</span>
 
 <span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#f1fa8c>&#34;Song Daemon is running......&#34;</span>
 
@@ -335,41 +94,6 @@ OBS Studio 显示正在播放的歌曲 in Linux
 		<span style=color:#8be9fd;font-style:italic>echo</span> <span style=color:#f1fa8c>&#34;</span><span style=color:#8be9fd;font-style:italic>$CONTENT</span><span style=color:#f1fa8c>&#34;</span> &gt; <span style=color:#8be9fd;font-style:italic>$FILENAME</span>
 	<span style=color:#ff79c6>fi</span>
 <span style=color:#ff79c6>done</span>
-</code></pre></div><p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。</p>
-<h1 id=后记>后记</h1>
-<p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。</p>
-<p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。</p>
-<p>当时水了一些别的文章，总之这篇文章就留到了今年。</p>
-<p>希望对各位有所帮助。</p>
-<p><del>又水完一篇博客，好开心。</del></p>
-<hr width=100% id=EOF>
-<p style=color:#777>上次修改於 2020-01-12</p>
-</div>
-</div>
-<nav class=post-pagination>
-<a class=newer-posts href=https://risehere.net/posts/koi-carp-scam/>
-下回<br>今天你是锦鲤吗
-</a>
-<a class=older-posts href=https://risehere.net/2019/10/28/howto-use-spyder-debugger/>
-上回<br>如何优雅地使用 Spyder 的调试器
-</a>
-</nav>
-<div class=post-comment-wrapper>
-<div id=waline></div>
-<script>new Waline({el:'#waline',path:location.pathname,serverURL:"https://comment.risehere.net"})</script>
-</div>
-</div>
-</div>
-</div>
-</div><div id=single-column-footer>
-Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a>
-<br>
-移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a> <br>
-<br>
-&copy;
-Rise. 本站遵循 CC-BY-NC 4.0 协议
-</div>
-</div>
-<script src=/js/journal.js></script>
-</body>
-</html>
+</code></pre></div><p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。</p><h1 id=后记>后记</h1><p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。</p><p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。</p><p>当时水了一些别的文章，总之这篇文章就留到了今年。</p><p>希望对各位有所帮助。</p><p><del>又水完一篇博客，好开心。</del></p><hr width=100% id=EOF><p style=color:#777>上次修改於 2020-01-12</p></div></div><nav class=post-pagination><a class=newer-posts href=https://risehere.net/posts/koi-carp-scam/>下回<br>今天你是锦鲤吗</a>
+<a class=older-posts href=https://risehere.net/2019/10/28/howto-use-spyder-debugger/>上回<br>如何优雅地使用 Spyder 的调试器</a></nav><div class=post-comment-wrapper><div id=waline></div><script>Waline.init({el:'#waline',serverURL:"https://comment.risehere.net",});</script></div></div></div></div></div><div id=single-column-footer>Hugo Theme <a href=https://github.com/amazingrise/hugo-theme-diary>Diary</a> by <a href=https://risehere.net/>Rise</a><br>移植自 <a href=https://mak1t0.cc/ target=_blank rel="noreferrer noopener">Makito</a>'s <a href=https://github.com/SumiMakito/hexo-theme-journal/ target=_blank rel="noreferrer noopener">Journal.</a><br><br>&copy;
+Rise. 本站遵循 CC-BY-NC 4.0 协议</div></div><script src=/js/journal.js></script></body></html>
