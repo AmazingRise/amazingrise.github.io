@@ -1,0 +1,317 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://risehere.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Fri, 25 Oct 2019 23:46:42 +0000</lastBuildDate><atom:link href="https://risehere.net/index.xml" rel="self" type="application/rss+xml"/><item><title>我的一份自我介绍</title><link>https://risehere.net/about/</link><pubDate>Fri, 25 Oct 2019 23:46:42 +0000</pubDate><guid>https://risehere.net/about/</guid><description>左手的世界 https://risehere.net/about/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>我的 GitHub 链接: &lt;a href="https://github.com/amazingrise">AmazingRise&lt;/a>&lt;/p>
+&lt;p>此页正在建设中^_^&lt;/p>
+&lt;p>（正是因为上面这句话，博客从腾讯云迁移到了 Github，具体原因不方便说）&lt;/p>
+&lt;h1 id="关于本站">关于本站&lt;/h1>
+&lt;h2 id="版权声明">版权声明&lt;/h2>
+&lt;p>本站遵循 &lt;a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0 协议&lt;/a>.&lt;/p>
+&lt;h1 id="关于我">关于我&lt;/h1>
+&lt;p>我叫 Rise.&lt;/p>
+&lt;h2 id="创作">创作&lt;/h2>
+&lt;p>创作是一件美好的事情。&lt;/p>
+&lt;p>我喜欢创作。&lt;/p>
+&lt;p>因为创作可以给大家带来欢乐。&lt;/p>
+&lt;p>写代码也是一种创作。&lt;/p>
+&lt;p>我的代码可能会帮助到世界上的其他人&lt;/p>
+&lt;p>我乐此不疲&lt;/p>
+&lt;p>😉️&lt;/p>
+&lt;h2 id="音乐">音乐&lt;/h2>
+&lt;p>虽然没有创作音乐的才能&amp;hellip; 🙈️&lt;/p>
+&lt;p>但是我很喜欢听音乐。&lt;/p>
+&lt;p>尤其是一些老摇滚。&lt;/p>
+&lt;p>像是甲壳虫，枪花，绿洲&amp;hellip;&lt;/p>
+&lt;h2 id="运动">运动&lt;/h2>
+&lt;p>我喜欢骑单车，能骑到好远的地方。&lt;/p>
+&lt;p>还有什么呢。&lt;/p>
+&lt;h1 id="未完待续">未完待续&lt;/h1>
+&lt;p>剩下的，留着我有时间补充吧。&lt;/p>
+- https://risehere.net/about/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>(译)Kotlin中的等号，"=="，"==="和"equals"</title><link>https://risehere.net/2019/05/18/equality-in-kotlin-translation/</link><pubDate>Sat, 18 May 2019 10:47:06 +0000</pubDate><guid>https://risehere.net/2019/05/18/equality-in-kotlin-translation/</guid><description>左手的世界 https://risehere.net/2019/05/18/equality-in-kotlin-translation/ -&lt;p>Translated from: &lt;a href="https://medium.com/@agrawalsuneet/equality-in-kotlin-and-equals-d8373ef529f1">Equality in Kotlin&lt;/a>
+Author: Suneet Agrawal
+Translated by : AmazingRise (Authorized by original author)&lt;/p>
+&lt;p>在编程中，我们经常需要比较两个变量的值是否相等，或者两个对象的引用是否一致。
+Kotlin语言里，“等号”有这么几种：&lt;code>==&lt;/code>，&lt;code>===&lt;/code>与&lt;code>.equals&lt;/code>。
+那么问题来了，我们该如何正确使用这些相等性判断呢？&lt;/p>
+&lt;!-- more -->
+&lt;p>我们来一起看一看Kotlin的几种相等性判断：&lt;/p>
+&lt;h2 id="结构性相等--">结构性相等 (&amp;ldquo;==&amp;rdquo;)&lt;/h2>
+&lt;p>&lt;code>==&lt;/code>操作符用于比较两个变量的值。
+&lt;strong>请不要与Java中的&lt;code>==&lt;/code>相混淆。&lt;/strong>
+与Java中的&lt;code>==&lt;/code>操作符&lt;strong>不同&lt;/strong>的是：&lt;code>==&lt;/code>操作符在Kotlin中只比较值。
+而Java或其它语言中，&lt;code>==&lt;/code>通常用来比较两个对象的引用。
+Kotlin中，&lt;code>==&lt;/code>的否定形式是&lt;code>!=&lt;/code>，当两个变量值不同时返回真。&lt;/p>
+&lt;h2 id="引用性相等-">引用性相等(&amp;ldquo;===&amp;rdquo;)&lt;/h2>
+&lt;p>&lt;code>===&lt;/code>操作符用于比较两个变量的引用是否一致。只有当两个变量指向同一个实例时，&lt;code>===&lt;/code>的值才为真。
+&lt;code>===&lt;/code>的否定形式是&lt;code>!==&lt;/code>，当两个对象的引用不同的时候返回真。&lt;/p>
+&lt;p>不过对于原始类型（Primitive type）来说（例如 Int），&lt;code>=== &lt;/code>等价于&lt;code> ==&lt;/code> 。&lt;/p>
+&lt;h2 id="equals-方法-">.equals 方法&lt;/h2>
+&lt;p>&lt;code>equals(other: Any?)&lt;/code>方法是在&lt;code>Any&lt;/code>类里实现的。
+并且所有类中&lt;code>.equals&lt;/code>都可以被重写（毕竟所有的类都继承于Any嘛，就像Java里的Object一样）。&lt;/p>
+&lt;p>&lt;code>.equals&lt;/code>方法将会比较两个变量的值。
+与&lt;code>==&lt;/code>不同体现在比较&lt;code>Float&lt;/code>和&lt;code>Double&lt;/code>的时候，&lt;code>.equals&lt;/code>违背了IEEE 754 浮点数运算标准。&lt;/p>
+&lt;p>&lt;strong>与IEEE 754浮点数运算标准相违背，意味着什么？&lt;/strong>&lt;/p>
+&lt;p>这意味着：&lt;/p>
+&lt;ul>
+&lt;li>NaN 等于它本身&lt;/li>
+&lt;li>NaN 比任何其他元素要大，包括正无穷 &lt;code>POSITIVE_INFINITY&lt;/code>&lt;/li>
+&lt;li>编译器会认为&lt;code>-0.0&lt;/code> 要比 &lt;code>0.0&lt;/code> 小。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>一头雾水？&lt;/strong>&lt;/p>
+&lt;h2 id="举个栗子-">举个栗子&lt;/h2>
+&lt;p>我来举几个例子解释一下。&lt;/p>
+&lt;p>首先，我们用这几个方法比较两个原始类型的变量（Int）。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin"> &lt;span style="color:#ff79c6">val&lt;/span> int1 = &lt;span style="color:#bd93f9">10&lt;/span>
+&lt;span style="color:#ff79c6">val&lt;/span> int2 = &lt;span style="color:#bd93f9">10&lt;/span>
+println(int1 == int2) &lt;span style="color:#6272a4">// true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(int1.equals(int2)) &lt;span style="color:#6272a4">// true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(int1 === int2) &lt;span style="color:#6272a4">// true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这三个println最后都会输出&lt;code>true&lt;/code>，因为对于原始类型，这三种判断都仅仅检查变量的值。
+所以在这种情况下，&lt;code>===&lt;/code>输出的结果也是一样的。&lt;/p>
+&lt;p>现在让我们把原始类型换成包装类，看看三种方法表现出的行为。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin"> &lt;span style="color:#ff79c6">val&lt;/span> first = Integer(&lt;span style="color:#bd93f9">10&lt;/span>)
+&lt;span style="color:#ff79c6">val&lt;/span> second = Integer(&lt;span style="color:#bd93f9">10&lt;/span>)
+println(first == second) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(first.equals(second)) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(first === second) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在上面的例子中，&lt;code>==&lt;/code>与&lt;code>.equals&lt;/code>输出了&lt;code>true&lt;/code>，因为他们仅仅比较了两个变量的值。
+而&lt;code>===&lt;/code>比较了对象的引用，而这两个对象的引用是不同的，所以最后输出了&lt;code>false&lt;/code>。&lt;/p>
+&lt;p>现在我们来看另一种情况。我们自己定义一个类，然后再用这三个方法：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#ff79c6">class&lt;/span> &lt;span style="color:#50fa7b">Employee&lt;/span> (&lt;span style="color:#ff79c6">val&lt;/span> name: String)
+&lt;span style="color:#ff79c6">val&lt;/span> emp1 = Employee(“Suneet”)
+&lt;span style="color:#ff79c6">val&lt;/span> emp2 = Employee(“Suneet”)
+println(emp1 == emp2) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.equals(emp2)) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1 === emp2) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span>
+println(emp1.name == emp2.name) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.name.equals(emp2.name)) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.name === emp2.name) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>结果显而易见。因为Employee类既不是原始数据类型，也不是包装类，这种情况下它们都会比较两个变量的引用，所以它们都返回了&lt;code>false&lt;/code>。
+但是对于字符串的比较，这三个方法都只检查了字符串的内容，所以它们都返回了&lt;code>true&lt;/code>。&lt;/p>
+&lt;p>&lt;strong>等等，你说&lt;code>==&lt;/code>和&lt;code>.equals&lt;/code>只比较两个对象的内容，在我们的这个例子里它们都是一样的呀&lt;/strong>
+(译者注：指第一段，三个比较全都返回了false)
+**这没毛病。**但内容比较仅对于&lt;code>data&lt;/code>类起作用。对于普通的类，即使两个对象内容完全一致，编译器也会认为两个对象是不同的。而对于&lt;code>data&lt;/code>类，编译器将比较对象的内容，并且在内容相同的情况下返回&lt;code>true&lt;/code>。&lt;/p>
+&lt;p>让我们把上面的普通类改为&lt;code>data&lt;/code>类：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#ff79c6">data&lt;/span> &lt;span style="color:#ff79c6">class&lt;/span> &lt;span style="color:#50fa7b">Employee&lt;/span> (&lt;span style="color:#ff79c6">val&lt;/span> name: String)
+&lt;span style="color:#ff79c6">val&lt;/span> emp1 = Employee(&lt;span style="color:#f1fa8c">&amp;#34;Suneet&amp;#34;&lt;/span>)
+&lt;span style="color:#ff79c6">val&lt;/span> emp2 = Employee(&lt;span style="color:#f1fa8c">&amp;#34;Suneet&amp;#34;&lt;/span>)
+println(emp1 == emp2) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.equals(emp2)) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1 === emp2) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span>
+println(emp1.name == emp2.name) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.name.equals(emp2.name)) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> println(emp1.name === emp2.name) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这回就没问题了。最后我们看一下浮点数的比较，我们来看看“正数0”和“负数0”：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Kotlin" data-lang="Kotlin">&lt;span style="color:#ff79c6">val&lt;/span> negZero = -&lt;span style="color:#bd93f9">0.0f&lt;/span>
+&lt;span style="color:#ff79c6">val&lt;/span> posZero = &lt;span style="color:#bd93f9">0.0f&lt;/span>
+println(negZero == posZero) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span>println(negZero.equals(posZero)) &lt;span style="color:#6272a4">//false
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span>println(negZero === posZero) &lt;span style="color:#6272a4">//true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于&lt;code>Float&lt;/code>和&lt;code>Double&lt;/code>类的比较，&lt;code>.equals&lt;/code>方法违背了IEEE 754 浮点数运算标准，当&lt;code>-0.0&lt;/code>与&lt;code>0.0&lt;/code>比较的时候，它会返回&lt;code>false&lt;/code>。
+而&lt;code>==&lt;/code>和&lt;code>===&lt;/code>都会返回&lt;code>true&lt;/code>。&lt;/p>
+&lt;h2 id="最后谨记-">最后谨记&lt;/h2>
+&lt;ul>
+&lt;li>因为Kotlin里没有像&lt;code>String(&amp;quot;&amp;quot;)&lt;/code>这样的构造器，当比较字符串的时候，只要内容相等，都会返回&lt;code>true&lt;/code>。&lt;/li>
+&lt;li>对于&lt;code>null&lt;/code>引用的判断，我们不必做任何优化。&lt;code>a == null&lt;/code> 会被自动转换为 &lt;code>a === null&lt;/code>，因为null本身也是一个引用，它将会引发引用检查（而不是值检查）。&lt;/li>
+&lt;/ul>
+&lt;p>就酱。&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/publications/">点击这里&lt;/a>看看我写的其他有趣文章。
+或者&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/personalgamesandapps/">点击这里&lt;/a>，瞧一瞧我写的App和游戏。
+另外，欢迎在你的App里面使用&lt;a href="https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/">我的Android开源组件&lt;/a>。
+如果你需要帮助的话，可以给我发邮件： agrawalsuneet AT gmail.com。&lt;/p>
+&lt;p>引用: &lt;a href="https://kotlinlang.org/docs/reference/equality.html">Kotlin docs&lt;/a>&lt;/p>
+&lt;hr />
+&lt;p>翻译完结。&lt;/p>
+&lt;p>作者：Suneet Agrawal.
+网站：https://agrawalsuneet.github.io/agrawalsuneet/
+十分感谢作者写的文章，以及授权本人翻译，以分享给中国开发者。
+原作者保留所有权利。&lt;/p>
+- https://risehere.net/2019/05/18/equality-in-kotlin-translation/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://risehere.net/posts/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://risehere.net/posts/manjaro-optimus-dual-monitor/</guid><description>左手的世界 https://risehere.net/posts/manjaro-optimus-dual-monitor/ -&lt;h1 id="最新方法">最新方法&lt;/h1>
+&lt;p>2020.9.12 更新&lt;/p>
+&lt;p>这篇文章里提到的解决方法应该&lt;strong>用不上了&lt;/strong>，因为 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code> 可以&lt;strong>直接识别&lt;/strong>笔记本上的双显示器。&lt;/p>
+&lt;ul>
+&lt;li>如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code>，在&lt;strong>更换完成前不要看这篇文章&lt;/strong>。&lt;/li>
+&lt;li>如果你以前看过这篇教程，建议将现有的&lt;code>video-nvidia-???xx&lt;/code>更换为上述驱动，并且记得把这篇教程里更改过的配置文件&lt;strong>一一还原&lt;/strong>。这个新的驱动修复了很多小问题。&lt;/li>
+&lt;li>如果你用的就是 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code>，并且双显示器无法工作，那么你可以参考这篇文章的内容，&lt;strong>也许&lt;/strong>对你有帮助。&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;p>重要的话说三遍：&lt;/p>
+&lt;p>建议将驱动更换为 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code>，在&lt;strong>更换完成前不要看这篇文章&lt;/strong>。&lt;/p>
+&lt;p>建议将驱动更换为 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code>，在&lt;strong>更换完成前不要看这篇文章&lt;/strong>。&lt;/p>
+&lt;p>建议将驱动更换为 &lt;code>video-hybrid-intel-nvidia-450xx-prime&lt;/code>，在&lt;strong>更换完成前不要看这篇文章&lt;/strong>。&lt;/p>
+&lt;p>失败了再回来试一下这篇文章的方法。&lt;/p>
+&lt;hr />
+&lt;h1 id="背景">背景&lt;/h1>
+&lt;p>解决方法请翻到&lt;a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-">解决方法&lt;/a>一节。&lt;/p>
+&lt;p>环境：&lt;/p>
+&lt;p>intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。&lt;/p>
+&lt;p>症状：&lt;/p>
+&lt;ul>
+&lt;li>无法接外接显示器，接上后无论是系统设置还是&lt;code>inxi -Fx&lt;/code>都无法识别外置显示器。&lt;/li>
+&lt;li>检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。&lt;/li>
+&lt;/ul>
+&lt;p>如果你的是&lt;strong>外接显卡坞+显示器，这篇教程不适合你&lt;/strong>。不过有网友（感谢&lt;code>@sunlitforest&lt;/code>）用另一种方法操作成功了，详情请看&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749">这里&lt;/a>。&lt;/p>
+&lt;p>参照&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">ArchWiki上面的说法&lt;/a>，让Optimus显卡在linux里面有三种实现方法：&lt;/p>
+&lt;ol>
+&lt;li>BIOS里面禁用掉一个显卡。缺点：难以切换显卡。&lt;/li>
+&lt;li>用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。&lt;/li>
+&lt;li>用Bumblebee。不过Bumblebee很难支持双显示器。&lt;/li>
+&lt;li>用专有驱动。&lt;/li>
+&lt;li>用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h1 id="解决方法">解决方法&lt;/h1>
+&lt;p>我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p>
+&lt;p>刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p>
+&lt;p>以下内容均为本人的中文翻译。&lt;a href="https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225">原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;p>如何在Optimus的笔记本上开启PRIME：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th align="left">方法&lt;/th>
+&lt;th align="left">优点&lt;/th>
+&lt;th align="left">缺点&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td align="left">bumblebee(Render offload)&lt;/td>
+&lt;td align="left">按需使用独立显卡，Manjaro默认配置&lt;/td>
+&lt;td align="left">有一定的开销，对性能有所影响&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">PRIME&lt;/td>
+&lt;td align="left">直接使用独立显卡，性能更强&lt;/td>
+&lt;td align="left">两块显卡都一直供电，需要手动配置&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">optimus-manager&lt;/td>
+&lt;td align="left">显卡切换更简单&lt;/td>
+&lt;td align="left">暂不成熟，还在开发中&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td align="left">video-hybrid-intel-nvidia-440xx-prime&lt;/td>
+&lt;td align="left">NVIDIA 官方支持的 render offload.&lt;/td>
+&lt;td align="left">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。&lt;br />
+optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>免责声明：NVIDIA Optimus在Linux下目前一团糟，硬件设置千差万别。所以这个教程可能有不适用之处，建议参考ArchWiki获取更多信息。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="1-移除bumblebee">1 移除Bumblebee&lt;/h2>
+&lt;p>如果你选择了non-free驱动，mhwd将会自动安装bumblebee。
+bumblebee很碍事，所以我们得先干掉它。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mhwd -r pci nonfree &lt;span style="color:#bd93f9">0300&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-安装nvidia驱动">2 安装NVIDIA驱动&lt;/h2>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mhwd -i pci video-nvidia-440xx
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>2020年3月25日注：经过本人测试，这两步操作也可以通过系统设置里面的“硬件设定”来完成。video-nvidia-440xx仍然适用于本教程&lt;/p>
+&lt;h2 id="3-修改mhwd设置">3 修改MHWD设置&lt;/h2>
+&lt;p>mhwd会自动生成一些设置。这里我们需要重新手动配置，这样PRIME才能生效。&lt;/p>
+&lt;h3 id="另起炉灶">另起炉灶&lt;/h3>
+&lt;p>首先要删掉&lt;code>/etc/X11/xorg.conf.d/90-mhwd.conf&lt;/code>
+（如果你不放心可以mv嘛。）
+然后新建一个文件&lt;code>/etc/X11/xorg.conf.d/optimus.conf&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#50fa7b">Section &amp;#34;Module&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">Load &amp;#34;modesetting&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">EndSection&lt;/span>
+&lt;span style="color:#50fa7b">Section &amp;#34;Device&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">Identifier &amp;#34;nvidia&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">Driver &amp;#34;nvidia&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">BusID &amp;#34;PCI:1:0:0&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">Option &amp;#34;AllowEmptyInitialConfiguration&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">EndSection&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>注意：BusID一栏需要&lt;strong>根据自己的电脑配置&lt;/strong>进行修改。BusID的值是这么查询的：&lt;code>lspci | grep -E &amp;quot;VGA|3D&amp;quot;&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="禁用模块">禁用模块&lt;/h3>
+&lt;p>PRIME依赖于&lt;code>nvidia-drm&lt;/code>，但mhwd在默认情况下会禁用它，我们需要手动启用。
+此外，为了确保nvidia驱动正常开启，我们还需要禁用其他一些模块。
+所以，我们需要对&lt;code>/etc/modprobe.d&lt;/code>动动手脚。&lt;/p>
+&lt;p>首先，我们得把mhwd自动生成的黑名单删掉。
+（译者注：不放心的话，就把后缀名改掉，因为modprobe.d里面所有conf结尾的文件都会被执行）
+比如这样：&lt;strong>视情况而定，你的配置可能不同&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">ls /etc/modprobe.d/mhwd*
+sudo rm /etc/modprobe.d/mhwd-gpu.conf
+sudo rm /etc/modprobe.d/mhwd-nvidia.conf
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们要新建一个黑名单，屏蔽一些其他的模块。
+新建一个文件，什么名字都可以，conf结尾就行
+写入：&lt;code>/etc/modprobe.d/nvidia.conf&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#50fa7b">blacklist nouveau&lt;/span>
+&lt;span style="color:#50fa7b">blacklist nvidiafb&lt;/span>
+&lt;span style="color:#50fa7b">blacklist rivafb&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-开启-modeset">4 开启 modeset&lt;/h2>
+&lt;p>创建一个新文件，&lt;code>/etc/modprobe.d/nvidia-drm.conf&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#50fa7b">options nvidia_drm modeset&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">1&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-设置启动脚本">5 设置启动脚本&lt;/h2>
+&lt;p>我们要设置一下桌面环境的输出源。这是最难的部分，可能会花掉很长时间。
+如果你现在重启，桌面环境的输出可能会有一些问题。&lt;/p>
+&lt;p>我们需要写一个启动脚本，让桌面环境加载的时候能够正确选择输出源。&lt;/p>
+&lt;blockquote>
+&lt;p>注意，视你的具体环境（DM）执行下列的某一个步骤，不要执行所有步骤。&lt;/p>
+&lt;/blockquote>
+&lt;hr />
+&lt;p>&lt;strong>针对 LightDM (xfce默认)&lt;/strong>
+创建一个文件，&lt;code>/usr/local/bin/optimus.sh&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#ff79c6">#!/bin/sh
+&lt;/span>&lt;span style="color:#ff79c6">&lt;/span>
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后按照国际惯例（hhh），让它可写可执行：&lt;code>chmod a+rx /usr/local/bin/optimus.sh&lt;/code>
+现在你还得把它设置为启动脚本。
+编辑&lt;code>/etc/lightdm/lightdm.conf&lt;/code>，然后在**[Seat:* ]**这一节设置
+&lt;code>display-setup-script=/usr/local/bin/optimus.sh&lt;/code>&lt;/p>
+&lt;hr />
+&lt;p>&lt;strong>针对 GDM (Gnome默认)&lt;/strong>&lt;/p>
+&lt;p>创建一个文件&lt;code>/usr/local/share/optimus.desktop&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Ini" data-lang="Ini">&lt;span style="color:#ff79c6">[Desktop Entry]&lt;/span>
+&lt;span style="color:#50fa7b">Type&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">Application&lt;/span>
+&lt;span style="color:#50fa7b">Name&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">Optimus&lt;/span>
+&lt;span style="color:#50fa7b">Exec&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">sh -c &amp;#34;xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto&amp;#34;&lt;/span>
+&lt;span style="color:#50fa7b">NoDisplay&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">true&lt;/span>
+&lt;span style="color:#50fa7b">X-GNOME-Autostart-Phase&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">DisplayServer&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(Exec处也可以替换成一个脚本，写一个就像LightDM里面一样的脚本)&lt;br />
+然后建立连接，让它随着GDM启动。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo ln -s /usr/local/share/optimus.desktop /usr/share/gdm/greeter/autostart/optimus.desktop
+sudo ln -s /usr/local/share/optimus.desktop /etc/xdg/autostart/optimus.desktop
+&lt;/code>&lt;/pre>&lt;/div>&lt;hr />
+&lt;p>&lt;strong>针对 SDDM (KDE 默认)&lt;/strong>&lt;/p>
+&lt;p>创建一个文件：&lt;code>/usr/share/sddm/scripts/Xsetup&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#ff79c6">#!/bin/sh
+&lt;/span>&lt;span style="color:#ff79c6">&lt;/span>
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后用chmod让它变为可执行的文件。&lt;/p>
+&lt;h2 id="6-最后的工作">6 最后的工作&lt;/h2>
+&lt;p>译者注：如果以上的工作都已经完成，我建议你再做一步。
+我当时没有做这一步，之后重启发现内核模块加载错误。
+所以还是建议，编译一下内核。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">sudo mkinitcpio -P linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>最后重启，大功告成。&lt;/p>
+&lt;h2 id="验证是否成功">验证是否成功&lt;/h2>
+&lt;p>如果以上你都设置正确了，当你重启之后，可以敲&lt;code>glxinfo | grep -i vendor&lt;/code>
+然后看看是不是像下面这样的信息。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$ glxinfo | grep -i vendor
+server glx vendor string: NVIDIA Corporation
+client glx vendor string: NVIDIA Corporation
+OpenGL vendor string: NVIDIA Corporation
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果是，说明你已经设置成功，可以欢呼了！
+&lt;em>当然我有双显示器，一看显示器亮了就知道了2333&lt;/em>&lt;/p>
+&lt;h1 id="最后">最后&lt;/h1>
+&lt;p>&lt;a href="https://www.v2ex.com/t/526544">这个奇怪的问题（点击查看）&lt;/a>当时也困扰了我很久
+打开任务管理器没有任何占用，为啥还是一卡一卡的？
+后来才知道，噢，原来是双显卡的坑。
+听说最近19H1来了？反正我不想用Windows了。
+自从Windows 7 之后我就没用过没bug的系统！&lt;/p>
+&lt;p>希望我的这篇博文能帮到各位看官。 :)
+新开的评论区(Gitment)，有问题可以在下面留言哦。&lt;/p>
+&lt;h2 id="参考资料">参考资料&lt;/h2>
+&lt;p>&lt;a href="https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225">How To Set up PRIME with NVIDIA proprietary driver&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus">Optimus - ArchWiki&lt;/a>&lt;/p>
+&lt;h2 id="github-评论区">GitHub 评论区&lt;/h2>
+&lt;p>本站评论区改为 Valine, 原评论区请&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/1">移步至此&lt;/a>.&lt;/p>
+- https://risehere.net/posts/manjaro-optimus-dual-monitor/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item></channel></rss>

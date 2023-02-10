@@ -1,0 +1,598 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>左手的世界</title><link>https://risehere.net/</link><description>Recent content on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Fri, 25 Oct 2019 23:46:42 +0000</lastBuildDate><atom:link href="https://risehere.net/index.xml" rel="self" type="application/rss+xml"/><item><title>博客建立一周年纪念</title><link>https://risehere.net/posts/one-year-anniversary/</link><pubDate>Tue, 31 Mar 2020 23:08:27 +0800</pubDate><guid>https://risehere.net/posts/one-year-anniversary/</guid><description>左手的世界 https://risehere.net/posts/one-year-anniversary/ -&lt;p>今天，不是一周年整。无论是第一次发博文，还是网站开始运行，都不是完整的一周年。
+但我已经迫不及待地想发博文，纪念我人生中第二个正儿八经的网站。&lt;/p>
+&lt;p>同时，今天也是博客&lt;strong>深色模式&lt;/strong>上线的第一天，目前处于测试阶段，欢迎大家玩玩那个奇怪的按钮！&lt;/p>
+&lt;p>还有，评论时留邮箱，会在有回复的时候自动发邮件提醒，欢迎大家留言。（来自&lt;code>no-reply At amazingrise.net&lt;/code>）&lt;/p>
+&lt;p>（如何进入深色模式？手机版用户请看右上角的奇怪按钮，电脑版用户请看右下角的奇怪按钮）&lt;/p>
+&lt;p>（如果你的浏览器支持深色模式，那么本页就会跟随浏览器设置，自动进入深色模式）&lt;/p>
+&lt;h1 id="到访人数">到访人数&lt;/h1>
+&lt;p>截止3月30日，已经有 2416 位不同的人到访过左手的世界，其中有 413 位是回头客。&lt;/p>
+&lt;p>其中，有 1468 人使用 Chrome，220 人使用 Firefox。&lt;/p>
+&lt;p>网站的总浏览量达到 1.04 万。&lt;/p>
+&lt;h1 id="一些想法">一些想法&lt;/h1>
+&lt;p>感觉有的时候灵感真的就是一瞬间，稍纵即逝。目前积压着的草稿有3篇，计划中但未开头的有2篇，有的估计已经写不出来了。&lt;/p>
+&lt;p>所以如果大家脑子里有好的想法，一定要好好记下来，并且尽快实现它。&lt;/p>
+&lt;h1 id="我的变化">我的变化&lt;/h1>
+&lt;p>我在这一年里，学习了不少新技术，经历了不少事情，结交了不少朋友，思考也更加的多了。&lt;/p>
+&lt;h2 id="低谷">低谷&lt;/h2>
+&lt;p>过去的这一年，我经历了人生中的第 n 次低谷，并且沉迷于游戏中，试图逃避现实。当时的感觉就是信仰崩塌，世界观崩塌。&lt;/p>
+&lt;p>不过当时有一首歌给我的鼓舞很大，我可以把这首歌的链接贴出来。（禁止外链播放，我也是很无奈）&lt;/p>
+&lt;p>&lt;a href="https://music.163.com/song/3559782">A Rock &amp;lsquo;n&amp;rsquo; Roll Fantasy - The Kinks&lt;/a>&lt;/p>
+&lt;p>这首歌讲的是：&lt;/p>
+&lt;blockquote>
+&lt;p>摇滚乐队面临解散，猫王已逝，时代终结，打算各奔东西。&lt;/p>
+&lt;p>街区的一位伙伴，情绪低落之时沉浸于录制唱片。当他觉得世界对他关上大门，他就把音量调到最大，于是每日生活逃避现实，生活于摇滚狂想中。&lt;/p>
+&lt;p>不过我不会像他一样就此罢休。我们也有过铁杆粉丝，见证我们成长，陪我们度过摇滚生涯中的巅峰与低潮。&lt;/p>
+&lt;p>但我们总是胡思乱想，认为这个世界已经不需要我们了。我们不能生活在摇滚狂想中，我们不能活在现实的边缘。&lt;/p>
+&lt;/blockquote>
+&lt;p>在我最低落的时候，我反复听着这首歌。虽然对结果早有预料，但是还是感觉自己就像做梦一样。&lt;/p>
+&lt;p>后来大概是时间抚平了一切。我找到了自己的定位，并且尝试积极面对生活。&lt;/p>
+&lt;h2 id="新技术与新发现">新技术与新发现&lt;/h2>
+&lt;p>这一年，我没少折腾新技术。在各种各样的机会，和给自己挖的各种坑里，我学会了很多东西。&lt;/p>
+&lt;p>每次我自己造出来的东西，开始正常工作，都有一种说不出的奇怪的自豪感（奇怪大概是因为：哇这玩意居然能跑起来）。而面对一些牛逼的新技术，我不禁惊叹，原来代码还可以写得这么优美！&lt;/p>
+&lt;p>对于新发现，我列不出来啦。我还是像以前一样，喜欢研究奇奇怪怪的东西，尤其各种各样语言方面的东西。比如我发了一篇关于粤语入声的博文。（不过囿于本人水平，这些东西也说不上是多么高深，跟真正研究相关内容的各位肯定是小巫见大巫了）&lt;/p>
+&lt;p>同时，我还有做自媒体的想法。可惜现在时间不是很充裕，大概很难做大。&lt;/p>
+&lt;h1 id="最后">最后&lt;/h1>
+&lt;p>总结一下，过去的一年，有不满意的地方，也有让自己惊喜的地方。&lt;/p>
+&lt;p>嗯。大概就是这么多话吧。如果有什么话想跟我说，欢迎评论区留言。&lt;/p>
+&lt;p>（再说一遍，现在的评论区支持回复通知了，留下邮箱可以收到回复提醒哦）&lt;/p>
+- https://risehere.net/posts/one-year-anniversary/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>初识 Vue 之 - 用 Vue 组件减少代码量</title><link>https://risehere.net/posts/getting-to-know-vue-components/</link><pubDate>Mon, 16 Mar 2020 10:12:18 +0800</pubDate><guid>https://risehere.net/posts/getting-to-know-vue-components/</guid><description>左手的世界 https://risehere.net/posts/getting-to-know-vue-components/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>这又是一篇很基础很基础的文章。&lt;del>（因为我菜鸡呀.估计大佬们都去折腾算法分析什么的，只有我这个菜鸡还在天天搬砖，太难了。&lt;/del>&lt;/p>
+&lt;p>本篇文章主要讲述如何用 Vue Components 减少重复代码量。&lt;/p>
+&lt;h2 id="需求">需求&lt;/h2>
+&lt;p>博客的友链页是由一个表格构成的：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>url&lt;/th>
+&lt;th>description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>张三&lt;/td>
+&lt;td>&lt;a href="https://zhangsan.com">https://zhangsan.com&lt;/a>&lt;/td>
+&lt;td>张三的挖坑日记&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>李四&lt;/td>
+&lt;td>&lt;a href="https://lisi.com">https://lisi.com&lt;/a>&lt;/td>
+&lt;td>李四的网络日志&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>不行，这太简陋了。如何编写一个更好的友链页呢？&lt;/p>
+&lt;h1 id="实现">实现&lt;/h1>
+&lt;p>那么我们就用 Bootstrap 的卡片来实现一个卡片式的友链页吧。&lt;/p>
+&lt;h2 id="实现1-不用-vue">实现1 不用 Vue&lt;/h2>
+&lt;p>下面我们用 Bootstrap 的卡片实现一个友链卡片。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&lt;span style="color:#6272a4">&amp;lt;!--为了使代码在这个例子中更加简洁，我暂且用 style 规定了一下卡片的宽度。--&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">style&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;width:20rem;&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card-body&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 标题 --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">p&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;h4&amp;#34;&lt;/span>&amp;gt;张三&amp;lt;/&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 描述 --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;张三的挖坑日记&amp;lt;/&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card-footer&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 链接 --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">a&lt;/span> &lt;span style="color:#50fa7b">href&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;https://zhangsan.com&amp;#34;&lt;/span>&amp;gt;https://zhangsan.com&amp;lt;/&lt;span style="color:#ff79c6">a&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>实现效果如下：&lt;/p>
+&lt;div class="card" style="width:20rem;margin:1rem;">
+&lt;div class="card-body">
+&lt;p class="h4">张三&lt;/p>
+&lt;p>张三的挖坑日记&lt;/p>
+&lt;/div>
+&lt;div class="card-footer">
+&lt;a href="https://zhangsan.com">https://zhangsan.com&lt;/a>
+&lt;/div>
+&lt;/div>
+&lt;p>这个做法有两个缺点：&lt;/p>
+&lt;ol>
+&lt;li>如果我们来了一位新的朋友，需要再次复制粘贴，这很不合理。&lt;/li>
+&lt;li>如果我们需要修改卡片的样式，我们需要手动修改 n 次（n=朋友的个数）。&lt;/li>
+&lt;/ol>
+&lt;h2 id="实现2-vue-app">实现2 Vue App&lt;/h2>
+&lt;p>引入 Vue，利用&lt;code>v-for&lt;/code>我们可以提高代码的复用性。&lt;/p>
+&lt;p>先定义一个 Vue App，然后把朋友们以数组的形式录入 &lt;code>data&lt;/code> 中。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> app &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">new&lt;/span> Vue({
+el&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;#app&amp;#39;&lt;/span>,
+data&lt;span style="color:#ff79c6">:&lt;/span> {
+friends&lt;span style="color:#ff79c6">:&lt;/span> [
+{
+name&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;张三&amp;#34;&lt;/span>,
+description&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;张三的挖坑日记&amp;#34;&lt;/span>,
+url&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;https://zhangsan.com/&amp;#34;&lt;/span>
+},
+{
+name&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;李四&amp;#34;&lt;/span>,
+description&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;李四的网络日志&amp;#34;&lt;/span>,
+url&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;https://lisi.com/&amp;#34;&lt;/span>
+}
+]
+}
+})&lt;span style="color:#ff79c6">&amp;lt;&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们用&lt;code>v-for&lt;/code>遍历一下&lt;code>friends&lt;/code>这个元素。&lt;/p>
+&lt;div v-pre>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">id&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;app&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 在这里用 v-for 遍历数组内容，其实它是一个 foreach --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">style&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;width:20rem;&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">v-for&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;friend in friends&amp;#34;&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card-body&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 标题 --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">p&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;h4&amp;#34;&lt;/span>&amp;gt;{{friend.name}}&amp;lt;/&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 描述 --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;{{friend.description}}&amp;lt;/&lt;span style="color:#ff79c6">p&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#ff79c6">div&lt;/span> &lt;span style="color:#50fa7b">class&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;card-footer&amp;#34;&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 链接，注意 这个地方要用v-bind:href --&amp;gt;&lt;/span>
+&amp;lt;&lt;span style="color:#ff79c6">a&lt;/span> &lt;span style="color:#50fa7b">v-&lt;/span> &lt;span style="color:#50fa7b">bind:href&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;friend.url&amp;#34;&lt;/span>&amp;gt;{{friend.url}}&amp;lt;/&lt;span style="color:#ff79c6">a&lt;/span>&amp;gt;
+&lt;span style="color:#6272a4">&amp;lt;!-- 关于这一点请参见 https://cn.vuejs.org/v2/guide/syntax.html#Attribute --&amp;gt;&lt;/span>
+&lt;span style="color:#6272a4">&amp;lt;!-- v-bind 也可以缩写为 `:url=&amp;#34;friend.url&amp;#34;` 。 --&amp;gt;&lt;/span>
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&amp;lt;/&lt;span style="color:#ff79c6">div&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>这样可以复用卡片代码，并且修改样式也很方便了。&lt;/p>
+&lt;p>但这个代码还是不完美：&lt;/p>
+&lt;ol>
+&lt;li>首先，如果你有个新的朋友，却需要修改 Vue App 的 &lt;code>data&lt;/code> 属性。为了 HTML 内容而修改 Javascript 是很不合理的。我们需要给 Javascript 和 HTML 解藕。&lt;/li>
+&lt;li>不过为这一个页面开一个 Vue App 是不是有点小题大作呢？ 而且更重要的一点是，一山不容二虎，嵌套 Vue App 会导致奇怪的 Bug。&lt;del>（禁止套娃&lt;/del>&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;h2 id="实现3-vue-组件">实现3 Vue 组件&lt;/h2>
+&lt;blockquote>
+&lt;p>How can we do better?&lt;/p>
+&lt;/blockquote>
+&lt;div v-pre>
+&lt;p>如果有这么一种写法，就比较完美了：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#ff79c6">friend&lt;/span> &lt;span style="color:#50fa7b">description&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;张三的挖坑日记&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">url&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;https://zhangsan.com&amp;#34;&lt;/span>&amp;gt;张三&amp;lt;/&lt;span style="color:#ff79c6">friend&lt;/span>&amp;gt;
+&amp;lt;&lt;span style="color:#ff79c6">friend&lt;/span> &lt;span style="color:#50fa7b">description&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;李四的网络日志&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">url&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;https://lisi.com&amp;#34;&lt;/span>&amp;gt;李四&amp;lt;/&lt;span style="color:#ff79c6">friend&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>很幸运的是，Vue.js 提供这种功能。&lt;/p>
+&lt;p>我们可以定义一个 Vue Component。这里要引入两样东西：&lt;/p>
+&lt;ol>
+&lt;li>&lt;a href="https://cn.vuejs.org/v2/guide/components-slots.html">slot&lt;/a> 写在模板中，用来插入标签中间的数据，即&lt;code>&amp;lt;friend&amp;gt;&amp;lt;/friend&amp;gt;&lt;/code>中间的内容。&lt;/li>
+&lt;li>&lt;a href="https://cn.vuejs.org/v2/guide/components-props.html">props&lt;/a> 用于提取标签属性中的数据，如&lt;code>&amp;lt;friend url=&amp;quot;xxx&amp;quot;...&lt;/code>。&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">Vue.component(&lt;span style="color:#f1fa8c">&amp;#39;friend&amp;#39;&lt;/span>,{
+&lt;span style="color:#6272a4">// 注意一定要在这里定义 props，否则会提示 not defined 的问题。
+&lt;/span>&lt;span style="color:#6272a4">&lt;/span> props&lt;span style="color:#ff79c6">:&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;url&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;description&amp;#39;&lt;/span>],
+template&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">`
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;div class=&amp;#34;card&amp;#34; style=&amp;#34;width:20rem;&amp;#34;&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;div class=&amp;#34;card-body&amp;#34;&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;!-- 标题，这里用了slot，目的是在这里插入“&amp;lt;friend&amp;gt;这里&amp;lt;/friend&amp;gt;”的内容。 --&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;p class=&amp;#34;h4&amp;#34;&amp;gt;&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;!-- 描述，这里就是对“&amp;lt;friend description=&amp;#34;这里&amp;#34;...”内容的提取。 --&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;p&amp;gt;{{ description }}&amp;lt;/p&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;div class=&amp;#34;card-footer&amp;#34;&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;!-- 链接，同理，这个我就不用解释了。注意这里也要用 v-bind --&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;a v-bind:href=&amp;#34;url&amp;#34;&amp;gt;{{url}}&amp;lt;/a&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;!-- v-bind 也可以缩写为 :url=&amp;#34;friend.url&amp;#34; 。 --&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"> `&lt;/span>
+});
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>这样我们就实现了一个可复用的 Vue 组件了，而且上面的问题我们已经完美解决了：&lt;/p>
+&lt;ol>
+&lt;li>如果我们新增了一个朋友，就只需要在页面相应地方里面写一句：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#ff79c6">friend&lt;/span> &lt;span style="color:#50fa7b">description&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;描述&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">url&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;网址&amp;#34;&lt;/span>&amp;gt;朋友的名字&amp;lt;/&lt;span style="color:#ff79c6">friend&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol>
+&lt;li>
+&lt;p>Vice versa，如果我们需要修改卡片的样式，我们只需要修改组件的 &lt;code>template&lt;/code> 里面的代码（当然你可以进一步将 CSS 分离出来）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>本方法用的是 Vue 组件，它不会与原有的 Vue App 冲突（不过组件必须要写在 Vue App 里面。）&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div>
+&lt;h1 id="参考">参考&lt;/h1>
+&lt;p>&lt;strong>如果你对上文所说内容仍有疑惑，可以翻看下面的链接。&lt;/strong>&lt;/p>
+&lt;p>&lt;a href="https://www.runoob.com/bootstrap4/bootstrap4-cards.html">Bootstrap 4 卡片 菜鸟教程&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://cn.vuejs.org/v2/guide/syntax.html#Attribute">Vue - 模板语法 和 Attribute&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://cn.vuejs.org/v2/guide/components-slots.html">Vue - 组件模板中插槽的使用&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://cn.vuejs.org/v2/guide/components-props.html">Vue - 组件的 props 属性&lt;/a>&lt;/p>
+&lt;h1 id="后记">后记&lt;/h1>
+&lt;p>复制粘贴永远都是愚蠢的做法，而反人类的设计早有一日会被崭新的设计替代。&lt;/p>
+&lt;blockquote>
+&lt;p>How can we do better?&lt;/p>
+&lt;/blockquote>
+&lt;p>这句话是 Robert Sedgewick 老先生在算法公开课里面经常提到的。只有不断思考&lt;code>How can we do better&lt;/code>，认知才会不断提高。否则对着一个愚蠢的做法沾沾自喜，永远不会有进步。&lt;/p>
+&lt;p>另外有问题的话，欢迎在评论区交流。&lt;/p>
+- https://risehere.net/posts/getting-to-know-vue-components/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>今天你是锦鲤吗</title><link>https://risehere.net/posts/koi-carp-scam/</link><pubDate>Sun, 16 Feb 2020 12:29:40 +0800</pubDate><guid>https://risehere.net/posts/koi-carp-scam/</guid><description>左手的世界 https://risehere.net/posts/koi-carp-scam/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>&lt;em>本人多年前毕业于某 985 高校的信息安全专业。另外，本站受 Cloudflare CDN 的防护。&lt;/em>&lt;/p>
+&lt;p>引用一句烂大街名人名言(不过确实有道理)&lt;/p>
+&lt;blockquote>
+&lt;p>命运赠予的礼物，早已在暗中标好了价格。&lt;/p>
+&lt;/blockquote>
+&lt;p>今天你是锦鲤吗? 不是。以后也不会是。&lt;/p>
+&lt;h1 id="结论">结论&lt;/h1>
+&lt;p>考虑到一些读者可能对长篇大论产生恐惧，在此我先亮出结论:&lt;/p>
+&lt;ul>
+&lt;li>每一次锦鲤转发都为商家做了免费推广。&lt;/li>
+&lt;li>中了奖，不但为商家做了免费的宣传，而且个人信息将会无偿奉献给商家。
+&lt;ul>
+&lt;li>如果是正规商家，活生生的人将会变成商家的&amp;quot;优质推广机器&amp;rdquo;，以后没准有&amp;quot;好事&amp;quot;还会找上门。&lt;/li>
+&lt;li>如果是搞辣鸡营销的，手机号将会在黑市上标好价格被批发，并且反复倒卖。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>可见，无论是哪条路，说到底，锦鲤活动还是商家赚钱的手段。&lt;/p>
+&lt;p>我们还是要擦亮自己的眼睛，吃一堑长一智。 &lt;del>毕竟我也是这么走过来的。&lt;/del>&lt;/p>
+&lt;p>&lt;em>各位息怒啊，不要打我。消消气往下看。&lt;/em>&lt;/p>
+&lt;h1 id="正文">正文&lt;/h1>
+&lt;p>今天早上一醒来，就又被微信朋友圈的某一爆款锦鲤文章刷屏了:&lt;code>寻找某某高校不出门锦鲤，10000元奖品独宠你!&lt;/code>。&lt;/p>
+&lt;p>其实我相信大家的心是好的，在家不出门也是为抗击疫情做贡献，还能顺便抽个奖，万一中了呢?&lt;/p>
+&lt;p>实际上这是一个精心策划的营销活动，并且天上不会掉馅饼，看似免费的转发也&lt;strong>付出了一定代价&lt;/strong>。&lt;/p>
+&lt;p>下面我将分解一下它的&lt;strong>千层套路&lt;/strong>。&lt;/p>
+&lt;h2 id="渣男行为">渣男行为&lt;/h2>
+&lt;p>这种抽奖其实是渣男行为。我们看一下标题，&lt;code>寻找某某高校不出门锦鲤&lt;/code>。&lt;/p>
+&lt;p>这个标题可能会产生以下误导:&lt;/p>
+&lt;ul>
+&lt;li>该活动是商家跟学校联合推出的活动。&lt;/li>
+&lt;li>商家只独宠我们高校嘻嘻嘻为母校自豪。&lt;/li>
+&lt;/ul>
+&lt;p>首先，学校肯定是不会接这样的赞助恰烂钱，学校&lt;strong>不缺这点钱&lt;/strong>，尤其是985/211工程院校。并且据老同学(曾经担任过社团社长)透露，学校也是禁止社团拉这样的赞助的。所以，学校不可能跟商家联合推出这样的活动，这只是商家为了增加可信度所加上的谎言。&lt;/p>
+&lt;p>第二，这种&lt;code>套近乎&lt;/code>的手段其实屡见不鲜。要戳破这个谎言也很简单：我们打开其中的某一篇推文。查看一下阅读量。以今天早上我看到的这篇推文为例，阅读量只有&lt;strong>9800&lt;/strong>。然后我们关注一下公众号，按照他们说的办法，我们找到了&amp;quot;抽奖助手&amp;quot;小程序二维码。扫码进入，发现参与抽奖人数是&lt;strong>2w&lt;/strong>。这说明什么?(doge&lt;/p>
+&lt;p>其实我们也可以直接利用微信的搜一搜功能，以关键词&lt;code>寻找 大学 不出门 锦鲤&lt;/code>查找，便会找到 n 多一模一样，只是大学名字换了的推文:&lt;/p>
+&lt;p>&lt;img src="search_result.jpg" alt="" />&lt;/p>
+&lt;p>所以，推文推给的，并不是&amp;quot;被独宠的那个ta&amp;rdquo;。我们只是商家 &lt;strong>&amp;ldquo;广撒网&amp;quot;的猎物&lt;/strong>。&lt;/p>
+&lt;p>更何况，这些活动往年就有几乎一模一样的东西。第二年出来换个外衣，说个校庆，或者是蹭疫情热度，来个换汤不换药的推文。&lt;/p>
+&lt;h2 id="分母的秘密">分母的秘密&lt;/h2>
+&lt;p>当商家广撒网，撒到了自己的朋友圈里。很多人看到了会调侃一下，说当个分母吧！（&lt;em>请勿对号入座&lt;/em>）于是点开了推文，抱着“当个分母反正也不花钱”的心理，虔诚转发。（对于免费背后的危机，将会在下文展开分析。）&lt;/p>
+&lt;p>这种抽奖行为一般具有以下几种要素：&lt;/p>
+&lt;ol>
+&lt;li>奖品金额很大。&lt;/li>
+&lt;li>关注公众号，点点转发就可以参与抽奖。&lt;/li>
+&lt;li>中奖率很低。&lt;/li>
+&lt;/ol>
+&lt;p>我们来分析一下这几点。&lt;/p>
+&lt;p>对于&lt;code>第一点&lt;/code>，奖品金额很大，对于人们有很大的诱惑力。而&lt;code>第二点&lt;/code>，基本是不花费什么明显的成本，只需要轻松关注+转发，便可以坐等巨型锦鲤砸到头上。怎么算都是一笔很划算的账。&lt;/p>
+&lt;p>面对推文，一部分人看到这里的时候，心理可能还留存着一些顾虑：万一没有中奖，转发岂不是很丢人？而&lt;code>第三点&lt;/code>成功打消了他们&lt;strong>最后的顾虑&lt;/strong>：本来这就是中奖率很低的抽奖，我转发仅仅是出于“玩一下”的目的，所以没中也没关系啦。&lt;/p>
+&lt;p>这便是&lt;strong>分母的秘密&lt;/strong>，中奖率很低，但奖品金额很大，参与成本很低。即使没中奖，&lt;strong>也不会丢面子&lt;/strong>，分母们也乐在其中。&lt;/p>
+&lt;h2 id="免费的代价">免费的代价&lt;/h2>
+&lt;p>有人可能会说：&lt;/p>
+&lt;blockquote>
+&lt;p>他渣不渣男，我当不当分母，我都不管。万一我中了呢，岂不是血赚。 &amp;ldquo;噫，我中了。&amp;quot;(范进中举.jpg)&lt;/p>
+&lt;/blockquote>
+&lt;p>但是，无奸不商。任何看似血赚的活动，除非是商家脑子抽了，&lt;strong>绝不会让你血赚&lt;/strong>。转发推文的行为实际上免费帮他们做了以下的宣传推广：&lt;/p>
+&lt;hr />
+&lt;ol>
+&lt;li>免费的公众号推广&lt;/li>
+&lt;/ol>
+&lt;p>抽奖的先决条件就是&lt;code>关注这个公众号&lt;/code>，很多情况下关注了就关注了，除非它天天推恰烂钱推文，才会特地点一下&lt;code>取消关注&lt;/code>。&lt;/p>
+&lt;p>关注公众号的好处：万一某天推文里提到的商品正好是当事人感兴趣的（例如网课，书籍等），再加上常见的贩卖焦虑的套路，他们就会成功把产品推销出去。&lt;/p>
+&lt;ol start="2">
+&lt;li>免费筛选受众&lt;/li>
+&lt;/ol>
+&lt;p>该推文面对的群体是大学生，大学生有一定的经济能力，他们能为喜欢的商品买单，而不会过多怀疑。这便属于优质群体。所以经过这次活动，他们免费让这些大学生关注了公众号，实现了优质受众的筛选与引流，即从 &lt;code>朋友圈&lt;/code> 到 &lt;code>公众号&lt;/code> 的引流。（引 流 之 主）&lt;/p>
+&lt;p>（下文还有进一步引流。）&lt;/p>
+&lt;ol start="3">
+&lt;li>免费提高曝光率&lt;/li>
+&lt;/ol>
+&lt;p>从传媒的角度分析，在朋友圈的一次转发可以增加该条推文的&lt;strong>曝光率&lt;/strong>。&lt;/p>
+&lt;p>朋友圈的多次转发，曝光率高，增强了&lt;code>曝光效应&lt;/code>:一件事物对于同一个人，展现的次数越多，越容易让人放松警惕，让人在潜意识中觉得是安全的。&lt;/p>
+&lt;p>并且朋友圈基本上代表了主人的立场。 一次朋友圈转发，基本等同此人对内容的认可。其他人一看，哟吼，某位朋友发的，我也转一转，由此引发连锁式的推广。故转发人也与此同时&lt;strong>消费了自己的信用&lt;/strong>。&lt;/p>
+&lt;p>&lt;em>大家还可以看看财经类的大v的关于类似营销的分析，他们会比我专业的多。(包括什么瑞幸咖啡啊，天猫双十一啊，这些都是商家早早就算好的账，就等大家来买了。)&lt;/em>&lt;/p>
+&lt;hr />
+&lt;p>转发人&lt;strong>花费自己的信用&lt;/strong>，在&lt;strong>优质的社交圈子&lt;/strong>，为商家做&lt;strong>无形而免费的链式宣传&lt;/strong>。估计商家做梦都能笑出声来。&lt;/p>
+&lt;p>此外，我知道耐心看到这里的朋友你一定也很&lt;strong>优秀&lt;/strong>，所以你的朋友圈一定是优质的社交圈子。当然就更不能轻易转发这些东西啦。&lt;/p>
+&lt;h2 id="中奖之后">中奖之后&lt;/h2>
+&lt;p>开奖时间到了，让我康康是谁中奖了？&lt;/p>
+&lt;p>OHHHHHHHHH~ 没错，这位同学就是幸运观众，他就是天选之子！经过前面的虔诚转发，终于锦鲤砸到了他头上。商家通知他中奖了。下面请这位同学发言：&lt;/p>
+&lt;blockquote>
+&lt;p>感谢气象台，感谢爸爸妈妈。这好事一桩啊。呵，之前那个谁，那个叫 Rise 的家伙还劝我不要抽奖。你看我中奖了你酸不酸？&lt;/p>
+&lt;/blockquote>
+&lt;p>我不酸。后面还有戏。&lt;/p>
+&lt;p>中奖之后，不可避免要提供自己的个人信息。这里我们需要分类讨论一下。&lt;/p>
+&lt;h3 id="正规商家">正规商家&lt;/h3>
+&lt;p>如果是正规商家，这位同学将会成为优质客户中的优质客户。因为经历过这次抽奖，由于&lt;code>晕轮效应&lt;/code>，这位同学可能对这家公司充满了好感，所以将来如果还有类似的活动，他也很大概率会积极参加。经历了前文所述的一系列帮忙推广，商家&lt;strong>花点小钱&lt;/strong>，卖点奖品犒劳一下这位同学也无妨。&lt;/p>
+&lt;p>此外，商家会让你注册他们的平台，这样成功实现了从 &lt;code>微信公众号&lt;/code> 到 &lt;code>客户端&lt;/code> 的引流。要知道，推荐一位用户注册客户端，就拥有了更多的推送机会。&lt;/p>
+&lt;h3 id="黑心商家">黑心商家&lt;/h3>
+&lt;p>如果是黑心商家就惨了。除了上文提到的结果之外，附加buff有很多：轻则个人信息被规模批发，反复倒卖，重则被骗各种手续费（下文详述）。&lt;/p>
+&lt;p>我知道很多人对于这些不以为然，只要不交钱，我就不会上当。实际上手机号在当今的社会太重要了，尤其是如今手机号与个人一一绑定，各种需要实名验证的场合都不需要验证身份证，只需要绑定你的手机号就可以了。所以一定程度上来讲，&lt;strong>你的手机号几乎等于身份证&lt;/strong>。&lt;/p>
+&lt;h2 id="发奖过程中">发奖过程中&lt;/h2>
+&lt;p>这里是对于黑心商家的阐述。对于无良商家，在发奖过程中可能会搞出以下事情：&lt;/p>
+&lt;ol>
+&lt;li>仅仅骗取个人信息，将得到的个人信息批发，反复倒卖。或者掺杂一半以往活动的个人信息，再卖出去一次。个人信息像商品一样，被毫无尊严地卖来卖去。&lt;/li>
+&lt;li>声称免费抽奖，却让你注册某p2p平台，存一笔钱，到指定时间后可提现。至于危害，你上网搜索一下&lt;code>p2p暴雷&lt;/code>。（钱没了，甚至卷入黑产）&lt;/li>
+&lt;li>声称免费，但以各种手续费，海关扣留费用为由，迟迟不发货，等你打钱。这个大家只要不汇钱就不会上当。（有一说一，这已经不是主流诈骗手段了。）&lt;/li>
+&lt;/ol>
+&lt;p>以上说的是常见骗术。当然，其他骗术以后肯定也会层出不穷。希望大家能够擦亮眼睛，远离骗局~&lt;/p>
+&lt;h1 id="最后">最后&lt;/h1>
+&lt;p>感谢能耐心看到最后的读者们。这篇文章花费了我一天的时间写成，只为让大家远离这些骗局，实是为大家着想。&lt;/p>
+&lt;p>如有冒犯，请各位原谅。我知道我这样的行为也很不讨好。我觉得只要能让大家远离骗局，这篇文章就不白写。哪怕是你把我拉黑了，换你今后的不上当，我也值了。&lt;/p>
+&lt;p>营销套路千千万，希望大家永不上当。（“永不上当”梗来自春晚，见下图）&lt;/p>
+&lt;p>&lt;img src="never_cheated.gif" alt="" />&lt;/p>
+&lt;p>本篇文章不欢迎不署名转载，但欢迎转发。&lt;/p>
+- https://risehere.net/posts/koi-carp-scam/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://risehere.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/obs-now-playing/</guid><description>左手的世界 https://risehere.net/posts/obs-now-playing/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;h2 id="前言的前言">前言的前言&lt;/h2>
+&lt;p>欢迎大家关注我的 bilibili 帐号：&lt;a href="https://space.bilibili.com/441928938/">bili-Amazingrise&lt;/a>&lt;/p>
+&lt;p>不定期直播搬砖，游戏，或者其他有趣的东西~&lt;/p>
+&lt;h2 id="缘由">缘由&lt;/h2>
+&lt;p>为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。&lt;/p>
+&lt;p>看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。&lt;/p>
+&lt;p>另外，这篇文章的诞生也是受到这位的启发：&lt;a href="https://keep.moe/2019/05/16/netease-now-playing-lldb/">获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 &lt;/a>
+（没错，就是这个主题的原作者。）&lt;/p>
+&lt;h1 id="正文">正文&lt;/h1>
+&lt;h2 id="原理">原理&lt;/h2>
+&lt;p>当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。&lt;/p>
+&lt;p>由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。&lt;/p>
+&lt;p>以我用的 &lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music">Electron Netease Cloud Music&lt;/a> 为例。&lt;/p>
+&lt;p>在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。&lt;/p>
+&lt;p>仔细看该项目的源代码，可以找到&lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14">这几行&lt;/a>：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="color:#ff79c6">const&lt;/span> i &lt;span style="color:#ff79c6">=&lt;/span> {
+name(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`org.mpris.MediaPlayer2.&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span>;
+},
+path(suffix) {
+&lt;span style="color:#ff79c6">if&lt;/span> (suffix) &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">`/org/mpris/MediaPlayer2/&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>suffix&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span>;
+}
+};
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。&lt;/p>
+&lt;p>那么当前媒体的元数据(metadata)的形式是怎么样的呢？&lt;/p>
+&lt;p>于是我们用上面获取到的 dbus 路径，来获取到当前媒体的元数据。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后我们会得到这样一段结果：&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">method &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">time&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>1578801147.817851 &lt;span style="color:#8be9fd;font-style:italic">sender&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.89 -&amp;gt; &lt;span style="color:#8be9fd;font-style:italic">destination&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>:1.303 &lt;span style="color:#8be9fd;font-style:italic">serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">100&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">reply_serial&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#bd93f9">2&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:trackid&amp;#34;&lt;/span>
+variant object path &lt;span style="color:#f1fa8c">&amp;#34;/org/mpris/MediaPlayer2/1475050&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:length&amp;#34;&lt;/span>
+variant int64 &lt;span style="color:#bd93f9">164000000&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;mpris:artUrl&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;https://p1.music.126.net/QfpBYZjsztHjucFAIxfDgQ==/1746024464908302.jpg&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:album&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Working Class Hero: The Definitive Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:artist&amp;#34;&lt;/span>
+variant array &lt;span style="color:#ff79c6">[&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;John Lennon&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:discNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">0&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:title&amp;#34;&lt;/span>
+variant string &lt;span style="color:#f1fa8c">&amp;#34;Oh My Love&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+dict entry&lt;span style="color:#ff79c6">(&lt;/span>
+string &lt;span style="color:#f1fa8c">&amp;#34;xesam:trackNumber&amp;#34;&lt;/span>
+variant int16 &lt;span style="color:#bd93f9">9&lt;/span>
+&lt;span style="color:#ff79c6">)&lt;/span>
+&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>从结果中我们可以找到我们想要的信息：歌手，标题等等。&lt;/p>
+&lt;p>最后，我们只需要用正则表达式提取一下就🉑️️了。&lt;/p>
+&lt;h2 id="实现">实现&lt;/h2>
+&lt;p>正则表达式 &lt;del>当时鼓捣了好久，&lt;/del> 能用就行。&lt;/p>
+&lt;p>下面是具体的 Shell 脚本实现。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#6272a4">#/bin/sh!&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;Song Daemon is running......&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">PREFIX&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;Rise 正在播放:&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">FILENAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;/tmp/songdaemon&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">NOSONG&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;当前没有播放歌曲&amp;#34;&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">while&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> : &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">do&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">ARTIST&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/artist/{n;n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#8be9fd;font-style:italic">NAME&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>dbus-send --print-reply --dest&lt;span style="color:#ff79c6">=&lt;/span>org.mpris.MediaPlayer2.ElectronNCM /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:org.mpris.MediaPlayer2.Player string:Metadata | sed -n &lt;span style="color:#f1fa8c">&amp;#39;/title/{n;p}&amp;#39;&lt;/span> | cut -d &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&amp;#39;&lt;/span> -f 2&lt;span style="color:#ff79c6">)&lt;/span> 2&amp;gt;/dev/null
+&lt;span style="color:#6272a4"># 其中 dest 参数为我的音乐播放器的名称，这是我翻源代码翻出来的。&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NOSONG&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">CONTENT&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$PREFIX&lt;/span>&lt;span style="color:#f1fa8c"> &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$NAME&lt;/span>&lt;span style="color:#f1fa8c"> - &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$ARTIST&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>cat &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>
+&lt;span style="color:#ff79c6">then&lt;/span>
+sleep 1;
+&lt;span style="color:#ff79c6">else&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$CONTENT&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> &amp;gt; &lt;span style="color:#8be9fd;font-style:italic">$FILENAME&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;span style="color:#ff79c6">done&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>OBS Studio 怎么设置显示文件内容，我就不在此赘述了。&lt;/p>
+&lt;h1 id="后记">后记&lt;/h1>
+&lt;p>不禁感叹一句，Linux 下获取正在播放的媒体可比 macOS 简单多了。&lt;/p>
+&lt;p>其实这篇文章应该是很早就写完的（脚本是2019年10月1号写完的）。但是由于本人工作繁忙，加上事情特别多，根本顾不上水这篇博文。&lt;/p>
+&lt;p>当时水了一些别的文章，总之这篇文章就留到了今年。&lt;/p>
+&lt;p>希望对各位有所帮助。&lt;/p>
+&lt;p>&lt;del>又水完一篇博客，好开心。&lt;/del>&lt;/p>
+- https://risehere.net/posts/obs-now-playing/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item><item><title>如何优雅地使用 Spyder 的调试器</title><link>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</link><pubDate>Mon, 28 Oct 2019 23:28:09 +0000</pubDate><guid>https://risehere.net/2019/10/28/howto-use-spyder-debugger/</guid><description>左手的世界 https://risehere.net/2019/10/28/howto-use-spyder-debugger/ -&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>这是一个面向初学者的文章.
+很多朋友在初学编程的时候很难找出错误,或者对程序运行流程不太清楚.
+这个时候调试器就要上场了~
+所以在这里我要以Spyder为例,介绍调试器的用法.&lt;/p>
+&lt;h2 id="为什么">为什么&lt;/h2>
+&lt;h3 id="我们为什么要学会调试">我们为什么要学会调试&lt;/h3>
+&lt;p>学会调试,对于我们理解程序的运行流程,以及找bug很有帮助.
+想一下,如果我们能够在程序运行的时候,实时查看变量是怎么变化,岂不美哉?&lt;/p>
+&lt;h3 id="为嘛要用spyder">为嘛要用Spyder&lt;/h3>
+&lt;p>首先,这是一个面向Python初学者的文章.
+考虑到本篇文章的读者可能都是从Anaconda开始的,所以我在此以Spyder为例讲解调试器的使用.
+其他IDE的调试功能其实大同小异.&lt;/p>
+&lt;hr />
+&lt;h1 id="spyder初体验">Spyder初体验&lt;/h1>
+&lt;h2 id="熟悉spyder的界面">熟悉Spyder的界面&lt;/h2>
+&lt;p>我们先来熟悉一下Spyder的界面.
+&lt;img src="spyder-main.png" alt="" />&lt;/p>
+&lt;ul>
+&lt;li>最上面有一排按钮,我们俗称工具栏.&lt;/li>
+&lt;li>在左侧,我们可以写代码. 按一下工具栏上&lt;strong>绿色&lt;/strong>的开始按钮,即可开始运行程序.&lt;/li>
+&lt;li>右侧分为上下两栏.
+&lt;ul>
+&lt;li>上栏中,有三个&lt;code>选项卡&lt;/code>.分别是&lt;code>Variable explorer&lt;/code>(这个很重要),&lt;code>File explorer&lt;/code>,还有&lt;code>Help&lt;/code>(后面两个基本没啥鸟用)&lt;/li>
+&lt;li>下栏叫做&lt;code>IPython console&lt;/code>,我们俗称为&lt;strong>控制台&lt;/strong>. 一般来说,运行代码时候的输出,会在控制台里面看到. 当然,我们可以在没有运行代码的时候,在&lt;code>In [n]: &lt;/code>(n是几不用关心)后面打入命令与控制台交互.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="用spyder运行示例代码">用Spyder运行示例代码&lt;/h2>
+&lt;p>现在我们在左侧代码区域,粘贴下面的代码.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">0&lt;/span>
+&lt;span style="color:#ff79c6">for&lt;/span> i &lt;span style="color:#ff79c6">in&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">range&lt;/span>(&lt;span style="color:#bd93f9">10&lt;/span>):
+i &lt;span style="color:#ff79c6">+=&lt;/span> &lt;span style="color:#bd93f9">1&lt;/span>
+a &lt;span style="color:#ff79c6">+=&lt;/span> i
+&lt;span style="color:#ff79c6">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后按一下绿色的开始按钮,我们可以在&lt;strong>控制台&lt;/strong>中看到输出.
+输出:&lt;/p>
+&lt;pre>&lt;code>55
+&lt;/code>&lt;/pre>&lt;p>&lt;em>给初学者的注释: i += 1 等同于 i = i + 1.&lt;/em>&lt;/p>
+&lt;h2 id="调试目标">调试目标&lt;/h2>
+&lt;p>我们想知道每一次for循环进行的时候,a和 i的值是怎么变化的.&lt;/p>
+&lt;h1 id="朴素的-print-调试法">朴素的 print 调试法&lt;/h1>
+&lt;p>这个方法自古以来就有了. &lt;del>(胡说,古代哪有Python)&lt;/del>
+在没有调试器的漫漫长夜中,这种直接输出到屏幕上的调试方法最为实用.&lt;/p>
+&lt;p>既然我们想要看a和i在每一次for循环中的值是多少,那么我们直接print出来就好了!
+所以我们把代码修改成:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Python" data-lang="Python">a &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">0&lt;/span>
+&lt;span style="color:#ff79c6">for&lt;/span> i &lt;span style="color:#ff79c6">in&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">range&lt;/span>(&lt;span style="color:#bd93f9">10&lt;/span>):
+i &lt;span style="color:#ff79c6">+=&lt;/span> &lt;span style="color:#bd93f9">1&lt;/span>
+&lt;span style="color:#ff79c6">print&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#34;此时i的值为:&amp;#34;&lt;/span>,i) &lt;span style="color:#6272a4"># 在i变化后立马print,看看它的值是多少&lt;/span>
+a &lt;span style="color:#ff79c6">+=&lt;/span> i
+&lt;span style="color:#ff79c6">print&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#34;此时a的值为:&amp;#34;&lt;/span>,a) &lt;span style="color:#6272a4"># 在a变化后立马print,看看它的值是多少&lt;/span>
+&lt;span style="color:#ff79c6">print&lt;/span>(a)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果是这样的:&lt;/p>
+&lt;pre>&lt;code>此时i的值为: 1
+此时a的值为: 1
+中间省略无数个此时
+此时i的值为: 10
+此时a的值为: 55
+55
+&lt;/code>&lt;/pre>&lt;p>这样我们就能看出来每次for循环的i和a的变化情况了.&lt;/p>
+&lt;p>但是这样太麻烦了,而且满屏幕的i的值,a的值,看得人眼晕.
+而且当变量很多的时候,我们要加很多print.
+最后到了提交之前,还要记得把自己打的这些print给删除掉.&lt;/p>
+&lt;p>那么,有没有更直观,更优雅的方法呢?&lt;/p>
+&lt;h1 id="隆重登场的调试器法">隆重登场的调试器法&lt;/h1>
+&lt;p>我们如果要运行程序,只需要点击工具栏中那个绿色的开始按钮就可以了.&lt;/p>
+&lt;p>但是这只是&lt;strong>单纯的运行&lt;/strong>.
+它会像IDLE一样,正常运行程序,没有调试没有逗留.&lt;/p>
+&lt;h2 id="第一招式---逐行调试">第一招式 - 逐行调试&lt;/h2>
+&lt;h3 id="进入调试模式">进入调试模式&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>想要开始调试,我们需要按下图中所示的&lt;strong>1号按钮&lt;/strong>(Debug File).
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>然后我们再&lt;strong>点击一下&lt;/strong>下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>红色箭头: 一定要记住,我们一定要&lt;strong>切换&lt;/strong>到下图中红色箭头所指的&lt;code>Variable explorer&lt;/code>,这样我们才可以看到变量此时的值. (不过因为我们还没有执行第一行代码,所以这里是空的.)
+&lt;img src="start-debug-1.png" alt="" />&lt;/li>
+&lt;li>蓝色箭头: 它所指的地方,上面有个&lt;code>----&amp;gt;&lt;/code>的符号,并且后面有&lt;strong>行号&lt;/strong>1.这代表当前调试器&lt;strong>将要&lt;/strong>(还未)运行第一行代码. &lt;em>(划重点,不要搞错,「将要」)&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h3 id="开始逐行调试">开始逐行调试&lt;/h3>
+&lt;p>现在,按下图中所示的2号按钮**(以下称为Run Current Line)**,开始在调试器里面运行下一行代码.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>我们可以看到,&lt;code>Variable explorer&lt;/code>里面多出了变量&lt;code>a&lt;/code>.
+其中&lt;code>Name&lt;/code>代表这个变量的&lt;strong>名称&lt;/strong>,第二栏&lt;code>Type&lt;/code>是这个变量的&lt;strong>类型&lt;/strong>.而最后一栏&lt;code>Value&lt;/code>是该变量的&lt;strong>值&lt;/strong>.(Size不用管,暂时用不上.)
+并且控制台中的&lt;code>----&amp;gt;&lt;/code>符号指向了第二行. 说明第一行执行完毕,再次点击将执行第二行.
+&lt;img src="start-debug-2.png" alt="" />&lt;/p>
+&lt;p>举个例子:
+以图中的变量&lt;code>a&lt;/code>为例,这个变量的名称是&lt;code>a&lt;/code>,它的类型是&lt;code>int&lt;/code>,值为&lt;code>0&lt;/code>.
+(正好也和我们预期的情况相同&amp;ndash;我们执行了一句&lt;code>a=0&lt;/code>)&lt;/p>
+&lt;hr />
+&lt;p>我们接着点刚才的&lt;strong>Run Current Line&lt;/strong>.可以看到,&lt;code>Variable explorer&lt;/code>中又多出了第二行变量&lt;code>i&lt;/code>.并且此时控制台中的&lt;code>----&amp;gt;&lt;/code>指向了第三行.
+&lt;img src="start-debug-3.png" alt="" />
+这说明此时,&lt;code>i&lt;/code>的值为&lt;code>0&lt;/code>,&lt;code>a&lt;/code>的值也为&lt;code>0&lt;/code>.&lt;/p>
+&lt;hr />
+&lt;p>我们点击&lt;strong>Run Current Line&lt;/strong>(这是第三次).发现&lt;code>i&lt;/code>的值由&lt;code>0&lt;/code>变为&lt;code>1&lt;/code>.
+再点击一次&lt;strong>Run Current Line&lt;/strong>(这是第四次),&lt;code>a&lt;/code>的值也变成了&lt;code>1&lt;/code>.
+注意一下,经过四次逐行执行,控制台输出如下:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; None
+&amp;gt; c:\users\rise\desktop\temp.py(2)&amp;lt;module&amp;gt;()
+1 a = 0
+----&amp;gt; 2 for i in range(10):
+3 i += 1
+4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>我们可以看到,&lt;code>----&amp;gt;&lt;/code>符号指向第二行(for所在的那行).
+这说明此时第一次for循环执行完毕.由于还有&lt;strong>后面的循环&lt;/strong>,所以这里程序要&lt;strong>跳回for循环的起始位置&lt;/strong>,继续进行剩下几次循环.&lt;/p>
+&lt;hr />
+&lt;p>我们通过逐行调试,可以很直观清楚地跟踪程序的运行过程.
+如果我们想中途停止此次调试,只需要点击一下&lt;strong>6号按钮&lt;/strong>,即&lt;code>Stop Debugging&lt;/code>.
+&lt;img src="spyder-debug.png" alt="" />&lt;/p>
+&lt;p>这就是逐行调试了.&lt;/p>
+&lt;hr />
+&lt;h3 id="小总结">小总结&lt;/h3>
+&lt;p>来总结一下:&lt;/p>
+&lt;ol>
+&lt;li>要开始调试,需要点击&lt;code>Debug File&lt;/code>. 点击之后,会进入调试模式.&lt;/li>
+&lt;li>一定记得切换到&lt;code>Variable explorer&lt;/code>,这样才能查看变量的变化情况.&lt;/li>
+&lt;li>点击&lt;code>Run Current Line&lt;/code>,运行第一行代码.&lt;/li>
+&lt;li>继续点击&lt;code>Run Current Line&lt;/code>这个按钮,会&lt;strong>按照程序逻辑&lt;/strong>运行下一行代码. 直至执行完毕为止.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;p>在上述的调试过程中:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Variable explorer&lt;/code>中将显示当前存在的所有变量. &lt;code>Type&lt;/code>表示该变量的类型&lt;code>Value&lt;/code>一栏将显示变量的值.(不要看走眼,不是&lt;code>Size&lt;/code>一栏)&lt;/li>
+&lt;li>在控制台中,我们可以通过&lt;code>----&amp;gt;&lt;/code>这个符号所指向的行数,看到即将被执行的代码是哪一行.&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h2 id="第二招式---断点调试">第二招式 - 断点调试&lt;/h2>
+&lt;p>断点调试顾名思义,是可以在某一行(或多行)设置断点,对该行进行调试.
+而逐行调试是对每一行进行调试.
+断点调试是更有针对性的调试方法.&lt;/p>
+&lt;p>如果你能搞清楚逐行调试,那么断点调试也不难.&lt;/p>
+&lt;h3 id="设置断点">设置断点&lt;/h3>
+&lt;p>如图. 双击某一行行号前面的空白处,之后在这个地方会出现如图所示的小红点.
+&lt;img src="set-breakpoint.png" alt="" />
+这个小红点就是我们所说的断点.&lt;/p>
+&lt;h3 id="开始调试">开始调试&lt;/h3>
+&lt;p>如图所示,我们现在在&lt;strong>第3行,第4行&lt;/strong>设置&lt;strong>两个&lt;/strong>断点.&lt;/p>
+&lt;p>我们按&lt;code>Debug File&lt;/code>开始调试代码.
+此时可以看到,控制台里面的显示是这样的:&lt;/p>
+&lt;pre>&lt;code>ipdb&amp;gt; &amp;gt; c:\users\rise\desktop\temp.py(3)&amp;lt;module&amp;gt;()
+1 a = 0
+2 for i in range(10):
+1---&amp;gt; 3 i += 1
+2 4 a += i
+5 print(a)
+&lt;/code>&lt;/pre>&lt;p>其中,行号前面的1和2,代表我们设置的两个断点.
+所以此时即将运行&lt;strong>第一个断点处,即第三行.&lt;/strong>&lt;/p>
+&lt;h3 id="继续调试">继续调试&lt;/h3>
+&lt;p>程序的执行此时暂停.我们要让它继续运行,需要按一下第五个按钮,即&lt;code>Continue executation until next breakpoint&lt;/code>:
+&lt;img src="spyder-debug.png" alt="" />
+这个按钮的意思就是,继续执行直到下一个断点.
+因为我们第二个断点设置在第四行,所以代码将继续执行,在&lt;strong>将要执行&lt;/strong>第四行的时候会暂停.&lt;/p>
+&lt;h3 id="断点调试小总结">断点调试小总结&lt;/h3>
+&lt;p>我来总结一下断点调试的几个步骤.&lt;/p>
+&lt;ol>
+&lt;li>双击行号前面的空白处,以设置断点&lt;/li>
+&lt;li>点击&lt;code>Debug file&lt;/code>开始进入调试&lt;/li>
+&lt;li>在调试过程中,通过&lt;code>Variable explorer&lt;/code>观察变量的值&lt;/li>
+&lt;li>点击&lt;code>Continue executation until next breakpoint&lt;/code>执行到下一个断点处.&lt;/li>
+&lt;li>通过点击&lt;code>Stop Debugging&lt;/code>,我们可以停止调试.&lt;/li>
+&lt;/ol>
+&lt;hr />
+&lt;h2 id="调试器总结">调试器总结&lt;/h2>
+&lt;p>几点需要注意的地方:&lt;/p>
+&lt;ul>
+&lt;li>每次打开Spyder的时候,右上方区域默认显示的是&lt;code>Help&lt;/code>. 所以我们需要手动切换到&lt;code>Variable explorer&lt;/code>.&lt;/li>
+&lt;li>在调试的时候,&lt;code>----&amp;gt;&lt;/code>指向的是即将执行的代码,而&lt;strong>不是已经执行的代码&lt;/strong>.&lt;/li>
+&lt;li>当一次调试完毕后,开始第二次调试的时候,&lt;code>Variable explorer&lt;/code>&lt;strong>不会&lt;/strong>自己清空. 这点一定要注意,上一次调试残留的变量的值仍然会留在&lt;code>Variable explorer&lt;/code>里面. 所以我们可以按一下下图所示的按钮清空.
+&lt;img src="clear-explorer.png" alt="" />&lt;/li>
+&lt;/ul>
+&lt;hr />
+&lt;h1 id="写在最后">写在最后&lt;/h1>
+&lt;p>调试是IDE中很重要的一个功能.
+这篇文章虽然字很多,但实际上用起来是很简单的,它并不复杂,而且很适合新手.
+如果我们学会了调试器的使用,那么写代码将会事半功倍.&lt;/p>
+&lt;p>另外,其他的IDE的调试功能也是大同小异.大家可以探索一下!&lt;/p>
+&lt;p>那么最后呢,就祝各位学有所成~ Cheers!&lt;/p>
+&lt;p>(未完待续,因为可能会有补充)&lt;/p>- https://risehere.net/2019/10/28/howto-use-spyder-debugger/ - Rise. 本站遵循 CC-BY-NC 4.0 协议</description></item></channel></rss>
