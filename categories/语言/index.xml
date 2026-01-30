@@ -1,29 +1,176 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>语言 on 左手的世界</title><link>https://risehere.net/categories/%E8%AF%AD%E8%A8%80/</link><description>Recent content in 语言 on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sat, 07 Nov 2020 10:45:28 +0800</lastBuildDate><atom:link href="https://risehere.net/categories/%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml"/><item><title>为什么有些汉字在日语中会读成两拍</title><link>https://risehere.net/posts/checked-tone-in-japanese/</link><pubDate>Sat, 07 Nov 2020 10:45:28 +0800</pubDate><guid>https://risehere.net/posts/checked-tone-in-japanese/</guid><description>前言 写这篇文章的动机，还要从8月说起。那天我在网上冲浪时无意间发现了“沉默”一词的最初写法应为“沈默”。我说，这一点可以在日语、朝鲜语、越南语中“沈默”一词的汉字写法上得到印证，并附上了一张维基字典的截图。
-此时一位师兄突然指出，日语汉字“黙”（もく，mo ku）读成两拍的原因是，末尾的“く”是在模拟古汉语中的“入声”。经过一番资料查找，我对日语中的“入声”终于有了点小小的认识，今分享于此。
-这篇文章不是一个严肃的研究文章，只是我对东亚文化圈中一些有趣现象的记录，大家看个乐呵就行。本文将会简单介绍日语的一些特点，以及中古汉语留下的蛛丝马迹&amp;ndash;“入声”。
-声明：本人并非专业的语言学研究人员，文章中如有错误，欢迎指正！
-欲读懂本文：
-你需要了解日本的五十音图。不过所有的假名我都附上了罗马音，所以大概了解五十音图就可以。 你需要对入声有一点了解，可参见粤语的声调与入声 - 入声一节。 另外，我用粤语拼音模拟了一下中古汉语的拼音。对于没有学过粤语的读者，可以把粤拼当作英文来读。 其它知识我会在文中予以补充，请大家放心食用。
-正文 汉字传入日本 日本刚开始是没有文字的，但出于文化传播的需要，日本需要借来汉字来表达他们的语言。于是，在几百年的中日交流中，既借来了汉字用于表音（表达读音），又借来了汉字用于表意（表达意思）。这里引用《写给大家的日语史》中的一个例子：汉字“山”。
-将山的读音借来了，读作サン(sa n)。 又让山表意，对应日语中固有（即当地人自己发明）的やま(ya ma)。即，山在这种情况下读音为やま。 所以，一个汉字通常有两类读法：前者被称为“音读”，后者被称为“训读”。本文的主角“入声”主要存在于音读中。
-援引自维基百科，音读按照传入日本的时间，分为以下几种：
-古音：早于吴音传入日本的汉字音。源于中国上古音。 吴音：早在公元5世纪、6世纪辗转而入的字音。 汉音：于公元7世纪左右，日本始派出遣唐使自大唐所习得之字音。对当代日语影响最为深远。 唐音：指宋元以后才传入日本的汉字读音，以南方口音为基准。 而这几次传入，中国基本都处在中古汉语时期。这个时期的汉语是带有入声的。而大多数入声字，在日语中都会读成两拍。下面我将说明这一现象的来龙去脉。
-为什么入声读两拍 日语的音节多数为开音节，意思就是读音是“辅音+元音”的结构（拨音ん和促音っ则是例外）。
-举个直观的例子，球员贝克汉姆，可以翻译成以下读音：
-汉语普通话 粤语 日语 写作 贝克汉姆 碧咸 ベッカム 读作 bei ke han mu bik ham Be kka mu 可以看到，汉语普通话和日语同为开音节占优势语言，在翻译形如 ham 的音时，总要把 ha 与 m 拆开，后加一个多余的元音，构成开音节。同理，日本将中古汉语带入日语时，在入声字的结尾再加入一个元音，构成一个开音节。</description></item><item><title>粤语的声调及入声</title><link>https://risehere.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate><guid>https://risehere.net/2019/10/27/checked-tone-in-cantonese/</guid><description>本文原发于2019.10.27。今日梳理了一下文章思路，删除了一些冗余的内容，并调整了一下文章的结构。
-前言 汉语读起来十分动听， 而它正是以其抑扬顿挫之语调而著名。而粤语(广州话)中很好保留了中古汉语中的一些特征，例如声调和韵尾。
-本文将要介绍粤语的声调和韵尾。由于本人并非专业研究人员。若有错误欢迎指正！
-注：下文所指粤语，均为广州话为代表的粤语。
-声调 五度标记法 为了更好地给大家介绍粤语声调，这里先引入一种记录现代汉语声调的最广泛的方法：五度标记法。五度标记法在汉语方言相关研究中大量使用。 (由赵元任先生发明，他被称为汉语言学之父)
-五度标记法它标记了一个音韵的起始，中间过程(有时省略)，和结尾的音调高低。 下面我将以现代汉语普通话为例， 跟大家介绍一下五度标记法。
-现代汉语拼音方案中用一声，二声，三声，四声表示普通话中的四个音调。以这四个声调为例，我放出一张用五度标记法标记的四个声调的图，大家先体会一下。
-曲线很直观，声调越高，曲线中对应的那一点越高。而某一位置所对应的数值越高，则代表该位置的数字表示的声调越高。我们可以从图中读出，普通话中：
-一声的调值为55 二声的调值为35 三声的调值为214 四声的调值为51 大家可以尝试用普通话大声朗读这四个字来体会一下。
-番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。
-(感谢维基百科提供的好例子)
-我们可以看出，五度标记法的数字是有表面含义的，它们每个都代表调的相对高低。而现代汉语拼音方案的数字是无表面意义的，只是四种调型的序号而已。
-粤语的九声六调 目前最广泛的粤语拼音方案是粤拼，也就是香港语言学学会的粤语拼音方案。本文采用粤拼来标注粤语的声调。
-援引自「中文字元资料页」的内容：
-粤音则由四声，发展成九种声调，分别为：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。
-这些声调分别对应粤拼方案的1-9。不过这段话可能过于抽象。为了让大家更好理解，我们来用刚刚学的五度标记法来标识一下：
-音调 阴平 阴上 阴去 阳平 阳上 阳去 阴入 中入 阳入 粤拼 1 2 3 4 5 6 7 8 9 五度 55/53 35 33 11/21 13 22 5(5) 3(3) 2(2) 我们可以看到，粤拼的数字，与现代汉语拼音方案都仅仅代表某一个调型，并不代表本身声调的高低，数值本身是无意义的。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>语言 on 左手的世界</title><link>https://risehere.net/categories/%E8%AF%AD%E8%A8%80/</link><description>Recent content in 语言 on 左手的世界</description><generator>Hugo</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Fri, 30 Jan 2026 17:53:14 +0000</lastBuildDate><atom:link href="https://risehere.net/categories/%E8%AF%AD%E8%A8%80/index.xml" rel="self" type="application/rss+xml"/><item><title>为什么有些汉字在日语中会读成两拍</title><link>https://risehere.net/posts/checked-tone-in-japanese/</link><pubDate>Sat, 07 Nov 2020 10:45:28 +0800</pubDate><guid>https://risehere.net/posts/checked-tone-in-japanese/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;写这篇文章的动机，还要从8月说起。那天我在网上冲浪时无意间发现了“沉默”一词的最初写法应为“沈默”。我说，这一点可以在&lt;a href="https://zh.wiktionary.org/zh-hant/%E6%B2%88%E9%BB%98"&gt;日语、朝鲜语、越南语中“沈默”一词的汉字写法&lt;/a&gt;上得到印证，并附上了一张维基字典的截图。&lt;/p&gt;
+&lt;p&gt;此时一位师兄突然指出，日语汉字“黙”（もく，mo ku）&lt;strong&gt;读成两拍&lt;/strong&gt;的原因是，末尾的“く”是在&lt;strong&gt;模拟古汉语中的“入声”&lt;/strong&gt;。经过一番资料查找，我对日语中的“入声”终于有了点小小的认识，今分享于此。&lt;/p&gt;
+&lt;p&gt;这篇文章不是一个严肃的研究文章，只是我对东亚文化圈中一些有趣现象的记录，大家看个乐呵就行。本文将会简单介绍日语的一些特点，以及中古汉语留下的蛛丝马迹&amp;ndash;“入声”。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;声明：本人并非专业的语言学研究人员，文章中如有错误，欢迎指正！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;欲读懂本文：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你需要了解日本的五十音图。不过所有的假名我都附上了罗马音，所以大概了解五十音图就可以。&lt;/li&gt;
+&lt;li&gt;你需要对入声有一点了解，可参见&lt;a href="https://risehere.net/2019/10/27/checked-tone-in-cantonese/#%e5%85%a5%e5%a3%b0"&gt;粤语的声调与入声 - 入声&lt;/a&gt;一节。&lt;/li&gt;
+&lt;li&gt;另外，我用粤语拼音模拟了一下中古汉语的拼音。对于没有学过粤语的读者，可以把粤拼当作英文来读。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其它知识我会在文中予以补充，请大家放心食用。&lt;/p&gt;
+&lt;h1 id="正文"&gt;正文&lt;/h1&gt;
+&lt;h2 id="汉字传入日本"&gt;汉字传入日本&lt;/h2&gt;
+&lt;p&gt;日本刚开始是没有文字的，但出于文化传播的需要，日本需要借来汉字来表达他们的语言。于是，在几百年的中日交流中，既借来了汉字用于表音（表达读音），又借来了汉字用于表意（表达意思）。这里引用《写给大家的日语史》中的一个例子：汉字“山”。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将山的读音借来了，读作サン(sa n)。&lt;/li&gt;
+&lt;li&gt;又让山表意，对应日语中固有（即当地人自己发明）的やま(ya ma)。即，山在这种情况下读音为やま。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以，一个汉字通常有两类读法：前者被称为“音读”，后者被称为“训读”。本文的主角“入声”主要存在于&lt;strong&gt;音读&lt;/strong&gt;中。&lt;/p&gt;
+&lt;p&gt;援引自维基百科，音读按照传入日本的时间，分为以下几种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;古音：早于吴音传入日本的汉字音。源于中国上古音。&lt;/li&gt;
+&lt;li&gt;吴音：早在公元5世纪、6世纪辗转而入的字音。&lt;/li&gt;
+&lt;li&gt;汉音：于公元7世纪左右，日本始派出遣唐使自大唐所习得之字音。对当代日语影响最为深远。&lt;/li&gt;
+&lt;li&gt;唐音：指宋元以后才传入日本的汉字读音，以南方口音为基准。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而这几次传入，中国基本都处在&lt;strong&gt;中古汉语&lt;/strong&gt;时期。这个时期的汉语是带有&lt;strong&gt;入声&lt;/strong&gt;的。而大多数入声字，在日语中都会读成两拍。下面我将说明这一现象的来龙去脉。&lt;/p&gt;
+&lt;h2 id="为什么入声读两拍"&gt;为什么入声读两拍&lt;/h2&gt;
+&lt;p&gt;日语的音节多数为&lt;strong&gt;开音节&lt;/strong&gt;，意思就是读音是“辅音+元音”的结构（拨音ん和促音っ则是例外）。&lt;/p&gt;
+&lt;p&gt;举个直观的例子，球员贝克汉姆，可以翻译成以下读音：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;汉语普通话&lt;/th&gt;
+ &lt;th&gt;粤语&lt;/th&gt;
+ &lt;th&gt;日语&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;写作&lt;/td&gt;
+ &lt;td&gt;贝克汉姆&lt;/td&gt;
+ &lt;td&gt;碧咸&lt;/td&gt;
+ &lt;td&gt;ベッカム&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;读作&lt;/td&gt;
+ &lt;td&gt;bei ke han mu&lt;/td&gt;
+ &lt;td&gt;bik ham&lt;/td&gt;
+ &lt;td&gt;Be kka mu&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;可以看到，汉语普通话和日语同为&lt;strong&gt;开音节&lt;/strong&gt;占优势语言，在翻译形如 ham 的音时，总要把 ha 与 m 拆开，后加一个&lt;strong&gt;多余的元音&lt;/strong&gt;，构成开音节。同理，日本将中古汉语带入日语时，在入声字的结尾再加入一个元音，构成一个开音节。&lt;/p&gt;
+&lt;p&gt;这也是汉字中的一个入声字，对应到日语中有两拍的原因。&lt;/p&gt;
+&lt;p&gt;那么这种一字对应两拍的关系，是否有固定的规律呢？答案是有的。&lt;/p&gt;
+&lt;h2 id="入声单字的一般规律"&gt;入声单字的一般规律&lt;/h2&gt;
+&lt;p&gt;在中古汉语时期，入声主要有三种韵尾：-p，-t，-k。我们可以发现，当下文提到的入声字单独出现时，它们的音读总是&lt;strong&gt;两拍&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于笔者水平有限，此处用粤语模拟中古汉语。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="t类"&gt;t类&lt;/h3&gt;
+&lt;p&gt;中古汉语中的t类韵尾大多变为日语中的ち或つ。&lt;/p&gt;
+&lt;p&gt;举例：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;粤语拼音&lt;/th&gt;
+ &lt;th&gt;假名&lt;/th&gt;
+ &lt;th&gt;罗马音&lt;/th&gt;
+ &lt;th&gt;变化规律&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;一&lt;/td&gt;
+ &lt;td&gt;yat&lt;/td&gt;
+ &lt;td&gt;いち&lt;/td&gt;
+ &lt;td&gt;i chi&lt;/td&gt;
+ &lt;td&gt;t - chi&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;節&lt;/td&gt;
+ &lt;td&gt;zit&lt;/td&gt;
+ &lt;td&gt;せつ&lt;/td&gt;
+ &lt;td&gt;se tsu&lt;/td&gt;
+ &lt;td&gt;t - tsu&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;用文字来描述，就是一(yat，或写作jat)，末尾含有入声，日语里会在末尾加个ち（chi），变成いち（i chi）。&lt;/p&gt;</description></item><item><title>粤语的声调及入声</title><link>https://risehere.net/2019/10/27/checked-tone-in-cantonese/</link><pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate><guid>https://risehere.net/2019/10/27/checked-tone-in-cantonese/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;本文原发于2019.10.27。今日梳理了一下文章思路，删除了一些冗余的内容，并调整了一下文章的结构。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;汉语读起来十分动听， 而它正是以其抑扬顿挫之语调而著名。而粤语(广州话)中很好保留了中古汉语中的一些特征，例如声调和韵尾。&lt;/p&gt;
+&lt;p&gt;本文将要介绍粤语的声调和韵尾。由于本人并非专业研究人员。若有错误欢迎指正！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：下文所指粤语，均为广州话为代表的粤语。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="声调"&gt;声调&lt;/h1&gt;
+&lt;h2 id="五度标记法"&gt;五度标记法&lt;/h2&gt;
+&lt;p&gt;为了更好地给大家介绍粤语声调，这里先引入一种记录现代汉语声调的最广泛的方法：五度标记法。五度标记法在汉语方言相关研究中大量使用。 (由&lt;a href="https://zh.wikipedia%E3%80%82org/wiki/%E8%B5%B5%E5%85%83%E4%BB%BB"&gt;赵元任先生&lt;/a&gt;发明，他被称为汉语言学之父)&lt;/p&gt;
+&lt;p&gt;五度标记法它标记了一个音韵的起始，中间过程(有时省略)，和结尾的音调高低。
+下面我将以现代汉语普通话为例， 跟大家介绍一下五度标记法。&lt;/p&gt;
+&lt;p&gt;现代汉语拼音方案中用一声，二声，三声，四声表示普通话中的四个音调。以这四个声调为例，我放出一张用&lt;em&gt;五度标记法&lt;/em&gt;标记的四个声调的图，大家先体会一下。&lt;/p&gt;
+&lt;p&gt;&lt;img src="pinyin-tone-chart.png" alt="" /&gt;&lt;/p&gt;
+&lt;p&gt;曲线很直观，声调越高，曲线中对应的那一点越高。而某一位置所对应的数值越高，则代表该位置的数字表示的声调越高。我们可以从图中读出，普通话中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一声的调值为55&lt;/li&gt;
+&lt;li&gt;二声的调值为35&lt;/li&gt;
+&lt;li&gt;三声的调值为214&lt;/li&gt;
+&lt;li&gt;四声的调值为51&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大家可以尝试用普通话大声朗读这四个字来体会一下。&lt;/p&gt;
+&lt;p&gt;番（fan 一声）[55]，茄（qie 二声）[35]，炒（chao 三声）[214]，蛋（dan 四声）[51]。&lt;/p&gt;
+&lt;p&gt;(感谢维基百科提供的好例子)&lt;/p&gt;
+&lt;p&gt;我们可以看出，五度标记法的数字是有表面含义的，它们每个都代表&lt;strong&gt;调的相对高低&lt;/strong&gt;。而现代汉语拼音方案的数字是无表面意义的，只是&lt;strong&gt;四种调型的序号&lt;/strong&gt;而已。&lt;/p&gt;
+&lt;h2 id="粤语的九声六调"&gt;粤语的九声六调&lt;/h2&gt;
+&lt;p&gt;目前最广泛的粤语拼音方案是粤拼，也就是香港语言学学会的粤语拼音方案。本文采用粤拼来标注粤语的声调。&lt;/p&gt;
+&lt;p&gt;援引自「&lt;a href="http://input.foruto.com/ccc/jyt/005.htm"&gt;中文字元资料页&lt;/a&gt;」的内容：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;粤音则由四声，发展成九种声调，分别为：「阴平」、「阴上」、「阴去」，「阳平」、「阳上」、「阳去」，「阴入」、「中入」和「阳入」。其中「阴平、阴上、阴去、阴入、中入」是阴声系，「阳平、阳上、阳去、阳入」是阳声系。阴声系的调值较高，阳声系的调值较低。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这些声调分别对应粤拼方案的1-9。不过这段话可能过于抽象。为了让大家更好理解，我们来用刚刚学的五度标记法来标识一下：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;音调&lt;/th&gt;
+ &lt;th&gt;阴平&lt;/th&gt;
+ &lt;th&gt;阴上&lt;/th&gt;
+ &lt;th&gt;阴去&lt;/th&gt;
+ &lt;th&gt;阳平&lt;/th&gt;
+ &lt;th&gt;阳上&lt;/th&gt;
+ &lt;th&gt;阳去&lt;/th&gt;
+ &lt;th&gt;阴入&lt;/th&gt;
+ &lt;th&gt;中入&lt;/th&gt;
+ &lt;th&gt;阳入&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;粤拼&lt;/td&gt;
+ &lt;td&gt;1&lt;/td&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;td&gt;5&lt;/td&gt;
+ &lt;td&gt;6&lt;/td&gt;
+ &lt;td&gt;7&lt;/td&gt;
+ &lt;td&gt;8&lt;/td&gt;
+ &lt;td&gt;9&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;五度&lt;/td&gt;
+ &lt;td&gt;55/53&lt;/td&gt;
+ &lt;td&gt;35&lt;/td&gt;
+ &lt;td&gt;33&lt;/td&gt;
+ &lt;td&gt;11/21&lt;/td&gt;
+ &lt;td&gt;13&lt;/td&gt;
+ &lt;td&gt;22&lt;/td&gt;
+ &lt;td&gt;5(5)&lt;/td&gt;
+ &lt;td&gt;3(3)&lt;/td&gt;
+ &lt;td&gt;2(2)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;我们可以看到，粤拼的数字，与现代汉语拼音方案都&lt;strong&gt;仅仅代表某一个调型&lt;/strong&gt;，并不代表本身声调的高低，数值本身是无意义的。&lt;/p&gt;
+&lt;p&gt;下面附上更加直观的曲线法。(图片来自&lt;a href="http://www.cantonese.asia/portal.php?mod=view&amp;amp;aid=229"&gt;粤语协会&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;img src="tone.jpg" alt="" /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;图中省略了7 8 9三个声调，因为它们的音高与1 3 6的起点是相同的。人们说粤语有「九声六调」（九个声调，六种音高）。至于语音学学者，则大多把「声调」直接定义作音高，不计算其顿错性，就会直接说粤语有「六个声调」。两种说法的分别，只是对「声调」定义不同而已。&lt;/p&gt;</description></item></channel></rss>

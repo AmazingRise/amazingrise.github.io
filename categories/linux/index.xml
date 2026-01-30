@@ -1,28 +1,101 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on 左手的世界</title><link>https://risehere.net/categories/linux/</link><description>Recent content in Linux on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Sun, 12 Jan 2020 11:22:20 +0800</lastBuildDate><atom:link href="https://risehere.net/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://risehere.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/obs-now-playing/</guid><description>前言 前言的前言 欢迎大家关注我的 bilibili 帐号：bili-Amazingrise
-不定期直播搬砖，游戏，或者其他有趣的东西~
-缘由 为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。
-看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。
-另外，这篇文章的诞生也是受到这位的启发：获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 （没错，就是这个主题的原作者。）
-正文 原理 当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。
-由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。
-以我用的 Electron Netease Cloud Music 为例。
-在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。
-仔细看该项目的源代码，可以找到这几行：
-const i = { name(suffix) { if (suffix) return `org.mpris.MediaPlayer2.${suffix}`; return &amp;#39;org.mpris.MediaPlayer2&amp;#39;; }, path(suffix) { if (suffix) return `/org/mpris/MediaPlayer2/${suffix}`; return &amp;#39;/org/mpris/MediaPlayer2&amp;#39;; } }; 我们可以获取到它的 dbus 路径(?</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://risehere.net/posts/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://risehere.net/posts/manjaro-optimus-dual-monitor/</guid><description>最新方法 2020.9.12 更新
-这篇文章里提到的解决方法应该用不上了，因为 video-hybrid-intel-nvidia-450xx-prime 可以直接识别笔记本上的双显示器。
-如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。 如果你以前看过这篇教程，建议将现有的video-nvidia-???xx更换为上述驱动，并且记得把这篇教程里更改过的配置文件一一还原。这个新的驱动修复了很多小问题。 如果你用的就是 video-hybrid-intel-nvidia-450xx-prime，并且双显示器无法工作，那么你可以参考这篇文章的内容，也许对你有帮助。 重要的话说三遍：
-建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
-建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
-建议将驱动更换为 video-hybrid-intel-nvidia-450xx-prime，在更换完成前不要看这篇文章。
-失败了再回来试一下这篇文章的方法。
-背景 解决方法请翻到解决方法一节。
-环境：
-intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。
-症状：
-无法接外接显示器，接上后无论是系统设置还是inxi -Fx都无法识别外置显示器。 检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。 如果你的是外接显卡坞+显示器，这篇教程不适合你。不过有网友（感谢@sunlitforest）用另一种方法操作成功了，详情请看这里。
-参照ArchWiki上面的说法，让Optimus显卡在linux里面有三种实现方法：
-BIOS里面禁用掉一个显卡。缺点：难以切换显卡。 用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。 用Bumblebee。不过Bumblebee很难支持双显示器。 用专有驱动。 用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。） 解决方法 我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）
-刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！ 我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。
-以下内容均为本人的中文翻译。原帖在此 - How To Set up PRIME with NVIDIA proprietary driver
-如何在Optimus的笔记本上开启PRIME：
-方法 优点 缺点 bumblebee(Render offload) 按需使用独立显卡，Manjaro默认配置 有一定的开销，对性能有所影响 PRIME 直接使用独立显卡，性能更强 两块显卡都一直供电，需要手动配置 optimus-manager 显卡切换更简单 暂不成熟，还在开发中 video-hybrid-intel-nvidia-440xx-prime NVIDIA 官方支持的 render offload.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on 左手的世界</title><link>https://risehere.net/categories/linux/</link><description>Recent content in Linux on 左手的世界</description><generator>Hugo</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Fri, 30 Jan 2026 17:53:14 +0000</lastBuildDate><atom:link href="https://risehere.net/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>OBS Studio 显示正在播放的歌曲 in Linux</title><link>https://risehere.net/posts/obs-now-playing/</link><pubDate>Sun, 12 Jan 2020 11:22:20 +0800</pubDate><guid>https://risehere.net/posts/obs-now-playing/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;h2 id="前言的前言"&gt;前言的前言&lt;/h2&gt;
+&lt;p&gt;欢迎大家关注我的 bilibili 帐号：&lt;a href="https://space.bilibili.com/441928938/"&gt;bili-Amazingrise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;不定期直播搬砖，游戏，或者其他有趣的东西~&lt;/p&gt;
+&lt;h2 id="缘由"&gt;缘由&lt;/h2&gt;
+&lt;p&gt;为了能在直播的时候，显示我正在播放的歌曲，我想了很多的方法。&lt;/p&gt;
+&lt;p&gt;看到了 KDE Connect 里面能显示正在播放的歌曲，我觉得一定可以很容易地获取到当前媒体的状态信息。&lt;/p&gt;
+&lt;p&gt;另外，这篇文章的诞生也是受到这位的启发：&lt;a href="https://keep.moe/2019/05/16/netease-now-playing-lldb/"&gt;获取 macOS 网易云音乐的正在播放 —— 使用 LLDB 验证思路 &lt;/a&gt;
+（没错，就是这个主题的原作者。）&lt;/p&gt;
+&lt;h1 id="正文"&gt;正文&lt;/h1&gt;
+&lt;h2 id="原理"&gt;原理&lt;/h2&gt;
+&lt;p&gt;当然，我们的 Linux 没有那么复杂，用一个 Shell 脚本就能读取到当前播放的媒体。&lt;/p&gt;
+&lt;p&gt;由于 OBS Studio 支持从文本文件读取文字内容，并且显示在输出流上，我们可以用 Shell 脚本先读出当前播放的媒体信息，然后再将它写入某个文件里，最后让 OBS Studio 读取这个文件就可以了。&lt;/p&gt;
+&lt;p&gt;以我用的 &lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music"&gt;Electron Netease Cloud Music&lt;/a&gt; 为例。&lt;/p&gt;
+&lt;p&gt;在 Linux 中，显示正在播放是通过调用 dbus mpris API 实现的。&lt;/p&gt;
+&lt;p&gt;仔细看该项目的源代码，可以找到&lt;a href="https://github.com/Rocket1184/electron-netease-cloud-music/blob/master/src/main/mpris/mpris.js#L14"&gt;这几行&lt;/a&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;i&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;name&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`org.mpris.MediaPlayer2.&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;org.mpris.MediaPlayer2&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; },
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;path&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;`/org/mpris/MediaPlayer2/&lt;/span&gt;&lt;span style="color:#e6db74"&gt;${&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;suffix&lt;/span&gt;&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;`&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/org/mpris/MediaPlayer2&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以获取到它的 dbus 路径(?暂且这么称呼)，这个在后面会有用。&lt;/p&gt;
+&lt;p&gt;那么当前媒体的元数据(metadata)的形式是怎么样的呢？&lt;/p&gt;</description></item><item><title>Manjaro 在笔记本上的多显示器配置</title><link>https://risehere.net/posts/manjaro-optimus-dual-monitor/</link><pubDate>Sat, 20 Apr 2019 16:11:20 +0000</pubDate><guid>https://risehere.net/posts/manjaro-optimus-dual-monitor/</guid><description>&lt;h1 id="最新方法"&gt;最新方法&lt;/h1&gt;
+&lt;p&gt;2020.9.12 更新&lt;/p&gt;
+&lt;p&gt;这篇文章里提到的解决方法应该&lt;strong&gt;用不上了&lt;/strong&gt;，因为 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt; 可以&lt;strong&gt;直接识别&lt;/strong&gt;笔记本上的双显示器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你以前没看过这篇教程，并且双显示器不能正常工作，建议在系统设置里将驱动更换为 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt;，在&lt;strong&gt;更换完成前不要看这篇文章&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;如果你以前看过这篇教程，建议将现有的&lt;code&gt;video-nvidia-???xx&lt;/code&gt;更换为上述驱动，并且记得把这篇教程里更改过的配置文件&lt;strong&gt;一一还原&lt;/strong&gt;。这个新的驱动修复了很多小问题。&lt;/li&gt;
+&lt;li&gt;如果你用的就是 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt;，并且双显示器无法工作，那么你可以参考这篇文章的内容，&lt;strong&gt;也许&lt;/strong&gt;对你有帮助。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;重要的话说三遍：&lt;/p&gt;
+&lt;p&gt;建议将驱动更换为 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt;，在&lt;strong&gt;更换完成前不要看这篇文章&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;建议将驱动更换为 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt;，在&lt;strong&gt;更换完成前不要看这篇文章&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;建议将驱动更换为 &lt;code&gt;video-hybrid-intel-nvidia-450xx-prime&lt;/code&gt;，在&lt;strong&gt;更换完成前不要看这篇文章&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;失败了再回来试一下这篇文章的方法。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1 id="背景"&gt;背景&lt;/h1&gt;
+&lt;p&gt;解决方法请翻到&lt;a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95-"&gt;解决方法&lt;/a&gt;一节。&lt;/p&gt;
+&lt;p&gt;环境：&lt;/p&gt;
+&lt;p&gt;intel 集成显卡 + Nvidia 独立显卡，目前笔记本主流配置。但 HDMI 接口实际上是与 Nvidia 显卡相连接的，默认驱动无法对 N 卡输出。&lt;/p&gt;
+&lt;p&gt;症状：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无法接外接显示器，接上后无论是系统设置还是&lt;code&gt;inxi -Fx&lt;/code&gt;都无法识别外置显示器。&lt;/li&gt;
+&lt;li&gt;检查启动日志，发现虽然开机时检测到了显示器，但后面就没有继续显示了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果你的是&lt;strong&gt;外接显卡坞+显示器，这篇教程不适合你&lt;/strong&gt;。不过有网友（感谢&lt;code&gt;@sunlitforest&lt;/code&gt;）用另一种方法操作成功了，详情请看&lt;a href="https://github.com/AmazingRise/amazingrise.github.io/issues/11#issuecomment-613202749"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;参照&lt;a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)"&gt;ArchWiki上面的说法&lt;/a&gt;，让Optimus显卡在linux里面有三种实现方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;BIOS里面禁用掉一个显卡。缺点：难以切换显卡。&lt;/li&gt;
+&lt;li&gt;用nouveau的PRIME功能。但是性能没有专有驱动好，睡眠和挂起也会出现问题。&lt;/li&gt;
+&lt;li&gt;用Bumblebee。不过Bumblebee很难支持双显示器。&lt;/li&gt;
+&lt;li&gt;用专有驱动。&lt;/li&gt;
+&lt;li&gt;用nvidia-xrun，让X服务器跑在n卡上。（貌似和1一样，但是1是硬件层面上的禁用。）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;h1 id="解决方法"&gt;解决方法&lt;/h1&gt;
+&lt;p&gt;我找到了Manjaro论坛里面的一个帖子。（作者Jonathon，是Manjaro开发团队的）&lt;/p&gt;
+&lt;p&gt;刚开始没有成功，后来在朋友的提醒下，发现原来我缺了一些步骤！
+我照着这个帖子的步骤原封不动地操作，成功了。所以，接下来一定要按照步骤严格操作。&lt;/p&gt;
+&lt;p&gt;以下内容均为本人的中文翻译。&lt;a href="https://archived.forum.manjaro.org/t/howto-set-up-prime-output-offload-with-nvidia-proprietary-driver/40225"&gt;原帖在此 - How To Set up PRIME with NVIDIA proprietary driver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如何在Optimus的笔记本上开启PRIME：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;方法&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;优点&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;缺点&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;bumblebee(Render offload)&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;按需使用独立显卡，Manjaro默认配置&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;有一定的开销，对性能有所影响&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;PRIME&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;直接使用独立显卡，性能更强&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;两块显卡都一直供电，需要手动配置&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;optimus-manager&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;显卡切换更简单&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;暂不成熟，还在开发中&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;video-hybrid-intel-nvidia-440xx-prime&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;NVIDIA 官方支持的 render offload.&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note:最简单的方法就是在主板设置里面禁用集成显卡，如果可以就直接禁用掉。&lt;br /&gt;
+optimus-manager可以实现两块显卡的半自动切换，但是目前仍然不太成熟。&lt;/p&gt;</description></item></channel></rss>

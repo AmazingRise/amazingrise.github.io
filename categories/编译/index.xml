@@ -1,10 +1,88 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编译 on 左手的世界</title><link>https://risehere.net/categories/%E7%BC%96%E8%AF%91/</link><description>Recent content in 编译 on 左手的世界</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Thu, 14 Jan 2021 20:04:40 +0800</lastBuildDate><atom:link href="https://risehere.net/categories/%E7%BC%96%E8%AF%91/index.xml" rel="self" type="application/rss+xml"/><item><title>如何把 C 语言移植到 RISC-V 裸机上</title><link>https://risehere.net/posts/running-c-program-on-bare-machine/</link><pubDate>Thu, 14 Jan 2021 20:04:40 +0800</pubDate><guid>https://risehere.net/posts/running-c-program-on-bare-machine/</guid><description>前言 之前用 Verilog 模拟实现了一个简易的 RISC-V 处理器（RV32I 指令集）。为了跑测试程序，我们的这个处理器自然也要带上存储器，所以实际上它是一台简单的计算机。为了简化设计，这台计算机基于哈佛架构。简单来说，就是数据和指令分开存储，机器读取。想要运行程序，就要把汇编代码编译出来，烧写到我们的 ROM 上。
-为了方便调试，我对 CPU 进行了一些简单的约定：
-外界可以通过8个二进制开关对计算机输入一个值。这个值可以在内存地址 0x40000000 处读取到。 8个 LED 灯与内存地址 0x80000000 上的值相绑定。也就是这里的值，将会以二进制的形式显示在 8 个 LED 灯上。 处理器加电时会产生 RST 信号。寄存器收到 RST 信号时，所有的寄存器将会被置零。这个约定是为了方便初始化寄存器。 我们的目标是在我们的 RISC-V 计算机上成功运行一个 Fibonacci 数运算程序。流程是：
-拨动8个开关，作为输入。 给板子加电。 Fibonacci 运算程序从 0x40000000 处读取8位开关的输入。 Fibonacci 运算程序进行计算。 Fibonacci 运算程序将结果写到 0x80000000 这个地址上。 8位 LED 灯以二进制的形式显示0x80000000 处的内容。 用汇编实现这个程序很轻松。
-.globl __start .globl end .text __start: lui x1,0x0; lw x10,0x40000000(x0); addi x2,x0,3; addi x5,x0,1; blt x10,x2,end; addi x1,x1,12; # init addi x6,x0,1; sw x6,-8(x1); sw x6,-4(x1); main: lw x3,-8(x1); lw x4,-4(x1); add x5,x3,x4; sw x5,0(x1); beq x2,x10,end; addi x1,x1,4; addi x2,x2,1; beq x0,x0,main; end: sw x5,0x80000000(x0); 那么，我们是否可以将 C 语言程序移植到这个平台上呢？</description></item><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://risehere.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://risehere.net/posts/building-openjdk/</guid><description>前言 这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。
-网上的各种攻略琳琅满目，五花八门。
-终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。
-&amp;ndash; 即使是 2020 年，在更新策略激进的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。
-注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。
-准备 环境 名称 版本 OS Manjaro 20.0 Lysia Kernel x86_64 Linux 4.19.118-1-MANJARO make GNU Make 4.3 x86_64-pc-linux-gnu GCC gcc (Arch Linux 9.3.0-1) 9.3.0 注：我并没有切换到低版本的 gcc。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编译 on 左手的世界</title><link>https://risehere.net/categories/%E7%BC%96%E8%AF%91/</link><description>Recent content in 编译 on 左手的世界</description><generator>Hugo</generator><language>zh-TW</language><copyright>Rise. 本站遵循 CC-BY-NC 4.0 协议</copyright><lastBuildDate>Fri, 30 Jan 2026 17:53:14 +0000</lastBuildDate><atom:link href="https://risehere.net/categories/%E7%BC%96%E8%AF%91/index.xml" rel="self" type="application/rss+xml"/><item><title>如何把 C 语言移植到 RISC-V 裸机上</title><link>https://risehere.net/posts/running-c-program-on-bare-machine/</link><pubDate>Thu, 14 Jan 2021 20:04:40 +0800</pubDate><guid>https://risehere.net/posts/running-c-program-on-bare-machine/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;之前用 Verilog 模拟实现了一个简易的 RISC-V 处理器（RV32I 指令集）。为了跑测试程序，我们的这个处理器自然也要带上存储器，所以实际上它是一台简单的计算机。为了简化设计，这台计算机基于&lt;a href="https://en.wikipedia.org/wiki/Harvard_architecture"&gt;哈佛架构&lt;/a&gt;。简单来说，就是数据和指令分开存储，机器读取。想要运行程序，就要把汇编代码编译出来，烧写到我们的 ROM 上。&lt;/p&gt;
+&lt;p&gt;为了方便调试，我对 CPU 进行了一些简单的约定：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外界可以通过8个二进制开关对计算机输入一个值。这个值可以在内存地址 &lt;code&gt;0x40000000&lt;/code&gt; 处读取到。&lt;/li&gt;
+&lt;li&gt;8个 LED 灯与内存地址 &lt;code&gt;0x80000000&lt;/code&gt; 上的值相绑定。也就是这里的值，将会以二进制的形式显示在 8 个 LED 灯上。&lt;/li&gt;
+&lt;li&gt;处理器加电时会产生 RST 信号。寄存器收到 RST 信号时，所有的寄存器将会被置零。这个约定是为了方便初始化寄存器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们的目标是在我们的 RISC-V 计算机上成功运行一个 Fibonacci 数运算程序。流程是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;拨动8个开关，作为输入。&lt;/li&gt;
+&lt;li&gt;给板子加电。&lt;/li&gt;
+&lt;li&gt;Fibonacci 运算程序从 &lt;code&gt;0x40000000&lt;/code&gt; 处读取8位开关的输入。&lt;/li&gt;
+&lt;li&gt;Fibonacci 运算程序进行计算。&lt;/li&gt;
+&lt;li&gt;Fibonacci 运算程序将结果写到 &lt;code&gt;0x80000000&lt;/code&gt; 这个地址上。&lt;/li&gt;
+&lt;li&gt;8位 LED 灯以二进制的形式显示&lt;code&gt;0x80000000&lt;/code&gt; 处的内容。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用汇编实现这个程序很轻松。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-asm" data-lang="asm"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;.globl&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;__start&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;.globl&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;.text&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;__start:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lui&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;0x0&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x10&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;0x40000000&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x2&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x5&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;blt&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x10&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x2&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;12&lt;/span&gt;&lt;span style="color:#75715e"&gt;; # init
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x6&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;sw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x6&lt;/span&gt;,-&lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;sw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x6&lt;/span&gt;,-&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;main:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x3&lt;/span&gt;,-&lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;lw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x4&lt;/span&gt;,-&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x5&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x3&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x4&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;sw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x5&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;beq&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x2&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x10&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;end&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x1&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;addi&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x2&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x2&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;beq&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;,&lt;span style="color:#66d9ef"&gt;main&lt;/span&gt;&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;end:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;sw&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;x5&lt;/span&gt;,&lt;span style="color:#ae81ff"&gt;0x80000000&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;x0&lt;/span&gt;)&lt;span style="color:#75715e"&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;那么，我们是否可以将 C 语言程序移植到这个平台上呢？&lt;/p&gt;</description></item><item><title>2020年，在 Linux 下动手编译 OpenJDK 8</title><link>https://risehere.net/posts/building-openjdk/</link><pubDate>Tue, 05 May 2020 12:52:49 +0800</pubDate><guid>https://risehere.net/posts/building-openjdk/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;这两天开始读深入理解 Java 虚拟机了。在这本书的第一章就提到了动手编译 OpenJDK。 &lt;del&gt;突然想到 2018 年 11 月被 OpenCV 的交叉编译支配的恐惧。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;网上的各种攻略琳琅满目，五花八门。&lt;/p&gt;
+&lt;p&gt;终于，在蹚了前人的那些坑之后，我成功编译了 OpenJDK 8。其实编译一个 JDK 也没那么难。&lt;/p&gt;
+&lt;p&gt;&amp;ndash; 即使是 2020 年，在更新策略&lt;strong&gt;激进&lt;/strong&gt;的 Arch 系 Linux 下，我没有降级任何软件也照样编译成功。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：本篇文章以 Manjaro Linux 为例进行讲解。其它的 Linux 基本一致，只是软件包名不同。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="准备"&gt;准备&lt;/h1&gt;
+&lt;h2 id="环境"&gt;环境&lt;/h2&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th style="text-align: left"&gt;名称&lt;/th&gt;
+ &lt;th style="text-align: left"&gt;版本&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;OS&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;Manjaro 20.0 Lysia&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;Kernel&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;x86_64 Linux 4.19.118-1-MANJARO&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;make&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;GNU Make 4.3 x86_64-pc-linux-gnu&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td style="text-align: left"&gt;GCC&lt;/td&gt;
+ &lt;td style="text-align: left"&gt;gcc (Arch Linux 9.3.0-1) 9.3.0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：我并没有切换到低版本的 gcc。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="openjdk-8"&gt;OpenJDK 8&lt;/h2&gt;
+&lt;p&gt;你需要一个 OpenJDK 8 来编译 OpenJDK 8 原代码中的 Java 代码。太高或太低都不能编译成功。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注： OpenJDK 7 理论上可以，但编译时会出问题。还是建议用 OpenJDK 8。&lt;/p&gt;</description></item></channel></rss>
